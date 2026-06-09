@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600&display=swap');
 
 :root {
     --bg: #f2f2f2; 
-    --black: #1a1a1a;
+    --text: #1a1a1a;
     --accent: #ff3c00;
     --serif: 'Libre Baskerville', serif;
     --sans: 'Inter', sans-serif;
@@ -12,16 +12,17 @@
 
 body {
     background-color: var(--bg);
-    color: var(--black);
+    color: var(--text);
     font-family: var(--sans);
-    line-height: 1.6;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
 }
 
+/* NAVIGATION */
 header {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 40px;
+    padding: 40px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -45,41 +46,39 @@ nav a {
     color: #666;
 }
 
+/* CONTAINERS */
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* Featured Section */
+/* FEATURED (INDEX) */
 .featured-card {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
     gap: 50px;
     margin-bottom: 80px;
     text-decoration: none;
     color: inherit;
+    align-items: start;
 }
 
 .featured-card img {
-    flex: 1.5;
     width: 100%;
-    max-height: 500px;
+    aspect-ratio: 16/9;
     object-fit: cover;
-}
-
-.featured-card .content {
-    flex: 1;
 }
 
 .featured-card h1 {
     font-family: var(--serif);
     font-size: 3.5rem;
-    line-height: 1;
+    line-height: 1.1;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin: 15px 0;
 }
 
-/* Grid Articole */
+/* GRID */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -104,49 +103,48 @@ nav a {
     font-size: 0.75rem;
     font-weight: 700;
     display: block;
-    margin-bottom: 10px;
 }
 
-.card h2 {
-    font-family: var(--serif);
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 1.2;
-}
-
-/* Stil Articol / Pagina Despre */
-.article-body-container {
-    max-width: 720px;
+/* PAGINA DESPRE & ARTICOL */
+.essay-container {
+    max-width: 700px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
-.article-body-container p {
+.essay-container h1 {
     font-family: var(--serif);
-    font-size: 1.25rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 400;
 }
 
-/* Drop Cap (Prima literă mare) */
-.drop-cap::first-letter {
-    font-size: 5rem;
-    float: left;
-    line-height: 0.8;
-    margin-right: 12px;
-    margin-top: 8px;
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 50px;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+.essay-content p {
     font-family: var(--serif);
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+    color: #333;
 }
 
 footer {
-    background: #000;
-    color: #fff;
     padding: 80px 20px;
     text-align: center;
-    margin-top: 100px;
+    font-size: 0.9rem;
+    color: #888;
 }
 
 @media (max-width: 850px) {
-    .featured-card { flex-direction: column; }
+    .featured-card { grid-template-columns: 1fr; }
     .featured-card h1 { font-size: 2.5rem; }
 }
