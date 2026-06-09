@@ -167,3 +167,83 @@ footer { padding: 60px 20px; text-align: center; color: #888; }
         font-size: 1.15rem;
     }
 }
+/* --- ARTICOL PRO STYLE (AEON) --- */
+
+.article-header {
+    max-width: 900px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.article-header h1 {
+    font-family: var(--serif);
+    font-size: 4.5rem; /* Titlu uriaș */
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: -3px;
+    margin-bottom: 30px;
+}
+
+.article-meta {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+/* Imaginea care iese din text */
+.wide-img-wrapper {
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+.wide-img-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* Coloana de text îngustă (Professional Reading) */
+.essay-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px 100px;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    line-height: 1.8;
+    color: #1a1a1a;
+}
+
+.essay-body p {
+    margin-bottom: 30px;
+}
+
+/* Drop Cap (Prima literă) */
+.essay-body p:first-of-type::first-letter {
+    font-size: 5.5rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 15px;
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+/* Citat la mijlocul textului */
+.pull-quote {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-style: italic;
+    border-left: 4px solid var(--accent);
+    padding-left: 30px;
+    margin: 60px 0;
+    line-height: 1.3;
+    color: #000;
+}
+
+/* Ajustări mobil */
+@media (max-width: 850px) {
+    .article-header h1 { font-size: 2.8rem; letter-spacing: -1px; }
+    .essay-body { font-size: 1.2rem; }
+}
