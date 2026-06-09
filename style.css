@@ -1,28 +1,21 @@
-/* 1. IMPORT FONTURI (Aeon Style) */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
 
-/* 2. VARIABILE (Pentru consistență 1 la 1) */
 :root {
     --bg-color: #f9f9f7;
     --text-color: #2d2d2d;
-    --meta-color: #888;
-    --border-color: #e0e0e0;
     --serif: 'Libre Baskerville', serif;
     --sans: 'Inter', sans-serif;
 }
 
-/* 3. RESET ȘI GENERAL */
-* { box-sizing: border-box; }
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--sans);
     margin: 0;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
 }
 
-/* 4. HEADER (Navigație) */
+/* HEADER */
 header {
     max-width: 1200px;
     margin: 0 auto;
@@ -34,11 +27,10 @@ header {
 
 .logo {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-decoration: none;
     color: #000;
-    letter-spacing: -1px;
 }
 
 nav a {
@@ -49,28 +41,31 @@ nav a {
     margin-left: 30px;
     text-decoration: none;
     color: #666;
-    transition: color 0.2s;
 }
 
-nav a:hover { color: #000; }
-
-/* 5. LAYOUT CONTAINER */
+/* CONTAINERS */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px 80px;
+    padding: 0 40px 100px;
 }
 
-.page-title {
+/* TITLURI (HERO & PAGE TITLE) */
+.hero, .page-header {
+    text-align: center;
+    padding: 60px 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1, .page-header h1 {
     font-family: var(--serif);
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 400;
-    margin: 60px 0 40px;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-/* 6. GRID ARTICOLE (Stil Aeon) */
+/* GRID ARTICOLE */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -87,66 +82,32 @@ nav a:hover { color: #000; }
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    margin-bottom: 20px;
-    transition: opacity 0.3s;
+    margin-bottom: 15px;
 }
-
-.article-card:hover img { opacity: 0.8; }
 
 .category-tag {
     font-size: 0.7rem;
     text-transform: uppercase;
-    color: var(--meta-color);
+    color: #888;
     letter-spacing: 1px;
     font-weight: 600;
-    margin-bottom: 8px;
     display: block;
+    margin-bottom: 10px;
 }
 
 .article-card h2 {
     font-family: var(--serif);
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 12px 0;
+    margin: 0 0 10px 0;
 }
 
 .article-card p {
     font-size: 1rem;
     color: #555;
-    margin: 0;
 }
 
-/* 7. RESPONSIVE */
 @media (max-width: 768px) {
-    header { padding: 20px; }
-    .container { padding: 0 20px; }
-    .page-title { font-size: 2.2rem; }
-}
-/* Stil specific pentru Hero (Prima pagină) */
-.hero {
-    text-align: center;
-    padding: 80px 0 100px; /* Spațiu mare sus-jos */
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    font-family: var(--serif);
-    font-size: 4rem; /* Titlu masiv */
-    font-weight: 400;
-    margin-bottom: 20px;
-    letter-spacing: -2px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: #666;
-    line-height: 1.5;
-}
-
-/* Ajustare pentru mobil */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .hero { padding: 40px 0; }
+    .hero h1, .page-header h1 { font-size: 2.5rem; }
+    .articles-grid { gap: 40px; }
 }
