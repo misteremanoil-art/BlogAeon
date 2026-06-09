@@ -1,16 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Face pagina vizibilă treptat
+window.addEventListener("load", () => {
+    // 1. Trigger la animația de intrare (Fade-in)
     document.body.classList.add("loaded");
 
-    // Creare bară de progres
+    // 2. Bara de progres la citire
     const progressBar = document.createElement("div");
     progressBar.id = "progress-bar";
     document.body.appendChild(progressBar);
 
-    window.onscroll = () => {
+    window.addEventListener("scroll", () => {
         let winScroll = document.documentElement.scrollTop;
         let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         let scrolled = (winScroll / height) * 100;
         progressBar.style.width = scrolled + "%";
-    };
+    });
 });
