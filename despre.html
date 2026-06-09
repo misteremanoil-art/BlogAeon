@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Despre — Albert Beniamin</title>
+    <!-- Legătura către CSS-ul tău master -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Antetul site-ului -->
     <header>
         <a href="index.html" class="logo">Albert Beniamin</a>
         <nav>
@@ -16,15 +18,38 @@
         </nav>
     </header>
 
-    <main class="container-lectura">
-        <h1>Despre mine</h1>
-        <img src="https://picsum.photos/id/1025/400/400" alt="" class="foto-profil">
+    <!-- Containerul Narativ (îngust, stil Aeon pentru lectură) -->
+    <main class="essay-container">
         
-        <div class="text-eseu">
-            <p>Sunt teolog și pastor în cadrul Conferinței Moldova, un parcurs definit de studii de licență și master în teologie.</p>
-            <p>Activitatea mea se concentrează pe intersecția dintre studiul academic și trăirea practică a credinței în comunitate.</p>
+        <!-- Secțiunea de Titlu -->
+        <header style="text-align: center; margin-bottom: 60px;">
+            <h1 class="essay-title">Albert Beniamin</h1>
+            <p style="color: #ff3c00; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Teolog & Pastor</p>
+        </header>
+
+        <!-- Imagine de profil circulară și artistică -->
+        <div style="text-align: center; margin-bottom: 60px;">
+            <img src="https://picsum.photos/id/1025/400/400" alt="Albert Beniamin" style="width: 250px; height: 250px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); border: 5px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1);">
+        </div>
+
+        <!-- Corpul textului biografic -->
+        <div class="essay-body">
+            <p>Căutarea înțelesurilor profunde ale Scripturii și ale condiției umane nu a fost pentru mine doar o alegere academică, ci o vocație care mi-a modelat parcursul personal și profesional.</p>
+
+            <p>Formarea mea a început cu studiile universitare în teologie, urmate de un master în același domeniu, parcurs care mi-a permis să explorez nuanțele gândirii teologice și legătura acestora cu viața practică a comunității.</p>
+
+            <p>Astăzi, această pregătire își găsește expresia în activitatea mea din cadrul <strong>Conferinței Moldova</strong>. În calitate de pastor, încerc să traduc rigoarea academică în empatie pastorală, convins fiind că teologia trebuie să fie mereu în dialog cu nevoile reale ale omului modern.</p>
+
+            <p>Acest spațiu digital este dedicat eseurilor și reflecțiilor care invită la tăcere, studiu și o credință autentică, bine ancorată în rădăcinile noastre spirituale.</p>
         </div>
     </main>
 
+    <!-- Subsolul site-ului -->
+    <footer>
+        © 2024 Albert Beniamin — Slujind prin cuvânt și prezență.
+    </footer>
+
+    <!-- Scriptul pentru animații -->
+    <script src="script.js"></script>
 </body>
 </html>
