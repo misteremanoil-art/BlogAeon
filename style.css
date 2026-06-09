@@ -142,3 +142,20 @@ nav a {
         font-size: 2.2rem;
     }
 }
+/* Acest cod face coloana de text să fie centrată și ușor de citit ca pe Aeon */
+.article-page-container {
+    max-width: 720px; /* Lățimea ideală de citire */
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Stil pentru prima literă a primului paragraf din articol */
+.article-page-container p:first-of-type::first-letter {
+    font-size: 5rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 12px;
+    margin-top: 8px;
+    font-family: var(--serif);
+    color: #000;
+}
