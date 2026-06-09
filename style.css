@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&display=swap');
 
 :root {
-    --bg: #f4f4f2; 
+    --bg: #f2f2f2; 
     --black: #1a1a1a;
     --accent: #ff3c00;
     --serif: 'Libre Baskerville', serif;
@@ -14,14 +14,14 @@ body {
     background-color: var(--bg);
     color: var(--black);
     font-family: var(--sans);
-    line-height: 1.5;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* HEADER */
 header {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +29,7 @@ header {
 
 .logo {
     font-family: var(--serif);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     text-decoration: none;
     color: #000;
@@ -37,68 +37,63 @@ header {
 
 nav a {
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     letter-spacing: 1.5px;
-    font-weight: 700;
+    font-weight: 600;
     margin-left: 25px;
     text-decoration: none;
-    color: #555;
+    color: #666;
 }
 
-/* CONTAINER */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* --- FEATURED SECTION (Aici e buba de obicei) --- */
+/* Featured Section */
 .featured-card {
     display: flex;
-    flex-direction: row; /* Aliniere pe orizontală */
-    gap: 40px;
+    gap: 50px;
+    margin-bottom: 80px;
     text-decoration: none;
     color: inherit;
-    margin-bottom: 80px;
-    align-items: flex-start;
 }
 
 .featured-card img {
-    flex: 1.5; /* Imaginea ocupă mai mult spațiu */
+    flex: 1.5;
     width: 100%;
     max-height: 500px;
     object-fit: cover;
 }
 
 .featured-card .content {
-    flex: 1; /* Textul ocupă mai puțin */
+    flex: 1;
 }
 
 .featured-card h1 {
     font-family: var(--serif);
-    font-size: 3.5rem; /* Redus puțin de la 4.5 ca să nu se spargă */
-    line-height: 1.1;
+    font-size: 3.5rem;
+    line-height: 1;
     font-weight: 400;
-    margin: 15px 0;
+    margin-bottom: 20px;
 }
 
-/* --- GRID ARTICOLE --- */
+/* Grid Articole */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    gap: 50px;
 }
 
 .card {
     text-decoration: none;
     color: inherit;
-    display: flex;
-    flex-direction: column;
 }
 
 .card img {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16/9;
     object-fit: cover;
     margin-bottom: 15px;
 }
@@ -106,56 +101,52 @@ nav a {
 .tag {
     color: var(--accent);
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .card h2 {
     font-family: var(--serif);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 400;
-    margin-bottom: 10px;
+    line-height: 1.2;
 }
 
-/* --- PAGINA ARTICOL --- */
-.article-page-container {
-    max-width: 700px;
+/* Stil Articol / Pagina Despre */
+.article-body-container {
+    max-width: 720px;
     margin: 60px auto;
     padding: 0 20px;
 }
 
-.article-page-container h1 {
+.article-body-container p {
     font-family: var(--serif);
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 40px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 850px) {
-    .featured-card {
-        flex-direction: column; /* Pe mobil, imaginea trece deasupra textului */
-    }
-    .featured-card h1 {
-        font-size: 2.2rem;
-    }
-}
-/* Acest cod face coloana de text să fie centrată și ușor de citit ca pe Aeon */
-.article-page-container {
-    max-width: 720px; /* Lățimea ideală de citire */
-    margin: 60px auto;
-    padding: 0 20px;
-}
-
-/* Stil pentru prima literă a primului paragraf din articol */
-.article-page-container p:first-of-type::first-letter {
+/* Drop Cap (Prima literă mare) */
+.drop-cap::first-letter {
     font-size: 5rem;
     float: left;
     line-height: 0.8;
     margin-right: 12px;
     margin-top: 8px;
     font-family: var(--serif);
-    color: #000;
+}
+
+footer {
+    background: #000;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+@media (max-width: 850px) {
+    .featured-card { flex-direction: column; }
+    .featured-card h1 { font-size: 2.5rem; }
 }
