@@ -14,3 +14,8 @@ window.addEventListener("load", () => {
         progressBar.style.width = scrolled + "%";
     });
 });
+/* Animație pentru a face pagina să apară fluid când se încarcă */
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+
