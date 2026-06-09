@@ -2,68 +2,73 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert Beniamin — Blog Teologie</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo">Albert Beniamin</a>
-        <nav><a href="blog.html">Articole</a><a href="despre.html">Despre</a></nav>
+        <nav>
+            <a href="blog.html">Articole</a>
+            <a href="despre.html">Despre</a>
+        </nav>
     </header>
+
     <main class="container">
-        <section class="hero">
-            <h1>Blog de Teologie</h1>
-            <p>Eseuri despre credință și viață spirituală.</p>
-        </section>
+        
+        <!-- ARTICOL VEDETĂ (Featured) -->
+        <a href="articol-esenta-credintei.html" class="featured-section">
+            <img src="https://picsum.photos/id/1015/1200/800" class="featured-image" alt="">
+            <div class="featured-content">
+                <span class="category-tag">Eseu Recomandat</span>
+                <h1>Esența credinței creștine în modernitate</h1>
+                <p>O explorare a fundamentelor care definesc viața spirituală în contextul incertitudinii contemporane. Cum redescoperim tăcerea?</p>
+                <span style="text-decoration: underline; font-weight: 600; font-size: 0.9rem;">Citește eseul</span>
+            </div>
+        </a>
+
+        <!-- Linie de demarcație -->
+        <div class="section-divider">Ultimele Gânduri</div>
+
+        <!-- GRID-UL DE ARTICOLE (Restul articolelor) -->
         <div class="articles-grid">
-            <!-- Articol 1 -->
-<a href="articol-esenta-credintei.html" class="article-card">
-    <img src="https://picsum.photos/id/1015/600/400" alt="Esența credinței">
-    <span class="category-tag">Teologie • Eseu</span>
-    <h2>Esența credinței creștine</h2>
-    <p>O explorare a fundamentelor care definesc viața spirituală în contextul modern.</p>
-</a>
+            
+            <a href="articol-epistole-pauline.html" class="article-card">
+                <img src="https://picsum.photos/id/1005/600/400" alt="">
+                <span class="category-tag">Studiu • Istorie</span>
+                <h2>Epistolele Pauline</h2>
+                <p>Contextul și mesajul apostolic al scrisorilor către bisericile primare.</p>
+            </a>
 
-<!-- Articol 2 -->
-<a href="articol-epistole-pauline.html" class="article-card">
-    <img src="https://picsum.photos/id/1005/600/400" alt="Epistolele Pauline">
-    <span class="category-tag">Studiu Biblic • Istorie</span>
-    <h2>Epistolele Pauline</h2>
-    <p>Analiza mesajului apostolic și relevanța scrisorilor lui Pavel pentru biserica de azi.</p>
-</a>
+            <a href="articol-rugaciune.html" class="article-card">
+                <img src="https://picsum.photos/id/106/600/400" alt="">
+                <span class="category-tag">Practică • Spiritualitate</span>
+                <h2>Puterea Rugăciunii</h2>
+                <p>Reflecții asupra dialogului dintre om și divinitate.</p>
+            </a>
 
-<!-- Articol 3 -->
-<a href="articol-rugaciune.html" class="article-card">
-    <img src="https://picsum.photos/id/106/600/400" alt="Rugăciunea">
-    <span class="category-tag">Practică • Spiritualitate</span>
-    <h2>Puterea Rugăciunii</h2>
-    <p>Reflecții asupra dialogului dintre om și divinitate în tradiția creștină.</p>
-</a>
-
-<!-- Articol 4 -->
-<a href="#" class="article-card">
-    <img src="https://picsum.photos/id/1011/600/400" alt="Sola Scriptura">
-    <span class="category-tag">Doctrină • Reformă</span>
-    <h2>Sola Scriptura în secolul XXI</h2>
-    <p>Cum rămâne Biblia autoritatea supremă într-o lume dominată de relativism.</p>
-</a>
-
-<!-- Articol 5 -->
-<a href="#" class="article-card">
-    <img src="https://picsum.photos/id/1022/600/400" alt="Etica Creștină">
-    <span class="category-tag">Etică • Filozofie</span>
-    <h2>Etica iubirii în era tehnologiei</h2>
-    <p>Provocările morale ale creștinului în fața inteligenței artificiale și a digitalizării.</p>
-</a>
-
-<!-- Articol 6 -->
-<a href="#" class="article-card">
-    <img src="https://picsum.photos/id/1035/600/400" alt="Liturghie">
-    <span class="category-tag">Liturghie • Comunitate</span>
-    <h2>Tăcerea în Liturghie</h2>
-    <p>Recuperarea dimensiunii contemplative a închinării în zgomotul lumii moderne.</p>
-</a>
+            <a href="#" class="article-card">
+                <img src="https://picsum.photos/id/1011/600/400" alt="">
+                <span class="category-tag">Doctrină</span>
+                <h2>Sola Scriptura astăzi</h2>
+                <p>Relevanța Bibliei într-o lume dominată de relativism.</p>
+            </a>
 
         </div>
+
     </main>
+
+    <!-- FOOTER MINIMALIST (Adaugă personalitate) -->
+    <footer style="background: #000; color: #fff; padding: 80px 20px; text-align: center; margin-top: 100px;">
+        <h2 style="font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 20px;">Gânduri teologice în cutia ta poștală</h2>
+        <p style="color: #888; margin-bottom: 30px;">Abonează-te pentru a primi eseurile noi direct pe email.</p>
+        <div style="max-width: 400px; margin: 0 auto; display: flex; gap: 10px;">
+            <input type="email" placeholder="Email-ul tău" style="flex: 1; padding: 12px; border: none; border-radius: 4px;">
+            <button style="background: #ff3c00; color: #fff; border: none; padding: 12px 20px; border-radius: 4px; font-weight: 600; cursor: pointer;">Abonare</button>
+        </div>
+    </footer>
+
 </body>
 </html>
