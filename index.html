@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albert Beniamin — Blog Teologie</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Albert Beniamin | Blog Teologie</title>
+    <!-- ADAUGĂ UN PARAMETRU DUPĂ CSS CA SĂ FORȚEZI REFRESH-UL (ex: ?v=1) -->
+    <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 <body>
 
@@ -18,56 +19,48 @@
 
     <main class="container">
         
-        <!-- ARTICOL VEDETĂ (Featured) -->
-        <a href="articol-esenta-credintei.html" class="featured-section">
-            <img src="https://picsum.photos/id/1015/1200/800" class="featured-image" alt="">
-            <div class="featured-content">
-                <span class="category-tag">Eseu Recomandat</span>
-                <h1>Esența credinței creștine în modernitate</h1>
-                <p>O explorare a fundamentelor care definesc viața spirituală în contextul incertitudinii contemporane. Cum redescoperim tăcerea?</p>
-                <span style="text-decoration: underline; font-weight: 600; font-size: 0.9rem;">Citește eseul</span>
+        <!-- ARTICOL VEDETĂ -->
+        <a href="articol-esenta-credintei.html" class="featured-card">
+            <img src="https://picsum.photos/id/1015/1200/800" alt="">
+            <div class="content">
+                <span class="tag">Eseu Recomandat</span>
+                <h1>Esența credinței în modernitate.</h1>
+                <p>O incursiune în fundamentele teologice ale tăcerii și modul în care aceasta ne redefinește prezența în lume.</p>
+                <span style="font-weight:700; border-bottom: 2px solid #ff3c00;">Citește mai mult</span>
             </div>
         </a>
 
-        <!-- Linie de demarcație -->
-        <div class="section-divider">Ultimele Gânduri</div>
+        <div class="divider">Ultimele Eseuri</div>
 
-        <!-- GRID-UL DE ARTICOLE (Restul articolelor) -->
+        <!-- GRID ARTICOLE -->
         <div class="articles-grid">
             
-            <a href="articol-epistole-pauline.html" class="article-card">
+            <a href="articol-epistole-pauline.html" class="card">
                 <img src="https://picsum.photos/id/1005/600/400" alt="">
-                <span class="category-tag">Studiu • Istorie</span>
+                <span class="tag">Istorie</span>
                 <h2>Epistolele Pauline</h2>
-                <p>Contextul și mesajul apostolic al scrisorilor către bisericile primare.</p>
+                <p>Cum mesajele Apostolului Pavel continuă să modeleze comunitățile de astăzi.</p>
             </a>
 
-            <a href="articol-rugaciune.html" class="article-card">
+            <a href="articol-rugaciune.html" class="card">
                 <img src="https://picsum.photos/id/106/600/400" alt="">
-                <span class="category-tag">Practică • Spiritualitate</span>
+                <span class="tag">Practică</span>
                 <h2>Puterea Rugăciunii</h2>
-                <p>Reflecții asupra dialogului dintre om și divinitate.</p>
+                <p>Reflecții asupra intimității cu divinitatea în zgomotul lumii moderne.</p>
             </a>
 
-            <a href="#" class="article-card">
+            <a href="#" class="card">
                 <img src="https://picsum.photos/id/1011/600/400" alt="">
-                <span class="category-tag">Doctrină</span>
+                <span class="tag">Doctrină</span>
                 <h2>Sola Scriptura astăzi</h2>
-                <p>Relevanța Bibliei într-o lume dominată de relativism.</p>
+                <p>Relevanța autorității biblice într-o eră a relativismului total.</p>
             </a>
 
         </div>
-
     </main>
 
-    <!-- FOOTER MINIMALIST (Adaugă personalitate) -->
-    <footer style="background: #000; color: #fff; padding: 80px 20px; text-align: center; margin-top: 100px;">
-        <h2 style="font-family: var(--serif); font-size: 2rem; font-weight: 400; margin-bottom: 20px;">Gânduri teologice în cutia ta poștală</h2>
-        <p style="color: #888; margin-bottom: 30px;">Abonează-te pentru a primi eseurile noi direct pe email.</p>
-        <div style="max-width: 400px; margin: 0 auto; display: flex; gap: 10px;">
-            <input type="email" placeholder="Email-ul tău" style="flex: 1; padding: 12px; border: none; border-radius: 4px;">
-            <button style="background: #ff3c00; color: #fff; border: none; padding: 12px 20px; border-radius: 4px; font-weight: 600; cursor: pointer;">Abonare</button>
-        </div>
+    <footer>
+        <p>© 2024 Albert Beniamin. Toate drepturile rezervate.</p>
     </footer>
 
 </body>
