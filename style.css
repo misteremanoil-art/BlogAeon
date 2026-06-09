@@ -1,0 +1,172 @@
+/* 
+   ========================================
+   1. IMPORT FONTURI (Stil Aeon)
+   ======================================== 
+*/
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+/* 
+   ========================================
+   2. VARIABILE (Pentru modificări rapide)
+   ======================================== 
+*/
+:root {
+    --bg-color: #fcfcfc;        /* Fundal off-white tipic Aeon */
+    --text-main: #1a1a1a;       /* Text aproape negru */
+    --text-muted: #666666;      /* Text gri pentru detalii */
+    --accent: #000000;          /* Culoare de accent */
+    --font-serif: 'Libre Baskerville', serif; /* Font elegant pentru titluri */
+    --font-sans: 'Inter', sans-serif;         /* Font curat pentru meniu/text */
+    --max-width: 1200px;        /* Lățimea maximă a site-ului */
+}
+
+/* 
+   ========================================
+   3. RESETARE ȘI BAZĂ
+   ======================================== 
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Face fontul să arate mai bine pe Mac/iOS */
+}
+
+/* 
+   ========================================
+   4. HEADER (Navigația)
+   ======================================== 
+*/
+header {
+    width: 100%;
+    border-bottom: 1px solid #eeeeee;
+    padding: 20px 0;
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-left: 30px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* 
+   ========================================
+   5. HERO SECTION (Zona de titlu)
+   ======================================== 
+*/
+.hero {
+    max-width: 800px; /* Mai îngust pentru focus pe text */
+    margin: 100px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: 3.8rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* 
+   ========================================
+   6. GRID ARTICOLE (Pagina principală)
+   ======================================== 
+*/
+.articles-grid {
+    max-width: var(--max-width);
+    margin: 0 auto 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 coloane pe desktop */
+    gap: 60px;
+    padding: 0 40px;
+}
+
+.card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Păstrează proporția imaginii constantă */
+    object-fit: cover;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-image {
+    opacity: 0.85;
+}
+
+.card h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* 
+   ========================================
+   7. RESPONSIVITATE (Mobile)
+   ======================================== 
+*/
+@media (max-width: 992px) {
+    .articles-grid { grid-template-columns: 1fr 1fr; } /* 2 coloane pe tablete */
+    .hero h1 { font-size: 3rem; }
+}
+
+@media (max-width: 600px) {
+    .articles-grid { grid-template-columns: 1fr; } /* 1 coloană pe mobil */
+    .hero h1 { font-size: 2.2rem; }
+    .nav-container { padding: 0 20px; }
+}
