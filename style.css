@@ -1,201 +1,125 @@
-/* 
-   ========================================
-   1. IMPORT FONTURI (Stil Aeon)
-   ======================================== 
-*/
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+/* 1. IMPORT FONTURI (Aeon Style) */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
 
-/* 
-   ========================================
-   2. VARIABILE (Pentru modificări rapide)
-   ======================================== 
-*/
+/* 2. VARIABILE (Pentru consistență 1 la 1) */
 :root {
-    --bg-color: #fcfcfc;        /* Fundal off-white tipic Aeon */
-    --text-main: #1a1a1a;       /* Text aproape negru */
-    --text-muted: #666666;      /* Text gri pentru detalii */
-    --accent: #000000;          /* Culoare de accent */
-    --font-serif: 'Libre Baskerville', serif; /* Font elegant pentru titluri */
-    --font-sans: 'Inter', sans-serif;         /* Font curat pentru meniu/text */
-    --max-width: 1200px;        /* Lățimea maximă a site-ului */
+    --bg-color: #f9f9f7;
+    --text-color: #2d2d2d;
+    --meta-color: #888;
+    --border-color: #e0e0e0;
+    --serif: 'Libre Baskerville', serif;
+    --sans: 'Inter', sans-serif;
 }
 
-/* 
-   ========================================
-   3. RESETARE ȘI BAZĂ
-   ======================================== 
-*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* 3. RESET ȘI GENERAL */
+* { box-sizing: border-box; }
 body {
     background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: var(--font-sans);
+    color: var(--text-color);
+    font-family: var(--sans);
+    margin: 0;
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* Face fontul să arate mai bine pe Mac/iOS */
+    -webkit-font-smoothing: antialiased;
 }
 
-/* 
-   ========================================
-   4. HEADER (Navigația)
-   ======================================== 
-*/
+/* 4. HEADER (Navigație) */
 header {
-    width: 100%;
-    border-bottom: 1px solid #eeeeee;
-    padding: 20px 0;
-}
-
-.nav-container {
-    max-width: var(--max-width);
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
 }
 
 .logo {
-    font-family: var(--font-serif);
+    font-family: var(--serif);
     font-size: 1.6rem;
     font-weight: 700;
     text-decoration: none;
-    color: var(--text-main);
+    color: #000;
     letter-spacing: -1px;
 }
 
 nav a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
     margin-left: 30px;
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--accent);
-}
-
-/* 
-   ========================================
-   5. HERO SECTION (Zona de titlu)
-   ======================================== 
-*/
-.hero {
-    max-width: 800px; /* Mai îngust pentru focus pe text */
-    margin: 100px auto;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.hero h1 {
-    font-family: var(--font-serif);
-    font-size: 3.8rem;
-    font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 25px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    font-style: italic;
-}
-
-/* 
-   ========================================
-   6. GRID ARTICOLE (Pagina principală)
-   ======================================== 
-*/
-.articles-grid {
-    max-width: var(--max-width);
-    margin: 0 auto 100px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 coloane pe desktop */
-    gap: 60px;
-    padding: 0 40px;
-}
-
-.card {
     text-decoration: none;
-    color: inherit;
-    display: block;
+    color: #666;
+    transition: color 0.2s;
 }
 
-.card-image {
-    width: 100%;
-    aspect-ratio: 16 / 9; /* Păstrează proporția imaginii constantă */
-    object-fit: cover;
-    background-color: #f0f0f0;
-    margin-bottom: 20px;
-    transition: opacity 0.3s ease;
+nav a:hover { color: #000; }
+
+/* 5. LAYOUT CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
 }
 
-.card:hover .card-image {
-    opacity: 0.85;
-}
-
-.card h2 {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
+.page-title {
+    font-family: var(--serif);
+    font-size: 3rem;
     font-weight: 400;
-    line-height: 1.3;
-    margin-bottom: 12px;
+    margin: 60px 0 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
 }
 
-.card p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
+/* 6. GRID ARTICOLE (Stil Aeon) */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 60px 40px;
 }
 
-/* 
-   ========================================
-   7. RESPONSIVITATE (Mobile)
-   ======================================== 
-*/
-@media (max-width: 992px) {
-    .articles-grid { grid-template-columns: 1fr 1fr; } /* 2 coloane pe tablete */
-    .hero h1 { font-size: 3rem; }
-}
-
-@media (max-width: 600px) {
-    .articles-grid { grid-template-columns: 1fr; } /* 1 coloană pe mobil */
-    .hero h1 { font-size: 2.2rem; }
-    .nav-container { padding: 0 20px; }
-}
-/* Stiluri extra pentru Arhivă/Blog */
-.date {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #888;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.article-content {
-    padding: 10px 0; /* Aeon nu are padding lateral pe text în interiorul cardului de grid */
-}
-
-/* Eliminăm decorațiunile de link și setăm culoarea textului */
 .article-card {
     text-decoration: none;
     color: inherit;
-    display: flex;
-    flex-direction: column;
+    display: block;
+}
+
+.article-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
+}
+
+.article-card:hover img { opacity: 0.8; }
+
+.category-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--meta-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.article-card h2 {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 0 12px 0;
 }
 
 .article-card p {
-    font-family: var(--sans-font);
-    font-size: 0.95rem;
-    line-height: 1.5;
+    font-size: 1rem;
     color: #555;
+    margin: 0;
+}
+
+/* 7. RESPONSIVE */
+@media (max-width: 768px) {
+    header { padding: 20px; }
+    .container { padding: 0 20px; }
+    .page-title { font-size: 2.2rem; }
 }
