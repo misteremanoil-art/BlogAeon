@@ -1,171 +1,201 @@
-/* --- 1. IMPORT FONURI DIN GOOGLE FONTS --- */
-/* Libre Baskerville pentru un aer de revistă și Inter pentru lizibilitate */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&display=swap');
+/* --- 1. IMPORT FONTURI PREMIUM --- */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap');
 
-/* --- 2. VARIABILE DE DESIGN (STIL AEON) --- */
+/* --- 2. VARIABILE IDENTICE AEON --- */
 :root {
-    --bg-color: #f4f4f2;      /* Gri-crem mat, specific Aeon */
-    --text-color: #1a1a1a;    /* Negru moale, nu pur, pentru a nu obosi ochii */
-    --accent-color: #ff3c00;  /* Portocaliul semnătură Aeon */
+    --bg-aeon: #f4f4f2;      /* Gri-crem mat, identic cu site-ul lor */
+    --black-aeon: #1a1a1a;   /* Text negru-cărbune */
+    --accent-aeon: #ff3c00;  /* Portocaliul semnătură */
     --serif: 'Libre Baskerville', serif;
     --sans: 'Inter', sans-serif;
 }
 
-/* --- 3. RESETARE GENERALĂ --- */
-/* Eliminăm marginile implicite ale browserului pentru un control total */
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-}
+/* --- 3. RESET ȘI FUNDAL --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-aeon);
+    color: var(--black-aeon);
     font-family: var(--sans);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* Face fonturile să pară mai fine pe Mac/iPhone */
+    -webkit-font-smoothing: antialiased;
+    /* Animație subtilă la intrare pe pagină */
+    animation: fadeInPage 0.8s ease-in-out;
 }
 
-/* --- 4. NAVIGAȚIE (HEADER) --- */
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- 4. NAVIGATION (IDENTIC AEON) --- */
 header {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 30px 20px;
+    padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Linie fină de demarcație */
 }
 
 .logo {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
     color: #000;
+    letter-spacing: -1.5px;
 }
 
 nav a {
     text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
     font-weight: 700;
-    margin-left: 25px;
+    margin-left: 30px;
     text-decoration: none;
     color: #666;
-    transition: color 0.3s ease;
+    position: relative;
 }
 
-nav a:hover {
-    color: var(--accent-color); /* Se schimbă în portocaliu la hover */
+nav a:hover { color: #000; }
+nav a::after { /* Linia portocalie la hover */
+    content: '';
+    position: absolute;
+    width: 0; height: 2px;
+    bottom: -8px; left: 0;
+    background: var(--accent-aeon);
+    transition: width 0.3s ease;
 }
+nav a:hover::after { width: 100%; }
 
-/* --- 5. LAYOUT PENTRU PAGINA PRINCIPALĂ (GRID) --- */
-.container-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-/* Articolul Vedetă (cel mare de sus) */
-.featured-card {
-    display: flex; /* Aliniere pe orizontală */
-    gap: 50px;
-    margin-bottom: 80px;
+/* --- 5. INDEX: FEATURED (ARTICOLUL MARE) --- */
+.featured-section {
+    max-width: 1300px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr; /* Imagine mare în stânga, text în dreapta */
+    gap: 60px;
+    padding: 0 40px;
     text-decoration: none;
     color: inherit;
 }
 
-.featured-card img {
-    flex: 1.5; /* Imaginea ocupă mai mult spațiu decât textul */
+.featured-img-wrapper {
+    overflow: hidden;
+}
+
+.featured-img-wrapper img {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
+    transition: transform 0.6s ease;
 }
 
-.featured-card .content {
-    flex: 1; /* Textul ocupă restul spațiului */
+.featured-section:hover .featured-img-wrapper img {
+    transform: scale(1.03); /* Zoom subtil la hover */
 }
 
-.featured-card h1 {
+.featured-content h1 {
     font-family: var(--serif);
-    font-size: 3.5rem;
-    line-height: 1.1;
+    font-size: 4.5rem; /* Titlu masiv Aeon */
+    line-height: 0.95;
     font-weight: 400;
-    margin: 15px 0;
+    letter-spacing: -3px;
+    margin: 20px 0;
 }
 
-/* Grila de 6 articole mici */
+.tag-orange {
+    color: var(--accent-aeon);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* --- 6. INDEX: GRID (ARTICOLELE MICI) --- */
+.grid-divider { /* Linia neagră de separare */
+    max-width: 1220px;
+    margin: 0 auto 50px;
+    border-top: 2px solid #000;
+    padding-top: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+}
+
 .articles-grid {
+    max-width: 1300px;
+    margin: 0 auto 100px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Se ajustează automat la mărimea ecranului */
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 40px;
+    padding: 0 40px;
 }
 
-.card {
-    text-decoration: none;
-    color: inherit;
-}
+.card { text-decoration: none; color: inherit; }
 
 .card img {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .card h2 {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 400;
     line-height: 1.2;
+    margin-bottom: 10px;
 }
 
-/* --- 6. LAYOUT PENTRU ARTICOLE ȘI DESPRE (NARATIV) --- */
-.container-narrative {
-    max-width: 720px; /* Lățime îngustă pentru citire ușoară (Standard Editorial) */
-    margin: 60px auto;
-    padding: 0 20px;
+/* --- 7. PAGINA DE ARTICOL / DESPRE (NARATIVĂ) --- */
+.reading-container {
+    max-width: 700px; /* Lățime perfectă pentru citit */
+    margin: 0 auto;
+    padding: 100px 20px;
 }
 
-.container-narrative h1 {
+.reading-container h1 {
     font-family: var(--serif);
-    font-size: 3.5rem;
+    font-size: 4rem;
     text-align: center;
+    line-height: 1;
     margin-bottom: 40px;
-    font-weight: 400;
+    letter-spacing: -2px;
 }
 
-.profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%; /* Formă rotundă */
-    display: block;
-    margin: 0 auto 40px;
-    object-fit: cover;
-    filter: grayscale(100%); /* Efect alb-negru stilat */
-}
-
-.text-body p {
+.drop-cap::first-letter { /* Prima literă mare */
+    font-size: 5.5rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 15px;
+    margin-top: 10px;
     font-family: var(--serif);
-    font-size: 1.3rem;
-    margin-bottom: 30px;
+}
+
+.reading-text p {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    margin-bottom: 35px;
     color: #222;
 }
 
-/* --- 7. FOOTER --- */
+/* --- 8. FOOTER --- */
 footer {
-    padding: 80px 20px;
+    background: #000;
+    color: #fff;
+    padding: 100px 40px;
     text-align: center;
-    color: #888;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
-/* --- 8. AJUSTĂRI MOBIL --- */
-@media (max-width: 850px) {
-    .featured-card { flex-direction: column; } /* Articolul mare devine vertical pe telefon */
-    .featured-card h1, .container-narrative h1 { font-size: 2.5rem; }
-    header { flex-direction: column; gap: 20px; }
+/* --- 9. MOBIL --- */
+@media (max-width: 1000px) {
+    .featured-section { grid-template-columns: 1fr; }
+    .featured-content h1 { font-size: 3rem; }
+    .articles-grid { grid-template-columns: 1fr 1fr; }
+    header { padding: 20px; }
 }
