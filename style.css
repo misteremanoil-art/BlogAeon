@@ -228,3 +228,62 @@ blockquote {
     margin: 50px 0 20px;
     color: #000;
 }
+/* --- INDEX DINAMIC (STIL EDITORIAL) --- */
+
+.featured-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Imagine mare stânga, text dreapta */
+    gap: 50px;
+    margin-bottom: 80px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.featured-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.featured-content .category-tag {
+    color: #ff3c00;
+    font-weight: 700;
+}
+
+.featured-content h1 {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin: 20px 0;
+    font-weight: 400;
+}
+
+.featured-content p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Secțiune de titlu pentru restul grilei */
+.section-divider {
+    border-top: 1px solid #000;
+    margin-bottom: 40px;
+    padding-top: 10px;
+    font-family: var(--sans);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+/* Ajustare mobil pentru Featured */
+@media (max-width: 900px) {
+    .featured-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .featured-content h1 {
+        font-size: 2.5rem;
+    }
+}
