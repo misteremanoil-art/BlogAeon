@@ -2,15 +2,12 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <!-- Meta tag pentru ca site-ul să se vadă bine pe mobil -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Albert Beniamin | Teologie și Viață</title>
-    <!-- Legătura către fișierul CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Antetul site-ului cu logo și meniu -->
     <header>
         <a href="index.html" class="logo">Albert Beniamin</a>
         <nav>
@@ -19,41 +16,49 @@
         </nav>
     </header>
 
-    <!-- Containerul principal tip Grid -->
-    <main class="container-grid">
-        
-        <!-- ARTICOLUL VEDETĂ (Featured) -->
-        <a href="articol-esenta-credintei.html" class="featured-card">
-            <img src="https://picsum.photos/id/1015/1200/800" alt="Esența credinței">
-            <div class="content">
-                <span style="color: #ff3c00; font-weight: 700; text-transform: uppercase; font-size: 0.7rem;">Eseu Recomandat</span>
-                <h1>Esența credinței în era zgomotului constant</h1>
-                <p>O reflecție profundă asupra tăcerii și modernității din perspectivă teologică.</p>
+    <main>
+        <!-- ARTICOLUL VEDETĂ -->
+        <a href="articol-esenta-credintei.html" class="featured-section">
+            <div class="featured-img-wrapper">
+                <img src="https://picsum.photos/id/1015/1200/800" alt="">
+            </div>
+            <div class="featured-content">
+                <span class="tag-orange">Eseu Recomandat</span>
+                <h1>Esența credinței în era zgomotului.</h1>
+                <p style="font-size: 1.2rem; color: #555;">O reflecție profundă asupra tăcerii și modernității din perspectivă teologică. Cum redescoperim tăcerea?</p>
             </div>
         </a>
 
-        <!-- Linie de separare stilată -->
-        <h3 style="border-top: 1px solid #000; padding-top: 10px; margin-bottom: 40px; font-size: 0.75rem; text-transform: uppercase;">Ultimele Gânduri</h3>
+        <div class="grid-divider">Ultimele Gânduri</div>
 
-        <!-- Grila cu cele 6 articole -->
+        <!-- GRILA DE 6 ARTICOLE -->
         <div class="articles-grid">
             <!-- Articol 1 -->
-            <a href="#" class="card">
+            <a href="articol-epistole-pauline.html" class="card">
                 <img src="https://picsum.photos/id/1005/600/400" alt="">
+                <span class="tag-orange">Istorie</span>
                 <h2>Epistolele Pauline</h2>
-                <p>Mesajul apostolic în lumea contemporană.</p>
+                <p>Contextul și mesajul apostolic al scrisorilor lui Pavel.</p>
             </a>
             <!-- Articol 2 -->
-            <a href="#" class="card">
+            <a href="articol-rugaciune.html" class="card">
                 <img src="https://picsum.photos/id/106/600/400" alt="">
+                <span class="tag-orange">Practică</span>
                 <h2>Puterea Rugăciunii</h2>
-                <p>Dialogul cu sacrul în cotidian.</p>
+                <p>Liturghia tăcerii și introspecția în lumea modernă.</p>
             </a>
-            <!-- Articol 3, 4, 5, 6 (Adaugă-le pe restul aici cu aceeași structură) -->
+            <!-- Articol 3 -->
+            <a href="#" class="card">
+                <img src="https://picsum.photos/id/1011/600/400" alt="">
+                <span class="tag-orange">Doctrină</span>
+                <h2>Sola Scriptura</h2>
+                <p>Relevanța autorității biblice în era relativismului.</p>
+            </a>
+            <!-- Adaugă 4, 5, 6 la fel... -->
         </div>
     </main>
 
-    <footer>© 2024 Albert Beniamin</footer>
+    <footer>© 2024 Albert Beniamin. Gânduri teologice în dialog cu lumea.</footer>
 
 </body>
 </html>
