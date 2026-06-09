@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;700&display=swap');
 
 :root {
-    --aeon-bg: #f4f4f2; /* Culoarea exactă a fundalului lor */
-    --aeon-black: #1a1a1a;
-    --aeon-accent: #ff3c00;
+    --bg: #f4f4f2; 
+    --text: #1a1a1a;
+    --accent: #ff3c00;
     --serif: 'Libre Baskerville', serif;
     --sans: 'Inter', sans-serif;
 }
@@ -11,49 +11,119 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--aeon-bg);
-    color: var(--aeon-black);
+    background-color: var(--bg);
+    color: var(--text);
     font-family: var(--sans);
-    line-height: 1.6;
-    opacity: 0; /* Folosit pentru animația de intrare cu JS */
-    transition: opacity 0.8s ease-in;
+    line-height: 1.7;
+    opacity: 0; /* Pentru animația de intrare din JS */
+    transition: opacity 1s ease;
 }
 
 body.loaded { opacity: 1; }
 
-/* HEADER DINAMIC */
+/* NAVIGAȚIE & ANIMATII */
 header {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 30px 40px;
+    padding: 30px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    background: rgba(244, 244, 242, 0.95);
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    transition: padding 0.3s ease;
 }
 
-header.scrolled { padding: 15px 40px; border-bottom: 1px solid #ddd; }
-
-/* RE-STILIZARE ESEU (1:1 AEON) */
-.essay-body {
-    max-width: 680px;
-    margin: 0 auto;
-    font-size: 1.35rem; /* Dimensiune exactă pentru citit */
-    line-height: 1.75;
+.logo {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.3s ease;
 }
 
-/* Efectul de progres la citire (JavaScript) */
+.logo:hover { transform: scale(1.02); }
+
+nav a {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-left: 25px;
+    text-decoration: none;
+    color: #666;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a:hover { color: var(--accent); }
+
+/* Linie sub link la hover */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after { width: 100%; }
+
+/* CARDURI & ANIMATII */
+.card, .featured-card {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover, .featured-card:hover { opacity: 0.85; }
+
+/* CONTAINER ESEU & DESPRE */
+.essay-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.essay-container h1 {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.profile-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 40px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.profile-img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.essay-content p {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+/* Bara de progres (JS) */
 #progress-bar {
     position: fixed;
     top: 0;
     left: 0;
     height: 3px;
-    background: var(--aeon-accent);
+    background: var(--accent);
     width: 0%;
-    z-index: 2000;
+    z-index: 9999;
 }
