@@ -2,32 +2,58 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <!-- Meta tag pentru ca site-ul să se vadă bine pe mobil -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert Beniamin | Teologie și Viață</title>
+    <!-- Legătura către fișierul CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Antetul site-ului cu logo și meniu -->
     <header>
         <a href="index.html" class="logo">Albert Beniamin</a>
-        <nav><a href="blog.html">Eseuri</a><a href="despre.html">Despre</a></nav>
+        <nav>
+            <a href="blog.html">Eseuri</a>
+            <a href="despre.html">Despre</a>
+        </nav>
     </header>
 
+    <!-- Containerul principal tip Grid -->
     <main class="container-grid">
+        
+        <!-- ARTICOLUL VEDETĂ (Featured) -->
         <a href="articol-esenta-credintei.html" class="featured-card">
-            <img src="https://picsum.photos/id/1015/1200/800" alt="">
+            <img src="https://picsum.photos/id/1015/1200/800" alt="Esența credinței">
             <div class="content">
-                <h1 style="font-family: var(--serif);">Esența credinței</h1>
-                <p>O reflecție asupra teologiei în modernitate.</p>
+                <span style="color: #ff3c00; font-weight: 700; text-transform: uppercase; font-size: 0.7rem;">Eseu Recomandat</span>
+                <h1>Esența credinței în era zgomotului constant</h1>
+                <p>O reflecție profundă asupra tăcerii și modernității din perspectivă teologică.</p>
             </div>
         </a>
 
+        <!-- Linie de separare stilată -->
+        <h3 style="border-top: 1px solid #000; padding-top: 10px; margin-bottom: 40px; font-size: 0.75rem; text-transform: uppercase;">Ultimele Gânduri</h3>
+
+        <!-- Grila cu cele 6 articole -->
         <div class="articles-grid">
-            <a href="articol-epistole-pauline.html" class="card">
+            <!-- Articol 1 -->
+            <a href="#" class="card">
                 <img src="https://picsum.photos/id/1005/600/400" alt="">
                 <h2>Epistolele Pauline</h2>
+                <p>Mesajul apostolic în lumea contemporană.</p>
             </a>
-            <!-- Adaugă restul de carduri aici -->
+            <!-- Articol 2 -->
+            <a href="#" class="card">
+                <img src="https://picsum.photos/id/106/600/400" alt="">
+                <h2>Puterea Rugăciunii</h2>
+                <p>Dialogul cu sacrul în cotidian.</p>
+            </a>
+            <!-- Articol 3, 4, 5, 6 (Adaugă-le pe restul aici cu aceeași structură) -->
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <footer>© 2024 Albert Beniamin</footer>
+
 </body>
 </html>
