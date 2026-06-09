@@ -209,3 +209,22 @@ nav a {
     .article-header h1 { font-size: 2rem; }
     .article-body { font-size: 1.1rem; }
 }
+/* Stil Citat stil Aeon */
+blockquote {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-style: italic;
+    border-left: 3px solid #ff3c00;
+    margin: 40px 0;
+    padding-left: 30px;
+    color: #000;
+    line-height: 1.3;
+}
+
+.article-body h3 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 50px 0 20px;
+    color: #000;
+}
