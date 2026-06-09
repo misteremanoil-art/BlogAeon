@@ -111,65 +111,63 @@ nav a {
     .hero h1, .page-header h1 { font-size: 2.5rem; }
     .articles-grid { gap: 40px; }
 }
-/* STIL PAGINĂ ARTICOL (READING MODE) */
+/* STIL ARTICOL REPARAT - Safe & Elegant */
 .article-container {
-    max-width: 740px; /* Lățime optimă pentru citit */
+    max-width: 800px; /* Lățime fixă, sigură */
     margin: 0 auto;
-    padding: 60px 20px 100px;
+    padding: 40px 20px 100px;
 }
 
 .article-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .article-header h1 {
     font-family: var(--serif);
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
+    font-size: 3rem; /* Puțin mai mic, mai controlat */
+    line-height: 1.2;
+    margin: 20px 0;
     font-weight: 400;
 }
 
 .article-meta {
     font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 40px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .main-article-img {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    height: 60vh;
-    object-fit: cover;
-    margin-bottom: 60px;
+    width: 100%; /* Ocupă doar lățimea textului, nu tot ecranul */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 50px;
 }
 
 .article-body {
-    font-family: var(--serif); /* Aeon folosește serif și în corp */
-    font-size: 1.25rem;
+    font-family: var(--serif);
+    font-size: 1.2rem;
     line-height: 1.8;
     color: #333;
 }
 
 .article-body p {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
-/* Stil pentru prima literă (Drop Cap) - Foarte specific Aeon */
+/* Drop Cap mai discret */
 .article-body p:first-of-type::first-letter {
-    font-size: 5rem;
+    font-size: 4rem;
     float: left;
+    margin-right: 12px;
     line-height: 1;
-    margin-right: 10px;
+    color: #111;
     font-family: var(--serif);
 }
 
+/* Responsivitate pentru ecrane mici */
 @media (max-width: 768px) {
-    .article-header h1 { font-size: 2.2rem; }
-    .main-article-img { width: 100%; left: 0; margin-left: 0; height: 300px; }
+    .article-header h1 { font-size: 2rem; }
+    .article-body { font-size: 1.1rem; }
 }
