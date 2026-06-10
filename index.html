@@ -3,46 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albert Beniamin | Teologie și Viață</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <title>Logos • Teologie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+        :root {
+            --bg: #f4f3f0;
+            --text: #1a1a1a;
+            --accent: #c2410c;
+            --serif: 'Cormorant Garamond', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            line-height: 1.65;
+        }
+
+        header {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e4e0;
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            color: #000;
+            text-decoration: none;
+        }
+
+        nav a {
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 1.8px;
+            font-weight: 600;
+            margin-left: 32px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 70px 40px;
+        }
+
+        /* Featured Article */
+        .featured {
+            display: grid;
+            grid-template-columns: 1.65fr 1fr;
+            gap: 70px;
+            margin-bottom: 110px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .featured img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 16/10;
+        }
+
+        .featured-content h1 {
+            font-family: var(--serif);
+            font-size: 3.4rem;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .meta span {
+            margin-right: 12px;
+        }
+
+        /* Articles Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 70px 45px;
+        }
+
+        .card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            margin-bottom: 22px;
+        }
+
+        .card h2 {
+            font-family: var(--serif);
+            font-size: 1.75rem;
+            line-height: 1.15;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .card .meta {
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .featured {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- HEADER -->
     <header>
-        <a href="index.html" class="logo">Albert Beniamin</a>
+        <a href="#" class="logo">Logos</a>
         <nav>
-            <a href="blog.html">Eseuri</a>
-            <a href="despre.html">Despre</a>
+            <a href="#">Eseuri</a>
+            <a href="#">Teologie</a>
+            <a href="#">Istorie</a>
+            <a href="#">Despre</a>
         </nav>
     </header>
 
-    <main class="container-grid">
-        <!-- FEATURED -->
-        <a href="articol-esenta-credintei.html" class="featured-article">
-            <img src="https://picsum.photos/id/1015/1200/800" alt="">
-            <div class="content">
-                <span style="color:var(--accent); font-weight:700; text-transform:uppercase; font-size:0.7rem;">Eseu Recomandat</span>
-                <h1>Esența credinței în era zgomotului.</h1>
-                <p>O reflecție asupra modului în care tăcerea ne redefinește prezența în lume.</p>
+    <!-- CONȚINUT -->
+    <div class="container">
+
+        <!-- FEATURED ARTICLE -->
+        <a href="articol.html" class="featured">
+            <div>
+                <img src="https://picsum.photos/id/1015/1200/750" alt="Featured">
+            </div>
+            <div class="featured-content">
+                <div class="meta">
+                    <span>Dr. Andrei Popescu</span> • <span>4 zile în urmă</span>
+                </div>
+                <h1>Cum a schimbat Întruparea înțelegerea timpului în gândirea creștină</h1>
+                <p style="color:#555; font-size:1.05rem; line-height:1.6;">
+                    O analiză asupra modului în care conceptul de întrupare a transformat radical percepția asupra istoriei și eternității.
+                </p>
             </div>
         </a>
 
-        <div style="border-top: 2px solid #000; margin-bottom: 50px; padding-top: 15px; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px;">Ultimele Eseuri</div>
-
-        <!-- GRID -->
+        <!-- ARTICOLE GRID -->
         <div class="articles-grid">
+
             <a href="#" class="card">
-                <img src="https://picsum.photos/id/1005/600/400" alt="">
-                <h2>Epistolele Pauline</h2>
+                <img src="https://picsum.photos/id/1005/800/500" alt="">
+                <div class="meta">
+                    <span>Pr. Ioan Mureșan</span> • <span>12 ian 2026</span>
+                </div>
+                <h2>De ce suferința are sens în teologia ortodoxă</h2>
             </a>
+
             <a href="#" class="card">
-                <img src="https://picsum.photos/id/106/600/400" alt="">
-                <h2>Puterea Rugăciunii</h2>
+                <img src="https://picsum.photos/id/1016/800/500" alt="">
+                <div class="meta">
+                    <span>Dr. Maria Ionescu</span> • <span>8 ian 2026</span>
+                </div>
+                <h2>Patristica și criza identității contemporane</h2>
             </a>
+
             <a href="#" class="card">
-                <img src="https://picsum.photos/id/1011/600/400" alt="">
-                <h2>Sola Scriptura</h2>
+                <img src="https://picsum.photos/id/1033/800/500" alt="">
+                <div class="meta">
+                    <span>Pr. Vasile Dumitru</span> • <span>2 ian 2026</span>
+                </div>
+                <h2>Eschatologia între frică și speranță</h2>
             </a>
+
+            <a href="#" class="card">
+                <img src="https://picsum.photos/id/106/800/500" alt="">
+                <div class="meta">
+                    <span>Dr. Elena Stoica</span> • <span>28 dec 2025</span>
+                </div>
+                <h2>Libertatea omului în gândirea Sfântului Maxim Mărturisitorul</h2>
+            </a>
+
         </div>
-    </main>
+
+    </div>
+
 </body>
 </html>
