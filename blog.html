@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eseuri — Albert Beniamin</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Forțăm browserul să încarce noul CSS folosind ?v=1.2 -->
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
 <body>
 
+    <!-- Antetul site-ului (Identic pe toate paginile) -->
     <header>
         <a href="index.html" class="logo">Albert Beniamin</a>
         <nav>
@@ -16,63 +18,74 @@
         </nav>
     </header>
 
+    <!-- Containerul principal tip Grid -->
     <main class="container-grid">
-        <!-- Introducere Editorială Pagina Blog -->
-        <div style="text-align: center; max-width: 800px; margin: 0 auto 100px;">
-            <h1 style="font-family: var(--serif); font-size: 4rem; font-weight: 400; margin-bottom: 20px;">Eseuri</h1>
-            <p style="font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: #555; line-height: 1.6;">
+        
+        <!-- SECȚIUNE TITLU PAGINĂ (Look de revistă) -->
+        <header style="text-align: center; max-width: 800px; margin: 0 auto 80px;">
+            <h1 style="font-family: var(--serif); font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 400; margin-bottom: 20px; letter-spacing: -2px;">Eseuri</h1>
+            <p style="font-family: var(--serif); font-style: italic; font-size: 1.4rem; color: #555; line-height: 1.5;">
                 O colecție de reflecții despre teologie, cultură și condiția umană în dialog cu tradiția și modernitatea.
             </p>
-        </div>
+            <!-- Linie mică de accent sub descriere -->
+            <div style="width: 40px; height: 1px; background: var(--accent); margin: 30px auto;"></div>
+        </header>
 
-        <!-- Grila de articole (folosim același stil ca pe Index) -->
+        <!-- GRILA DE ARTICOLE (Aliniată perfect) -->
         <div class="articles-grid">
             
+            <!-- Articol 1 -->
             <a href="articol-esenta-credintei.html" class="card">
                 <img src="https://picsum.photos/id/1015/600/400" alt="">
-                <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Teologie</span>
+                <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.5px; display: block; margin-bottom: 10px;">Teologie</span>
                 <h2>Esența credinței creștine</h2>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Reflecții asupra fundamentelor spirituale în era zgomotului.</p>
+                <p style="font-size: 0.95rem; color: #666; margin-top: 10px;">Reflecții asupra fundamentelor spirituale în era zgomotului.</p>
             </a>
 
-            <a href="articol-epistole-pauline.html" class="card">
+            <!-- Articol 2 -->
+            <a href="#" class="card">
                 <img src="https://picsum.photos/id/1005/600/400" alt="">
-                <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Studiu Biblic</span>
+                <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.5px; display: block; margin-bottom: 10px;">Istorie</span>
                 <h2>Epistolele Pauline</h2>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Mesajul apostolic și structura bisericii primare.</p>
+                <p style="font-size: 0.95rem; color: #666; margin-top: 10px;">Contextul și mesajul apostolic al scrisorilor lui Pavel.</p>
             </a>
 
-            <a href="articol-rugaciune.html" class="card">
+            <!-- Articol 3 -->
+            <a href="#" class="card">
                 <img src="https://picsum.photos/id/106/600/400" alt="">
-                <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Practică Spirituală</span>
+                <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.5px; display: block; margin-bottom: 10px;">Practică</span>
                 <h2>Puterea Rugăciunii</h2>
-                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Liniștea ca spațiu de întâlnire cu Divinitatea.</p>
+                <p style="font-size: 0.95rem; color: #666; margin-top: 10px;">Liniștea ca spațiu de întâlnire cu Divinitatea.</p>
             </a>
 
-            <!-- Articole suplimentare -->
+            <!-- Articol 4 -->
             <a href="#" class="card">
                 <img src="https://picsum.photos/id/1011/600/400" alt="">
-                <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Doctrină</span>
+                <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.5px; display: block; margin-bottom: 10px;">Doctrină</span>
                 <h2>Sola Scriptura astăzi</h2>
             </a>
-            
+
+            <!-- Articol 5 -->
             <a href="#" class="card">
                 <img src="https://picsum.photos/id/1022/600/400" alt="">
-                <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Etică</span>
+                <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.5px; display: block; margin-bottom: 10px;">Etică</span>
                 <h2>Etica în era AI</h2>
             </a>
 
+            <!-- Articol 6 -->
             <a href="#" class="card">
                 <img src="https://picsum.photos/id/1035/600/400" alt="">
-                <span style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 1px;">Liturghie</span>
+                <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.5px; display: block; margin-bottom: 10px;">Liturghie</span>
                 <h2>Tăcerea în Închinare</h2>
             </a>
 
         </div>
     </main>
 
-    <footer>
-        <p style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 20px;">Albert Beniamin</p>
+    <!-- Footer Negru (pentru contrast profesional la final) -->
+    <footer style="background: #111; color: #fff; padding: 100px 40px; text-align: center; margin-top: 100px;">
+        <p style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 10px;">Albert Beniamin</p>
+        <p style="font-size: 0.7rem; letter-spacing: 2px; color: #666; text-transform: uppercase;">Teolog & Pastor • Conferința Moldova</p>
     </footer>
 
 </body>
