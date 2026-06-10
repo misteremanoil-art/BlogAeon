@@ -1,16 +1,24 @@
-/* --- 1. FONTS ELITE (Cormorant Garamond pentru un look academic/teologic) --- */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap');
 
 :root {
-    --paper: #fdfdfb;       /* Culoarea hârtiei de lux, ușor caldă */
-    --ink: #111111;         /* Cerneală neagră profundă */
-    --accent: #bc4b21;      /* Un portocaliu ruginiu, mai sobru și elegant */
+    --paper: #fdfdfb;       
+    --ink: #111111;         
+    --accent: #bc4b21;      
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Inter', sans-serif;
-    --border: rgba(0,0,0,0.08);
 }
 
-/* --- 2. REGULI GENERALE --- */
+/* --- EFECTUL DE TEXTURĂ (GRAIN) --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+    opacity: 0.4; /* Textură foarte subtilă */
+    pointer-events: none;
+    z-index: 9999;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -19,148 +27,108 @@ body {
     font-family: var(--sans);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    opacity: 0; /* Pregătim pentru animația de intrare */
+    transition: opacity 1.5s ease;
 }
 
-/* --- 3. HEADER MINIMALIST (STIL JURNAL) --- */
+body.loaded { opacity: 1; }
+
+/* --- BARA DE PROGRES (TOP) --- */
+#progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0%; height: 3px;
+    background: var(--accent);
+    z-index: 10000;
+}
+
+/* --- HEADER DINAMIC --- */
 header {
-    padding: 60px 40px;
-    text-align: center; /* Centrat pentru un look mai formal, academic */
-    border-bottom: 1px solid var(--border);
+    padding: 80px 40px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .logo {
     font-family: var(--serif);
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 600;
     text-decoration: none;
     color: var(--ink);
-    letter-spacing: -1px;
-    display: block;
-    margin-bottom: 30px;
+    letter-spacing: -1.5px;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
+.logo:hover { transform: scale(1.05) rotate(-1deg); }
+
+nav { display: flex; justify-content: center; gap: 50px; margin-top: 30px; }
 
 nav a {
     text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
     font-weight: 600;
     text-decoration: none;
-    color: #666;
-    transition: color 0.3s;
+    color: #888;
+    position: relative;
 }
 
-nav a:hover { color: var(--accent); }
-
-/* --- 4. LAYOUT GRID (PENTRU INDEX / ESEURI) --- */
-.container-grid {
-    max-width: 1300px;
-    margin: 80px auto;
-    padding: 0 40px;
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0; height: 1px;
+    bottom: -5px; left: 0;
+    background: var(--accent);
+    transition: width 0.4s ease;
 }
 
-/* Articolul Vedetă - Acum mult mai elegant */
-.featured-article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    margin-bottom: 120px;
+nav a:hover { color: var(--ink); }
+nav a:hover::after { width: 100%; }
+
+/* --- GRID ȘI ESEU (ANIMATE) --- */
+.container-grid, .essay-layout {
+    animation: fadeInUp 1.2s ease-out;
 }
 
-.featured-article img {
-    width: 100%;
-    max-height: 600px;
-    object-fit: cover;
-    margin-bottom: 40px;
-    filter: sepia(10%) contrast(1.05); /* Look de fotografie printată */
+@keyframes fadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-.featured-article h1 {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 6vw, 5rem);
-    line-height: 1;
-    font-weight: 400;
-    max-width: 900px;
-    margin: 20px 0;
+/* Stil pentru imagini cu efect de „vignetă” soft */
+img {
+    filter: sepia(5%) contrast(1.02);
+    transition: filter 0.5s ease;
 }
 
-/* Grila de articole */
-.articles-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 80px 40px;
-}
+img:hover { filter: sepia(0%) contrast(1.05); }
 
-.card { text-decoration: none; color: inherit; }
-
-.card img {
-    width: 100%;
-    aspect-ratio: 3/2;
-    object-fit: cover;
-    margin-bottom: 25px;
-}
-
-.card h2 {
-    font-family: var(--serif);
-    font-size: 1.8rem;
-    font-weight: 400;
-    line-height: 1.2;
-}
-
-/* --- 5. PAGINA DE CITIRE (AEON 1:1) --- */
-.essay-layout {
-    max-width: 740px;
-    margin: 100px auto;
-    padding: 0 25px;
-}
-
-.essay-header { text-align: center; margin-bottom: 80px; }
-
-.essay-header h1 {
-    font-family: var(--serif);
-    font-size: 4.5rem;
-    line-height: 1;
-    margin-bottom: 30px;
-}
-
+/* --- TYPOGRAPHY UPGRADE --- */
 .essay-content {
     font-family: var(--serif);
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Text fluid */
     line-height: 1.8;
 }
 
-.essay-content p { margin-bottom: 35px; }
-
-/* Drop Cap - prima literă a eseului */
-.essay-content p:first-of-type::first-letter {
-    font-size: 6rem;
+.drop-cap::first-letter {
+    font-size: 6.5rem;
     float: left;
-    line-height: 0.8;
+    line-height: 0.7;
     margin-right: 15px;
-    margin-top: 10px;
     font-weight: 300;
+    color: var(--accent);
 }
 
-/* --- 6. FOOTER --- */
 footer {
-    background: #111;
-    color: #fff;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    background: #fdfdfb;
     padding: 120px 40px;
     text-align: center;
-}
-
-/* --- 7. MOBIL --- */
-@media (max-width: 900px) {
-    .articles-grid { grid-template-columns: 1fr; }
-    header { padding: 40px 20px; }
-    .featured-article h1, .essay-header h1 { font-size: 2.8rem; }
 }
