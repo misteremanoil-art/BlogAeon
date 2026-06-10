@@ -1,32 +1,32 @@
-/* 1. IMPORT FONTURI PREMIUM */
-/* Folosim Cormorant Garamond pentru titluri (look academic) și Inter pentru textul de citit */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;700&display=swap');
+/* --- 1. FONTS PREMIUM (AEON STYLE) --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;600;700&display=swap');
 
-/* 2. VARIABILE DE DESIGN */
+/* --- 2. VARIABILE DE DESIGN --- */
 :root {
-    --fundal: #f4f4f2;      /* Gri-crem mat (exact ca pe Aeon) */
-    --text-negru: #1a1a1a;  /* Negru-cărbune moale */
-    --aeon-orange: #ff3c00; /* Portocaliul semnătură */
+    --bg: #f3f3f1;          /* Fundalul crem-mat Aeon */
+    --text: #1a1a1a;        /* Cerneală neagră-gri */
+    --accent: #ff3c00;      /* Portocaliul semnătură */
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Inter', sans-serif;
 }
 
-/* 3. RESETARE GENERALĂ */
+/* --- 3. RESETARE TOTALĂ --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--fundal);
-    color: var(--text-negru);
+    background-color: var(--bg);
+    color: var(--text);
     font-family: var(--sans);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Împiedică vibrația paginii stânga-dreapta */
+    -webkit-font-smoothing: antialiased;
 }
 
-/* 4. HEADER (LOGO ȘI NAVIGAȚIE) */
+/* --- 4. HEADER (NAVIGAȚIE) --- */
 header {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,7 +39,7 @@ header {
     font-weight: 700;
     text-decoration: none;
     color: #000;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 }
 
 nav a {
@@ -50,53 +50,36 @@ nav a {
     margin-left: 30px;
     text-decoration: none;
     color: #666;
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
-nav a:hover { color: var(--aeon-orange); }
+nav a:hover { color: var(--accent); }
 
-/* 5. CONTAINER PRINCIPAL (INDEX) */
-.main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
+/* --- 5. CONTAINERE --- */
+/* Pentru pagini tip listă/grid */
+.container-grid { max-width: 1300px; margin: 0 auto; padding: 60px 40px; }
+/* Pentru pagini tip lectură (Eseu/Despre) */
+.container-reading { max-width: 740px; margin: 0 auto; padding: 80px 20px; }
 
-/* 6. ARTICOLUL VEDETĂ (Cel mare de sus) */
-.featured-card {
-    display: flex;
+/* --- 6. INDEX: FEATURED (ARTICOLUL MARE) --- */
+.featured-article {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
     gap: 60px;
     margin-bottom: 100px;
     text-decoration: none;
     color: inherit;
-    align-items: start;
 }
 
-.featured-img-box { flex: 1.5; }
-.featured-img-box img { 
-    width: 100%; 
-    aspect-ratio: 16/9; 
-    object-fit: cover; 
-}
-
-.featured-text-box { flex: 1; }
-.featured-text-box h1 {
+.featured-article img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.featured-article h1 {
     font-family: var(--serif);
-    font-size: 3.5rem;
-    line-height: 1;
-    font-weight: 400;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
     margin: 20px 0;
 }
 
-.tag-orange {
-    color: var(--aeon-orange);
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-}
-
-/* 7. GRID ARTICOLE (Cele 6 de jos) */
+/* --- 7. GRID ARTICOLE --- */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -105,16 +88,35 @@ nav a:hover { color: var(--aeon-orange); }
 
 .card { text-decoration: none; color: inherit; }
 .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 20px; }
-.card h2 {
+.card h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; line-height: 1.2; }
+
+/* --- 8. STIL ESEU (ARTICOL INDIVIDUAL) --- */
+.essay-header { text-align: center; margin-bottom: 60px; }
+.essay-header h1 { font-family: var(--serif); font-size: clamp(3rem, 8vw, 5rem); line-height: 1; margin-bottom: 20px; }
+.standfirst { font-family: var(--serif); font-size: 1.5rem; font-style: italic; color: #444; margin-bottom: 30px; }
+
+.drop-cap::first-letter {
+    font-size: 6rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 15px;
+    margin-top: 10px;
     font-family: var(--serif);
-    font-size: 1.7rem;
-    font-weight: 400;
-    line-height: 1.2;
 }
 
-/* 8. RESPONSIVITATE PENTRU MOBIL */
+.essay-content p { font-family: var(--serif); font-size: 1.35rem; margin-bottom: 30px; }
+
+/* Imaginea Full-Bleed (care iese din text) */
+.full-width-img {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-bottom: 60px;
+}
+.full-width-img img { width: 100%; height: auto; display: block; }
+
+/* --- 9. MOBIL --- */
 @media (max-width: 900px) {
-    .featured-card { flex-direction: column; gap: 20px; }
-    .featured-text-box h1 { font-size: 2.5rem; }
+    .featured-article { grid-template-columns: 1fr; }
     header { flex-direction: column; gap: 20px; }
+    .container-grid { padding: 20px; }
 }
