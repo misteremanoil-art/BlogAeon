@@ -1,136 +1,133 @@
-/* --- 1. FONTS & TEXTURE --- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap');
+/* --- 1. FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;700&display=swap');
 
 :root {
-    --bg: #f3f3f1;          /* Gri-crem Aeon */
-    --text: #1a1a1a;
-    --accent: #ff3c00;      /* Portocaliu aprins Aeon */
+    --bg: #f3f3f1; 
+    --ink: #111;
+    --accent: #bc4b21;
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Inter', sans-serif;
 }
 
+/* --- 2. SETUP --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--bg);
-    color: var(--text);
+    color: var(--ink);
     font-family: var(--sans);
     line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; /* Împiedică site-ul să se miște stânga-dreapta */
 }
 
-/* --- 2. HEADER MINIMALIST --- */
+/* --- 3. NAVIGAȚIE --- */
 header {
-    padding: 30px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.logo {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 700;
+.logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; text-decoration: none; color: #000; }
+nav a { text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; font-weight: 700; margin-left: 25px; text-decoration: none; color: #666; }
+nav a:hover { color: var(--accent); }
+
+/* --- 4. LAYOUT PENTRU INDEX & BLOG (GRID) --- */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.featured-card {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
     text-decoration: none;
-    color: #000;
+    color: inherit;
 }
 
-nav a {
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    font-weight: 700;
-    margin-left: 30px;
-    text-decoration: none;
-    color: #666;
+.featured-card img { flex: 1.5; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.featured-card .content { flex: 1; }
+.featured-card h1 { font-family: var(--serif); font-size: 3.5rem; line-height: 1; font-weight: 400; margin-bottom: 20px; }
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
 }
 
-/* --- 3. LAYOUT ARTICOL (STILUL AEON ESSAY) --- */
+.card { text-decoration: none; color: inherit; }
+.card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 15px; }
+.card h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; line-height: 1.2; }
 
-/* Secțiunea de titlu */
-.article-hero-header {
+/* --- 5. LAYOUT PENTRU ARTICOL (STIL AEON ESSAY) --- */
+.essay-hero {
     max-width: 900px;
-    margin: 80px auto 40px;
+    margin: 60px auto 40px;
     text-align: center;
     padding: 0 20px;
 }
 
-.article-hero-header h1 {
+.essay-hero h1 {
     font-family: var(--serif);
-    font-size: clamp(3.5rem, 10vw, 5.5rem); /* Titlu gigantic */
+    font-size: clamp(3rem, 8vw, 5rem);
     line-height: 0.95;
-    font-weight: 400;
-    letter-spacing: -3px;
     margin-bottom: 30px;
+    letter-spacing: -2px;
 }
 
-/* Standfirst (Ideea de sub titlu) */
 .standfirst {
     font-family: var(--serif);
     font-size: 1.6rem;
-    line-height: 1.4;
     font-style: italic;
     color: #444;
-    max-width: 700px;
-    margin: 0 auto 40px;
+    margin-bottom: 40px;
 }
 
-.author-meta {
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #000;
-    font-weight: 700;
+/* Imaginea Full-Width (Tehnică sigură) */
+.full-bleed-image {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     margin-bottom: 60px;
 }
 
-/* IMAGINEA GIGANTICĂ (Full Width) */
-.full-width-image {
-    width: 100vw;               /* Ocupă toată lățimea ecranului */
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    margin-bottom: 80px;
-}
-
-.full-width-image img {
+.full-bleed-image img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-/* CORPUL ESEULUI (Coloana de citit) */
-.essay-content {
-    max-width: 680px;           /* Lățime optimă pentru lectură */
+.essay-body {
+    max-width: 700px;
     margin: 0 auto 100px;
     padding: 0 20px;
 }
 
-.essay-content p {
+.essay-body p {
     font-family: var(--serif);
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     line-height: 1.8;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-/* Drop-cap Aeon */
-.essay-content p:first-of-type::first-letter {
+/* Dropcap (Prima literă) */
+.essay-body p:first-of-type::first-letter {
     font-size: 6rem;
     float: left;
     line-height: 0.8;
     margin-right: 15px;
     margin-top: 10px;
-    font-family: var(--serif);
 }
 
-/* --- 4. FOOTER --- */
-footer {
-    padding: 100px 40px;
-    text-align: center;
-    background-color: #000;
-    color: #fff;
+/* --- 6. FOOTER --- */
+footer { padding: 80px 20px; text-align: center; color: #888; font-size: 0.8rem; text-transform: uppercase; }
+
+/* --- 7. MOBIL --- */
+@media (max-width: 850px) {
+    .featured-card { flex-direction: column; }
+    .essay-hero h1 { font-size: 2.5rem; }
+    header { flex-direction: column; gap: 20px; }
 }
