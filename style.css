@@ -1,134 +1,136 @@
+/* --- 1. FONTS & TEXTURE --- */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap');
 
 :root {
-    --paper: #fdfdfb;       
-    --ink: #111111;         
-    --accent: #bc4b21;      
+    --bg: #f3f3f1;          /* Gri-crem Aeon */
+    --text: #1a1a1a;
+    --accent: #ff3c00;      /* Portocaliu aprins Aeon */
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Inter', sans-serif;
-}
-
-/* --- EFECTUL DE TEXTURĂ (GRAIN) --- */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
-    opacity: 0.4; /* Textură foarte subtilă */
-    pointer-events: none;
-    z-index: 9999;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--paper);
-    color: var(--ink);
+    background-color: var(--bg);
+    color: var(--text);
     font-family: var(--sans);
-    line-height: 1.7;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    opacity: 0; /* Pregătim pentru animația de intrare */
-    transition: opacity 1.5s ease;
 }
 
-body.loaded { opacity: 1; }
-
-/* --- BARA DE PROGRES (TOP) --- */
-#progress-bar {
-    position: fixed;
-    top: 0; left: 0;
-    width: 0%; height: 3px;
-    background: var(--accent);
-    z-index: 10000;
-}
-
-/* --- HEADER DINAMIC --- */
+/* --- 2. HEADER MINIMALIST --- */
 header {
-    padding: 80px 40px;
-    text-align: center;
-    border-bottom: 1px solid rgba(0,0,0,0.03);
-    animation: slideDown 1s ease-out;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .logo {
     font-family: var(--serif);
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     text-decoration: none;
-    color: var(--ink);
-    letter-spacing: -1.5px;
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #000;
 }
-
-.logo:hover { transform: scale(1.05) rotate(-1deg); }
-
-nav { display: flex; justify-content: center; gap: 50px; margin-top: 30px; }
 
 nav a {
     text-transform: uppercase;
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-left: 30px;
     text-decoration: none;
-    color: #888;
-    position: relative;
+    color: #666;
 }
 
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0; height: 1px;
-    bottom: -5px; left: 0;
-    background: var(--accent);
-    transition: width 0.4s ease;
-}
+/* --- 3. LAYOUT ARTICOL (STILUL AEON ESSAY) --- */
 
-nav a:hover { color: var(--ink); }
-nav a:hover::after { width: 100%; }
-
-/* --- GRID ȘI ESEU (ANIMATE) --- */
-.container-grid, .essay-layout {
-    animation: fadeInUp 1.2s ease-out;
-}
-
-@keyframes fadeInUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* Stil pentru imagini cu efect de „vignetă” soft */
-img {
-    filter: sepia(5%) contrast(1.02);
-    transition: filter 0.5s ease;
-}
-
-img:hover { filter: sepia(0%) contrast(1.05); }
-
-/* --- TYPOGRAPHY UPGRADE --- */
-.essay-content {
-    font-family: var(--serif);
-    font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Text fluid */
-    line-height: 1.8;
-}
-
-.drop-cap::first-letter {
-    font-size: 6.5rem;
-    float: left;
-    line-height: 0.7;
-    margin-right: 15px;
-    font-weight: 300;
-    color: var(--accent);
-}
-
-footer {
-    border-top: 1px solid rgba(0,0,0,0.05);
-    background: #fdfdfb;
-    padding: 120px 40px;
+/* Secțiunea de titlu */
+.article-hero-header {
+    max-width: 900px;
+    margin: 80px auto 40px;
     text-align: center;
+    padding: 0 20px;
+}
+
+.article-hero-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 10vw, 5.5rem); /* Titlu gigantic */
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: -3px;
+    margin-bottom: 30px;
+}
+
+/* Standfirst (Ideea de sub titlu) */
+.standfirst {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    line-height: 1.4;
+    font-style: italic;
+    color: #444;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.author-meta {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 60px;
+}
+
+/* IMAGINEA GIGANTICĂ (Full Width) */
+.full-width-image {
+    width: 100vw;               /* Ocupă toată lățimea ecranului */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 80px;
+}
+
+.full-width-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* CORPUL ESEULUI (Coloana de citit) */
+.essay-content {
+    max-width: 680px;           /* Lățime optimă pentru lectură */
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+.essay-content p {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+/* Drop-cap Aeon */
+.essay-content p:first-of-type::first-letter {
+    font-size: 6rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 15px;
+    margin-top: 10px;
+    font-family: var(--serif);
+}
+
+/* --- 4. FOOTER --- */
+footer {
+    padding: 100px 40px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
 }
