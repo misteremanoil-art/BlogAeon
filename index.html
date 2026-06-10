@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog personal al lui Albert-Beniamin Cucu: eseuri despre credință, viață, sens și liniște, scrise cu ton sobru și editorial.">
     <title>Albert-Beniamin Cucu • Blog personal</title>
     <link rel="stylesheet" href="style.css">
 
@@ -21,55 +22,77 @@
     <main class="container-grid">
         <section class="editorial-hero">
             <p class="eyebrow">Blog personal</p>
-            <h1>Gânduri despre credință, viață și sens.</h1>
-            <p class="lede">Scriu articole clare și sincere, fără artificii — pentru oameni care caută liniște, reflecție și un limbaj adevărat.</p>
+            <h1>Gânduri despre credință, viața de zi cu zi și lucrurile care chiar contează.</h1>
+            <p class="lede">Scriu aici ce mi-a rămas în minte după zile lungi, rugăciuni, lecții simple și multe întrebări serioase. Textul meu încearcă să fie clar, calm și cât mai autentic.</p>
             <p class="hero-note">Cele mai recente texte</p>
         </section>
 
         <a href="articol-suferinta.html" class="featured-article">
-                <div>
-                    <img src="https://picsum.photos/id/1015/1200/750" alt="Featured article">
-                </div>
-                <article>
-                    <p class="eyebrow">Eseu principal</p>
-                    <h1>Credința, rutina și liniștea pe care le caut în fiecare zi</h1>
-                    <p>Scriu despre lucrurile simple, dar reale: rugăciune, responsabilitate, răbdare și sensul vieții de zi cu zi într-o lume plină de zgomot.</p>
-                    <p class="meta" style="margin-top: 14px;">Albert-Beniamin Cucu • 4 zile în urmă</p>
-                </article>
-            </a>
-        </section>
+            <div>
+                <img src="https://picsum.photos/id/1015/1200/750" alt="Featured article">
+            </div>
+            <article>
+                <p class="eyebrow">Eseu principal</p>
+                <h1>Credința, rutina și liniștea pe care le caut în fiecare zi</h1>
+                <p>Scriu despre lucrurile care nu se schimbă prea mult: rugăciunea, răbdarea, responsabilitatea și felul în care încerc să trăiesc cu atenție în mijlocul zgomotului.</p>
+                <p class="meta" style="margin-top: 14px;">Albert-Beniamin Cucu • 4 zile în urmă • 7 min de citire</p>
+            </article>
+        </a>
 
         <!-- ARTICOLE GRID -->
-        <section class="articles-grid">
+        <section class="articles-grid" aria-label="Articole recente">
             <a href="articol-suferinta.html" class="card">
                 <img src="https://picsum.photos/id/1005/800/500" alt="Sufletul și suferința">
-                <p class="meta">Albert-Beniamin Cucu • 12 ian 2026</p>
+                <p class="meta">Albert-Beniamin Cucu • 12 ian 2026 • 5 min de citire</p>
                 <h2>De ce suferința are sens în viața de credincios</h2>
-                <p>Un eseu personal despre durere, responsabilitate și sensul pe care îl poate lua suferința în credință.</p>
+                <p>Un eseu despre durere, răbdare și felul în care uneori Dumnezeu vorbește prin lucrurile care ne pun la încercare.</p>
             </a>
 
             <a href="articol-esenta-credintei.html" class="card">
                 <img src="https://picsum.photos/id/1033/800/500" alt="Esența credinței">
-                <p class="meta">Albert-Beniamin Cucu • 8 ian 2026</p>
+                <p class="meta">Albert-Beniamin Cucu • 8 ian 2026 • 6 min de citire</p>
                 <h2>Esența credinței în vremuri de zgomot</h2>
-                <p>Un articol mai amplu despre liniște, rugăciune și pace în mijlocul unei lumi agitate.</p>
+                <p>Un text despre liniște, rugăciune și cum rămânem oameni atunci când totul pare să se grăbească.</p>
             </a>
 
             <a href="articol-speranta.html" class="card">
                 <img src="https://picsum.photos/id/106/800/500" alt="Speranța și viața">
-                <p class="meta">Albert-Beniamin Cucu • 2 ian 2026</p>
+                <p class="meta">Albert-Beniamin Cucu • 2 ian 2026 • 4 min de citire</p>
                 <h2>Speranța nu este o idee, ci o practică</h2>
-                <p>Reflectez asupra modului în care harul, răbdarea și responsabilitatea ne țin în picioare.</p>
+                <p>Despre felul în care nădejdea devine mai reală în viața de zi cu zi, nu doar în cuvinte.</p>
             </a>
 
             <a href="articol-rugaciune.html" class="card">
                 <img src="https://picsum.photos/id/1018/800/500" alt="Rugăciunea de dimineață">
-                <p class="meta">Albert-Beniamin Cucu • 28 dec 2025</p>
+                <p class="meta">Albert-Beniamin Cucu • 28 dec 2025 • 3 min de citire</p>
                 <h2>Rugăciunea mea de dimineață și sensul zilei</h2>
-                <p>Un text scurt, realist și personal despre cum încep zilele și cum aleg să mă raportez la ele.</p>
+                <p>Un text simplu despre cum încep ziua, de ce mă opresc o clipă și ce îmi schimbă tonul întregii zile.</p>
             </a>
         </section>
+
+        <section id="newsletter" class="newsletter-card" aria-label="Newsletter">
+            <p class="eyebrow">Newsletter</p>
+            <h2 style="font-family:var(--serif); font-size:1.7rem; line-height:1.05; font-weight:600;">Primești texte noi, în ritmul potrivit pentru tine.</h2>
+            <p>Dacă îți place să citești cu atenție și să te oprești asupra lucrurilor care contează, îți voi trimite doar texte simple, sincere și rare.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Adresă de email" aria-label="Adresă de email">
+                <button type="button">Mă înscriu</button>
+            </form>
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span>Albert-Beniamin Cucu</span>
+            <div class="footer-links">
+                <a href="index.html">Acasă</a>
+                <a href="blog.html">Eseuri</a>
+                <a href="despre.html">Despre</a>
+                <a href="#newsletter">Newsletter</a>
+            </div>
+            <span>© 2026</span>
+        </div>
+    </footer>
 
 </body>
 </html>
