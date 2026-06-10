@@ -1,82 +1,75 @@
-/* --- 1. FONTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;700&display=swap');
+/* --- 1. FONTS & COLOR PALETTE --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;700&display=swap');
 
 :root {
-    --bg: #f3f3f1; 
-    --ink: #111;
-    --accent: #bc4b21;
+    --paper: #f9f9f7;       /* Fundalul exact Aeon (hârtie mată) */
+    --ink: #1a1a1a;         /* Cerneală neagră-gri */
+    --aeon-orange: #ff3c00; /* Portocaliul lor semnătură */
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Inter', sans-serif;
 }
 
-/* --- 2. SETUP --- */
+/* --- 2. RESET TOTAL --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg);
+    background-color: var(--paper);
     color: var(--ink);
     font-family: var(--sans);
     line-height: 1.6;
-    overflow-x: hidden; /* Împiedică site-ul să se miște stânga-dreapta */
+    overflow-x: hidden; /* Critic: Împiedică scroll-ul orizontal de la imaginile mari */
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- 3. NAVIGAȚIE --- */
+/* --- 3. HEADER (MINIMALIST & CURAT) --- */
 header {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px 20px;
+    width: 100%;
+    padding: 30px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; text-decoration: none; color: #000; }
-nav a { text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; font-weight: 700; margin-left: 25px; text-decoration: none; color: #666; }
-nav a:hover { color: var(--accent); }
-
-/* --- 4. LAYOUT PENTRU INDEX & BLOG (GRID) --- */
-.main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.featured-card {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 80px;
+.logo {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 600;
     text-decoration: none;
-    color: inherit;
+    color: #000;
+    letter-spacing: -1px;
 }
 
-.featured-card img { flex: 1.5; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-.featured-card .content { flex: 1; }
-.featured-card h1 { font-family: var(--serif); font-size: 3.5rem; line-height: 1; font-weight: 400; margin-bottom: 20px; }
-
-.articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+nav a {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-left: 30px;
+    text-decoration: none;
+    color: #666;
+    transition: 0.3s;
 }
 
-.card { text-decoration: none; color: inherit; }
-.card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 15px; }
-.card h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; line-height: 1.2; }
+nav a:hover { color: var(--aeon-orange); }
 
-/* --- 5. LAYOUT PENTRU ARTICOL (STIL AEON ESSAY) --- */
-.essay-hero {
-    max-width: 900px;
-    margin: 60px auto 40px;
+/* --- 4. LAYOUT PENTRU ARTICOL (STILUL AEON ESSAY 1:1) --- */
+
+/* Antetul articolului: Titlu + Standfirst */
+.essay-header {
+    max-width: 900px; /* Lățime mai mare pentru titlu */
+    margin: 80px auto 40px;
     text-align: center;
     padding: 0 20px;
 }
 
-.essay-hero h1 {
+.essay-header h1 {
     font-family: var(--serif);
-    font-size: clamp(3rem, 8vw, 5rem);
+    font-size: clamp(3rem, 8vw, 5.5rem); /* Titlu gigantic fluid */
     line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: -3px;
     margin-bottom: 30px;
-    letter-spacing: -2px;
 }
 
 .standfirst {
@@ -84,50 +77,104 @@ nav a:hover { color: var(--accent); }
     font-size: 1.6rem;
     font-style: italic;
     color: #444;
-    margin-bottom: 40px;
+    line-height: 1.4;
+    max-width: 700px;
+    margin: 0 auto 40px;
 }
 
-/* Imaginea Full-Width (Tehnică sigură) */
-.full-bleed-image {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+.author-meta {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
     margin-bottom: 60px;
 }
 
-.full-bleed-image img {
+/* IMAGINEA CARE OCUPĂ TOT ECRANUL (FULL-BLEED) */
+.full-bleed-img {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 80px;
+}
+
+.full-bleed-img img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.essay-body {
-    max-width: 700px;
+/* CORPUL ESEULUI (COLOANA DE CITIT) */
+.reading-column {
+    max-width: 700px; /* Lățimea optimă Aeon pentru lectură */
     margin: 0 auto 100px;
     padding: 0 20px;
 }
 
-.essay-body p {
+.reading-column p {
     font-family: var(--serif);
-    font-size: 1.3rem;
+    font-size: 1.4rem; /* Text mare și elegant */
     line-height: 1.8;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    color: #1a1a1a;
 }
 
-/* Dropcap (Prima literă) */
-.essay-body p:first-of-type::first-letter {
+/* Drop-cap (Prima literă uriașă) */
+.reading-column p:first-of-type::first-letter {
     font-size: 6rem;
     float: left;
     line-height: 0.8;
     margin-right: 15px;
     margin-top: 10px;
+    font-family: var(--serif);
 }
 
-/* --- 6. FOOTER --- */
-footer { padding: 80px 20px; text-align: center; color: #888; font-size: 0.8rem; text-transform: uppercase; }
+/* --- 5. LAYOUT PENTRU PAGINA PRINCIPALĂ (GRID) --- */
+.index-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
 
-/* --- 7. MOBIL --- */
-@media (max-width: 850px) {
-    .featured-card { flex-direction: column; }
-    .essay-hero h1 { font-size: 2.5rem; }
-    header { flex-direction: column; gap: 20px; }
+.featured-story {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 60px;
+    margin-bottom: 100px;
+    text-decoration: none;
+    color: inherit;
+    align-items: start;
+}
+
+.featured-story img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.featured-story h1 { font-family: var(--serif); font-size: 3.5rem; line-height: 1; margin: 20px 0; }
+
+.grid-articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 60px 40px;
+}
+
+.story-card { text-decoration: none; color: inherit; }
+.story-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 15px; }
+.story-card h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; line-height: 1.2; }
+
+/* --- 6. FOOTER --- */
+footer {
+    padding: 100px 40px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    margin-top: 100px;
+}
+
+/* --- 7. RESPONSIVE --- */
+@media (max-width: 900px) {
+    .featured-story { grid-template-columns: 1fr; }
+    .essay-header h1 { font-size: 2.8rem; }
+    header { padding: 20px; }
 }
