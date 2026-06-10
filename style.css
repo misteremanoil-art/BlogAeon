@@ -1,27 +1,28 @@
-/* --- 1. FONTS --- */
+/* 1. IMPORT FONTURI PREMIUM */
+/* Folosim Cormorant Garamond pentru titluri (look academic) și Inter pentru textul de citit */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;700&display=swap');
 
-/* --- 2. VARIABILE AEON --- */
+/* 2. VARIABILE DE DESIGN */
 :root {
-    --fundal: #f9f9f7;
-    --text: #1a1a1a;
-    --accent: #ff3c00;
+    --fundal: #f4f4f2;      /* Gri-crem mat (exact ca pe Aeon) */
+    --text-negru: #1a1a1a;  /* Negru-cărbune moale */
+    --aeon-orange: #ff3c00; /* Portocaliul semnătură */
     --serif: 'Cormorant Garamond', serif;
     --sans: 'Inter', sans-serif;
 }
 
-/* --- 3. RESET --- */
+/* 3. RESETARE GENERALĂ */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     background-color: var(--fundal);
-    color: var(--text);
+    color: var(--text-negru);
     font-family: var(--sans);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* --- 4. HEADER (STIL AEON) --- */
+/* 4. HEADER (LOGO ȘI NAVIGAȚIE) */
 header {
     max-width: 1200px;
     margin: 0 auto;
@@ -38,6 +39,7 @@ header {
     font-weight: 700;
     text-decoration: none;
     color: #000;
+    letter-spacing: -1px;
 }
 
 nav a {
@@ -48,38 +50,36 @@ nav a {
     margin-left: 30px;
     text-decoration: none;
     color: #666;
+    transition: color 0.3s;
 }
 
-/* --- 5. LAYOUT CONTAINERS --- */
-.container {
+nav a:hover { color: var(--aeon-orange); }
+
+/* 5. CONTAINER PRINCIPAL (INDEX) */
+.main-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 20px;
 }
 
-/* --- 6. INDEX: FEATURED (ARTICOLUL MARE) --- */
-.featured-article {
-    display: flex; /* Imagine și text una lângă alta */
+/* 6. ARTICOLUL VEDETĂ (Cel mare de sus) */
+.featured-card {
+    display: flex;
     gap: 60px;
     margin-bottom: 100px;
     text-decoration: none;
     color: inherit;
+    align-items: start;
 }
 
-.featured-img-box {
-    flex: 1.5; /* Ocupă mai mult spațiu */
+.featured-img-box { flex: 1.5; }
+.featured-img-box img { 
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    object-fit: cover; 
 }
 
-.featured-img-box img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-}
-
-.featured-text-box {
-    flex: 1;
-}
-
+.featured-text-box { flex: 1; }
 .featured-text-box h1 {
     font-family: var(--serif);
     font-size: 3.5rem;
@@ -88,33 +88,23 @@ nav a {
     margin: 20px 0;
 }
 
-.tag {
-    color: var(--accent);
+.tag-orange {
+    color: var(--aeon-orange);
     text-transform: uppercase;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 1.5px;
 }
 
-/* --- 7. GRID ARTICOLE (INDEX & BLOG) --- */
+/* 7. GRID ARTICOLE (Cele 6 de jos) */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 60px 40px;
 }
 
-.card {
-    text-decoration: none;
-    color: inherit;
-}
-
-.card img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    margin-bottom: 20px;
-}
-
+.card { text-decoration: none; color: inherit; }
+.card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 20px; }
 .card h2 {
     font-family: var(--serif);
     font-size: 1.7rem;
@@ -122,29 +112,9 @@ nav a {
     line-height: 1.2;
 }
 
-/* --- 8. PAGINA DE CITIRE (ARTICOL / DESPRE) --- */
-.reading-section {
-    max-width: 720px;
-    margin: 80px auto;
-    padding: 0 20px;
-}
-
-.reading-section h1 {
-    font-family: var(--serif);
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.essay-text p {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    margin-bottom: 30px;
-}
-
-/* --- 9. MOBIL --- */
+/* 8. RESPONSIVITATE PENTRU MOBIL */
 @media (max-width: 900px) {
-    .featured-article { flex-direction: column; gap: 20px; }
-    .featured-text-box h1, .reading-section h1 { font-size: 2.5rem; }
+    .featured-card { flex-direction: column; gap: 20px; }
+    .featured-text-box h1 { font-size: 2.5rem; }
     header { flex-direction: column; gap: 20px; }
 }
