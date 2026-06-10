@@ -3,39 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Albert Beniamin</title>
+    <title>Albert Beniamin | Teologie</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo">Albert Beniamin</a>
-        <nav><a href="blog.html">Eseuri</a><a href="despre.html">Despre</a></nav>
+        <nav>
+            <a href="blog.html">Eseuri</a>
+            <a href="despre.html">Despre</a>
+        </nav>
     </header>
 
-    <main class="index-container">
-        <!-- ARTICOL VEDETĂ -->
-        <a href="articol-esenta-credintei.html" class="featured-story">
-            <img src="https://picsum.photos/id/1015/1200/800" alt="">
-            <div class="content">
-                <span style="color: var(--aeon-orange); font-weight: 700; text-transform: uppercase; font-size: 0.7rem;">Eseu Recomandat</span>
-                <h1>Esența credinței</h1>
-                <p style="font-family: var(--serif); font-size: 1.4rem; font-style: italic; color: #555;">O reflecție asupra tăcerii în modernitate.</p>
+    <main class="container">
+        
+        <!-- ARTICOLUL MARE -->
+        <a href="articol-esenta-credintei.html" class="featured-article">
+            <div class="featured-img-box">
+                <img src="https://picsum.photos/id/1015/1200/800" alt="">
+            </div>
+            <div class="featured-text-box">
+                <span class="tag">Eseu Recomandat</span>
+                <h1>Esența credinței în era zgomotului.</h1>
+                <p>O reflecție asupra tăcerii și modernității din perspectivă teologică.</p>
             </div>
         </a>
 
-        <!-- GRILA -->
-        <div class="grid-articles">
-            <a href="articol-epistole-pauline.html" class="story-card">
+        <!-- GRID 6 ARTICOLE -->
+        <div class="articles-grid">
+            
+            <a href="articol-epistole-pauline.html" class="card">
                 <img src="https://picsum.photos/id/1005/600/400" alt="">
+                <span class="tag">Istorie</span>
                 <h2>Epistolele Pauline</h2>
             </a>
-            <a href="articol-rugaciune.html" class="story-card">
+
+            <a href="articol-rugaciune.html" class="card">
                 <img src="https://picsum.photos/id/106/600/400" alt="">
+                <span class="tag">Practică</span>
                 <h2>Puterea Rugăciunii</h2>
             </a>
+
+            <!-- Mai adaugă 4 carduri aici folosind aceeași structură -->
+
         </div>
     </main>
 
-    <footer>Slujind prin cuvânt și prezență.</footer>
 </body>
 </html>
