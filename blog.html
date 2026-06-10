@@ -3,213 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De ce suferința are sens în teologia ortodoxă • Logos</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
-
-        :root {
-            --bg: #f4f3f0;
-            --text: #1a1a1a;
-            --accent: #c2410c;
-            --serif: 'Cormorant Garamond', serif;
-            --sans: 'Inter', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--sans);
-            line-height: 1.75;
-        }
-
-        /* Header */
-        header {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 32px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e5e4e0;
-        }
-
-        .logo {
-            font-family: var(--serif);
-            font-size: 1.85rem;
-            font-weight: 700;
-            letter-spacing: -1.2px;
-            color: #000;
-            text-decoration: none;
-        }
-
-        nav a {
-            text-transform: uppercase;
-            font-size: 0.72rem;
-            letter-spacing: 1.8px;
-            font-weight: 600;
-            margin-left: 32px;
-            color: #555;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        /* Container pentru lectură */
-        .reading-container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        /* Meta informații */
-        .article-meta {
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        .article-meta .author {
-            font-weight: 600;
-            color: #333;
-        }
-
-        /* Titlu principal */
-        .essay-title {
-            font-family: var(--serif);
-            font-size: 3.6rem;
-            line-height: 1.05;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        /* Standfirst (textul introductiv italic) */
-        .standfirst {
-            font-family: var(--serif);
-            font-size: 1.45rem;
-            font-style: italic;
-            color: #444;
-            line-height: 1.4;
-            margin-bottom: 50px;
-        }
-
-        /* Conținut articol */
-        .essay-content {
-            font-family: var(--serif);
-            font-size: 1.28rem;
-            line-height: 1.85;
-        }
-
-        .essay-content p {
-            margin-bottom: 32px;
-        }
-
-        /* Drop Cap */
-        .essay-content p:first-of-type::first-letter {
-            font-size: 5.2rem;
-            float: left;
-            line-height: 0.75;
-            margin-right: 14px;
-            margin-top: 8px;
-            font-family: var(--serif);
-            font-weight: 600;
-        }
-
-        /* Imagine full width */
-        .full-bleed {
-            width: 100vw;
-            margin-left: calc(50% - 50vw);
-            margin-top: 50px;
-            margin-bottom: 60px;
-        }
-
-        .full-bleed img {
-            width: 100%;
-            display: block;
-        }
-
-        /* Caption imagine */
-        .image-caption {
-            max-width: 720px;
-            margin: -20px auto 50px;
-            font-size: 0.95rem;
-            color: #666;
-            font-style: italic;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .reading-container {
-                padding: 50px 20px;
-            }
-            .essay-title {
-                font-size: 2.6rem;
-            }
-        }
-    </style>
+    <title>Eseuri • Albert-Beniamin Cucu</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
-        <a href="index.html" class="logo">Logos</a>
+        <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
         <nav>
             <a href="index.html">Acasă</a>
-            <a href="#">Eseuri</a>
-            <a href="#">Despre</a>
+            <a href="blog.html">Eseuri</a>
+            <a href="despre.html">Despre</a>
         </nav>
     </header>
 
-    <!-- CONȚINUT ARTICOL -->
-    <div class="reading-container">
+    <main class="container-grid">
+        <section class="essay-header" style="margin-top: 8px;">
+            <p class="eyebrow">Eseuri</p>
+            <h1>Articole și reflecții</h1>
+            <p class="standfirst">Aici pun majoritatea textelor mele: gânduri mai lungi, reflecții personale și idei pe care le-am trăit sau le-am cercetat în viața de zi cu zi.</p>
+        </section>
 
-        <!-- Meta -->
-        <div class="article-meta">
-            <span class="author">Pr. Ioan Mureșan</span> &nbsp;•&nbsp; 
-            <span>12 ianuarie 2026</span>
-        </div>
+        <section class="articles-grid">
+            <a href="articol-esenta-credintei.html" class="card">
+                <img src="https://picsum.photos/id/1015/800/500" alt="Esența credinței">
+                <p class="meta">Albert-Beniamin Cucu • 8 ian 2026</p>
+                <h2>Esența credinței în vremuri de zgomot</h2>
+                <p>Un articol mai amplu despre credință, liniște și sens în fața vieții moderne.</p>
+            </a>
 
-        <!-- Titlu -->
-        <h1 class="essay-title">De ce suferința are sens în teologia ortodoxă</h1>
+            <a href="articol-speranta.html" class="card">
+                <img src="https://picsum.photos/id/1033/800/500" alt="Speranța și viața">
+                <p class="meta">Albert-Beniamin Cucu • 2 ian 2026</p>
+                <h2>Speranța nu este o idee, ci o practică</h2>
+                <p>Reflectez asupra modului în care harul, răbdarea și responsabilitatea ne țin în picioare.</p>
+            </a>
 
-        <!-- Standfirst -->
-        <p class="standfirst">
-            Suferința nu este un accident în planul lui Dumnezeu, ci o realitate profundă care poate duce la mântuire și la o mai mare apropiere de Hristos.
-        </p>
+            <a href="articol-rugaciune.html" class="card">
+                <img src="https://picsum.photos/id/106/800/500" alt="Rugăciunea de dimineață">
+                <p class="meta">Albert-Beniamin Cucu • 28 dec 2025</p>
+                <h2>Rugăciunea mea de dimineață și sensul zilei</h2>
+                <p>Un text scurt, realist și personal despre cum încep zilele și cum aleg să mă raportez la ele.</p>
+            </a>
 
-        <!-- Conținut -->
-        <div class="essay-content">
-            <p>
-                În tradiția ortodoxă, suferința nu este privită ca un rău absolut, ci ca o realitate care poate fi transfigurată. De la căderea omului și până la Crucea lui Hristos, durerea a fost parte integrantă din istoria mântuirii.
-            </p>
+            <a href="articol-suferinta.html" class="card">
+                <img src="https://picsum.photos/id/1005/800/500" alt="Suferința și sensul">
+                <p class="meta">Albert-Beniamin Cucu • 12 ian 2026</p>
+                <h2>De ce suferința are sens în viața de credincios</h2>
+                <p>Un eseu despre durere, responsabilitate și sensul pe care îl poate lua suferința în credință.</p>
+            </a>
+        </section>
+    </main>
 
-            <p>
-                Sfântul Ioan Gură de Aur spunea că „nu există virtute fără suferință”. Această afirmație nu este una masochistă, ci una realistă: creșterea spirituală presupune adesea renunțare, durere și încercare.
-            </p>
-
-            <!-- Imagine full width -->
-            <div class="full-bleed">
-                <img src="https://picsum.photos/id/1018/1600/900" alt="Crucea">
-            </div>
-            <p class="image-caption">Biserica Sfânta Sofia, Constantinopol – simbol al suferinței și al învierii</p>
-
-            <p>
-                Teologia ortodoxă oferă o perspectivă unică asupra suferinței: ea nu este doar o pedeapsă, ci și o cale de unire cu Hristos cel răstignit. Prin suferință, omul poate participa la Patimile Mântuitorului.
-            </p>
-
-            <p>
-                Această înțelegere schimbă radical modul în care creștinul privește durerea, transformând-o dintr-o experiență lipsită de sens într-una cu valoare mântuitoare.
-            </p>
-        </div>
-
-    </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
