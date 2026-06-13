@@ -3,19 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Despre blogul Albert-Beniamin Cucu: misiune, tonalitate editorială, reflecții despre credință și sens.">
     <title>Despre — Albert-Beniamin Cucu</title>
     <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
-        <nav><a href="blog.html">Eseuri</a><a href="despre.html">Despre</a></nav>
+        <div class="site-header">
+            <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
+            <div class="header-actions">
+                <label class="search-box" aria-label="Caută articole">
+                    <input type="search" placeholder="Caută articole..." aria-label="Caută articole">
+                </label>
+                <nav>
+                    <a href="index.html">Acasă</a>
+                    <a href="blog.html">Eseuri</a>
+                    <a href="toate-articolele.html">Toate articolele</a>
+                    <a href="despre.html">Despre</a>
+                </nav>
+            </div>
+        </div>
     </header>
 
     <main class="container-reading">
         <div class="essay-header">
+            <p class="eyebrow">Despre site</p>
             <h1>Albert-Beniamin Cucu</h1>
-            <p style="color:var(--accent); font-weight:700; text-transform:uppercase; font-size:0.8rem;">Autor și gânditor creștin</p>
+            <p class="standfirst">Un blog de teologie și reflecție, scris cu ton sobru, clar și atent la sensul lucrurilor care contează.</p>
         </div>
 
         <img src="https://picsum.photos/id/1025/400/400" alt="Albert-Beniamin Cucu" style="width:220px; height:220px; border-radius:50%; display:block; margin:0 auto 50px; filter:grayscale(100%);">
@@ -25,6 +39,48 @@
             <p>Pe acest site îmi pun în pagină gândurile care mi-au rămas după rugăciune, după discuții serioase și după zile în care am avut nevoie de liniște. Vreau să fie clar, sincer și aproape de realitatea oamenilor.</p>
             <p>Dacă ai ajuns aici, probabil că cauți un text care vorbește direct, fără artificii. Asta încerc să ofer: un mod simplu de a gândi despre credință, responsabilitate, durere și speranță.</p>
         </div>
+
+        <section class="mission-grid" aria-label="Misiunea blogului">
+            <article class="highlight-card">
+                <h3>Misiune</h3>
+                <p>Construim un spațiu de lectură calm, bazat pe seriozitate, claritate și respect față de oamenii care caută sens.</p>
+            </article>
+            <article class="highlight-card">
+                <h3>Ton</h3>
+                <p>Textul este sobru, editorial și profund, fără fasoane, cu grijă pentru ritmul lecturii și pentru calitatea ideilor.</p>
+            </article>
+            <article class="highlight-card">
+                <h3>Teme</h3>
+                <p>Teologie, patristică, spiritualitate, rugăciune, durere, speranță și viața de zi cu zi văzute în lumină credinței.</p>
+            </article>
+        </section>
+
+        <section id="newsletter" class="newsletter-card" aria-label="Newsletter">
+            <p class="eyebrow">Newsletter</p>
+            <h2 style="font-family:var(--serif); font-size:1.5rem; line-height:1.08; font-weight:600;">Primește textul săptămânal, în ritmul potrivit pentru lecție și reflecție.</h2>
+            <p>Un email scurt, rar și atent — doar când am ceva nou de spus.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Adresă de email" aria-label="Adresă de email">
+                <button type="button">Abonare</button>
+            </form>
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span>Albert-Beniamin Cucu</span>
+            <div class="footer-links">
+                <a href="index.html">Acasă</a>
+                <a href="blog.html">Eseuri</a>
+                <a href="toate-articolele.html">Toate articolele</a>
+                <a href="despre.html">Despre</a>
+                <a href="#newsletter">Newsletter</a>
+            </div>
+            <span>© 2026</span>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" aria-label="Înapoi sus">↑</button>
+    <script src="script.js"></script>
 </body>
 </html>
