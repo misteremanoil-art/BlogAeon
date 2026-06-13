@@ -10,13 +10,21 @@
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
-        <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
-        <nav>
-            <a href="blog.html">Eseuri</a>
-            <a href="despre.html">Despre</a>
-        </nav>
+        <div class="site-header">
+            <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
+            <div class="header-actions">
+                <label class="search-box" aria-label="Caută articole">
+                    <input type="search" placeholder="Caută articole..." aria-label="Caută articole">
+                </label>
+                <nav>
+                    <a href="index.html">Acasă</a>
+                    <a href="blog.html">Eseuri</a>
+                    <a href="toate-articolele.html">Toate articolele</a>
+                    <a href="despre.html">Despre</a>
+                </nav>
+            </div>
+        </div>
     </header>
 
     <main class="container-grid">
@@ -24,50 +32,83 @@
             <p class="eyebrow">Blog personal</p>
             <h1>Gânduri despre credință, viața de zi cu zi și lucrurile care chiar contează.</h1>
             <p class="lede">Scriu aici ce mi-a rămas în minte după zile lungi, rugăciuni, lecții simple și multe întrebări serioase. Textul meu încearcă să fie clar, calm și cât mai autentic.</p>
-            <p class="hero-note">Cele mai recente texte</p>
+            <p class="hero-note">Eseuri, rugăciune, lămurire și liniște</p>
         </section>
 
-        <a href="articol-suferinta.html" class="featured-article">
+        <a href="articol-chemarea-divina.html" class="featured-article">
             <div>
-                <img src="https://picsum.photos/id/1015/1200/750" alt="Featured article">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80" alt="Chemarea divină și răspunsul nostru">
             </div>
             <article>
                 <p class="eyebrow">Eseu principal</p>
-                <h1>Credința, rutina și liniștea pe care le caut în fiecare zi</h1>
-                <p>Scriu despre lucrurile care nu se schimbă prea mult: rugăciunea, răbdarea, responsabilitatea și felul în care încerc să trăiesc cu atenție în mijlocul zgomotului.</p>
-                <p class="meta" style="margin-top: 14px;">Albert-Beniamin Cucu • 4 zile în urmă • 7 min de citire</p>
+                <span class="category-badge">Teologie</span>
+                <h1>Chemarea divină și răspunsul nostru</h1>
+                <p>Reflecții despre pilda scuzelor, chemarea lui Dumnezeu și importanța răspunsului personal în viața credinței. Un articol mai amplu, potrivit pentru o lectură de aproximativ 10 minute.</p>
+                <div class="feature-meta" style="margin-top: 14px;">
+                    <span>Albert-Beniamin Cucu</span>
+                    <span>13 aug 2025</span>
+                    <span>10 min de lectură</span>
+                </div>
             </article>
         </a>
 
         <!-- ARTICOLE GRID -->
         <section class="articles-grid" aria-label="Articole recente">
+            <a href="articol-chemarea-divina.html" class="card">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80" alt="Chemarea divină și răspunsul nostru">
+                <span class="card-badge">Teologie</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 13 aug 2025 • 10 min de lectură</p>
+                    <h2>Chemarea divină și răspunsul nostru</h2>
+                    <p>Reflecții despre pilda scuzelor, chemarea lui Dumnezeu și importanța răspunsului personal în viața credinței.</p>
+                    <div class="tag-row"><span class="tag-chip">Chemare</span><span class="tag-chip">Pildă</span></div>
+                </div>
+            </a>
+
             <a href="articol-suferinta.html" class="card">
                 <img src="https://picsum.photos/id/1005/800/500" alt="Sufletul și suferința">
-                <p class="meta">Albert-Beniamin Cucu • 12 ian 2026 • 5 min de citire</p>
-                <h2>De ce suferința are sens în viața de credincios</h2>
-                <p>Un eseu despre durere, răbdare și felul în care uneori Dumnezeu vorbește prin lucrurile care ne pun la încercare.</p>
+                <span class="card-badge">Teologie</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 12 ian 2026 • 5 min de lectură</p>
+                    <h2>De ce suferința are sens în viața de credincios</h2>
+                    <p>Un eseu despre durere, răbdare și felul în care uneori Dumnezeu vorbește prin lucrurile care ne pun la încercare.</p>
+                    <div class="tag-row"><span class="tag-chip">Durere</span><span class="tag-chip">Sens</span></div>
+                </div>
             </a>
 
             <a href="articol-esenta-credintei.html" class="card">
                 <img src="https://picsum.photos/id/1033/800/500" alt="Esența credinței">
-                <p class="meta">Albert-Beniamin Cucu • 8 ian 2026 • 6 min de citire</p>
-                <h2>Esența credinței în vremuri de zgomot</h2>
-                <p>Un text despre liniște, rugăciune și cum rămânem oameni atunci când totul pare să se grăbească.</p>
+                <span class="card-badge">Patristică</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 8 ian 2026 • 6 min de lectură</p>
+                    <h2>Esența credinței în vremuri de zgomot</h2>
+                    <p>Un text despre liniște, rugăciune și cum rămânem oameni atunci când totul pare să se grăbească.</p>
+                    <div class="tag-row"><span class="tag-chip">Liniște</span><span class="tag-chip">Rugăciune</span></div>
+                </div>
             </a>
 
             <a href="articol-speranta.html" class="card">
                 <img src="https://picsum.photos/id/106/800/500" alt="Speranța și viața">
-                <p class="meta">Albert-Beniamin Cucu • 2 ian 2026 • 4 min de citire</p>
-                <h2>Speranța nu este o idee, ci o practică</h2>
-                <p>Despre felul în care nădejdea devine mai reală în viața de zi cu zi, nu doar în cuvinte.</p>
+                <span class="card-badge">Spiritualitate</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 2 ian 2026 • 4 min de lectură</p>
+                    <h2>Speranța nu este o idee, ci o practică</h2>
+                    <p>Despre felul în care nădejdea devine mai reală în viața de zi cu zi, nu doar în cuvinte.</p>
+                    <div class="tag-row"><span class="tag-chip">Nădejde</span><span class="tag-chip">Răbdare</span></div>
+                </div>
             </a>
 
             <a href="articol-rugaciune.html" class="card">
                 <img src="https://picsum.photos/id/1018/800/500" alt="Rugăciunea de dimineață">
-                <p class="meta">Albert-Beniamin Cucu • 28 dec 2025 • 3 min de citire</p>
-                <h2>Rugăciunea mea de dimineață și sensul zilei</h2>
-                <p>Un text simplu despre cum încep ziua, de ce mă opresc o clipă și ce îmi schimbă tonul întregii zile.</p>
+                <span class="card-badge">Istorie</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 28 dec 2025 • 3 min de lectură</p>
+                    <h2>Rugăciunea mea de dimineață și sensul zilei</h2>
+                    <p>Un text simplu despre cum încep ziua, de ce mă opresc o clipă și ce îmi schimbă tonul întregii zile.</p>
+                    <div class="tag-row"><span class="tag-chip">Ritual</span><span class="tag-chip">Dimineață</span></div>
+                </div>
             </a>
+
         </section>
 
         <section id="newsletter" class="newsletter-card" aria-label="Newsletter">
@@ -87,12 +128,16 @@
             <div class="footer-links">
                 <a href="index.html">Acasă</a>
                 <a href="blog.html">Eseuri</a>
+                <a href="toate-articolele.html">Toate articolele</a>
                 <a href="despre.html">Despre</a>
                 <a href="#newsletter">Newsletter</a>
             </div>
             <span>© 2026</span>
         </div>
     </footer>
+
+    <button class="back-to-top" type="button" aria-label="Înapoi sus">↑</button>
+    <script src="script.js"></script>
 
 </body>
 </html>
