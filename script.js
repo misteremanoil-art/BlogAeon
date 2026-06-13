@@ -26,6 +26,40 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    const cards = Array.from(document.querySelectorAll(".card"));
+    const filterButtons = Array.from(document.querySelectorAll(".filter-chip"));
+    const searchInputs = Array.from(document.querySelectorAll(".search-box input"));
+
+    const applyFilters = (activeFilter = "all", query = "") => {
+        const normalizedQuery = query.trim().toLowerCase();
+
+        cards.forEach((card) => {
+            const categories = (card.dataset.category || "").toLowerCase();
+            const text = card.innerText.toLowerCase();
+            const matchesCategory = activeFilter === "all" || categories.includes(activeFilter.toLowerCase());
+            const matchesQuery = !normalizedQuery || text.includes(normalizedQuery);
+            card.style.display = matchesCategory && matchesQuery ? "block" : "none";
+        });
+    };
+
+    if (filterButtons.length) {
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const activeFilter = button.dataset.filter || "all";
+                filterButtons.forEach((chip) => chip.classList.toggle("active", chip === button));
+                const currentQuery = searchInputs[0]?.value || "";
+                applyFilters(activeFilter, currentQuery);
+            });
+        });
+    }
+
+    searchInputs.forEach((input) => {
+        input.addEventListener("input", () => {
+            const activeFilter = document.querySelector(".filter-chip.active")?.dataset.filter || "all";
+            applyFilters(activeFilter, input.value);
+        });
+    });
+
     const backToTop = document.querySelector(".back-to-top");
     if (backToTop) {
         const toggleButton = () => {
