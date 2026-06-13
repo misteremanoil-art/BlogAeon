@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arhivă completă a articolelor blogului Albert-Beniamin Cucu, cu filtre pe categorii și timp estimat de lectură.">
+    <title>Toate articolele — Albert-Beniamin Cucu</title>
+    <link rel="stylesheet" href="style.css?v=1.2">
+</head>
+<body>
+    <header>
+        <div class="site-header">
+            <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
+            <div class="header-actions">
+                <label class="search-box" aria-label="Caută articole">
+                    <input type="search" placeholder="Caută articole..." aria-label="Caută articole">
+                </label>
+                <nav>
+                    <a href="index.html">Acasă</a>
+                    <a href="blog.html">Eseuri</a>
+                    <a href="toate-articolele.html">Toate articolele</a>
+                    <a href="despre.html">Despre</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-grid">
+        <section class="essay-header" style="margin-top: 8px;">
+            <p class="eyebrow">Arhivă</p>
+            <h1>Toate articolele</h1>
+            <p class="standfirst">O listă completă de eseuri, reflecții și texte mai scurte, organizate pentru o lectură calmă și clară.</p>
+            <p class="reading-pill">Filtre pe categorii • 3–7 min de lectură</p>
+        </section>
+
+        <div class="filter-row" role="tablist" aria-label="Filtre articole">
+            <button class="filter-chip active" type="button" data-filter="all">Toate</button>
+            <button class="filter-chip" type="button" data-filter="Teologie">Teologie</button>
+            <button class="filter-chip" type="button" data-filter="Spiritualitate">Spiritualitate</button>
+            <button class="filter-chip" type="button" data-filter="Patristică">Patristică</button>
+            <button class="filter-chip" type="button" data-filter="Istorie">Istorie</button>
+        </div>
+
+        <section class="articles-grid compact" aria-label="Toate articolele disponibile">
+            <a href="articol-esenta-credintei.html" class="card" data-category="Teologie Patristică">
+                <img src="https://picsum.photos/id/1015/800/500" alt="Esența credinței">
+                <span class="card-badge">Teologie</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 8 ian 2026 • 6 min de lectură</p>
+                    <h2>Esența credinței în vremuri de zgomot</h2>
+                    <p>Reflecții despre liniște, rugăciune și felul în care credința rămâne vie în mijlocul zgomotului modern.</p>
+                    <div class="tag-row"><span class="tag-chip">Liniște</span><span class="tag-chip">Credință</span></div>
+                </div>
+            </a>
+
+            <a href="articol-suferinta.html" class="card" data-category="Patristică Teologie">
+                <img src="https://picsum.photos/id/1005/800/500" alt="Sufletul și suferința">
+                <span class="card-badge">Patristică</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 12 ian 2026 • 5 min de lectură</p>
+                    <h2>De ce suferința are sens în viața de credincios</h2>
+                    <p>Un eseu despre durere, răbdare, slujire și sensul greutății în viața de credință.</p>
+                    <div class="tag-row"><span class="tag-chip">Durere</span><span class="tag-chip">Sens</span></div>
+                </div>
+            </a>
+
+            <a href="articol-speranta.html" class="card" data-category="Spiritualitate">
+                <img src="https://picsum.photos/id/106/800/500" alt="Speranța și viața">
+                <span class="card-badge">Spiritualitate</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 2 ian 2026 • 4 min de lectură</p>
+                    <h2>Speranța nu este o idee, ci o practică</h2>
+                    <p>Despre cum nădejdea devine reală în oamenii care aleg să trăiască cu atenție și răbdare.</p>
+                    <div class="tag-row"><span class="tag-chip">Nădejde</span><span class="tag-chip">Răbdare</span></div>
+                </div>
+            </a>
+
+            <a href="articol-rugaciune.html" class="card" data-category="Istorie Spiritualitate">
+                <img src="https://picsum.photos/id/1018/800/500" alt="Rugăciunea de dimineață">
+                <span class="card-badge">Istorie</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 28 dec 2025 • 3 min de lectură</p>
+                    <h2>Rugăciunea mea de dimineață și sensul zilei</h2>
+                    <p>Un text simplu despre rutină, calm și felul în care încep ziua fără grabă și fără zgomot.</p>
+                    <div class="tag-row"><span class="tag-chip">Ritual</span><span class="tag-chip">Dimineață</span></div>
+                </div>
+            </a>
+
+            <a href="articol-chemarea-divina.html" class="card" data-category="Teologie">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80" alt="Chemarea divină și răspunsul nostru">
+                <span class="card-badge">Teologie</span>
+                <div class="card-copy">
+                    <p class="meta">Albert-Beniamin Cucu • 13 aug 2025 • 10 min de lectură</p>
+                    <h2>Chemarea divină și răspunsul nostru</h2>
+                    <p>Un eseu teologic despre chemarea lui Dumnezeu, scuzele care întârzie răspunsul și sensul ospățului ceresc.</p>
+                    <div class="tag-row"><span class="tag-chip">Chemare</span><span class="tag-chip">Pildă</span></div>
+                </div>
+            </a>
+        </section>
+
+        <section id="newsletter" class="newsletter-card" aria-label="Newsletter">
+            <p class="eyebrow">Newsletter</p>
+            <h2 style="font-family:var(--serif); font-size:1.5rem; line-height:1.08; font-weight:600;">Primești noi texte și recomandări de lectură.</h2>
+            <p>O selecție scurtă, rareori, dar atentă la lucrurile care contează.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Adresă de email" aria-label="Adresă de email">
+                <button type="button">Mă înscriu</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <span>Albert-Beniamin Cucu</span>
+            <div class="footer-links">
+                <a href="index.html">Acasă</a>
+                <a href="blog.html">Eseuri</a>
+                <a href="toate-articolele.html">Toate articolele</a>
+                <a href="despre.html">Despre</a>
+                <a href="#newsletter">Newsletter</a>
+            </div>
+            <span>© 2026</span>
+        </div>
+    </footer>
+
+    <button class="back-to-top" type="button" aria-label="Înapoi sus">↑</button>
+    <script src="script.js"></script>
+</body>
+</html>
