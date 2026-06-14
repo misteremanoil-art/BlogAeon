@@ -830,57 +830,7 @@ footer {
         font-size: 1.1rem !important;
     }
 }
-/* CONTAINER CĂUTARE */
-.search-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
 
-.search-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(18, 18, 18, 0.2);
-    padding: 6px 25px 6px 0;
-    font-family: var(--serif); /* Fontul elegant pentru a se potrivi cu tema */
-    font-size: 0.9rem;
-    color: #121212;
-    transition: all 0.3s ease;
-    outline: none;
-    width: 120px; /* Lungime discretă inițială */
-}
-
-.search-input:focus {
-    width: 180px; /* Se extinde lin când cauți */
-    border-bottom-color: #121212;
-}
-
-.search-input::placeholder {
-    color: rgba(18, 18, 18, 0.4);
-    font-style: italic;
-}
-
-.search-icon {
-    position: absolute;
-    right: 5px;
-    font-size: 0.8rem;
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-/* AJUSTĂRI MOBIL */
-@media (max-width: 768px) {
-    .search-container {
-        width: 100%;
-        margin: 10px 0;
-    }
-    .search-input {
-        width: 100%;
-    }
-    .search-input:focus {
-        width: 100%;
-    }
-}
 
 
 
