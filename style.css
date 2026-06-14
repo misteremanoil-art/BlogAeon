@@ -808,37 +808,7 @@ footer {
     width: 100%;
   }
 }
-/* ÎMBUNĂTĂȚIRE ASPECT CĂUTARE ORIGINALĂ */
-.search-box {
-    display: flex !important;
-    align-items: center !important;
-    background: rgba(18, 18, 18, 0.04) !important; /* Un gri foarte șters, nu alb */
-    border: 1px solid rgba(18, 18, 18, 0.1) !important;
-    border-radius: 4px !important;
-    padding: 4px 12px !important;
-    transition: all 0.3s ease !important;
-}
 
-.search-box:focus-within {
-    background: rgba(18, 18, 18, 0.08) !important;
-    border-color: rgba(18, 18, 18, 0.3) !important;
-}
-
-.search-box input {
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    font-family: var(--serif) !important;
-    font-size: 0.85rem !important;
-    color: #121212 !important;
-    padding: 4px 0 !important;
-}
-
-/* Scoate iconița de "X" care apare în Chrome pe input search */
-.search-box input::-webkit-search-decoration,
-.search-box input::-webkit-search-cancel-button,
-.search-box input::-webkit-search-results-button,
-.search-box input::-webkit-search-results-decoration { display: none; }
 
 
 
