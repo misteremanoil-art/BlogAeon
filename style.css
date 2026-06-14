@@ -808,3 +808,39 @@ footer {
     width: 100%;
   }
 }
+/* Mobile responsiveness - Header */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 16px 20px;
+        gap: 12px;
+        flex-direction: column;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        padding: 8px 0;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .header-actions nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .header-actions nav a {
+        padding: 10px 0;
+        font-size: 14px;
+    }
+}
