@@ -866,6 +866,31 @@ footer {
     font-family: var(--serif) !important;
     color: #1a1a1a !important;
 }
+/* REGLARE H1 INDEX PENTRU UN ASPECT MAI FIN */
+
+/* 1. Titlul de la articolul principal (Featured) */
+.featured-article h1 {
+    color: #2d2d2d !important; /* Un gri antracit închis, mult mai blând decât negrul pur */
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important; /* Deschidem puțin spațiul între litere */
+}
+
+/* 2. Titlurile de pe cardurile normale (dacă sunt h2 sau h3 pe index) */
+.card-copy h2, .card h3 {
+    color: #333333 !important; /* Chiar mai deschis un pic pentru cardurile mici */
+    font-weight: 600 !important; /* Mai puțin "bold" ca să nu pară agresiv */
+    letter-spacing: -0.01em !important;
+}
+
+/* 3. Reducem intensitatea și pentru restul titlurilor h1 din pagină */
+h1 {
+    color: #2d2d2d !important;
+}
+
+/* 4. Opțional: O ușoară transparență pentru a lăsa fundalul crem să "respire" prin text */
+.featured-article h1, h1 {
+    opacity: 0.95 !important;
+}
 
 
 
