@@ -808,44 +808,37 @@ footer {
     width: 100%;
   }
 }
-/* ===== FIX HEADER MOBILE - FORȚAT ===== */
+/* ===== FIX HEADER MOBILE ===== */
 @media (max-width: 768px) {
     header {
-        padding: 12px 16px !important;
+        max-width: 100% !important;
+        padding: 12px 14px !important;
+        margin: 0 !important;
     }
 
     .site-header {
-        gap: 12px !important;
-        justify-content: flex-start !important;
+        gap: 10px !important;
     }
 
     .logo {
         font-size: 1.2rem !important;
-        margin-right: auto !important;
     }
 
     .header-actions {
-        gap: 8px !important;
-        width: auto !important;
-        flex-wrap: nowrap !important;
+        gap: 6px !important;
+        justify-content: flex-end !important;
     }
 
     .search-box {
         display: none !important;
     }
 
-    .header-actions nav {
-        display: flex !important;
-        gap: 10px !important;
-    }
-
     .header-actions nav a {
         font-size: 12px !important;
-        padding: 6px 8px !important;
+        padding: 4px 6px !important;
     }
 }
 /* ===== SFÂRŞIT FIX HEADER MOBILE ===== */
-
 
 
 
