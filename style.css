@@ -808,37 +808,30 @@ footer {
     width: 100%;
   }
 }
-/* ===== FIX HEADER MOBILE ===== */
+/* ===== FIX SPACING ARTICOL MOBIL ===== */
+.article-top-section {
+    max-width: 900px;
+    margin: 80px auto 30px;
+    padding: 0 20px; /* Adaugă spațiu în stânga și dreapta pe mobil */
+}
+
 @media (max-width: 768px) {
-    header {
-        max-width: 100% !important;
-        padding: 12px 14px !important;
-        margin: 0 !important;
+    .article-top-section {
+        margin: 40px auto 20px; /* Reducem spațiul de sus pe mobil */
+        padding: 0 16px; /* Spațiu lateral pentru text */
+    }
+    
+    .article-top-section h1 {
+        font-size: 1.8rem !important; /* Facem titlul mai mic pe mobil să nu se rupă urât */
+        line-height: 1.2;
     }
 
-    .site-header {
-        gap: 10px !important;
-    }
-
-    .logo {
-        font-size: 1.2rem !important;
-    }
-
-    .header-actions {
-        gap: 6px !important;
-        justify-content: flex-end !important;
-    }
-
-    .search-box {
-        display: none !important;
-    }
-
-    .header-actions nav a {
-        font-size: 12px !important;
-        padding: 4px 6px !important;
+    .article-top-section .standfirst {
+        font-size: 1.1rem !important;
     }
 }
-/* ===== SFÂRŞIT FIX HEADER MOBILE ===== */
+/* ===== SFÂRȘIT FIX SPACING ===== */
+
 
 
 
