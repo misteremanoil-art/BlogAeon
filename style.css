@@ -808,10 +808,32 @@ footer {
     width: 100%;
   }
 }
-/* ===== FIX HEADER MOBILE - Adaugă mai mult spacing ===== */
+/* ===== FIX HEADER ÎN ARTICOLE - Mobil ===== */
 @media (max-width: 768px) {
-    .site-header {
-        padding: 16px 20px !important;
+    .article-header .site-header {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+    }
+
+    .article-header .logo {
+        font-size: 0.9rem;
+    }
+
+    .article-header .search-box input {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .article-header .header-actions nav {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+
+    .article-header .header-actions nav a {
+        font-size: 12px;
+        padding: 6px 10px;
     }
 }
-/* ===== SFÂRŞIT FIX HEADER MOBILE ===== */
+/* ===== SFÂRŞIT FIX HEADER ARTICOLE ===== */
+
