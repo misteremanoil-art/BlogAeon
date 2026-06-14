@@ -808,3 +808,10 @@ footer {
     width: 100%;
   }
 }
+/* ===== FIX HEADER MOBILE - Adaugă mai mult spacing ===== */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 16px 20px !important;
+    }
+}
+/* ===== SFÂRŞIT FIX HEADER MOBILE ===== */
