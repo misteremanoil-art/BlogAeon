@@ -830,8 +830,7 @@ footer {
         font-size: 1.1rem !important;
     }
 }
-/* ===== SFÂRȘIT FIX SPACING ===== */
-/* STILIZARE BARA DE CĂUTARE MODERNĂ */
+/* CONTAINER CĂUTARE */
 .search-container {
     position: relative;
     display: flex;
@@ -841,20 +840,19 @@ footer {
 .search-input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(18, 18, 18, 0.2); /* O linie fină sub input */
-    padding: 8px 30px 8px 0; /* Spațiu pentru icon în dreapta */
-    font-family: var(--serif); /* Folosește fontul tău elegant */
+    border-bottom: 1px solid rgba(18, 18, 18, 0.2);
+    padding: 6px 25px 6px 0;
+    font-family: var(--serif); /* Fontul elegant pentru a se potrivi cu tema */
     font-size: 0.9rem;
     color: #121212;
     transition: all 0.3s ease;
     outline: none;
-    width: 150px; /* Lățime fixă inițială */
+    width: 120px; /* Lungime discretă inițială */
 }
 
 .search-input:focus {
-    width: 200px; /* Se extinde subtil când dai click */
-    border-bottom-color: var(--accent); /* Culoarea ta de accent */
-    background: rgba(244, 239, 230, 0.5); /* Un fundal foarte discret */
+    width: 180px; /* Se extinde lin când cauți */
+    border-bottom-color: #121212;
 }
 
 .search-input::placeholder {
@@ -866,15 +864,15 @@ footer {
     position: absolute;
     right: 5px;
     font-size: 0.8rem;
-    opacity: 0.5;
-    pointer-events: none; /* Iconul nu blochează click-ul pe input */
+    opacity: 0.4;
+    pointer-events: none;
 }
 
-/* Ajustare pentru Mobil */
+/* AJUSTĂRI MOBIL */
 @media (max-width: 768px) {
     .search-container {
         width: 100%;
-        margin-bottom: 10px;
+        margin: 10px 0;
     }
     .search-input {
         width: 100%;
@@ -883,6 +881,7 @@ footer {
         width: 100%;
     }
 }
+
 
 
 
