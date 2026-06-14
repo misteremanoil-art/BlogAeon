@@ -808,6 +808,65 @@ footer {
     width: 100%;
   }
 }
+/* ============================================================
+   ULTIMATE FIX: CULORI EDITORIALE + RESPONSIVENESS MOBIL
+   ============================================================ */
+
+/* 1. CULORI MAI MOI PENTRU DESKTOP ȘI MOBIL */
+.logo, .featured-article h1, .essay-header h1 {
+    color: #1a1a1a !important; /* Negru mai moale, nu strident */
+}
+
+.featured-article p, .standfirst, nav a {
+    color: rgba(18, 18, 18, 0.7) !important; /* Text secundar mai discret */
+}
+
+/* 2. FIX PENTRU MOBIL (PĂSTREAZĂ MARGINILE) */
+@media (max-width: 768px) {
+    /* Protejăm titlul și textul din articole să nu se lipească de margini */
+    .essay-header, .article-top-section, .featured-article {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Micșorăm titlurile pe mobil să nu fie prea "grele" */
+    h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Header-ul pe mobil să fie aliniat corect */
+    header {
+        padding: 10px 20px !important;
+    }
+    
+    .site-header {
+        justify-content: space-between !important;
+    }
+
+    .logo {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* 3. FIX BARA DE CĂUTARE SĂ FIE DISCRETĂ */
+.search-box {
+    border: none !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1) !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+.search-box input {
+    font-family: var(--serif) !important;
+    color: #1a1a1a !important;
+}
+
 
 
 
