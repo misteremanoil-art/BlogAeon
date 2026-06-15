@@ -866,32 +866,27 @@ footer {
     font-family: var(--serif) !important;
     color: #1a1a1a !important;
 }
-/* REGLARE H1 INDEX PENTRU UN ASPECT MAI FIN */
+/* REGLARE FINALĂ H1 - ASPECT EDITORIAL MOALE */
 
-/* 1. Titlul de la articolul principal (Featured) */
-.featured-article h1 {
-    color: #2d2d2d !important; /* Un gri antracit închis, mult mai blând decât negrul pur */
-    font-weight: 700 !important;
-    letter-spacing: -0.01em !important; /* Deschidem puțin spațiul între litere */
+h1, .featured-article h1, .essay-header h1 {
+    /* Folosim un gri cald, care are o tentă de maro foarte închis */
+    color: #3d3a36 !important; 
+    
+    /* Reducem grosimea fontului de la 700 la 600 dacă fontul permite */
+    font-weight: 600 !important; 
+    
+    /* Adăugăm o opacitate subtilă pentru a lăsa bejul de dedesubt să "îmblânzească" literele */
+    opacity: 0.92 !important;
+    
+    /* Mărim spațierea între litere foarte puțin ca să lăsăm textul să respire */
+    letter-spacing: -0.015em !important;
 }
 
-/* 2. Titlurile de pe cardurile normale (dacă sunt h2 sau h3 pe index) */
+/* Cardurile mici le facem și mai discrete */
 .card-copy h2, .card h3 {
-    color: #333333 !important; /* Chiar mai deschis un pic pentru cardurile mici */
-    font-weight: 600 !important; /* Mai puțin "bold" ca să nu pară agresiv */
-    letter-spacing: -0.01em !important;
+    color: #4a4743 !important;
+    font-weight: 600 !important;
 }
-
-/* 3. Reducem intensitatea și pentru restul titlurilor h1 din pagină */
-h1 {
-    color: #2d2d2d !important;
-}
-
-/* 4. Opțional: O ușoară transparență pentru a lăsa fundalul crem să "respire" prin text */
-.featured-article h1, h1 {
-    opacity: 0.95 !important;
-}
-
 
 
 
