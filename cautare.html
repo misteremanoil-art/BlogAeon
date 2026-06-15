@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezultate Căutare — Albert-Beniamin Cucu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <<div class="site-header">
+    <!-- Numele tău (Logo) -->
+    <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
+
+    <div class="header-actions">
+        <nav>
+            <a href="index.html">Acasă</a>
+            <a href="blog.html">Articole</a>
+            <a href="despre.html">Despre</a>
+            
+            <!-- Sistem de căutare expandabil cu lupă SVG -->
+            <div class="search-trigger-container">
+                <input type="search" placeholder="Caută articole..." class="expandable-search" id="search-input">
+                <label for="search-input" class="search-label">
+                    <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </label>
+            </div>
+        </nav>
+    </div>
+</div>
+
+    </header>
+
+    <main class="container-reading" style="margin-top: 50px;">
+        <h1 id="search-title">Rezultate căutare</h1>
+        <div id="results-list" class="related-grid">
+            <!-- Script.js va pune rezultatele aici -->
+        </div>
+        <div id="no-results" style="display:none; text-align: center; margin-top: 40px;">
+            <p>Nu am găsit rezultate. Încearcă altceva.</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
