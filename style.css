@@ -1,301 +1,1126 @@
-/* ============================================================
-   BLOG AEON - SISTEM DE DESIGN EDITORIAL (VERSIUNEA FINALĂ)
-   Autor: Albert-Beniamin Cucu
-   ============================================================ */
-
-/* 1. IMPORTURI ȘI VARIABILE CORE */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Culori Palette */
   --bg: #f4f3f0;
   --surface: rgba(255, 255, 255, 0.92);
-  --text-main: #4a4743; /* Griul tău cald, editorial */
-  --text-muted: rgba(74, 71, 67, 0.7);
-  --accent: #b45309; /* Portocaliu ars teologic */
-  --line: rgba(17, 17, 17, 0.08);
-  
-  /* Tipografie */
+  --surface-strong: #fffdfa;
+  --text: #1a1a1a;
+  --muted: #57534e;
+  --accent: #b45309;
+  --line: rgba(17, 17, 17, 0.10);
+  --shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 14px 28px rgba(15, 23, 42, 0.06);
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Inter', sans-serif;
-
-  /* Efecte */
-  --shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
-  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 2. RESETĂRI GENERALE */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 html { scroll-behavior: smooth; }
 
 body {
-  background: linear-gradient(180deg, #f5f2ed 0%, #efe8de 50%, #f7f5f1 100%);
-  color: var(--text-main);
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.82), transparent 24%),
+    linear-gradient(180deg, #f5f2ed 0%, #efe8de 50%, #f7f5f1 100%);
+  color: var(--text);
   font-family: var(--sans);
   line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-a { color: inherit; text-decoration: none; transition: var(--transition); }
-img { display: block; max-width: 100%; border-radius: 12px; }
+img { display: block; max-width: 100%; }
 
-/* 3. HEADER - LAYOUT CENTERED (LOGO ÎN MIJLOC) */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #c2410c, #d97706);
+  z-index: 40;
+}
+
+a { color: inherit; text-decoration: none; }
+
 header {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 18px 26px 16px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  background: rgba(244, 239, 230, 0.86);
+  backdrop-filter: blur(14px);
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(244, 239, 230, 0.85);
-  backdrop-filter: blur(15px);
-  border-bottom: 1px solid var(--line);
-  padding: 15px 0;
+  z-index: 20;
 }
 
 .site-header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr; /* [Căutare] [Logo] [Navigație] */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 25px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-/* Stil Logo (Centru) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .logo {
   font-family: var(--serif);
-  font-size: 1.6rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-main) !important;
-  text-align: center;
-  white-space: nowrap;
+  letter-spacing: -0.04em;
+  color: #121212;
 }
 
-.logo:hover { opacity: 0.7; transform: translateY(-1px); }
-
-/* Stil Navigație (Dreapta) */
-.header-right {
+nav {
   display: flex;
-  justify-content: flex-end;
-  gap: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.header-right a {
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(17, 17, 17, 0.10);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  padding: 0 10px;
+  min-width: min(280px, 100%);
+  box-shadow: var(--shadow-soft);
+}
+
+.search-box input {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  padding: 10px 8px;
+  width: 100%;
+}
+
+.search-box input::placeholder { color: #7a756e; }
+
+nav a {
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  color: #5f5b54;
+  padding: 10px 12px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.header-right a:hover { color: var(--accent); }
-
-/* 4. SISTEM CĂUTARE EXPANDABILĂ (Stânga) */
-.header-left { display: flex; justify-content: flex-start; }
-
-.search-trigger-container {
-  display: flex;
-  align-items: center;
-  position: relative;
+nav a:hover {
+  color: var(--accent);
+  background: rgba(255,255,255,0.65);
 }
 
-.expandable-search {
-  width: 0;
-  opacity: 0;
-  visibility: hidden;
-  border: none !important;
-  border-bottom: 1px solid rgba(74, 71, 67, 0.3) !important;
-  background: transparent !important;
-  outline: none !important;
-  font-family: var(--serif) !important;
-  font-size: 0.95rem !important;
-  color: var(--text-main) !important;
-  padding: 4px 0 !important;
-  transition: var(--transition);
+.container-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 36px 24px 96px;
 }
 
-.expandable-search:focus {
-  width: 160px;
-  opacity: 1;
-  visibility: visible;
-  padding-right: 10px !important;
+.container-reading {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 18px 104px;
 }
 
-.search-label {
-  cursor: pointer;
-  padding: 5px;
-  display: flex;
-  align-items: center;
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 2.15px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent);
 }
 
-.lupa-svg {
-  color: var(--text-main);
-  opacity: 0.6;
-  transition: var(--transition);
-}
-
-.search-label:hover .lupa-svg { opacity: 1; transform: scale(1.1); }
-
-/* 5. HERO SECTION - ASPECT EDITORIAL */
 .editorial-hero {
-  max-width: 1000px;
-  margin: 60px auto 40px;
-  text-align: center;
-  padding: 0 20px;
+  max-width: 980px;
+  margin: 6px 0 42px;
 }
 
 .editorial-hero h1 {
   font-family: var(--serif);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 1.05;
-  color: var(--text-main);
-  margin-bottom: 20px;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.8rem, 7vw, 4.9rem);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin: 10px 0 14px;
 }
 
 .editorial-hero .lede {
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 760px;
+  color: #6b675d; /* Am înlocuit var(--muted) cu o culoare fixă mai caldă */
+  font-size: 1.08rem;
+  line-height: 1.65;
 }
 
-/* 6. GRIDS & CARDS (Homepage & Blog) */
-.container-grid {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.hero-note {
+  margin-top: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #6b675d;
+}
+
+.featured-article,
+.card {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,255,255,0.84));
+  box-shadow: var(--shadow);
+}
+
+.intro-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro-card h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  line-height: 1.08;
+  font-weight: 600;
+  margin: 10px 0 14px;
+}
+
+.intro-card p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.ghost-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #151515;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.featured-article {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 36px;
+  align-items: center;
+  padding: 18px;
+  margin-bottom: 38px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.featured-article:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 42px rgba(15, 23, 42, 0.12);
+}
+
+.featured-article img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.featured-article article {
+  padding: 8px 6px 8px 2px;
+}
+
+.feature-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #6b675d;
+  font-size: 0.83rem;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
+}
+
+.feature-meta span + span::before {
+  content: '•';
+  margin-right: 8px;
+  color: #a59d91;
+}
+
+.card-badge,
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(180, 83, 9, 0.10);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
+}
+
+.featured-article h1,
+.essay-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 12px 0 14px;
+}
+
+.featured-article p,
+.card p,
+.standfirst {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.essay-content p {
+  color: #24211b;
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  line-height: 1.88;
+  margin-bottom: 1.35rem;
 }
 
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 72px;
 }
 
-/* Card Stilizat */
+.articles-grid.compact {
+  gap: 24px;
+}
+
 .card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+  display: block;
+  padding: 12px;
+  border-radius: 18px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 50px rgba(15, 23, 42, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 26px 42px rgba(15, 23, 42, 0.12);
+  opacity: 0.98;
 }
 
 .card img {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
-  margin-bottom: 18px;
+  border-radius: 16px;
+  margin-bottom: 14px;
 }
 
-.card h2, .card h3 {
+.card h2 {
   font-family: var(--serif);
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-  color: var(--text-main);
+  font-size: 1.52rem;
+  line-height: 1.08;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
-.card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* 7. ARTICOLUL PRINCIPAL (FEATURED) */
-.featured-article {
+.card .card-copy {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  background: var(--surface-strong);
-  border: 1px solid var(--line);
-  border-radius: 30px;
-  padding: 30px;
-  margin-bottom: 60px;
+  gap: 8px;
+}
+
+.card .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.card .tag-chip {
+  display: inline-flex;
   align-items: center;
-}
-
-.featured-article h1 { font-family: var(--serif); font-size: 3rem; margin: 15px 0; }
-
-/* 8. LECTURĂ ARTICOL (Single Post) */
-.container-reading {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 60px 20px;
-}
-
-.essay-content {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: #2d2a26;
-}
-
-.essay-content p { margin-bottom: 25px; }
-
-.drop-cap::first-letter {
-  font-size: 5rem;
-  float: left;
-  line-height: 0.85;
-  margin-right: 12px;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-/* 9. RESPONSIVE DESIGN (FORȚAT PENTRU MOBIL) */
-@media (max-width: 1024px) {
-  .featured-article { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-  /* Header Compact */
-  .site-header {
-    grid-template-columns: auto 1fr auto;
-    gap: 15px;
-    padding: 0 15px;
-  }
-  
-  .logo { font-size: 1.2rem; }
-  .header-right { gap: 12px; }
-  .header-right a { font-size: 0.65rem; letter-spacing: 1px; }
-
-  /* Spacing pentru articole să nu se lipească de margini */
-  .essay-header, .essay-content, .container-reading {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
-  
-  .editorial-hero h1 { font-size: 2.5rem; }
-  
-  .expandable-search:focus { width: 100px; }
-}
-
-/* 10. PAGINA DE CĂUTARE - STIL REZULTATE */
-#results-list .card {
-  margin-bottom: 15px;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-
-/* 11. EXTRA: Tag-uri și Badge-uri */
-.card-badge {
-  background: rgba(180, 83, 9, 0.1);
-  color: var(--accent);
-  padding: 4px 10px;
   border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
+  padding: 4px 8px;
+  background: rgba(17, 17, 17, 0.04);
+  color: #5d5851;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.tag-row { display: flex; gap: 8px; margin-top: auto; padding-top: 15px; }
-.tag-chip { font-size: 0.65rem; background: #eee; padding: 3px 8px; border-radius: 4px; }
+.card .meta,
+.article-meta,
+.meta {
+  color: #6b685f;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.reading-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6d685d;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: #6b675d;
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+
+.article-meta span + span::before {
+  content: '•';
+  margin-right: 10px;
+  color: #a59d91;
+}
+
+.essay-header {
+  text-align: left;
+  margin: 18px auto 30px;
+  max-width: 900px;
+}
+
+.essay-header h1 {
+  margin-bottom: 14px;
+}
+
+.standfirst {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.35;
+  color: #3c3832;
+  font-style: italic;
+  margin-bottom: 18px;
+}
+
+.essay-content p {
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  color: #25231d;
+  margin-bottom: 24px;
+}
+
+.drop-cap::first-letter {
+  font-size: 5.2rem;
+  float: left;
+  line-height: 0.82;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-family: var(--serif);
+  font-weight: 600;
+}
+
+.full-width-img {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-bottom: 32px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.full-width-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.author-note {
+  margin-top: 36px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+footer {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 18px 24px 42px;
+  color: #66635c;
+  font-size: 0.92rem;
+}
+
+.newsletter-card,
+.author-card,
+.related-card,
+.share-card {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,255,255,0.88));
+  box-shadow: var(--shadow-soft);
+}
+
+.newsletter-card {
+  padding: 26px;
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.newsletter-card p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.newsletter-form input {
+  flex: 1 1 260px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.9);
+  color: var(--text);
+  font: inherit;
+}
+
+.newsletter-form button {
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 14px;
+  background: #151515;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.newsletter-form button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.back-to-top {
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid rgba(180, 83, 9, 0.25);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--accent);
+  font-size: 1.12rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-1px);
+  background: rgba(180, 83, 9, 0.08);
+  color: #9a4d0b;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  box-shadow: var(--shadow-soft);
+  display: none;
+}
+
+.back-to-top.visible { display: inline-flex; }
+
+.share-card {
+  padding: 18px;
+  margin-top: 24px;
+}
+
+.share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.share-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 12px;
+  background: rgba(255,255,255,0.9);
+  color: #333;
+  font-size: 0.92rem;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.share-link:hover {
+  border-color: rgba(194, 65, 12, 0.35);
+  color: var(--accent);
+}
+
+.author-card {
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.author-card-inner {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.author-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  flex: 0 0 auto;
+}
+
+.author-card h3,
+.related-card h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.author-card p,
+.related-card p {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 8px 0 18px;
+}
+
+.filter-chip {
+  border: 1px solid rgba(17, 17, 17, 0.10);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #4b463e;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.filter-chip:hover,
+.filter-chip.active {
+  border-color: rgba(180, 83, 9, 0.35);
+  background: rgba(180, 83, 9, 0.10);
+  color: var(--accent);
+}
+
+.about-grid,
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.highlight-card {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,255,255,0.88));
+  box-shadow: var(--shadow-soft);
+}
+
+.highlight-card h3,
+.highlight-card h2 {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.08;
+  margin-bottom: 10px;
+}
+
+.highlight-card p {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.related-card {
+  padding: 12px;
+}
+
+.related-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.related-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.caption {
+  display: block;
+  font-size: 0.88rem;
+  color: #6f6b64;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+  padding-top: 18px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 1040px) {
+  .featured-article { grid-template-columns: 1fr; }
+  .articles-grid { gap: 42px; }
+}
+
+@media (max-width: 900px) {
+  .header-actions { width: 100%; justify-content: space-between; }
+  .search-box { min-width: 0; flex: 1 1 240px; }
+}
+
+@media (max-width: 760px) {
+  header {
+    padding: 14px 14px 16px;
+  }
+
+  .site-header {
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+    gap: 4px;
+  }
+
+  nav a {
+    padding: 8px 10px;
+  }
+
+  .container-grid,
+  .container-reading {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .editorial-hero {
+    margin-bottom: 18px;
+  }
+
+  .editorial-hero h1 {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+    line-height: 1.05;
+  }
+
+  .featured-article {
+    gap: 14px;
+    padding: 10px;
+  }
+
+  .featured-article h1,
+  .essay-header h1 {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+
+  .essay-content p {
+    font-size: 1.04rem;
+    line-height: 1.75;
+  }
+
+  .card h2 {
+    font-size: 1.35rem;
+  }
+
+  .newsletter-card {
+    padding: 18px;
+  }
+
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  .header-actions,
+  nav {
+    width: 100%;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+}
+/* ============================================================
+   FIX FINAL: CULOARE GRI-CALD (EDITORIAL) PENTRU TOT SITE-UL
+   ============================================================ */
+
+/* 1. Forțăm culoarea pe toate titlurile H1 (Index și Articole) */
+h1, 
+.editorial-hero h1, 
+.featured-article h1, 
+.essay-header h1,
+.article-top-section h1 {
+    color: #4a4743 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* 2. Forțăm culoarea pe Logo și Navigație */
+.logo, 
+.site-header .logo {
+    color: #4a4743 !important;
+    font-family: var(--serif) !important;
+    opacity: 1 !important;
+}
+
+nav a {
+    color: rgba(74, 71, 67, 0.8) !important; /* Navigație puțin mai discretă */
+}
+
+/* 3. Forțăm culoarea pe Carduri (H2 și H3) */
+.card-copy h2, 
+.card h3,
+.related-card h3 {
+    color: #4a4743 !important;
+    font-weight: 600 !important;
+}
+
+/* 4. Fix pentru Bara de Căutare (să fie în ton) */
+.search-field {
+    color: #4a4743 !important;
+}
+
+.search-field::placeholder {
+    color: rgba(74, 71, 67, 0.4) !important;
+}
+
+.search-wrapper {
+    border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
+}
+/* ALINIERE GENERALĂ HEADER */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a4743 !important;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+/* ===== LOGO & SITE HEADER ALIGNMENT ===== */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a4743 !important;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+/* ===== EXPANDABLE SEARCH CU LUPA SVG ===== */
+.search-trigger-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.lupa-svg {
+    color: #4a4743; /* Culoarea gri-cald a site-ului */
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.search-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.search-label:hover .lupa-svg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.expandable-search {
+    width: 0px;
+    opacity: 0;
+    border: none !important;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
+    background: transparent !important;
+    outline: none !important;
+    padding: 4px 0 !important;
+    font-family: var(--serif) !important;
+    font-size: 0.9rem !important;
+    color: #4a4743 !important;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease !important;
+    cursor: pointer;
+}
+
+.expandable-search:focus {
+    width: 150px;
+    opacity: 1;
+    cursor: text;
+    margin-right: 10px;
+    padding-right: 5px !important;
+}
+
+.expandable-search::placeholder {
+    color: rgba(74, 71, 67, 0.4);
+    font-style: italic;
+}
+
+/* FIX MOBIL */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .search-trigger-container {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+    }
+    .expandable-search:focus {
+        width: 100% !important;
+    }
+}
+/* Curățăm stilul butonului de search să arate exact ca vechiul label */
+.search-label {
+    background: none !important;
+    border: none !important;
+    padding: 5px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    outline: none !important;
+}
+
+.search-label:hover .lupa-svg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Ne asigurăm că formularul stă bine în navigație */
+.search-trigger-container {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+/* ============================================================
+   HEADER CENTERED LAYOUT - LOGO ÎN CENTRU
+   ============================================================ */
+
+header {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 18px 26px 16px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    background: rgba(244, 239, 230, 0.86);
+    backdrop-filter: blur(14px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.site-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 30px;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.header-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #4a4743 !important;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.header-right a {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: #4a4743 !important;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.header-right a:hover {
+    opacity: 0.6;
+}
+
+/* ===== CĂUTARE EXPANDABILĂ ===== */
+.search-trigger-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+}
+
+.expandable-search {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    border: none !important;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
+    background: transparent !important;
+    outline: none !important;
+    padding: 4px 0 4px 0 !important;
+    font-family: var(--serif) !important;
+    font-size: 0.9rem !important;
+    color: #4a4743 !important;
+    transition: width 0.4s ease, opacity 0.3s ease;
+}
+
+.expandable-search:focus {
+    width: 140px;
+    opacity: 1;
+    visibility: visible;
+    padding-right: 10px !important;
+}
+
+.expandable-search::placeholder {
+    color: rgba(74, 71, 67, 0.4);
+    font-style: italic;
+}
+
+.search-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background: none;
+    border: none;
+}
+
+.lupa-svg {
+    color: #4a4743;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.search-label:hover .lupa-svg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVE MOBIL ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 12px 16px;
+    }
+
+    .site-header {
+        grid-template-columns: auto 1fr auto;
+        gap: 12px;
+    }
+
+    .logo {
+        
+
+
+
+
+
+
+
