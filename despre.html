@@ -9,31 +9,34 @@
 </head>
 <body>
     <header>
-        <div class="site-header">
-    <!-- Numele tău (Logo) -->
-    <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
+    <div class="site-header">
+        <!-- Logo: Numele tău care trimite mereu la prima pagină -->
+        <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
 
-    <div class="header-actions">
-        <nav>
-            <a href="index.html">Acasă</a>
-            <a href="blog.html">Articole</a>
-            <a href="despre.html">Despre</a>
-            
-            <!-- Sistem de căutare expandabil cu lupă SVG -->
-            <div class="search-trigger-container">
-                <input type="search" placeholder="Caută articole..." class="expandable-search" id="search-input">
-                <label for="search-input" class="search-label">
-                    <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </label>
-            </div>
-        </nav>
+        <div class="header-actions">
+            <nav>
+                <a href="index.html">Acasă</a>
+                <a href="blog.html">Articole</a>
+                <a href="despre.html">Despre</a>
+                
+                <!-- START SISTEM CĂUTARE: Trimite textul către pagina cautare.html -->
+                <form action="cautare.html" method="GET" class="search-trigger-container">
+                    <!-- 'name="q"' este cheia; browserul va crea URL-ul: cautare.html?q=cuvant -->
+                    <input type="search" name="q" placeholder="Caută articole..." class="expandable-search" id="search-input">
+                    
+                    <!-- Butonul de tip 'submit' permite trimiterea formularului la tasta ENTER -->
+                    <button type="submit" class="search-label" aria-label="Caută">
+                        <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </form>
+                <!-- SFÂRȘIT SISTEM CĂUTARE -->
+            </nav>
+        </div>
     </div>
-</div>
-    </header>
-
+</header>
     <main class="container-reading">
         <div class="essay-header">
             <p class="eyebrow">Despre site</p>
