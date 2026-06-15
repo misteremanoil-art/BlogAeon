@@ -100,10 +100,10 @@ const articoleDB = [
         tags: "prayer ministry guide"
     }
 ];
-/**
- * BAZĂ DE DATE ARTICOLE
- * Când scrii un articol nou, adaugă un obiect nou aici { titlu, descriere, url, tags }
- */
+/* ============================================================
+   BAZĂ DE DATE ARTICOLE
+   Adaugă aici orice articol nou sub formă de obiect {titlu, descriere, url, tags}
+   ============================================================ */
 const articoleDB = [
     {
         titlu: "Chemarea divină și răspunsul nostru",
@@ -131,64 +131,68 @@ const articoleDB = [
     }
 ];
 
-/**
- * LOGICA DE CĂUTARE
- * Se execută automat când se încarcă pagina cautare.html
- */
+/* ============================================================
+   LOGICA DE CĂUTARE (PENTRU PAGINA cautare.html)
+   ============================================================ */
 function executaCautarea() {
     const resultsContainer = document.getElementById('results-list');
     
-    // Verificăm dacă suntem pe pagina de căutare (dacă există containerul de rezultate)
+    // Verificăm dacă suntem pe pagina de căutare
     if (!resultsContainer) return;
 
-    // Extragem termenul căutat din URL (ex: ?q=rugaciune)
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q')?.toLowerCase().trim() || "";
     
-    // Afișăm titlul căutării
     const titleElement = document.getElementById('search-title');
+    const noResults = document.getElementById('no-results');
+
     if (query === "") {
-        titleElement.innerText = "Te rugăm să introduci un termen de căutare.";
+        if (titleElement) titleElement.innerText = "Te rugăm să introduci un termen de căutare.";
         return;
     }
-    titleElement.innerText = `Rezultate pentru: "${query}"`;
 
-    // FILTRARE: Căutăm termenul în Titlu, Descriere sau Tags
+    if (titleElement) titleElement.innerText = `Rezultate pentru: "${query}"`;
+
     const filtrate = articoleDB.filter(a => 
         a.titlu.toLowerCase().includes(query) || 
         a.descriere.toLowerCase().includes(query) ||
         a.tags.toLowerCase().includes(query)
     );
 
-    // AFIȘARE REZULTATE
     if (filtrate.length > 0) {
+        if (noResults) noResults.style.display = "none";
         resultsContainer.innerHTML = filtrate.map(a => `
-            <a href="${a.url}" class="card" style="margin-bottom: 20px; display: block; text-decoration: none; padding: 20px;">
-                <h3 style="color: #4a4743; margin-bottom: 8px;">${a.titlu}</h3>
-                <p style="color: rgba(74,71,67,0.7); font-size: 0.95rem;">${a.descriere}</p>
+            <a href="${a.url}" class="card" style="margin-bottom: 20px; display: block; text-decoration: none; padding: 20px; border: 1px solid rgba(0,0,0,0.05); border-radius: 12px;">
+                <h3 style="color: #4a4743; margin: 0 0 8px 0;">${a.titlu}</h3>
+                <p style="color: rgba(74,71,67,0.7); font-size: 0.95rem; margin: 0;">${a.descriere}</p>
             </a>
         `).join('');
     } else {
-        // Dacă nu găsim nimic, arătăm mesajul de "Nu am găsit"
-        document.getElementById('no-results').style.display = "block";
+        if (noResults) noResults.style.display = "block";
+        resultsContainer.innerHTML = "";
     }
 }
 
-// Pornim funcția când documentul este gata
-window.addEventListener('DOMContentLoaded', executaCautarea);
-// CONTROL FORMULAR CĂUTARE
-document.addEventListener('DOMContentLoaded', () => {
+/* ============================================================
+   CONTROL FORMULAR (PENTRU BARA DIN HEADER)
+   ============================================================ */
+function initializareFormular() {
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('search-input');
 
     if (searchForm && searchInput) {
         searchForm.addEventListener('submit', (e) => {
-            // Dacă input-ul este gol sau are doar spații, nu trimite formularul
             if (searchInput.value.trim() === "") {
                 e.preventDefault(); 
             }
         });
     }
+}
+
+// Rulăm ambele funcții când documentul este gata
+document.addEventListener('DOMContentLoaded', () => {
+    executaCautarea();
+    initializareFormular();
 });
 
-// ... restul funcției tale executaCautarea() ...
+         
