@@ -100,23 +100,67 @@ const articoleDB = [
         tags: "prayer ministry guide"
     }
 ];
+/**
+ * BAZĂ DE DATE ARTICOLE
+ * Când scrii un articol nou, adaugă un obiect nou aici { titlu, descriere, url, tags }
+ */
+const articoleDB = [
+    {
+        titlu: "Chemarea divină și răspunsul nostru",
+        descriere: "Pilda scuzelor din Luca 14 și importanța de a răspunde chemării lui Dumnezeu.",
+        url: "articol-chemarea-divina.html",
+        tags: "chemare pilda luca teologie"
+    },
+    {
+        titlu: "Rugăciunea, între egocentrism și teocentrism",
+        descriere: "Cum rugăciunea personală poate deveni centrată pe sine sau pe voia lui Dumnezeu.",
+        url: "rugaciunea-egocentrism-si-teocentrism.html",
+        tags: "rugaciune teologie matei"
+    },
+    {
+        titlu: "Redescoperind Comuniunea Personală",
+        descriere: "Un ghid practic în trei pași pentru o rugăciune personală profundă.",
+        url: "redescoperind-comuniunea-personala.html",
+        tags: "rugaciune pastor guide"
+    },
+    {
+        titlu: "Rediscovering Personal Communion",
+        descriere: "A pastor’s three-step guide to personal prayer based on Matthew 6:6.",
+        url: "rediscovering-personal-communion.html",
+        tags: "prayer ministry guide"
+    }
+];
 
-// Funcția de căutare
+/**
+ * LOGICA DE CĂUTARE
+ * Se execută automat când se încarcă pagina cautare.html
+ */
 function executaCautarea() {
     const resultsContainer = document.getElementById('results-list');
-    if (!resultsContainer) return; // Ieșim dacă nu suntem pe pagina de căutare
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('q')?.toLowerCase() || "";
     
-    document.getElementById('search-title').innerText = `Rezultate pentru: "${query}"`;
+    // Verificăm dacă suntem pe pagina de căutare (dacă există containerul de rezultate)
+    if (!resultsContainer) return;
 
+    // Extragem termenul căutat din URL (ex: ?q=rugaciune)
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q')?.toLowerCase().trim() || "";
+    
+    // Afișăm titlul căutării
+    const titleElement = document.getElementById('search-title');
+    if (query === "") {
+        titleElement.innerText = "Te rugăm să introduci un termen de căutare.";
+        return;
+    }
+    titleElement.innerText = `Rezultate pentru: "${query}"`;
+
+    // FILTRARE: Căutăm termenul în Titlu, Descriere sau Tags
     const filtrate = articoleDB.filter(a => 
         a.titlu.toLowerCase().includes(query) || 
         a.descriere.toLowerCase().includes(query) ||
         a.tags.toLowerCase().includes(query)
     );
 
+    // AFIȘARE REZULTATE
     if (filtrate.length > 0) {
         resultsContainer.innerHTML = filtrate.map(a => `
             <a href="${a.url}" class="card" style="margin-bottom: 20px; display: block; text-decoration: none; padding: 20px;">
@@ -125,9 +169,10 @@ function executaCautarea() {
             </a>
         `).join('');
     } else {
+        // Dacă nu găsim nimic, arătăm mesajul de "Nu am găsit"
         document.getElementById('no-results').style.display = "block";
     }
 }
 
-// Rulăm funcția când se încarcă pagina
+// Pornim funcția când documentul este gata
 window.addEventListener('DOMContentLoaded', executaCautarea);
