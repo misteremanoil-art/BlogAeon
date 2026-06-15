@@ -971,7 +971,26 @@ nav a {
 .search-wrapper {
     border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
 }
-/* ===== SEARCH MINIMALIST INTEGRAT ÎN NAV ===== */
+/* ALINIERE GENERALĂ HEADER */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a4743 !important;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+/* SEARCH MINIMALIST ÎN INTERIORUL NAV */
 .search-box-minimal {
     display: inline-block;
     margin-left: 20px;
@@ -986,14 +1005,12 @@ nav a {
     font-size: 0.85rem !important;
     color: #4a4743 !important;
     padding: 4px 0 !important;
-    width: 80px;
+    width: 70px; /* Arată ca un link mic la început */
     transition: width 0.4s ease;
-    cursor: pointer;
 }
 
 .search-box-minimal input:focus {
-    width: 150px;
-    cursor: text;
+    width: 140px; /* Se extinde subtil când scrii */
     border-bottom: 1px solid rgba(74, 71, 67, 0.4);
 }
 
@@ -1002,20 +1019,26 @@ nav a {
     font-style: italic;
 }
 
+/* FIX PENTRU MOBIL */
 @media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
     .search-box-minimal {
         margin-left: 0;
-        margin-top: 15px;
+        margin-top: 10px;
         display: block;
         width: 100%;
     }
+    
     .search-box-minimal input {
         width: 100% !important;
-        font-size: 16px !important;
+        text-align: center;
     }
 }
-
-
 
 
 
