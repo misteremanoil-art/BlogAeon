@@ -928,6 +928,63 @@ footer {
         font-size: 16px !important; /* Evită zoom-ul pe iOS */
     }
 }
+/* ALINIERE GENERALĂ HEADER */
+.site-header {
+    display: flex;
+    justify-content: space-between; /* Împinge logo-ul în stânga și acțiunile în dreapta */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Sau cât ai tu setat containerul */
+    margin: 0 auto;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Spațiu între căutare și navigație */
+}
+
+/* Stilul pentru Logo (Numele tău) */
+.logo {
+    font-family: var(--serif);
+    font-size: 1.5rem; /* Ajustează mărimea dacă e prea mare/mic */
+    font-weight: 700;
+    color: #4a4743; /* Griul cald pe care l-am stabilit */
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+/* BARA DE CĂUTARE (Păstrăm stilul minimalist) */
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.15);
+}
+
+.search-field {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 4px 25px 4px 0 !important;
+    font-family: var(--serif) !important;
+    font-size: 0.85rem !important;
+    color: #4a4743 !important;
+    width: 130px;
+    transition: width 0.3s ease;
+}
+
+.search-field:focus {
+    width: 180px;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.5) !important;
+}
+
+.search-indicator {
+    position: absolute;
+    right: 0;
+    opacity: 0.4;
+    font-size: 0.75rem;
+}
 
 
 
