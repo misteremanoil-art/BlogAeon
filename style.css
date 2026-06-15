@@ -809,122 +809,6 @@ footer {
   }
 }
 /* ============================================================
-   ULTIMATE FIX: CULORI EDITORIALE + RESPONSIVENESS MOBIL
-   ============================================================ */
-
-/* 1. CULORI MAI MOI PENTRU DESKTOP ȘI MOBIL */
-.logo, .featured-article h1, .essay-header h1 {
-    color: #1a1a1a !important; /* Negru mai moale, nu strident */
-}
-
-.featured-article p, .standfirst, nav a {
-    color: rgba(18, 18, 18, 0.7) !important; /* Text secundar mai discret */
-}
-
-/* 2. FIX PENTRU MOBIL (PĂSTREAZĂ MARGINILE) */
-@media (max-width: 768px) {
-    /* Protejăm titlul și textul din articole să nu se lipească de margini */
-    .essay-header, .article-top-section, .featured-article {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        box-sizing: border-box !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-
-    /* Micșorăm titlurile pe mobil să nu fie prea "grele" */
-    h1 {
-        font-size: 1.8rem !important;
-        line-height: 1.2 !important;
-    }
-
-    /* Header-ul pe mobil să fie aliniat corect */
-    header {
-        padding: 10px 20px !important;
-    }
-    
-    .site-header {
-        justify-content: space-between !important;
-    }
-
-    .logo {
-        font-size: 1.1rem !important;
-    }
-}
-
-/* 3. FIX BARA DE CĂUTARE SĂ FIE DISCRETĂ */
-.search-box {
-    border: none !important;
-    border-bottom: 1px solid rgba(0,0,0,0.1) !important;
-    background: transparent !important;
-    border-radius: 0 !important;
-}
-
-.search-box input {
-    font-family: var(--serif) !important;
-    color: #1a1a1a !important;
-}
-
-/* ALINIERE GENERALĂ HEADER */
-.site-header {
-    display: flex;
-    justify-content: space-between; /* Împinge logo-ul în stânga și acțiunile în dreapta */
-    align-items: center;
-    width: 100%;
-    max-width: 1200px; /* Sau cât ai tu setat containerul */
-    margin: 0 auto;
-}
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 25px; /* Spațiu între căutare și navigație */
-}
-
-/* Stilul pentru Logo (Numele tău) */
-.logo {
-    font-family: var(--serif);
-    font-size: 1.5rem; /* Ajustează mărimea dacă e prea mare/mic */
-    font-weight: 700;
-    color: #4a4743; /* Griul cald pe care l-am stabilit */
-    text-decoration: none;
-    letter-spacing: -0.02em;
-}
-
-/* BARA DE CĂUTARE (Păstrăm stilul minimalist) */
-.search-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgba(74, 71, 67, 0.15);
-}
-
-.search-field {
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    padding: 4px 25px 4px 0 !important;
-    font-family: var(--serif) !important;
-    font-size: 0.85rem !important;
-    color: #4a4743 !important;
-    width: 130px;
-    transition: width 0.3s ease;
-}
-
-.search-field:focus {
-    width: 180px;
-    border-bottom: 1px solid rgba(74, 71, 67, 0.5) !important;
-}
-
-.search-indicator {
-    position: absolute;
-    right: 0;
-    opacity: 0.4;
-    font-size: 0.75rem;
-}
-/* ============================================================
    FIX FINAL: CULOARE GRI-CALD (EDITORIAL) PENTRU TOT SITE-UL
    ============================================================ */
 
@@ -1100,93 +984,130 @@ nav a {
     vertical-align: middle;
     margin-left: 15px;
 }
-/* ===== LOGO UNIC: CARTE + NUME (MEMORABIL & PROFESIONAL) ===== */
-.logo-signature-unique {
+/* ============================================================
+   HEADER CENTERED LAYOUT - LOGO ÎN CENTRU
+   ============================================================ */
+
+header {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 18px 26px 16px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    background: rgba(244, 239, 230, 0.86);
+    backdrop-filter: blur(14px);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.site-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 30px;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+/* STÂNGA: Căutare */
+.header-left {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
+    justify-content: flex-start;
+}
+
+/* CENTRU: Logo */
+.logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #4a4743 !important;
     text-decoration: none;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.8;
+}
+
+/* DREAPTA: Navigație */
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.header-right a {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: #4a4743 !important;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.header-right a:hover {
+    opacity: 0.6;
+}
+
+/* ===== BARA DE CĂUTARE EXPANDABILĂ ===== */
+.search-trigger-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+}
+
+.expandable-search {
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    border: none !important;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
+    background: transparent !important;
+    outline: none !important;
+    padding: 4px 0 !important;
+    font-family: var(--serif) !important;
+    font-size: 0.9rem !important;
+    color: #4a4743 !important;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.expandable-search:focus {
+    width: 140px;
+    opacity: 1;
+    visibility: visible;
+    cursor: text;
+    padding-right: 10px !important;
+}
+
+.expandable-search::placeholder {
+    color: rgba(74, 71, 67, 0.4);
+    font-style: italic;
+}
+
+.search-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.lupa-svg {
+    color: #4a4743;
+    opacity: 0.6;
     transition: all 0.3s ease;
 }
 
-.logo-signature-unique:hover {
-    opacity: 0.85;
-    transform: translateY(-2px);
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo-book {
-    flex-shrink: 0;
-    filter: drop-shadow(0 1px 2px rgba(74, 71, 67, 0.1));
-    transition: transform 0.3s ease;
-}
-
-.logo-signature-unique:hover .logo-book {
+.search-label:hover .lupa-svg {
+    opacity: 1;
     transform: scale(1.1);
 }
 
-.logo-text-unique {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    line-height: 1;
-}
+/* ===== RESPONSIVE MOBIL ===== */
 
-.logo-first-name {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #4a4743;
-    letter-spacing: -0.02em;
-}
 
-.logo-last-name {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #4a4743;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-}
-
-.logo-tagline {
-    font-size: 0.58rem;
-    letter-spacing: 2.2px;
-    text-transform: uppercase;
-    color: rgba(74, 71, 67, 0.55);
-    font-weight: 600;
-}
-
-/* MOBIL: Reduce dimensiunile pe ecrane mici */
-@media (max-width: 768px) {
-    .logo-signature-unique {
-        gap: 4px;
-    }
-
-    .logo-book {
-        width: 24px;
-        height: 24px;
-    }
-
-    .logo-first-name {
-        font-size: 1rem;
-    }
-
-    .logo-last-name {
-        font-size: 1.2rem;
-    }
-
-    .logo-tagline {
-        font-size: 0.5rem;
-        letter-spacing: 1.5px;
-    }
-}
-/* ===== SFÂRȘIT LOGO UNIC ===== */
 
 
 
