@@ -161,7 +161,7 @@ nav a:hover {
 
 .editorial-hero .lede {
   max-width: 760px;
-  color: var(--muted);
+  color: #6b675d; /* Am înlocuit var(--muted) cu o culoare fixă mai caldă */
   font-size: 1.08rem;
   line-height: 1.65;
 }
