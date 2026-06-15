@@ -989,8 +989,26 @@ nav a {
     text-decoration: none;
     letter-spacing: -0.02em;
 }
-/* ===== EXPANDABLE SEARCH SYSTEM ===== */
+/* ===== LOGO & SITE HEADER ALIGNMENT ===== */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
 
+.logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4a4743 !important;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+/* ===== EXPANDABLE SEARCH CU LUPA SVG ===== */
 .search-trigger-container {
     display: inline-flex;
     align-items: center;
@@ -999,12 +1017,29 @@ nav a {
     vertical-align: middle;
 }
 
-/* Bara de căutare - inițial aproape invizibilă */
+.lupa-svg {
+    color: #4a4743; /* Culoarea gri-cald a site-ului */
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.search-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.search-label:hover .lupa-svg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
 .expandable-search {
-    width: 0px; /* Ascunsă la început */
+    width: 0px;
     opacity: 0;
     border: none !important;
-    border-bottom: 1px solid rgba(74, 71, 67, 0.3) !important;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
     background: transparent !important;
     outline: none !important;
     padding: 4px 0 !important;
@@ -1015,52 +1050,34 @@ nav a {
     cursor: pointer;
 }
 
-/* Lupa discretă */
-.search-label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    transition: transform 0.3s ease;
-}
-
-.lupa-icon {
-    font-size: 0.9rem;
-    opacity: 0.6;
-}
-
-/* EFECTUL DE DESCHIDERE: Când dai click (focus) pe input */
 .expandable-search:focus {
-    width: 160px; /* Se deschide generos */
+    width: 150px;
     opacity: 1;
     cursor: text;
-    padding-right: 25px !important;
+    margin-right: 10px;
+    padding-right: 5px !important;
 }
 
-/* Placeholder stilizat */
 .expandable-search::placeholder {
     color: rgba(74, 71, 67, 0.4);
     font-style: italic;
-    font-size: 0.85rem;
 }
 
-/* Ajustare mobil - să fie totul la îndemână */
+/* FIX MOBIL */
 @media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 15px;
+    }
     .search-trigger-container {
         margin-left: 0;
-        margin-top: 10px;
         width: 100%;
         justify-content: center;
     }
     .expandable-search:focus {
         width: 100% !important;
     }
-    .expandable-search {
-        text-align: center;
-    }
 }
-
-
 
 
 
