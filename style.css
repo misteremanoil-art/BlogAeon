@@ -1078,6 +1078,28 @@ nav a {
         width: 100% !important;
     }
 }
+/* Curățăm stilul butonului de search să arate exact ca vechiul label */
+.search-label {
+    background: none !important;
+    border: none !important;
+    padding: 5px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    outline: none !important;
+}
+
+.search-label:hover .lupa-svg {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Ne asigurăm că formularul stă bine în navigație */
+.search-trigger-container {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 15px;
+}
 
 
 
