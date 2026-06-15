@@ -867,67 +867,6 @@ footer {
     color: #1a1a1a !important;
 }
 
-/* ===== STILIZARE ELEGANTĂ BARA CĂUTARE ===== */
-
-.search-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin-right: 20px; /* Spațiu până la butoanele din Nav */
-    border-bottom: 1px solid rgba(74, 71, 67, 0.2); /* Folosim griul tău cald, dar transparent */
-    transition: border-color 0.3s ease;
-}
-
-.search-field {
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    padding: 6px 28px 6px 0 !important;
-    font-family: var(--serif) !important;
-    font-size: 0.85rem !important;
-    color: #4a4743 !important; /* Griul cald pe care l-am setat la H1 */
-    width: 140px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.search-field:focus {
-    width: 200px; /* Se extinde elegant când dai click */
-    border-bottom: 1px solid rgba(74, 71, 67, 0.6) !important;
-}
-
-.search-field::placeholder {
-    color: rgba(74, 71, 67, 0.4);
-    font-style: italic;
-}
-
-.search-indicator {
-    position: absolute;
-    right: 5px;
-    font-size: 0.75rem;
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-/* FIX PENTRU MOBIL */
-@media (max-width: 768px) {
-    .header-actions {
-        flex-direction: column-reverse; /* Pune meniul sus și căutarea jos pe mobil */
-        align-items: flex-start !important;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .search-wrapper {
-        width: 100%;
-        margin-right: 0;
-        margin-top: 10px;
-    }
-
-    .search-field {
-        width: 100% !important;
-        font-size: 16px !important; /* Evită zoom-ul pe iOS */
-    }
-}
 /* ALINIERE GENERALĂ HEADER */
 .site-header {
     display: flex;
@@ -1031,6 +970,49 @@ nav a {
 
 .search-wrapper {
     border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
+}
+/* ===== SEARCH MINIMALIST INTEGRAT ÎN NAV ===== */
+.search-box-minimal {
+    display: inline-block;
+    margin-left: 20px;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.15);
+}
+
+.search-box-minimal input {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    font-family: var(--serif) !important;
+    font-size: 0.85rem !important;
+    color: #4a4743 !important;
+    padding: 4px 0 !important;
+    width: 80px;
+    transition: width 0.4s ease;
+    cursor: pointer;
+}
+
+.search-box-minimal input:focus {
+    width: 150px;
+    cursor: text;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.4);
+}
+
+.search-box-minimal input::placeholder {
+    color: rgba(74, 71, 67, 0.4);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .search-box-minimal {
+        margin-left: 0;
+        margin-top: 15px;
+        display: block;
+        width: 100%;
+    }
+    .search-box-minimal input {
+        width: 100% !important;
+        font-size: 16px !important;
+    }
 }
 
 
