@@ -12,7 +12,6 @@
 
     <header>
        <div class="site-header">
-    <!-- Numele tău (Logo) -->
     <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
 
     <div class="header-actions">
@@ -20,14 +19,17 @@
             <a href="index.html">Acasă</a>
             <a href="blog.html">Articole</a>
             <a href="despre.html">Despre</a>
-            <!-- Căutarea integrată direct în navigație -->
-            <div class="search-box-minimal">
-                <input type="search" placeholder="caută..." aria-label="Caută articole">
+            
+            <!-- Sistemul de căutare expandabil -->
+            <div class="search-trigger-container">
+                <input type="search" placeholder="Caută articole..." class="expandable-search" id="search-input">
+                <label for="search-input" class="search-label">
+                    <span class="lupa-icon">🔍</span>
+                </label>
             </div>
         </nav>
     </div>
 </div>
-
     </header>
 
     <main class="container-grid">
