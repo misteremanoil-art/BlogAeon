@@ -989,53 +989,73 @@ nav a {
     text-decoration: none;
     letter-spacing: -0.02em;
 }
+/* ===== EXPANDABLE SEARCH SYSTEM ===== */
 
-/* SEARCH MINIMALIST ÎN INTERIORUL NAV */
-.search-box-minimal {
-    display: inline-block;
-    margin-left: 20px;
-    border-bottom: 1px solid rgba(74, 71, 67, 0.15);
+.search-trigger-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-left: 15px;
+    vertical-align: middle;
 }
 
-.search-box-minimal input {
-    background: transparent !important;
+/* Bara de căutare - inițial aproape invizibilă */
+.expandable-search {
+    width: 0px; /* Ascunsă la început */
+    opacity: 0;
     border: none !important;
+    border-bottom: 1px solid rgba(74, 71, 67, 0.3) !important;
+    background: transparent !important;
     outline: none !important;
-    font-family: var(--serif) !important;
-    font-size: 0.85rem !important;
-    color: #4a4743 !important;
     padding: 4px 0 !important;
-    width: 70px; /* Arată ca un link mic la început */
-    transition: width 0.4s ease;
+    font-family: var(--serif) !important;
+    font-size: 0.9rem !important;
+    color: #4a4743 !important;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease !important;
+    cursor: pointer;
 }
 
-.search-box-minimal input:focus {
-    width: 140px; /* Se extinde subtil când scrii */
-    border-bottom: 1px solid rgba(74, 71, 67, 0.4);
+/* Lupa discretă */
+.search-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    transition: transform 0.3s ease;
 }
 
-.search-box-minimal input::placeholder {
+.lupa-icon {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+/* EFECTUL DE DESCHIDERE: Când dai click (focus) pe input */
+.expandable-search:focus {
+    width: 160px; /* Se deschide generos */
+    opacity: 1;
+    cursor: text;
+    padding-right: 25px !important;
+}
+
+/* Placeholder stilizat */
+.expandable-search::placeholder {
     color: rgba(74, 71, 67, 0.4);
     font-style: italic;
+    font-size: 0.85rem;
 }
 
-/* FIX PENTRU MOBIL */
+/* Ajustare mobil - să fie totul la îndemână */
 @media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    
-    .search-box-minimal {
+    .search-trigger-container {
         margin-left: 0;
         margin-top: 10px;
-        display: block;
         width: 100%;
+        justify-content: center;
     }
-    
-    .search-box-minimal input {
+    .expandable-search:focus {
         width: 100% !important;
+    }
+    .expandable-search {
         text-align: center;
     }
 }
