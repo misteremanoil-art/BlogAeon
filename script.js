@@ -73,3 +73,61 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// Baza de date a blogului
+const articoleDB = [
+    {
+        titlu: "Chemarea divină și răspunsul nostru",
+        descriere: "Pilda scuzelor din Luca 14 și importanța de a răspunde chemării lui Dumnezeu.",
+        url: "articol-chemarea-divina.html",
+        tags: "chemare pilda luca teologie"
+    },
+    {
+        titlu: "Rugăciunea, între egocentrism și teocentrism",
+        descriere: "Cum rugăciunea personală poate deveni centrată pe sine sau pe voia lui Dumnezeu.",
+        url: "rugaciunea-egocentrism-si-teocentrism.html",
+        tags: "rugaciune teologie matei"
+    },
+    {
+        titlu: "Redescoperind Comuniunea Personală",
+        descriere: "Un ghid practic în trei pași pentru o rugăciune personală profundă.",
+        url: "redescoperind-comuniunea-personala.html",
+        tags: "rugaciune pastor guide"
+    },
+    {
+        titlu: "Rediscovering Personal Communion",
+        descriere: "A pastor’s three-step guide to personal prayer based on Matthew 6:6.",
+        url: "rediscovering-personal-communion.html",
+        tags: "prayer ministry guide"
+    }
+];
+
+// Funcția de căutare
+function executaCautarea() {
+    const resultsContainer = document.getElementById('results-list');
+    if (!resultsContainer) return; // Ieșim dacă nu suntem pe pagina de căutare
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q')?.toLowerCase() || "";
+    
+    document.getElementById('search-title').innerText = `Rezultate pentru: "${query}"`;
+
+    const filtrate = articoleDB.filter(a => 
+        a.titlu.toLowerCase().includes(query) || 
+        a.descriere.toLowerCase().includes(query) ||
+        a.tags.toLowerCase().includes(query)
+    );
+
+    if (filtrate.length > 0) {
+        resultsContainer.innerHTML = filtrate.map(a => `
+            <a href="${a.url}" class="card" style="margin-bottom: 20px; display: block; text-decoration: none; padding: 20px;">
+                <h3 style="color: #4a4743; margin-bottom: 8px;">${a.titlu}</h3>
+                <p style="color: rgba(74,71,67,0.7); font-size: 0.95rem;">${a.descriere}</p>
+            </a>
+        `).join('');
+    } else {
+        document.getElementById('no-results').style.display = "block";
+    }
+}
+
+// Rulăm funcția când se încarcă pagina
+window.addEventListener('DOMContentLoaded', executaCautarea);
