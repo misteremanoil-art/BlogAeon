@@ -19,10 +19,10 @@
                 <a href="blog.html">Articole</a>
                 <a href="despre.html">Despre</a>
                 
-                <!-- Formularul de căutare - am adăugat 'novalidate' pentru a opri erorile pe Mac -->
-                <form action="cautare.html" method="GET" class="search-trigger-container" novalidate>
-                    <!-- AM SCOS 'required' de aici: -->
-                    <input type="search" name="q" placeholder="Caută articole..." class="expandable-search" id="search-input">
+                <!-- Formularul de căutare expandabil -->
+                <form action="cautare.html" method="GET" class="search-trigger-container">
+                    <!-- Atributul 'name="q"' este esențial pentru căutare -->
+                    <input type="search" name="q" placeholder="Caută articole..." class="expandable-search" id="search-input" required>
                     
                     <button type="submit" class="search-label" aria-label="Caută">
                         <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
