@@ -176,3 +176,19 @@ function executaCautarea() {
 
 // Pornim funcția când documentul este gata
 window.addEventListener('DOMContentLoaded', executaCautarea);
+// CONTROL FORMULAR CĂUTARE
+document.addEventListener('DOMContentLoaded', () => {
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+
+    if (searchForm && searchInput) {
+        searchForm.addEventListener('submit', (e) => {
+            // Dacă input-ul este gol sau are doar spații, nu trimite formularul
+            if (searchInput.value.trim() === "") {
+                e.preventDefault(); 
+            }
+        });
+    }
+});
+
+// ... restul funcției tale executaCautarea() ...
