@@ -1,4 +1,3 @@
-alert("Scriptul s-a încărcat!");
 document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded");
 
