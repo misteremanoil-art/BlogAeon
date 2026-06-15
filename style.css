@@ -1117,64 +1117,86 @@ header {
     font-style: italic;
 }
 /* ============================================================
-   9. RESPONSIVE DESIGN (MOBIL REPARAT)
+   9. RESPONSIVE DESIGN (OPTIMIZAT PENTRU MOBIL - NOTA 10)
    ============================================================ */
 @media (max-width: 768px) {
+    /* 1. Header ultra-subțire și transparent */
     header {
-        padding: 6px 0 !important; /* Header foarte subțire */
+        padding: 8px 0 !important;
+        background: rgba(244, 239, 230, 0.6) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
     }
 
+    /* 2. Re-aranjare layout: Căutare în stânga, Navigație în dreapta */
     .site-header {
-        grid-template-columns: auto 1fr auto !important;
-        gap: 8px !important;
-        padding: 0 12px !important;
+        grid-template-columns: auto 1fr !important; /* Scoatem coloana de logo */
+        gap: 0 !important;
+        padding: 0 15px !important;
     }
 
-    /* Logo mult mai mic pe telefon */
+    /* 3. ASCUNDEM LOGO-UL (Numele) DOAR PE MOBIL */
     .logo {
-        font-size: 1rem !important;
-        letter-spacing: -0.01em !important;
+        display: none !important;
     }
 
-    /* Navigație compactă */
+    /* 4. Stiluri Navigație (Home, Articole, Despre) */
     .header-right {
-        gap: 10px !important;
+        justify-content: flex-end !important;
+        gap: 12px !important; /* Spațiu între link-uri */
     }
 
     .header-right a {
-        font-size: 0.6rem !important;
-        letter-spacing: 0.5px !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 1px !important;
         font-weight: 700;
+        text-transform: uppercase;
+        color: var(--text-main) !important;
+        padding: 5px 2px !important;
     }
 
-    /* Căutarea pe mobil */
+    /* 5. Căutarea pe mobil */
+    .header-left {
+        display: flex !important;
+        align-items: center !important;
+    }
+
     .expandable-search:focus {
-        width: 80px !important; /* Lățime redusă să nu impingă logo-ul */
-        font-size: 0.8rem !important;
+        width: 110px !important; /* Se deschide suficient cât să nu înghesuie meniul */
+        font-size: 0.85rem !important;
+        background: rgba(255,255,255,0.3) !important;
+        border-radius: 4px;
     }
 
     .lupa-svg {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
     }
 
-    /* Reducem spațiul de deasupra articolelor pe mobil */
+    /* 6. Ajustări conținut pagină pentru a câștiga spațiu */
     .editorial-hero {
-        margin: 30px auto 20px !important;
+        margin: 25px auto 15px !important;
+    }
+
+    .editorial-hero h1 {
+        font-size: 2.2rem !important;
+        padding: 0 10px;
+    }
+
+    /* Protejăm marginile textului în articole */
+    .container-reading, .essay-content {
+        padding: 30px 20px !important;
     }
 }
 
-/* Fix pentru ecrane extrem de mici (ex. iPhone SE) */
-@media (max-width: 380px) {
-    .logo {
-        font-size: 0.9rem !important;
-    }
+/* Fix pentru ecrane foarte înguste (sub 360px) */
+@media (max-width: 360px) {
     .header-right {
-        gap: 6px !important;
+        gap: 8px !important;
     }
-    /* Ascundem textul "Despre" pe ecrane mini, lăsăm doar iconița sau restul */
-    .header-right a:last-child {
-        display: none;
+    .header-right a {
+        font-size: 0.6rem !important;
+        letter-spacing: 0.5px !important;
     }
 }
 
