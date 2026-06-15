@@ -866,27 +866,7 @@ footer {
     font-family: var(--serif) !important;
     color: #1a1a1a !important;
 }
-/* REGLARE FINALĂ H1 - ASPECT EDITORIAL MOALE */
 
-h1, .featured-article h1, .essay-header h1 {
-    /* Folosim un gri cald, care are o tentă de maro foarte închis */
-    color: #3d3a36 !important; 
-    
-    /* Reducem grosimea fontului de la 700 la 600 dacă fontul permite */
-    font-weight: 600 !important; 
-    
-    /* Adăugăm o opacitate subtilă pentru a lăsa bejul de dedesubt să "îmblânzească" literele */
-    opacity: 0.92 !important;
-    
-    /* Mărim spațierea între litere foarte puțin ca să lăsăm textul să respire */
-    letter-spacing: -0.015em !important;
-}
-
-/* Cardurile mici le facem și mai discrete */
-.card-copy h2, .card h3 {
-    color: #4a4743 !important;
-    font-weight: 600 !important;
-}
 
 
 
