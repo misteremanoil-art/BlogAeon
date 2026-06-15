@@ -986,6 +986,7 @@ nav a {
 }
 /* ============================================================
    HEADER CENTERED LAYOUT - LOGO ÎN CENTRU
+   STRUCTURĂ: [Căutare] [Logo] [Navigație]
    ============================================================ */
 
 header {
@@ -1000,41 +1001,43 @@ header {
     z-index: 20;
 }
 
+/* CONTAINER PRINCIPAL - Grid cu 3 coloane egale */
 .site-header {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr auto 1fr; /* Stânga (flex) | Centru (auto) | Dreapta (flex) */
     align-items: center;
     gap: 30px;
     max-width: 1320px;
     margin: 0 auto;
 }
 
-/* STÂNGA: Căutare */
+/* ===== STÂNGA: CĂUTARE ===== */
 .header-left {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Aliniază căutarea la stânga */
 }
 
-/* CENTRU: Logo */
+/* ===== CENTRU: LOGO ===== */
 .logo {
     font-family: var(--serif);
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.04em;
-    color: #4a4743 !important;
+    color: #4a4743 !important; /* Gri cald (antracit) */
     text-decoration: none;
     text-align: center;
     transition: opacity 0.3s ease;
+    white-space: nowrap; /* Previne ruperea numelui pe mai multe rânduri */
 }
 
 .logo:hover {
     opacity: 0.8;
 }
 
-/* DREAPTA: Navigație */
+/* ===== DREAPTA: NAVIGAȚIE ===== */
 .header-right {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Aliniază meniul la dreapta */
     gap: 20px;
 }
 
@@ -1044,13 +1047,14 @@ header {
     color: #4a4743 !important;
     text-decoration: none;
     transition: opacity 0.3s ease;
+    white-space: nowrap; /* Previne ruperea link-urilor */
 }
 
 .header-right a:hover {
     opacity: 0.6;
 }
 
-/* ===== BARA DE CĂUTARE EXPANDABILĂ ===== */
+/* ===== BARA DE CĂUTARE EXPANDABILĂ (LUPĂ) ===== */
 .search-trigger-container {
     display: inline-flex;
     align-items: center;
@@ -1058,8 +1062,9 @@ header {
     position: relative;
 }
 
+/* Input-ul (inițial invizibil, se deschide la focus) */
 .expandable-search {
-    width: 0;
+    width: 0; /* Inițial ascuns */
     opacity: 0;
     visibility: hidden;
     border: none !important;
@@ -1074,38 +1079,14 @@ header {
     cursor: pointer;
 }
 
+/* Când input-ul primește focus (click pe lupă) */
 .expandable-search:focus {
-    width: 140px;
+    width: 140px; /* Se deschide la această lățime */
     opacity: 1;
     visibility: visible;
     cursor: text;
     padding-right: 10px !important;
-}
 
-.expandable-search::placeholder {
-    color: rgba(74, 71, 67, 0.4);
-    font-style: italic;
-}
-
-.search-label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-}
-
-.lupa-svg {
-    color: #4a4743;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-}
-
-.search-label:hover .lupa-svg {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-/* ===== RESPONSIVE MOBIL ===== */
 
 
 
