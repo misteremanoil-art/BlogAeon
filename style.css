@@ -1100,6 +1100,45 @@ nav a {
     vertical-align: middle;
     margin-left: 15px;
 }
+/* ===== LOGO PROFESIONAL - STIL JOURNAL ===== */
+.logo-journal {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1.1;
+    transition: opacity 0.3s ease;
+}
+
+.logo-journal:hover {
+    opacity: 0.8;
+}
+
+.logo-name {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #4a4743 !important;
+    letter-spacing: -0.03em;
+}
+
+.logo-subtitle {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: rgba(74, 71, 67, 0.6);
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .logo-name {
+        font-size: 1.3rem;
+    }
+    .logo-subtitle {
+        font-size: 0.55rem;
+        letter-spacing: 1.5px;
+    }
+}
 
 
 
