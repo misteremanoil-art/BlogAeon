@@ -985,6 +985,53 @@ footer {
     opacity: 0.4;
     font-size: 0.75rem;
 }
+/* ============================================================
+   FIX FINAL: CULOARE GRI-CALD (EDITORIAL) PENTRU TOT SITE-UL
+   ============================================================ */
+
+/* 1. Forțăm culoarea pe toate titlurile H1 (Index și Articole) */
+h1, 
+.editorial-hero h1, 
+.featured-article h1, 
+.essay-header h1,
+.article-top-section h1 {
+    color: #4a4743 !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* 2. Forțăm culoarea pe Logo și Navigație */
+.logo, 
+.site-header .logo {
+    color: #4a4743 !important;
+    font-family: var(--serif) !important;
+    opacity: 1 !important;
+}
+
+nav a {
+    color: rgba(74, 71, 67, 0.8) !important; /* Navigație puțin mai discretă */
+}
+
+/* 3. Forțăm culoarea pe Carduri (H2 și H3) */
+.card-copy h2, 
+.card h3,
+.related-card h3 {
+    color: #4a4743 !important;
+    font-weight: 600 !important;
+}
+
+/* 4. Fix pentru Bara de Căutare (să fie în ton) */
+.search-field {
+    color: #4a4743 !important;
+}
+
+.search-field::placeholder {
+    color: rgba(74, 71, 67, 0.4) !important;
+}
+
+.search-wrapper {
+    border-bottom: 1px solid rgba(74, 71, 67, 0.2) !important;
+}
 
 
 
