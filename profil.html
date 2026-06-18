@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilul Meu — Blog Aeon</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <!-- Header-ul tău standard -->
+    </header>
+
+    <main class="auth-wrapper">
+        <div class="auth-card">
+            <h1>Setări Profil</h1>
+            <p id="user-email-display" style="margin-bottom: 20px; font-weight: 600;"></p>
+
+            <div class="form-group">
+                <label style="font-size: 0.8rem; color: #74716b;">Nume Afișat</label>
+                <input type="text" id="display-name" placeholder="Numele tău">
+            </div>
+
+            <button id="update-profile-btn" class="btn-auth" style="margin-bottom: 10px;">Salvează Numele</button>
+            <button id="reset-password-btn" class="btn-auth" style="background: #74716b; margin-bottom: 30px;">Trimite Email Resetare Parolă</button>
+            
+            <hr style="opacity: 0.1; margin-bottom: 20px;">
+            
+            <button id="logout-btn" class="btn-auth" style="background: #991b1b;">Ieșire din cont</button>
+        </div>
+    </main>
+
+    <script>
+        const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function loadProfile() {
+            const { data: { user } } = await supabaseClient.auth.getUser();
+            if (!user) {
+                window.location.href = "autentificare.html";
+                return;
+            }
+
+            document.getElementById('user-email-display').innerText = user.email;
+            if (user.user_metadata.full_name) {
+                document.getElementById('display-name').value = user.user_metadata.full_name;
+            }
+        }
+
+        // UPDATE NUME
+        document.getElementById('update-profile-btn').onclick = async () => {
+            const newName = document.getElementById('display-name').value;
+            const { error } = await supabaseClient.auth.updateUser({
+                data: { full_name: newName }
+            });
+            if (error) alert(error.message);
+            else alert("Profil actualizat!");
+        };
+
+        // RESET PAROLA
+        document.getElementById('reset-password-btn').onclick = async () => {
+            const { data: { user } } = await supabaseClient.auth.getUser();
+            const { error } = await supabaseClient.auth.resetPasswordForEmail(user.email, {
+                redirectTo: window.location.origin + '/profil.html',
+            });
+            if (error) alert(error.message);
+            else alert("Email de resetare trimis!");
+        };
+
+        // LOGOUT
+        document.getElementById('logout-btn').onclick = async () => {
+            await supabaseClient.auth.signOut();
+            window.location.href = "index.html";
+        };
+
+        window.onload = loadProfile;
+    </script>
+</body>
+</html>
