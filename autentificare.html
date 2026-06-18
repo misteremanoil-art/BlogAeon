@@ -60,9 +60,10 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
-        .btn-auth:hover { background: #33312e; }
+        .btn-auth:hover { background: #33312e; transform: translateY(-1px); }
+        .btn-auth:disabled { opacity: 0.7; cursor: not-allowed; }
         
         .toggle-text {
             text-align: center;
@@ -76,25 +77,30 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Mesaje de stare */
         #error-msg {
-            color: #c2410c;
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 12px;
+            border-radius: 12px;
             font-size: 0.85rem;
             text-align: center;
             margin-top: 15px;
+            border: 1px solid #fecaca;
             display: none;
         }
-        /* ... restul stilurilor tale ... */
-    #success-msg {
-        background: #ecfdf5;
-        color: #065f46;
-        padding: 12px;
-        border-radius: 12px;
-        font-size: 0.85rem;
-        text-align: center;
-        margin-top: 15px;
-        border: 1px solid #a7f3d0;
-        display: none;
-    }
+        #success-msg {
+            background: #ecfdf5;
+            color: #065f46;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 15px;
+            border: 1px solid #a7f3d0;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -129,6 +135,8 @@
                 <span class="toggle-link" id="toggle-btn">Creează unul</span>
             </div>
             
+            <!-- Mesajele apar aici -->
+            <div id="success-msg"></div>
             <div id="error-msg"></div>
         </div>
     </div>
@@ -145,13 +153,16 @@
         const mainBtn = document.getElementById('main-btn');
         const switchMsg = document.getElementById('switch-msg');
         const errorMsg = document.getElementById('error-msg');
+        const successMsg = document.getElementById('success-msg');
         const authForm = document.getElementById('auth-form-internal');
 
         let isLoginMode = true;
 
-        // LOGICA DE TECT/COMUTARE (Ceea ce nu mergea)
-        toggleBtn.addEventListener('click', () => {
+        // FUNCȚIE PENTRU SCHIMBARE MOD (LOGIN/REGISTER)
+        function toggleMode() {
             isLoginMode = !isLoginMode;
+            errorMsg.style.display = "none";
+            successMsg.style.display = "none";
             
             if (isLoginMode) {
                 authTitle.innerText = "Conectare";
@@ -166,32 +177,56 @@
                 switchMsg.innerText = "Ai deja un cont?";
                 toggleBtn.innerText = "Conectează-te";
             }
-            errorMsg.style.display = "none";
-        });
+        }
 
-        // LOGICA DE SUBMIT
+        toggleBtn.addEventListener('click', toggleMode);
+
+        // LOGICA DE SUBMIT (LOGIN & REGISTER)
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            errorMsg.style.display = "none";
             
-            const email = document.getElementById('email').value;
+            // Resetăm stările
+            errorMsg.style.display = "none";
+            successMsg.style.display = "none";
+            mainBtn.disabled = true;
+            const originalBtnText = mainBtn.innerText;
+            mainBtn.innerText = "Se procesează...";
+
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
 
             try {
                 if (isLoginMode) {
-                    // LOGIN
-                    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                    // --- LOGIN ---
+                    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
                     if (error) throw error;
-                    window.location.href = "index.html";
+                    
+                    successMsg.innerText = "Conectare reușită! Te redirecționăm...";
+                    successMsg.style.display = "block";
+                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
+
                 } else {
-                    // REGISTER
-                    const { error } = await supabaseClient.auth.signUp({ email, password });
+                    // --- REGISTER ---
+                    const { data, error } = await supabaseClient.auth.signUp({ email, password });
                     if (error) throw error;
-                    alert("Verifică-ți adresa de email pentru confirmarea contului!");
+
+                    // Dacă tot primești eroare de confirmare, înseamnă că userul existat deja.
+                    // Succes vizual:
+                    successMsg.innerText = "Cont creat cu succes! Te poți conecta acum.";
+                    successMsg.style.display = "block";
+                    
+                    // Resetăm parola și mutăm la Login după 2 secunde
+                    setTimeout(() => {
+                        document.getElementById('password').value = "";
+                        toggleMode();
+                        mainBtn.disabled = false;
+                    }, 2000);
                 }
             } catch (err) {
                 errorMsg.innerText = err.message;
                 errorMsg.style.display = "block";
+                mainBtn.disabled = false;
+                mainBtn.innerText = originalBtnText;
             }
         });
     </script>
