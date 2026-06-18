@@ -6,28 +6,100 @@
     <title>Autentificare — Blog Aeon</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        .auth-container {
+            max-width: 420px;
+            margin: 80px auto;
+            padding: 40px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+        .auth-container h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: var(--serif);
+            font-size: 2rem;
+        }
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .auth-form input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: var(--serif);
+        }
+        .auth-form button {
+            padding: 14px;
+            background: #4a4743;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .auth-form button:hover {
+            background: #3a3733;
+        }
+        .auth-switch {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+        .auth-switch a {
+            color: var(--accent);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .error-message {
+            color: #c2410c;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <!-- Aici pui header-ul tău centered pe care l-am făcut anterior -->
+        <!-- Poți copia header-ul tău centered aici -->
+        <div class="site-header">
+            <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
+            <div class="header-actions">
+                <nav>
+                    <a href="index.html">Acasă</a>
+                    <a href="blog.html">Articole</a>
+                    <a href="despre.html">Despre</a>
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <main class="container-reading">
-        <section id="auth-container" class="card" style="max-width: 400px; margin: 60px auto; padding: 40px;">
-            <h1 id="auth-title" style="text-align: center; margin-bottom: 30px;">Conectare</h1>
+    <main>
+        <div class="auth-container">
+            <h1 id="auth-title">Conectare</h1>
             
-            <form id="auth-form" style="display: flex; flex-direction: column; gap: 20px;">
-                <input type="email" id="email" placeholder="Email" class="expandable-search" style="width: 100%; opacity: 1; visibility: visible; border-bottom: 1px solid var(--line) !important;" required>
-                <input type="password" id="password" placeholder="Parolă" class="expandable-search" style="width: 100%; opacity: 1; visibility: visible; border-bottom: 1px solid var(--line) !important;" required>
-                
-                <button type="submit" id="submit-btn" class="tag-chip" style="padding: 12px; background: var(--text-main); color: white; cursor: pointer; border: none; font-weight: 600;">Intră în cont</button>
+            <form id="auth-form" class="auth-form">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Parolă" required>
+                <button type="submit" id="submit-btn">Intră în cont</button>
             </form>
 
-            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
-                <span id="switch-text">Nu ai cont?</span> 
-                <a href="#" id="switch-auth" style="text-decoration: underline; color: var(--accent);">Creează unul</a>
-            </p>
-        </section>
+            <div class="auth-switch">
+                <span id="switch-text">Nu ai cont?</span>
+                <a href="#" id="switch-auth">Creează unul</a>
+            </div>
+
+            <p id="error-message" class="error-message" style="display: none;"></p>
+        </div>
     </main>
 
     <script src="auth.js"></script>
