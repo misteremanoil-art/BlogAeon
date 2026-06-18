@@ -1,6 +1,6 @@
 // === CONFIGURARE SUPABASE ===
-const SUPABASE_URL = 'https://TU-PROJECT-URL.supabase.co';       // ← Schimbă cu URL-ul tău
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // ← Schimbă cu cheia ta
+const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
 
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -40,7 +40,7 @@ authForm.addEventListener('submit', async (e) => {
             // === LOGIN ===
             const { error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) throw error;
-            window.location.href = 'index.html'; // Redirecționare după login
+            window.location.href = 'index.html';
         } else {
             // === REGISTER ===
             const { error } = await supabase.auth.signUp({ email, password });
