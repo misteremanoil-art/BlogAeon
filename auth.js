@@ -1,72 +1,81 @@
+// CONFIGURARE SUPABASE
 const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-const authForm = document.getElementById('auth-form');
+// ELEMENTE DOM
+const toggleBtn = document.getElementById('toggle-btn');
 const authTitle = document.getElementById('auth-title');
-const authSubtitle = document.getElementById('auth-subtitle');
-const submitBtn = document.getElementById('submit-btn');
-const switchAuth = document.getElementById('switch-auth');
-const switchText = document.getElementById('switch-text');
-const errorMessage = document.getElementById('error-message');
+const authDesc = document.getElementById('auth-desc');
+const mainBtn = document.getElementById('main-btn');
+const switchMsg = document.getElementById('switch-msg');
+const errorMsg = document.getElementById('error-msg');
+const successBanner = document.getElementById('success-banner');
+const authForm = document.getElementById('auth-form-internal');
 
-let isLogin = true;
+let isLoginMode = true;
 
+// FUNCȚIE ACTUALIZARE TEXTE
 function updateUI() {
-    if (isLogin) {
-        authTitle.innerText = 'Conectare';
-        authSubtitle.innerText = 'Intră în contul tău pentru a accesa conținut exclusiv.';
-        submitBtn.innerText = 'Intră în cont';
-        switchText.innerText = 'Nu ai cont?';
-        switchAuth.innerText = 'Creează unul';
+    if (isLoginMode) {
+        authTitle.innerText = "Conectare";
+        authDesc.innerText = "Bine ai revenit la Blog Aeon.";
+        mainBtn.innerText = "Intră în cont";
+        switchMsg.innerText = "Nu ai un cont?";
+        toggleBtn.innerText = "Creează unul";
     } else {
-        authTitle.innerText = 'Creează cont';
-        authSubtitle.innerText = 'Creează un cont pentru a accesa rubrica de eseuri teologice.';
-        submitBtn.innerText = 'Creează cont';
-        switchText.innerText = 'Ai deja cont?';
-        switchAuth.innerText = 'Conectează-te';
+        authTitle.innerText = "Creare Cont";
+        authDesc.innerText = "Alătură-te comunității noastre.";
+        mainBtn.innerText = "Înregistrare";
+        switchMsg.innerText = "Ai deja un cont?";
+        toggleBtn.innerText = "Conectează-te";
     }
-    errorMessage.style.display = 'none';
 }
 
-// Comutare între Login și Register
-switchAuth.addEventListener('click', (e) => {
-    e.preventDefault();
-    isLogin = !isLogin;
-    updateUI();
-});
+// EVENT LISTENERS
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        isLoginMode = !isLoginMode;
+        updateUI();
+        errorMsg.style.display = "none";
+    });
+}
 
-// Trimiterea formularului
-authForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    errorMessage.style.display = 'none';
+if (authForm) {
+    authForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorMsg.style.display = "none";
+        
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
+        mainBtn.disabled = true;
+        const originalText = mainBtn.innerText;
+        mainBtn.innerText = "Se procesează...";
 
-    if (!email || !password) {
-        errorMessage.innerText = 'Te rugăm să completezi emailul și parola.';
-        errorMessage.style.display = 'block';
-        return;
-    }
+        try {
+            if (isLoginMode) {
+                const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                if (error) throw error;
+                window.location.href = "index.html";
+            } else {
+                const { error } = await supabaseClient.auth.signUp({ email, password });
+                if (error) throw error;
 
-    try {
-        if (isLogin) {
-            const { error } = await supabase.auth.signInWithPassword({ email, password });
-            if (error) throw error;
-            alert('Autentificare reușită!');
-            window.location.href = 'index.html';
-        } else {
-            const { error } = await supabase.auth.signUp({ email, password });
-            if (error) throw error;
-            alert('Cont creat cu succes! Verifică-ți email-ul pentru confirmare.');
+                successBanner.style.display = "block";
+                setTimeout(() => {
+                    successBanner.style.display = "none";
+                    isLoginMode = true;
+                    updateUI();
+                    document.getElementById('password').value = "";
+                    mainBtn.disabled = false;
+                }, 3000);
+            }
+        } catch (err) {
+            errorMsg.innerText = err.message;
+            errorMsg.style.display = "block";
+            mainBtn.disabled = false;
+            mainBtn.innerText = originalText;
         }
-    } catch (error) {
-        errorMessage.innerText = error.message;
-        errorMessage.style.display = 'block';
-    }
-});
-
-// Inițializare
-updateUI();
+    });
+}
