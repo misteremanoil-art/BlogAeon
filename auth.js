@@ -1,6 +1,6 @@
 // CONFIGURARE SUPABASE (Înlocuiește cu datele tale din setările Supabase)
-const SUPABASE_URL = 'URL_UL_TAU_AICI';
-const SUPABASE_ANON_KEY = 'CHEIA_TA_ANON_AICI';
+const SUPABASE_URL = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
+const SUPABASE_ANON_KEY = 'sb_secret_NS2DqXq5KN0OMCJG3S7yyQ_V76ek6MW';
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const authForm = document.getElementById('auth-form');
