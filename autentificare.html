@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare — Blog Aeon</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Supabase Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         .auth-wrapper {
@@ -23,6 +22,8 @@
             border-radius: 24px;
             border: 1px solid rgba(17, 17, 17, 0.08);
             box-shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
+            position: relative;
+            overflow: hidden;
         }
         .auth-card h1 {
             font-family: 'Cormorant Garamond', serif;
@@ -60,11 +61,30 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
-        .btn-auth:hover { background: #33312e; transform: translateY(-1px); }
-        .btn-auth:disabled { opacity: 0.7; cursor: not-allowed; }
-        
+        .btn-auth:hover { background: #33312e; }
+        .btn-auth:disabled { background: #a5a29a; cursor: not-allowed; }
+
+        /* Mesaj de Succes Evident */
+        #success-banner {
+            display: none;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid #34d399;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         .toggle-text {
             text-align: center;
             margin-top: 25px;
@@ -74,31 +94,13 @@
         .toggle-link {
             color: #b45309;
             font-weight: 700;
-            text-decoration: none;
             cursor: pointer;
         }
-
-        /* Mesaje de stare */
         #error-msg {
-            background: #fef2f2;
-            color: #991b1b;
-            padding: 12px;
-            border-radius: 12px;
+            color: #c2410c;
             font-size: 0.85rem;
             text-align: center;
             margin-top: 15px;
-            border: 1px solid #fecaca;
-            display: none;
-        }
-        #success-msg {
-            background: #ecfdf5;
-            color: #065f46;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            text-align: center;
-            margin-top: 15px;
-            border: 1px solid #a7f3d0;
             display: none;
         }
     </style>
@@ -117,6 +119,8 @@
 
     <div class="auth-wrapper">
         <div class="auth-card">
+            <div id="success-banner">✓ Cont creat cu succes! Te redirecționăm la logare...</div>
+            
             <h1 id="auth-title">Conectare</h1>
             <p id="auth-desc">Bine ai revenit la Blog Aeon.</p>
 
@@ -130,19 +134,16 @@
                 <button type="submit" id="main-btn" class="btn-auth">Intră în cont</button>
             </form>
 
-            <div class="toggle-text">
+            <div class="toggle-text" id="toggle-area">
                 <span id="switch-msg">Nu ai un cont?</span> 
                 <span class="toggle-link" id="toggle-btn">Creează unul</span>
             </div>
             
-            <!-- Mesajele apar aici -->
-            <div id="success-msg"></div>
             <div id="error-msg"></div>
         </div>
     </div>
 
     <script>
-        // CONFIGURARE SUPABASE
         const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -153,17 +154,12 @@
         const mainBtn = document.getElementById('main-btn');
         const switchMsg = document.getElementById('switch-msg');
         const errorMsg = document.getElementById('error-msg');
-        const successMsg = document.getElementById('success-msg');
+        const successBanner = document.getElementById('success-banner');
         const authForm = document.getElementById('auth-form-internal');
 
         let isLoginMode = true;
 
-        // FUNCȚIE PENTRU SCHIMBARE MOD (LOGIN/REGISTER)
-        function toggleMode() {
-            isLoginMode = !isLoginMode;
-            errorMsg.style.display = "none";
-            successMsg.style.display = "none";
-            
+        function updateUI() {
             if (isLoginMode) {
                 authTitle.innerText = "Conectare";
                 authDesc.innerText = "Bine ai revenit la Blog Aeon.";
@@ -172,61 +168,57 @@
                 toggleBtn.innerText = "Creează unul";
             } else {
                 authTitle.innerText = "Creare Cont";
-                authDesc.innerText = "Alătură-te comunității noastre teologice.";
+                authDesc.innerText = "Alătură-te comunității noastre.";
                 mainBtn.innerText = "Înregistrare";
                 switchMsg.innerText = "Ai deja un cont?";
                 toggleBtn.innerText = "Conectează-te";
             }
         }
 
-        toggleBtn.addEventListener('click', toggleMode);
+        toggleBtn.addEventListener('click', () => {
+            isLoginMode = !isLoginMode;
+            updateUI();
+            errorMsg.style.display = "none";
+        });
 
-        // LOGICA DE SUBMIT (LOGIN & REGISTER)
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Resetăm stările
             errorMsg.style.display = "none";
-            successMsg.style.display = "none";
-            mainBtn.disabled = true;
-            const originalBtnText = mainBtn.innerText;
-            mainBtn.innerText = "Se procesează...";
-
-            const email = document.getElementById('email').value.trim();
+            
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+
+            mainBtn.disabled = true;
+            const originalText = mainBtn.innerText;
+            mainBtn.innerText = "Se procesează...";
 
             try {
                 if (isLoginMode) {
-                    // --- LOGIN ---
-                    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
                     if (error) throw error;
-                    
-                    successMsg.innerText = "Conectare reușită! Te redirecționăm...";
-                    successMsg.style.display = "block";
-                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
-
+                    window.location.href = "index.html";
                 } else {
-                    // --- REGISTER ---
-                    const { data, error } = await supabaseClient.auth.signUp({ email, password });
+                    const { error } = await supabaseClient.auth.signUp({ email, password });
                     if (error) throw error;
 
-                    // Dacă tot primești eroare de confirmare, înseamnă că userul existat deja.
-                    // Succes vizual:
-                    successMsg.innerText = "Cont creat cu succes! Te poți conecta acum.";
-                    successMsg.style.display = "block";
+                    // --- MOMENTUL DE SUCCES EVIDENT ---
+                    successBanner.style.display = "block";
+                    mainBtn.innerText = "Gata!";
                     
-                    // Resetăm parola și mutăm la Login după 2 secunde
+                    // Așteptăm 3 secunde pentru ca userul să vadă confirmarea
                     setTimeout(() => {
-                        document.getElementById('password').value = "";
-                        toggleMode();
+                        successBanner.style.display = "none";
+                        isLoginMode = true; // Forțăm trecerea la modul Login
+                        updateUI();         // Actualizăm textele
+                        document.getElementById('password').value = ""; // Ștergem parola pentru securitate
                         mainBtn.disabled = false;
-                    }, 2000);
+                    }, 3000);
                 }
             } catch (err) {
                 errorMsg.innerText = err.message;
                 errorMsg.style.display = "block";
                 mainBtn.disabled = false;
-                mainBtn.innerText = originalBtnText;
+                mainBtn.innerText = originalText;
             }
         });
     </script>
