@@ -5,41 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autentificare — Blog Aeon</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Supabase Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        .auth-container {
-            max-width: 420px;
-            margin: 80px auto;
+        .auth-wrapper {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .auth-card {
+            width: 100%;
+            max-width: 400px;
+            background: #fffdfa;
             padding: 40px;
-            background: var(--surface);
-            border: 1px solid var(--line);
             border-radius: 24px;
-            box-shadow: var(--shadow);
+            border: 1px solid rgba(17, 17, 17, 0.08);
+            box-shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
         }
-        .auth-container h1 {
+        .auth-card h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: #4a4743;
             text-align: center;
-            margin-bottom: 10px;
-            font-family: var(--serif);
+            margin-bottom: 8px;
         }
-        .auth-subtitle {
+        .auth-card p {
             text-align: center;
-            color: var(--muted);
+            color: #74716b;
             font-size: 0.95rem;
             margin-bottom: 30px;
         }
-        .auth-form {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .auth-form input {
+        .form-group { margin-bottom: 20px; }
+        .form-group input {
             width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--line);
+            padding: 14px;
+            border: 1px solid rgba(17, 17, 17, 0.1);
             border-radius: 12px;
+            font-family: inherit;
             font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
         }
-        .auth-form button {
+        .form-group input:focus { border-color: #b45309; }
+        
+        .btn-auth {
+            width: 100%;
             padding: 14px;
             background: #4a4743;
             color: white;
@@ -48,22 +60,28 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
+            transition: background 0.3s;
         }
-        .auth-switch {
+        .btn-auth:hover { background: #33312e; }
+        
+        .toggle-text {
             text-align: center;
             margin-top: 25px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            color: #74716b;
         }
-        .auth-switch a {
-            color: var(--accent);
-            font-weight: 600;
+        .toggle-link {
+            color: #b45309;
+            font-weight: 700;
+            text-decoration: none;
             cursor: pointer;
         }
-        .error {
+        #error-msg {
             color: #c2410c;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-align: center;
             margin-top: 15px;
+            display: none;
         }
     </style>
 </head>
@@ -71,36 +89,47 @@
     <header>
         <div class="site-header">
             <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
-            <div class="header-actions">
-                <nav>
-                    <a href="index.html">Acasă</a>
-                    <a href="blog.html">Articole</a>
-                    <a href="despre.html">Despre</a>
-                </nav>
-            </div>
+            <nav class="header-right">
+                <a href="index.html">Acasă</a>
+                <a href="blog.html">Articole</a>
+                <a href="despre.html">Despre</a>
+            </nav>
         </div>
     </header>
 
-    <main>
-        <div class="auth-container">
+    <div class="auth-wrapper">
+        <div class="auth-card">
             <h1 id="auth-title">Conectare</h1>
-            <p id="auth-subtitle" class="auth-subtitle">Intră în contul tău pentru a accesa conținut exclusiv.</p>
+            <p id="auth-desc">Bine ai revenit la Blog Aeon.</p>
 
-            <form id="auth-form" class="auth-form">
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="password" id="password" placeholder="Parolă" required>
-                <button type="submit" id="submit-btn">Intră în cont</button>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Adresa de email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Parola" required>
+                </div>
+                <button type="submit" id="main-btn" class="btn-auth">Intră în cont</button>
             </form>
 
-            <div class="auth-switch">
-                <span id="switch-text">Nu ai cont?</span>
-                <a href="#" id="switch-auth">Creează unul</a>
+            <div class="toggle-text">
+                <span id="switch-msg">Nu ai un cont?</span> 
+                <span class="toggle-link" id="toggle-btn">Creează unul</span>
             </div>
-
-            <p id="error-message" class="error" style="display: none;"></p>
+            
+            <div id="error-msg"></div>
         </div>
-    </main>
+    </div>
 
-    <script src="auth.js"></script>
-</body>
-</html>
+    <script>
+        // CONFIGURARE SUPABASE
+        const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const toggleBtn = document.getElementById('toggle-btn');
+        const authTitle = document.getElementById('auth-title');
+        const authDesc = document.getElementById('auth-desc');
+        const mainBtn = document.getElementById('main-btn');
+        const switchMsg = document.getElementById('switch-msg');
+        const errorMsg = document.getElementById('error-
