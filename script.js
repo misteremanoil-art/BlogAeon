@@ -73,3 +73,28 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+// Verifică statusul logării în header
+async function checkAuthStatus() {
+    const { data: { user } } = await supabase.auth.getUser();
+    const nav = document.querySelector('.header-right');
+
+    if (user) {
+        // Dacă e logat, adăugăm buton de Logout
+        const logoutBtn = document.createElement('a');
+        logoutBtn.href = "#";
+        logoutBtn.innerText = "Ieșire";
+        logoutBtn.onclick = async () => {
+            await supabase.auth.signOut();
+            window.location.reload();
+        };
+        nav.appendChild(logoutBtn);
+    } else {
+        // Dacă nu e logat, arătăm buton de Login
+        const loginLink = document.createElement('a');
+        loginLink.href = "autentificare.html";
+        loginLink.innerText = "Logare";
+        nav.appendChild(loginLink);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', checkAuthStatus);
