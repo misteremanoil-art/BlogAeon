@@ -1199,6 +1199,94 @@ header {
         letter-spacing: 0.5px !important;
     }
 }
+/* ===== STILURI PAGINA AUTENTIFICARE ===== */
+.auth-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.auth-card {
+    width: 100%;
+    max-width: 400px;
+    background: #fffdfa;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    box-shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+.auth-card h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: #4a4743;
+    text-align: center;
+    margin-bottom: 8px;
+}
+.auth-card p {
+    text-align: center;
+    color: #74716b;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.form-group input:focus { border-color: #b45309; }
+
+.btn-auth {
+    width: 100%;
+    padding: 14px;
+    background: #4a4743;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-auth:disabled { background: #a5a29a; cursor: not-allowed; }
+
+#success-banner {
+    display: none;
+    background: #d1fae5;
+    color: #065f46;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border: 1px solid #34d399;
+}
+#error-msg {
+    color: #c2410c;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 15px;
+    display: none;
+}
+.toggle-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #74716b;
+}
+.toggle-link {
+    color: #b45309;
+    font-weight: 700;
+    cursor: pointer;
+}
 
 
 
