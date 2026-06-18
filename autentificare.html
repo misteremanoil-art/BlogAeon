@@ -18,14 +18,19 @@
         }
         .auth-container h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             font-family: var(--serif);
-            font-size: 2rem;
+        }
+        .auth-subtitle {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
         }
         .auth-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
         .auth-form input {
             width: 100%;
@@ -33,7 +38,6 @@
             border: 1px solid var(--line);
             border-radius: 12px;
             font-size: 1rem;
-            font-family: var(--serif);
         }
         .auth-form button {
             padding: 14px;
@@ -44,33 +48,27 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .auth-form button:hover {
-            background: #3a3733;
         }
         .auth-switch {
             text-align: center;
             margin-top: 25px;
             font-size: 0.95rem;
-            color: var(--muted);
         }
         .auth-switch a {
             color: var(--accent);
             font-weight: 600;
             cursor: pointer;
         }
-        .error-message {
+        .error {
             color: #c2410c;
             font-size: 0.9rem;
-            margin-top: 10px;
             text-align: center;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
     <header>
-        <!-- Poți copia header-ul tău centered aici -->
         <div class="site-header">
             <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
             <div class="header-actions">
@@ -86,7 +84,8 @@
     <main>
         <div class="auth-container">
             <h1 id="auth-title">Conectare</h1>
-            
+            <p id="auth-subtitle" class="auth-subtitle">Intră în contul tău pentru a accesa conținut exclusiv.</p>
+
             <form id="auth-form" class="auth-form">
                 <input type="email" id="email" placeholder="Email" required>
                 <input type="password" id="password" placeholder="Parolă" required>
@@ -98,7 +97,7 @@
                 <a href="#" id="switch-auth">Creează unul</a>
             </div>
 
-            <p id="error-message" class="error-message" style="display: none;"></p>
+            <p id="error-message" class="error" style="display: none;"></p>
         </div>
     </main>
 
