@@ -1287,6 +1287,47 @@ header {
     font-weight: 700;
     cursor: pointer;
 }
+/* ===== STILURI UNICE PAGINA DESPRE ===== */
+
+.about-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+    line-height: 1.1 !important;
+    margin: 20px 0 40px;
+    color: var(--text-main);
+}
+
+.manifesto-box {
+    margin: 50px 0;
+    padding: 40px;
+    background: rgba(180, 83, 9, 0.03);
+    border-left: 3px solid var(--accent);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: #4a4743;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 60px auto;
+    width: 30%;
+    opacity: 0.5;
+}
+
+.english-version {
+    opacity: 0.8; /* O facem puțin mai discretă pentru a nu concura cu limba principală */
+}
+
+.english-version .essay-content p {
+    font-size: 1.1rem; /* Puțin mai mic pentru secțiunea secundară */
+}
+
+@media (max-width: 768px) {
+    .about-title { font-size: 2.2rem !important; }
+    .manifesto-box { padding: 25px; font-size: 1.2rem; }
+}
 
 
 
