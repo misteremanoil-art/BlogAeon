@@ -1117,76 +1117,71 @@ header {
     font-style: italic;
 }
 /* ============================================================
-   9. RESPONSIVE DESIGN (MOBIL - LOGO CENTRAT + NAV JOS)
+   9. RESPONSIVE DESIGN (MOBIL - LOGO SUS, NAV+LUPA JOS)
    ============================================================ */
 @media (max-width: 768px) {
     header {
-        padding: 12px 20px !important;
-        background: rgba(244, 239, 230, 0.7) !important;
+        padding: 8px 20px !important; /* Foarte subțire vertical */
+        background: rgba(244, 239, 230, 0.65) !important;
         backdrop-filter: blur(15px) !important;
-        -webkit-backdrop-filter: blur(15px) !important;
     }
 
-    /* Transformăm header-ul într-o coloană pentru a pune Logo-ul sus */
     .site-header {
         display: flex !important;
-        flex-direction: column !important;
+        flex-wrap: wrap !important; /* Permite logo-ului să stea pe rândul lui */
+        justify-content: space-between !important;
         align-items: center !important;
-        gap: 12px !important;
-        padding: 0 !important;
+        gap: 8px 0 !important; /* Spațiu mic între logo și rândul de navigație */
     }
 
-    /* 1. LOGO SUS PE MIJLOC */
+    /* 1. LOGO - Ocupă tot rândul de sus și stă pe centru */
     .logo {
         display: block !important;
-        order: 1 !important; /* Îl forțăm să fie primul */
-        font-size: 1.2rem !important;
+        width: 100% !important; /* Forțează restul să treacă dedesubt */
         text-align: center !important;
-        width: 100% !important;
-        letter-spacing: -0.02em !important;
+        font-size: 1.1rem !important;
+        letter-spacing: -0.01em !important;
+        order: 1 !important;
         margin-bottom: 2px !important;
     }
 
-    /* 2. RÂNDUL DE JOS (Căutare + Navigație) */
-    /* Creăm un rând care să ocupe toată lățimea sub logo */
-    .header-left, .header-right {
-        width: auto !important;
-    }
-
-    /* Containerul care ține Lupa și Meniul pe același rând */
-    .header-actions-mobile-wrapper {
-        display: flex !important;
-        width: 100% !important;
-        justify-content: space-between !important;
-        align-items: center !important;
+    /* 2. LUPA (STÂNGA) - Pe același rând cu meniul */
+    .header-left {
         order: 2 !important;
+        flex: 0 1 auto !important;
+        display: flex !important;
+        align-items: center !important;
     }
 
-    /* Ajustăm Navigația să fie compactă în dreapta */
+    /* 3. MENIU (DREAPTA) - Pe același rând cu lupa */
     .header-right {
-        display: flex !important;
-        gap: 12px !important;
         order: 3 !important;
+        flex: 1 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
     }
 
     .header-right a {
-        font-size: 0.65rem !important;
+        font-size: 0.62rem !important;
         letter-spacing: 0.5px !important;
         font-weight: 700;
         text-transform: uppercase;
+        padding: 4px 0 !important;
     }
 
-    /* Ajustăm Căutarea să fie în stânga sub logo */
-    .header-left {
-        order: 2 !important;
-    }
-
+    /* Ajustări pentru bara de căutare să nu împingă meniul urât */
     .expandable-search:focus {
-        width: 90px !important; /* Lățime sigură să nu împingă meniul */
-        font-size: 0.85rem !important;
+        width: 85px !important;
+        font-size: 0.8rem !important;
     }
 
-    /* 3. FIX ARTICOLE (Să nu se mai lipească de margini) */
+    .lupa-svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    /* 4. FIX CONȚINUT ARTICOLE (Margini de 20px) */
     .essay-header, 
     .article-top-section, 
     .container-reading, 
@@ -1197,18 +1192,19 @@ header {
     }
 
     .essay-header h1 {
-        font-size: 1.9rem !important;
+        font-size: 1.85rem !important;
         line-height: 1.2 !important;
         margin-top: 15px !important;
     }
 }
 
-/* Ajustare pentru ecrane foarte mici (iPhone SE) */
+/* Ajustare extra pentru ecrane de iPhone mini / vechi */
 @media (max-width: 360px) {
-    .logo { font-size: 1.1rem !important; }
     .header-right { gap: 8px !important; }
-    .header-right a { font-size: 0.6rem !important; }
+    .header-right a { font-size: 0.58rem !important; }
+    .logo { font-size: 1rem !important; }
 }
+
 /* ===== STILURI PAGINA AUTENTIFICARE ===== */
 .auth-wrapper {
     min-height: 80vh;
