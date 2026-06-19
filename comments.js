@@ -1,5 +1,5 @@
 /* ============================================================
-   LOGICA EDITORIALĂ PENTRU RECENZII
+   LOGICA FINALĂ PENTRU RECENZII (DESIGN COMPACT)
    ============================================================ */
 
 async function initComments() {
@@ -36,7 +36,9 @@ async function initComments() {
     });
 
     async function loadComments() {
+        // Luăm numele fișierului pentru a identifica articolul
         const articleUrl = window.location.pathname.split('/').pop() || "index.html";
+        
         const { data, error } = await client
             .from('comentarii')
             .select('*')
@@ -44,7 +46,7 @@ async function initComments() {
             .order('creat_la', { ascending: false });
 
         if (error || !data || data.length === 0) {
-            commentsDisplay.innerHTML = "<p style='text-align:center; opacity:0.5; padding: 40px; font-family: var(--serif); font-style: italic;'>Secțiune deschisă pentru gânduri și reflecții.</p>";
+            commentsDisplay.innerHTML = "<p style='text-align:center; opacity:0.4; padding: 20px; font-size: 0.85rem;'>Secțiune deschisă pentru gânduri.</p>";
             return;
         }
 
@@ -52,7 +54,7 @@ async function initComments() {
             <div class="review-item">
                 <div class="review-header">
                     <span class="review-author">${c.user_name || 'Cititor'}</span>
-                    <span class="review-date">${new Date(c.creat_la).toLocaleDateString('ro-RO', {day: 'numeric', month: 'long', year: 'numeric'})}</span>
+                    <span class="review-date">${new Date(c.creat_la).toLocaleDateString('ro-RO')}</span>
                 </div>
                 <div class="review-content">
                     ${c.continut}
@@ -66,6 +68,7 @@ async function initComments() {
         postBtn.onclick = async () => {
             const text = textArea.value.trim();
             if (!text) return;
+
             postBtn.disabled = true;
             postBtn.innerText = "Trimitere...";
 
@@ -78,12 +81,14 @@ async function initComments() {
 
             if (error) {
                 alert("Eroare: " + error.message);
+                postBtn.disabled = false;
+                postBtn.innerText = "Postează";
             } else {
                 textArea.value = "";
                 await loadComments();
+                postBtn.disabled = false;
+                postBtn.innerText = "Postează";
             }
-            postBtn.disabled = false;
-            postBtn.innerText = "Postează";
         };
     }
 
