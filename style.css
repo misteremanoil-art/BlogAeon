@@ -1117,46 +1117,48 @@ header {
     font-style: italic;
 }
 /* ============================================================
-   9. RESPONSIVE DESIGN (MOBIL - LOGO SUS, NAV+LUPA JOS)
+   9. RESPONSIVE DESIGN (MOBIL - LOGO SUS, NAV + LUPA PE UN RÂND)
    ============================================================ */
 @media (max-width: 768px) {
     header {
-        padding: 8px 20px !important; /* Foarte subțire vertical */
+        padding: 8px 20px !important;
         background: rgba(244, 239, 230, 0.65) !important;
         backdrop-filter: blur(15px) !important;
     }
 
+    /* Transformăm header-ul într-un Grid de 2 coloane x 2 rânduri */
     .site-header {
-        display: flex !important;
-        flex-wrap: wrap !important; /* Permite logo-ului să stea pe rândul lui */
-        justify-content: space-between !important;
+        display: grid !important;
+        grid-template-columns: auto 1fr !important; /* Coloana 1 (Lupa), Coloana 2 (Navigația) */
+        grid-template-rows: auto auto !important;    /* Rândul 1 (Logo), Rândul 2 (Restul) */
+        gap: 8px 0 !important;
         align-items: center !important;
-        gap: 8px 0 !important; /* Spațiu mic între logo și rândul de navigație */
     }
 
-    /* 1. LOGO - Ocupă tot rândul de sus și stă pe centru */
+    /* 1. LOGO - Îl forțăm să ocupe ambele coloane pe primul rând */
     .logo {
+        grid-column: 1 / span 2 !important;
+        grid-row: 1 !important;
         display: block !important;
-        width: 100% !important; /* Forțează restul să treacă dedesubt */
         text-align: center !important;
-        font-size: 1.1rem !important;
-        letter-spacing: -0.01em !important;
-        order: 1 !important;
-        margin-bottom: 2px !important;
+        font-size: 1.15rem !important;
+        margin: 0 auto 2px !important;
+        width: 100% !important;
     }
 
-    /* 2. LUPA (STÂNGA) - Pe același rând cu meniul */
+    /* 2. LUPA (STÂNGA) - Rămâne pe rândul 2, coloana 1 */
     .header-left {
-        order: 2 !important;
-        flex: 0 1 auto !important;
+        grid-column: 1 !important;
+        grid-row: 2 !important;
         display: flex !important;
+        justify-content: flex-start !important;
         align-items: center !important;
     }
 
-    /* 3. MENIU (DREAPTA) - Pe același rând cu lupa */
+    /* 3. NAVIGAȚIA (DREAPTA) - Rămâne pe rândul 2, coloana 2 */
     .header-right {
-        order: 3 !important;
-        flex: 1 !important;
+        grid-column: 2 !important;
+        grid-row: 2 !important;
         display: flex !important;
         justify-content: flex-end !important;
         gap: 12px !important;
@@ -1167,21 +1169,20 @@ header {
         letter-spacing: 0.5px !important;
         font-weight: 700;
         text-transform: uppercase;
-        padding: 4px 0 !important;
     }
 
-    /* Ajustări pentru bara de căutare să nu împingă meniul urât */
+    /* Ajustări fine pentru input-ul de căutare să nu "rupă" rândul */
     .expandable-search:focus {
-        width: 85px !important;
-        font-size: 0.8rem !important;
+        width: 100px !important;
+        font-size: 0.85rem !important;
     }
 
     .lupa-svg {
-        width: 17px;
-        height: 17px;
+        width: 17px !important;
+        height: 17px !important;
     }
 
-    /* 4. FIX CONȚINUT ARTICOLE (Margini de 20px) */
+    /* 4. FIX CONȚINUT (Margini de 20px) */
     .essay-header, 
     .article-top-section, 
     .container-reading, 
@@ -1192,13 +1193,12 @@ header {
     }
 
     .essay-header h1 {
-        font-size: 1.85rem !important;
+        font-size: 1.9rem !important;
         line-height: 1.2 !important;
-        margin-top: 15px !important;
     }
 }
 
-/* Ajustare extra pentru ecrane de iPhone mini / vechi */
+/* Fix pentru ecrane foarte mici */
 @media (max-width: 360px) {
     .header-right { gap: 8px !important; }
     .header-right a { font-size: 0.58rem !important; }
