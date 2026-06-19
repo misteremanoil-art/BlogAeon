@@ -1,14 +1,15 @@
 /* ============================================================
-   CONFIGURARE GLOBALĂ SUPABASE
+   1. CONFIGURARE GLOBALĂ SUPABASE
+   Folosim un check pentru a preveni eroarea de redeclarare
    ============================================================ */
-const sbUrl = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
-const sbKey = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
-
-// Folosim window. pentru a fi accesibil în auth.js
-window.supabaseClient = supabase.createClient(sbUrl, sbKey);
+if (typeof window.supabaseClient === 'undefined') {
+    const sbUrl = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
+    const sbKey = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
+    window.supabaseClient = supabase.createClient(sbUrl, sbKey);
+}
 
 /* ============================================================
-   BAZA DE DATE ARTICOLE
+   2. BAZA DE DATE ARTICOLE (Pentru Motorul de Căutare)
    ============================================================ */
 const articoleDB = [
     { titlu: "Chemarea divină și răspunsul nostru", descriere: "Pilda scuzelor din Luca 14 și importanța răspunsului personal.", url: "articol-chemarea-divina.html", tags: "teologie chemare" },
@@ -18,47 +19,47 @@ const articoleDB = [
 ];
 
 /* ============================================================
-   FUNCȚII PENTRU INTERFAȚĂ
+   3. FUNCȚII DE SESIUNE ȘI ISTORIC LECTURĂ
    ============================================================ */
 
-// 1. Verificare Sesiune Globală & Istoric Lectură
-async function updateGlobalHeader() {
+async function updateGlobalHeaderAndHistory() {
     const authLink = document.getElementById('auth-link-header');
     if (!authLink) return;
 
     try {
         const { data: { user } } = await window.supabaseClient.auth.getUser();
+        
         if (user) {
+            // Actualizăm Header-ul cu numele utilizatorului
             const userName = user.user_metadata.full_name || user.email.split('@')[0];
             authLink.innerText = userName;
             authLink.href = "profil.html";
             authLink.style.color = "var(--accent)";
             authLink.style.fontWeight = "700";
 
-            // --- LOGICĂ ISTORIC LECTURĂ ---
+            // LOGICĂ ISTORIC LECTURĂ
             const articleTitle = document.querySelector('h1')?.innerText;
-            const articleUrl = window.location.pathname.split('/').pop(); // Luăm doar numele fișierului
+            const articleUrl = window.location.pathname.split('/').pop();
 
-            // Salvăm în istoric doar dacă suntem pe o pagină de articol (care începe cu 'articol-' sau 'rugaciunea-' etc.)
+            // Salvăm în istoric doar dacă suntem pe o pagină de articol validă
             if (articleTitle && (articleUrl.includes('articol-') || articleUrl.includes('rugaciunea-') || articleUrl.includes('rediscovering-') || articleUrl.includes('redescoperind-'))) {
                 let history = JSON.parse(localStorage.getItem('reading_history') || '[]');
-                // Scoatem articolul dacă există deja (ca să îl punem primul)
-                history = history.filter(item => item.url !== articleUrl);
-                // Adăugăm la început
-                history.unshift({ title: articleTitle, url: articleUrl });
-                // Păstrăm doar ultimele 5
-                localStorage.setItem('reading_history', JSON.stringify(history.slice(0, 5)));
+                history = history.filter(item => item.url !== articleUrl); // Evităm duplicatele
+                history.unshift({ title: articleTitle, url: articleUrl }); // Adăugăm la început
+                localStorage.setItem('reading_history', JSON.stringify(history.slice(0, 5))); // Păstrăm ultimele 5
             }
         }
     } catch (e) {
-        console.log("Utilizator nelogat");
+        console.log("Sesiune: Utilizator nelogat.");
     }
 }
 
-// 2. Motorul de Căutare (pentru pagina cautare.html)
+/* ============================================================
+   4. MOTORUL DE CĂUTARE (Pentru pagina cautare.html)
+   ============================================================ */
 function executaCautarea() {
     const resultsContainer = document.getElementById('results-list');
-    if (!resultsContainer) return;
+    if (!resultsContainer) return; // Oprim dacă nu suntem pe pagina de căutare
 
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('q')?.toLowerCase().trim() || "";
@@ -85,14 +86,16 @@ function executaCautarea() {
 }
 
 /* ============================================================
-   EVENIMENTUL PRINCIPAL DOM CONTENT LOADED
+   5. LOGICĂ UI (Progres, Lectură, Filtre, Back-to-top)
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-    updateGlobalHeader();
+    // Inițializăm funcțiile de bază
+    updateGlobalHeaderAndHistory();
     executaCautarea();
 
     document.body.classList.add("loaded");
 
+    // --- BARA DE PROGRES PE SCROLL ---
     const progressBar = document.createElement("div");
     progressBar.id = "progress-bar";
     document.body.appendChild(progressBar);
@@ -105,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     window.addEventListener("scroll", updateProgress, { passive: true });
 
+    // --- CALCULATOR TIMP DE LECTURĂ ---
     const articleBody = document.querySelector(".essay-content");
     if (articleBody) {
         const text = articleBody.innerText || "";
@@ -116,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // --- SISTEM DE FILTRARE (Index / Blog) ---
     const cards = Array.from(document.querySelectorAll(".card"));
     const filterButtons = Array.from(document.querySelectorAll(".filter-chip"));
     const searchInputs = Array.from(document.querySelectorAll(".search-box input"));
@@ -131,15 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    if (filterButtons.length) {
-        filterButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const activeFilter = button.dataset.filter || "all";
-                filterButtons.forEach((chip) => chip.classList.toggle("active", chip === button));
-                applyFilters(activeFilter, searchInputs[0]?.value || "");
-            });
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const activeFilter = button.dataset.filter || "all";
+            filterButtons.forEach((chip) => chip.classList.toggle("active", chip === button));
+            applyFilters(activeFilter, searchInputs[0]?.value || "");
         });
-    }
+    });
 
     searchInputs.forEach((input) => {
         input.addEventListener("input", () => {
@@ -148,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // --- BUTONUL BACK TO TOP ---
     const backToTop = document.querySelector(".back-to-top");
     if (backToTop) {
         window.addEventListener("scroll", () => {
