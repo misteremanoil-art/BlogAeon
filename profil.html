@@ -1,104 +1,29 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profilul Meu — Blog Aeon</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-</head>
-<body>
-    <header>
-        <header>
-    <div class="site-header">
-        <!-- STÂNGA: Bara de căutare -->
-        <div class="header-left">
-            <form action="cautare.html" method="GET" class="search-trigger-container" id="search-form">
-                <input type="search" name="q" placeholder="Caută..." class="expandable-search" id="search-input" autocomplete="off">
-                <label for="search-input" class="search-label" aria-label="Deschide căutarea">
-                    <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </label>
-            </form>
+<div class="auth-card" style="max-width: 600px;">
+    <h1>Contul Meu</h1>
+    <p id="user-email-display" style="color: var(--accent); font-weight: 700;"></p>
+    
+    <div style="margin-top: 30px; text-align: left;">
+        <h3 style="font-family: var(--serif); margin-bottom: 15px;">Articole citite recent</h3>
+        <div id="reading-history-list" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- Aici apar articolele din localStorage -->
         </div>
-
-        <!-- CENTRU: Logo simplu și elegant -->
-        <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
-
-        <!-- DREAPTA: Navigație -->
-        <nav class="header-right">
-            <a href="index.html">Acasă</a>
-            <a href="blog.html">Articole</a>
-            <a href="despre.html">Despre</a>
-    </nav>
     </div>
-</header>
-    <main class="auth-wrapper">
-        <div class="auth-card">
-            <h1>Setări Profil</h1>
-            <p id="user-email-display" style="margin-bottom: 20px; font-weight: 600;"></p>
 
-            <div class="form-group">
-                <label style="font-size: 0.8rem; color: #74716b;">Nume Afișat</label>
-                <input type="text" id="display-name" placeholder="Numele tău">
-            </div>
+    <button id="logout-btn" class="btn-auth" style="margin-top: 40px; background: #991b1b;">Ieșire din cont</button>
+</div>
 
-            <button id="update-profile-btn" class="btn-auth" style="margin-bottom: 10px;">Salvează Numele</button>
-            <button id="reset-password-btn" class="btn-auth" style="background: #74716b; margin-bottom: 30px;">Trimite Email Resetare Parolă</button>
-            
-            <hr style="opacity: 0.1; margin-bottom: 20px;">
-            
-            <button id="logout-btn" class="btn-auth" style="background: #991b1b;">Ieșire din cont</button>
-        </div>
-    </main>
+<script>
+    // Codul pentru afișarea istoricului
+    const historyList = document.getElementById('reading-history-list');
+    const history = JSON.parse(localStorage.getItem('reading_history') || '[]');
 
-    <script>
-        const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        async function loadProfile() {
-            const { data: { user } } = await supabaseClient.auth.getUser();
-            if (!user) {
-                window.location.href = "autentificare.html";
-                return;
-            }
-
-            document.getElementById('user-email-display').innerText = user.email;
-            if (user.user_metadata.full_name) {
-                document.getElementById('display-name').value = user.user_metadata.full_name;
-            }
-        }
-
-        // UPDATE NUME
-        document.getElementById('update-profile-btn').onclick = async () => {
-            const newName = document.getElementById('display-name').value;
-            const { error } = await supabaseClient.auth.updateUser({
-                data: { full_name: newName }
-            });
-            if (error) alert(error.message);
-            else alert("Profil actualizat!");
-        };
-
-        // RESET PAROLA
-        document.getElementById('reset-password-btn').onclick = async () => {
-            const { data: { user } } = await supabaseClient.auth.getUser();
-            const { error } = await supabaseClient.auth.resetPasswordForEmail(user.email, {
-                redirectTo: window.location.origin + '/profil.html',
-            });
-            if (error) alert(error.message);
-            else alert("Email de resetare trimis!");
-        };
-
-        // LOGOUT
-        document.getElementById('logout-btn').onclick = async () => {
-            await supabaseClient.auth.signOut();
-            window.location.href = "index.html";
-        };
-
-        window.onload = loadProfile;
-    </script>
-</body>
-</html>
+    if (history.length > 0) {
+        historyList.innerHTML = history.map(item => `
+            <a href="${item.url}" style="padding: 15px; background: #f9f8f6; border-radius: 10px; border: 1px solid var(--line); font-size: 0.9rem;">
+                ${item.title}
+            </a>
+        `).join('');
+    } else {
+        historyList.innerHTML = "<p style='font-size: 0.8rem; color: gray;'>Nu ai citit niciun articol încă.</p>";
+    }
+</script>
