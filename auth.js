@@ -1,29 +1,48 @@
-// 1. Configurare unică Supabase
+// Configurație Supabase
 const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
-
-// Verificăm dacă supabase este deja definit (pentru a evita erorile de duplicare)
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// 2. Funcția care actualizează Header-ul (Logare -> Nume)
-async function updateHeaderStatus() {
-    const authLink = document.getElementById('auth-link-header');
-    if (!authLink) return;
+const authForm = document.getElementById('auth-form-internal');
+const toggleBtn = document.getElementById('toggle-btn');
+const mainBtn = document.getElementById('main-btn');
+const successBanner = document.getElementById('success-banner');
+const errorMsg = document.getElementById('error-msg');
 
-    try {
-        const { data: { user } } = await supabaseClient.auth.getUser();
+let isLoginMode = true;
 
-        if (user) {
-            const userName = user.user_metadata.full_name || user.email.split('@')[0];
-            authLink.innerText = userName; // Afișăm numele sau emailul
-            authLink.href = "profil.html"; 
-            authLink.style.color = "var(--accent)";
-            authLink.style.fontWeight = "700";
-        }
-    } catch (err) {
-        console.error("Eroare sesiune:", err);
-    }
+// Comutare Login/Register
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        isLoginMode = !isLoginMode;
+        document.getElementById('auth-title').innerText = isLoginMode ? "Conectare" : "Creare Cont";
+        mainBtn.innerText = isLoginMode ? "Intră în cont" : "Înregistrare";
+        document.getElementById('switch-msg').innerText = isLoginMode ? "Nu ai un cont?" : "Ai deja un cont?";
+        toggleBtn.innerText = isLoginMode ? "Creează unul" : "Conectează-te";
+    });
 }
 
-// 3. Rulăm funcția la încărcare
-document.addEventListener('DOMContentLoaded', updateHeaderStatus);
+// Logica de Submit
+if (authForm) {
+    authForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        try {
+            if (isLoginMode) {
+                const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                if (error) throw error;
+                window.location.href = "index.html";
+            } else {
+                const { error } = await supabaseClient.auth.signUp({ email, password });
+                if (error) throw error;
+                successBanner.style.display = "block";
+                setTimeout(() => { location.reload(); }, 3000);
+            }
+        } catch (err) {
+            errorMsg.innerText = err.message;
+            errorMsg.style.display = "block";
+        }
+    });
+}
