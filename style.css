@@ -1327,6 +1327,57 @@ header {
         padding-left: 15px;
     }
 }
+/* ===== STILIZARE CARD AUTOR (ÎN ARTICOLE) ===== */
+.author-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 32px;
+    margin-top: 60px;
+    box-shadow: var(--shadow);
+}
+
+.author-card-inner {
+    display: flex;
+    align-items: center; /* Aliniază imaginea pe verticală cu textul */
+    gap: 25px; /* Spațiu între poză și text */
+    margin-top: 15px;
+}
+
+/* REGLARE DIMENSIUNE IMAGINE AUTOR */
+.author-card-inner .about-round-img {
+    width: 90px;  /* Dimensiune fixă - nu va mai fi uriașă */
+    height: 90px; /* Dimensiune fixă */
+    border-radius: 50%; /* O face rotundă */
+    object-fit: cover; /* Previne deformarea feței */
+    flex-shrink: 0; /* Împiedică strivirea pozei dacă textul e lung */
+    border: 2px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.author-card h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.author-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* Ajustare pentru Mobil */
+@media (max-width: 600px) {
+    .author-card-inner {
+        flex-direction: column; /* Pe telefon poza stă deasupra textului */
+        text-align: center;
+    }
+    .author-card {
+        padding: 25px 20px;
+    }
+}
 
 
 
