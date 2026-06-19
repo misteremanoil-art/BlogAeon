@@ -1293,221 +1293,106 @@ header {
     font-weight: 700;
     cursor: pointer;
 }
-/* ===== STILURI PAGINA DESPRE (AUTOR) ===== */
-
+/* ============================================================
+   1. STILURI PAGINA DESPRE (Rămân neschimbate pentru profil)
+   ============================================================ */
 .profile-image-wrapper {
-    margin: 40px auto 20px;
-    width: 180px;
-    height: 180px;
+    margin: 60px auto 30px;
+    width: 200px;
+    height: 200px;
 }
 
 .about-round-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%; /* Face imaginea rotundă */
-    border: 3px solid white;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .section-divider {
     border: none;
     border-top: 1px solid var(--line);
-    margin: 40px 0;
+    margin: 50px 0;
     width: 100%;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 .english-text {
-    font-style: normal;
-    border-left: 2px solid rgba(180, 83, 9, 0.2);
-    padding-left: 25px;
+    border-left: 2px solid rgba(74, 71, 67, 0.1);
+    padding-left: 30px;
 }
 
-@media (max-width: 768px) {
-    .profile-image-wrapper {
-        width: 140px;
-        height: 140px;
-    }
-    .english-text {
-        padding-left: 15px;
-    }
-}
-/* ===== STILIZARE CARD AUTOR (ÎN ARTICOLE) ===== */
-.author-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    padding: 32px;
-    margin-top: 60px;
-    box-shadow: var(--shadow);
+/* ============================================================
+   2. DESIGN UNITAR EDITORIAL PENTRU ARTICOLE (NOUA TEMĂ)
+   Include: Distribuire, Semnătură Autor și Recenzii
+   ============================================================ */
+
+.editorial-divider-section {
+    max-width: 500px; /* Lățime compactă și elegantă */
+    margin: 0 auto;
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--line); /* Liniile fine care îți plac */
 }
 
-.author-card-inner {
+/* Scoatem bordura de la ultima secțiune ca să nu se dubleze cu footer-ul */
+.editorial-divider-section.no-border {
+    border-top: none;
+}
+
+/* --- Stil Distribuire (Minimal) --- */
+.share-row-minimal {
     display: flex;
-    align-items: center; /* Aliniază imaginea pe verticală cu textul */
-    gap: 25px; /* Spațiu între poză și text */
-    margin-top: 15px;
-}
-
-/* REGLARE DIMENSIUNE IMAGINE AUTOR */
-.author-card-inner .about-round-img {
-    width: 90px;  /* Dimensiune fixă - nu va mai fi uriașă */
-    height: 90px; /* Dimensiune fixă */
-    border-radius: 50%; /* O face rotundă */
-    object-fit: cover; /* Previne deformarea feței */
-    flex-shrink: 0; /* Împiedică strivirea pozei dacă textul e lung */
-    border: 2px solid white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
-
-.author-card h3 {
-    font-family: var(--serif);
-    font-size: 1.4rem;
-    color: var(--text-main);
-    margin-bottom: 5px;
-}
-
-.author-card p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--text-muted);
-}
-
-/* Ajustare pentru Mobil */
-@media (max-width: 600px) {
-    .author-card-inner {
-        flex-direction: column; /* Pe telefon poza stă deasupra textului */
-        text-align: center;
-    }
-    .author-card {
-        padding: 25px 20px;
-    }
-}
-/* ===== BUTOANE DISTRIBUIRE DINAMICE ===== */
-.share-link-circle {
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: #f1f1f1; /* Culoare neutră la început */
-    color: #4a4743;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    gap: 30px;
+    margin-top: 20px;
 }
 
-/* Efect Hover General */
-.share-link-circle:hover {
-    transform: translateY(-5px);
-    color: white !important; /* Iconița devine albă pe fundal colorat */
-}
-
-/* Culori Specifice la Hover */
-.share-link-circle.fb:hover {
-    background-color: #1877F2 !important; /* Albastru Facebook */
-    box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
-}
-
-.share-link-circle.x-corp:hover {
-    background-color: #000000 !important; /* Negru X (fost Twitter) */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.share-link-circle.wa:hover {
-    background-color: #25D366 !important; /* Verde WhatsApp */
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-}
-
-/* Aliniere rând */
-.share-row {
+.share-icon-btn {
+    color: var(--text-muted);
+    transition: all 0.3s ease;
     display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    align-items: center;
 }
-/* ===== CARD DISTRIBUIRE CENTRAT ===== */
-.share-card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    margin-top: 40px;
+
+.share-icon-btn:hover {
+    transform: translateY(-3px);
+}
+
+/* Culori la hover pentru iconițe */
+.share-icon-btn.fb:hover { color: #1877F2; }
+.share-icon-btn.x:hover { color: #000000; }
+.share-icon-btn.wa:hover { color: #25D366; }
+
+/* --- Stil Semnătură Autor (În Articole) --- */
+.author-signature {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrează tot pe verticală */
-}
-
-.share-row {
-    display: flex;
-    gap: 20px;
-    justify-content: center; /* Centrează iconițele pe orizontală */
-    margin-top: 10px;
-}
-
-.share-link-circle {
-    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 50px; /* Puțin mai mari pentru a fi centrul atenției */
-    height: 50px;
+}
+
+.author-img-mini {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: white;
-    color: #4a4743;
+    object-fit: cover;
+    margin-bottom: 15px;
     border: 1px solid var(--line);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
 }
 
-/* Efecte la Hover */
-.share-link-circle:hover {
-    transform: scale(1.15) translateY(-5px);
-    color: white !important;
-}
-
-.share-link-circle.fb:hover { background-color: #1877F2 !important; border-color: #1877F2; }
-.share-link-circle.x-corp:hover { background-color: #000000 !important; border-color: #000000; }
-.share-link-circle.wa:hover { background-color: #25D366 !important; border-color: #25D366; }
-/* ===== STILURI COMENTARII ===== */
-.comment-card {
-    padding: 20px;
-    background: white;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-}
-
-.comment-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.comment-author {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--text-main);
-}
-
-.comment-date {
-    font-size: 0.75rem;
+.author-bio-mini {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-style: italic;
     color: var(--text-muted);
-}
-
-.comment-body {
-    font-size: 0.95rem;
+    max-width: 420px;
     line-height: 1.5;
-    color: #444;
-}
-/* ===== RECENZII MINIMALISTE ===== */
-.mini-reviews-container {
-    max-width: 400px;
-    margin: 60px auto;
-    text-align: center;
-    border-top: 1px solid var(--line);
-    padding-top: 40px;
+    margin-top: 8px;
 }
 
+/* --- Stil Recenzii (Minimalist & Expandabil) --- */
 .reviews-top-bar {
     display: flex;
     flex-direction: column;
@@ -1521,23 +1406,20 @@ header {
     text-transform: uppercase;
     letter-spacing: 3px;
     color: var(--text-muted);
-    margin-bottom: 5px;
 }
 
 .review-icon-label {
     cursor: pointer;
     color: var(--text-main);
     transition: all 0.3s ease;
-    display: block;
     padding: 10px;
 }
 
 .review-icon-label:hover {
     color: var(--accent);
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
-/* Animarea zonei de scris */
 .expandable-review-box {
     width: 100%;
     max-height: 0;
@@ -1549,13 +1431,13 @@ header {
 #toggle-review-input:checked ~ .expandable-review-box {
     max-height: 250px;
     opacity: 1;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 #new-comment {
     width: 100%;
     height: 100px;
-    background: white;
+    background: #fdfdfb;
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 15px;
@@ -1564,7 +1446,6 @@ header {
     font-style: italic;
     resize: none;
     outline: none;
-    box-shadow: var(--shadow-soft);
 }
 
 .view-all-btn {
@@ -1574,10 +1455,8 @@ header {
     font-size: 0.95rem;
     color: var(--text-main);
     cursor: pointer;
-    margin-top: 20px;
-    text-decoration: none;
+    margin-top: 25px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
-    padding-bottom: 2px;
     transition: all 0.3s;
 }
 
@@ -1586,7 +1465,7 @@ header {
     border-bottom-color: var(--accent);
 }
 
-/* MODAL DESIGN */
+/* --- Stil Modal (Fereastra de citit) --- */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -1596,17 +1475,16 @@ header {
     z-index: 2000;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 .modal-card {
     background: #fffdfa;
-    width: 100%;
-    max-width: 550px;
-    max-height: 85vh;
-    border-radius: 28px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.25);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
 }
@@ -1615,13 +1493,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-}
-
-.modal-header h3 {
-    font-family: var(--serif);
-    font-size: 1.8rem;
-    color: var(--text-main);
+    margin-bottom: 20px;
 }
 
 .close-btn {
@@ -1630,12 +1502,14 @@ header {
 
 .modal-body {
     overflow-y: auto;
-    padding-right: 10px;
 }
 
-/* Personalizare scroll modal */
-.modal-body::-webkit-scrollbar { width: 4px; }
-.modal-body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+/* Stil pentru fiecare comentariu în modal */
+.review-item {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
 
 
 
