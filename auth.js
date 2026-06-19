@@ -1,48 +1,82 @@
-// Configurație Supabase
-const SUPABASE_URL = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+/* ============================================================
+   LOGICA PENTRU PAGINA DE AUTENTIFICARE
+   ============================================================ */
 
-const authForm = document.getElementById('auth-form-internal');
-const toggleBtn = document.getElementById('toggle-btn');
-const mainBtn = document.getElementById('main-btn');
-const successBanner = document.getElementById('success-banner');
-const errorMsg = document.getElementById('error-msg');
+// Așteptăm să se încarce DOM-ul
+document.addEventListener('DOMContentLoaded', () => {
+    const authForm = document.getElementById('auth-form-internal');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const mainBtn = document.getElementById('main-btn');
+    const authTitle = document.getElementById('auth-title');
+    const authDesc = document.getElementById('auth-desc');
+    const switchMsg = document.getElementById('switch-msg');
+    const successBanner = document.getElementById('success-banner');
+    const errorMsg = document.getElementById('error-msg');
 
-let isLoginMode = true;
+    let isLoginMode = true;
 
-// Comutare Login/Register
-if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-        isLoginMode = !isLoginMode;
-        document.getElementById('auth-title').innerText = isLoginMode ? "Conectare" : "Creare Cont";
-        mainBtn.innerText = isLoginMode ? "Intră în cont" : "Înregistrare";
-        document.getElementById('switch-msg').innerText = isLoginMode ? "Nu ai un cont?" : "Ai deja un cont?";
-        toggleBtn.innerText = isLoginMode ? "Creează unul" : "Conectează-te";
-    });
-}
-
-// Logica de Submit
-if (authForm) {
-    authForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        
-        try {
+    // 1. FUNCȚIA DE COMUTARE (Login <-> Creare Cont)
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            isLoginMode = !isLoginMode;
+            errorMsg.style.display = "none";
+            
             if (isLoginMode) {
-                const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
-                if (error) throw error;
-                window.location.href = "index.html";
+                authTitle.innerText = "Conectare";
+                authDesc.innerText = "Bine ai revenit la Blog Aeon.";
+                mainBtn.innerText = "Intră în cont";
+                switchMsg.innerText = "Nu ai un cont?";
+                toggleBtn.innerText = "Creează unul";
             } else {
-                const { error } = await supabaseClient.auth.signUp({ email, password });
-                if (error) throw error;
-                successBanner.style.display = "block";
-                setTimeout(() => { location.reload(); }, 3000);
+                authTitle.innerText = "Creare Cont";
+                authDesc.innerText = "Alătură-te comunității noastre teologice.";
+                mainBtn.innerText = "Înregistrare";
+                switchMsg.innerText = "Ai deja un cont?";
+                toggleBtn.innerText = "Conectează-te";
             }
-        } catch (err) {
-            errorMsg.innerText = err.message;
-            errorMsg.style.display = "block";
-        }
-    });
-}
+        });
+    }
+
+    // 2. LOGICA DE SUBMIT (Login & Register)
+    if (authForm) {
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            errorMsg.style.display = "none";
+            if (successBanner) successBanner.style.display = "none";
+            
+            mainBtn.disabled = true;
+            mainBtn.innerText = "Se procesează...";
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            try {
+                if (isLoginMode) {
+                    // --- LOGIN ---
+                    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+                    if (error) throw error;
+                    
+                    window.location.href = "index.html";
+                } else {
+                    // --- REGISTER ---
+                    const { data, error } = await supabaseClient.auth.signUp({ email, password });
+                    if (error) throw error;
+
+                    // Succes vizual
+                    if (successBanner) successBanner.style.display = "block";
+                    mainBtn.innerText = "Cont creat!";
+                    
+                    setTimeout(() => {
+                        window.location.reload(); // Refresh pentru a reveni la login
+                    }, 3000);
+                }
+            } catch (err) {
+                errorMsg.innerText = err.message;
+                errorMsg.style.display = "block";
+                mainBtn.disabled = false;
+                mainBtn.innerText = isLoginMode ? "Intră în cont" : "Înregistrare";
+            }
+        });
+    }
+});
