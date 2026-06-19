@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 <body>
-    <header>
+   <header>
     <div class="site-header">
         <!-- STÂNGA: Bara de căutare -->
         <div class="header-left">
@@ -31,9 +31,12 @@
             <a href="index.html">Acasă</a>
             <a href="blog.html">Articole</a>
             <a href="despre.html">Despre</a>
-            <!-- Verifică să fie exact așa în toate fișierele HTML -->
+            <!-- În interiorul <nav class="header-right"> -->
 <a href="autentificare.html" id="auth-link-header">Logare</a>
-        </nav>
+
+<!-- Include scriptul de sesiune la finalul fiecărui HTML -->
+<script src="auth-session.js"></script>
+    </nav>
     </div>
 </header>
     <main class="container-reading">
