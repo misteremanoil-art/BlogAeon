@@ -1,121 +1,71 @@
-/* ============================================================
-   LOGICA FINALĂ PENTRU RECENZII (VARIANTA ULTRA-COMPACTĂ)
-   ============================================================ */
-
-async function initComments() {
-    console.log("Comentarii: Pornire sistem compact...");
-
-    // 1. Conexiunea la clientul global stabilit în script.js
+async function initBlogComments() {
     const client = window.supabaseClient;
-    if (!client) {
-        setTimeout(initComments, 200);
-        return;
-    }
+    if (!client) { setTimeout(initBlogComments, 200); return; }
 
-    // 2. Referințe către elementele HTML
-    const formContainer = document.getElementById('comment-form-container');
-    const loginPrompt = document.getElementById('login-to-comment');
-    const commentsDisplay = document.getElementById('comments-display-list');
+    const toggleInput = document.getElementById('toggle-review-input');
+    const modal = document.getElementById('reviews-overlay');
+    const openBtn = document.getElementById('open-reviews-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const displayList = document.getElementById('comments-display-list');
     const postBtn = document.getElementById('post-comment-btn');
     const textArea = document.getElementById('new-comment');
+    const articleUrl = window.location.pathname.split('/').pop() || "index.html";
 
-    // Siguranță: dacă nu suntem pe o pagină cu comentarii, oprim execuția
-    if (!commentsDisplay) return;
-
-    // 3. Funcția de actualizare interfață (Logat/Nelogat)
-    const updateUI = (user) => {
-        if (user) {
-            if (formContainer) formContainer.style.setProperty('display', 'block', 'important');
-            if (loginPrompt) loginPrompt.style.setProperty('display', 'none', 'important');
-            setupPosting(user);
-        } else {
-            if (formContainer) formContainer.style.setProperty('display', 'none', 'important');
-            if (loginPrompt) loginPrompt.style.setProperty('display', 'block', 'important');
-        }
-    };
-
-    // Verificăm sesiunea la încărcare și la orice schimbare (login/logout)
+    // 1. Verificare User
     const { data: { session } } = await client.auth.getSession();
-    updateUI(session?.user);
-
-    client.auth.onAuthStateChange((event, session) => {
-        updateUI(session?.user);
-    });
-
-    // 4. Încărcarea comentariilor din baza de date
-    async function loadComments() {
-        const articleUrl = window.location.pathname.split('/').pop() || "index.html";
-        
-        const { data, error } = await client
-            .from('comentarii')
-            .select('*')
-            .eq('articol_url', articleUrl)
-            .order('creat_la', { ascending: false });
-
-        if (error) {
-            console.error("Eroare încărcare:", error);
-            return;
-        }
-
-        if (!data || data.length === 0) {
-            commentsDisplay.innerHTML = "<p style='text-align:center; opacity:0.4; padding: 20px; font-size: 0.8rem; font-style: italic;'>Secțiune deschisă pentru gânduri.</p>";
-            return;
-        }
-
-        // Populăm lista cu recenzii
-        commentsDisplay.innerHTML = data.map(c => `
-            <div class="review-item">
-                <div class="review-header">
-                    <span class="review-author">${c.user_name || 'Cititor'}</span>
-                    <span class="review-date">${new Date(c.creat_la).toLocaleDateString('ro-RO')}</span>
-                </div>
-                <div class="review-content">
-                    ${c.continut}
-                </div>
-            </div>
-        `).join('');
-
-        // Forțăm scroll-ul la începutul listei după încărcare
-        commentsDisplay.scrollTop = 0;
+    if (!session) {
+        document.getElementById('login-to-comment').style.display = 'block';
     }
 
-    // 5. Logica pentru postarea unei recenzii noi
-    function setupPosting(user) {
-        if (!postBtn) return;
-        
-        // Resetăm evenimentul pentru a evita postările multiple
-        postBtn.onclick = null;
-        
+    // 2. Deschidere/Închidere Modal
+    openBtn.onclick = () => { modal.style.display = 'flex'; loadComments(); };
+    closeBtn.onclick = () => { modal.style.display = 'none'; };
+    window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none'; };
+
+    // 3. Încărcare
+    async function loadComments() {
+        displayList.innerHTML = "<p style='text-align:center; opacity:0.5;'>Se caută gândurile comunității...</p>";
+        const { data, error } = await client.from('comentarii')
+            .select('*').eq('articol_url', articleUrl).order('creat_la', { ascending: false });
+
+        if (!data || data.length === 0) {
+            displayList.innerHTML = "<p style='text-align:center; opacity:0.5; padding: 40px;'>Liniște. Încă nu s-au scris recenzii pentru acest eseu.</p>";
+            return;
+        }
+
+        displayList.innerHTML = data.map(c => `
+            <div class="review-item" style="padding: 25px 0; border-bottom: 1px solid rgba(0,0,0,0.04);">
+                <div style="display:flex; justify-content:space-between; margin-bottom: 8px;">
+                    <span style="font-family:var(--sans); font-weight:700; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent);">${c.user_name}</span>
+                    <span style="font-size:0.7rem; color:gray;">${new Date(c.creat_la).toLocaleDateString('ro-RO')}</span>
+                </div>
+                <p style="font-family:var(--serif); font-size:1.15rem; line-height:1.6; font-style:italic;">"${c.continut}"</p>
+            </div>
+        `).join('');
+    }
+
+    // 4. Postare
+    if (postBtn && session) {
         postBtn.onclick = async () => {
             const text = textArea.value.trim();
             if (!text) return;
-
             postBtn.disabled = true;
             postBtn.innerText = "...";
-
             const { error } = await client.from('comentarii').insert([{
-                user_id: user.id,
-                user_name: user.user_metadata.full_name || user.email.split('@')[0],
-                articol_url: window.location.pathname.split('/').pop() || "index.html",
+                user_id: session.user.id,
+                user_name: session.user.user_metadata.full_name || session.user.email.split('@')[0],
+                articol_url: articleUrl,
                 continut: text
             }]);
-
-            if (error) {
-                alert("Eroare: " + error.message);
-                postBtn.disabled = false;
-                postBtn.innerText = "Postează";
-            } else {
-                textArea.value = ""; // Curățăm câmpul
-                postBtn.disabled = false;
-                postBtn.innerText = "Postează";
-                await loadComments(); // Reîncărcăm lista instant
+            if (!error) { 
+                textArea.value = ""; 
+                toggleInput.checked = false; 
+                alert("Gândul tău a fost așternut cu succes.");
+                loadComments(); 
             }
+            postBtn.disabled = false;
+            postBtn.innerText = "Postează";
         };
     }
-
-    // Inițializăm lista la pornire
-    loadComments();
 }
-
-// Lansăm tot sistemul
-initComments();
+initBlogComments();
