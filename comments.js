@@ -1,45 +1,47 @@
 /* ============================================================
-   LOGICA FINALĂ PENTRU GÂNDURI ȘI RECENZII
+   LOGICA "BULLETPROOF" PENTRU RECENZII
    ============================================================ */
 
-function setupCommentsSystem() {
+async function startCommentsLogic() {
     const client = window.supabaseClient;
     
-    // 1. Verificăm dacă Supabase este gata
+    // 1. Așteptăm conexiunea
     if (!client) {
-        setTimeout(setupCommentsSystem, 100);
+        setTimeout(startCommentsLogic, 100);
         return;
     }
 
-    // Elemente din HTML-ul tău actual
     const formContainer = document.getElementById('comment-form-container');
     const loginPrompt = document.getElementById('login-to-comment');
     const commentsList = document.getElementById('comments-display-list');
     const postBtn = document.getElementById('post-comment-btn');
     const commentArea = document.getElementById('new-comment');
-    
-    // Identificăm articolul după URL (numele fișierului)
     const articleUrl = window.location.pathname.split('/').pop() || "index.html";
 
-    // 2. Ascultăm starea utilizatorului (Login/Logout)
-    client.auth.onAuthStateChange((event, session) => {
-        const user = session?.user;
-
+    // 2. FUNCȚIA DE ACTUALIZARE VIZUALĂ (Forțată)
+    function refreshUI(user) {
         if (user) {
-            // Utilizator LOGAT: arătăm formularul, ascundem promptul
-            if (formContainer) formContainer.style.display = 'block';
-            if (loginPrompt) loginPrompt.style.display = 'none';
-            
-            // Activăm logica de postare
-            setupPostingLogic(client, user, articleUrl);
+            console.log("✅ User detectat în comentarii:", user.email);
+            if (formContainer) formContainer.setAttribute('style', 'display: block !important; margin-bottom: 40px;');
+            if (loginPrompt) loginPrompt.setAttribute('style', 'display: none !important;');
+            setupPosting(user);
         } else {
-            // Utilizator NELOGAT: invers
-            if (formContainer) formContainer.style.display = 'none';
-            if (loginPrompt) loginPrompt.style.display = 'block';
+            console.log("❌ Niciun user în comentarii.");
+            if (formContainer) formContainer.setAttribute('style', 'display: none !important;');
+            if (loginPrompt) loginPrompt.setAttribute('style', 'display: block !important;');
         }
+    }
+
+    // 3. VERIFICARE IMEDIATĂ (Chiar acum!)
+    const { data: { session } } = await client.auth.getSession();
+    refreshUI(session?.user);
+
+    // 4. ASCULTĂTOR DE SESIUNE (Dacă se loghează pe parcurs)
+    client.auth.onAuthStateChange((event, session) => {
+        refreshUI(session?.user);
     });
 
-    // 3. Funcție pentru a încărca recenziile existente
+    // 5. ÎNCĂRCARE COMENTARII DIN DB
     async function loadComments() {
         const { data, error } = await client
             .from('comentarii')
@@ -47,18 +49,15 @@ function setupCommentsSystem() {
             .eq('articol_url', articleUrl)
             .order('creat_la', { ascending: false });
 
-        if (error) {
-            console.error("Eroare la încărcare:", error);
-            return;
-        }
+        if (error) return;
 
         if (!data || data.length === 0) {
-            commentsList.innerHTML = "<p style='font-size: 0.9rem; color: gray; text-align:center;'>Nicio recenzie încă. Fii primul care scrie!</p>";
+            commentsList.innerHTML = "<p style='text-align:center; opacity:0.5;'>Nicio recenzie încă.</p>";
             return;
         }
 
         commentsList.innerHTML = data.map(c => `
-            <div class="comment-card" style="margin-bottom: 20px; padding: 20px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+            <div class="comment-card" style="margin-bottom: 20px; padding: 20px; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                     <strong style="color: var(--text-main); font-size: 0.95rem;">${c.user_name || 'Cititor'}</strong>
                     <small style="color: #a59d91; font-size: 0.75rem;">${new Date(c.creat_la).toLocaleDateString('ro-RO')}</small>
@@ -68,48 +67,35 @@ function setupCommentsSystem() {
         `).join('');
     }
 
-    // 4. Logica pentru butonul "Postează"
-    function setupPostingLogic(client, user, url) {
+    // 6. LOGICA DE POSTARE
+    function setupPosting(user) {
         if (!postBtn) return;
-        
-        // Scoatem orice eveniment vechi ca să nu posteze de două ori
-        postBtn.onclick = null;
-
         postBtn.onclick = async () => {
             const text = commentArea.value.trim();
-            if (!text) {
-                alert("Te rugăm să scrii un gând înainte de a posta.");
-                return;
-            }
+            if (!text) return;
 
             postBtn.disabled = true;
             postBtn.innerText = "Se trimite...";
 
-            const { error } = await client.from('comentarii').insert([
-                {
-                    user_id: user.id,
-                    user_name: user.user_metadata.full_name || user.email.split('@')[0],
-                    articol_url: url,
-                    continut: text
-                }
-            ]);
+            const { error } = await client.from('comentarii').insert([{
+                user_id: user.id,
+                user_name: user.user_metadata.full_name || user.email.split('@')[0],
+                articol_url: articleUrl,
+                continut: text
+            }]);
 
             if (error) {
                 alert("Eroare: " + error.message);
-                postBtn.disabled = false;
-                postBtn.innerText = "Postează";
             } else {
-                commentArea.value = ""; // Golim textul
-                postBtn.disabled = false;
-                postBtn.innerText = "Postează";
-                loadComments(); // Refresh automat
+                commentArea.value = "";
+                await loadComments();
             }
+            postBtn.disabled = false;
+            postBtn.innerText = "Postează";
         };
     }
 
-    // Încărcăm comentariile imediat ce se intră pe pagină
     loadComments();
 }
 
-// Lansăm sistemul
-setupCommentsSystem();
+startCommentsLogic();
