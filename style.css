@@ -1289,74 +1289,42 @@ header {
 }
 /* ===== STILURI PAGINA DESPRE (AUTOR) ===== */
 
-.about-image-container {
-    width: 100%;
-    margin-bottom: 40px;
-    border-radius: 24px;
-    overflow: hidden;
+.profile-image-wrapper {
+    margin: 40px auto 20px;
+    width: 180px;
+    height: 180px;
 }
 
-.about-main-img {
+.about-round-img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
-    max-height: 500px; /* Ajustează înălțimea imaginii pe desktop */
-    transition: transform 0.8s ease;
-}
-
-.about-main-img:hover {
-    transform: scale(1.02);
-}
-
-.about-title {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 5vw, 3.2rem) !important;
-    line-height: 1.15 !important;
-    margin: 20px 0 40px;
-    color: var(--text-main);
-    font-weight: 600;
-}
-
-.manifesto-box {
-    margin: 50px 0;
-    padding: 35px;
-    background: rgba(180, 83, 9, 0.03);
-    border-left: 3px solid var(--accent);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.35rem;
-    color: #4a4743;
-    line-height: 1.5;
+    border-radius: 50%; /* Face imaginea rotundă */
+    border: 3px solid white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .section-divider {
     border: none;
     border-top: 1px solid var(--line);
-    margin: 60px auto;
-    width: 20%;
-    opacity: 0.4;
+    margin: 40px 0;
+    width: 100%;
+    opacity: 0.3;
 }
 
-.english-version {
-    opacity: 0.75;
-    background: rgba(0, 0, 0, 0.01);
-    padding: 30px;
-    border-radius: 20px;
+.english-text {
+    font-style: normal;
+    border-left: 2px solid rgba(180, 83, 9, 0.2);
+    padding-left: 25px;
 }
 
-/* Ajustare mobil */
 @media (max-width: 768px) {
-    .about-image-container {
-        margin-left: -20px;
-        width: calc(100% + 40px);
-        border-radius: 0;
+    .profile-image-wrapper {
+        width: 140px;
+        height: 140px;
     }
-    .about-title {
-        font-size: 1.85rem !important;
-    }
-    .manifesto-box {
-        padding: 25px;
-        font-size: 1.15rem;
+    .english-text {
+        padding-left: 15px;
     }
 }
 
