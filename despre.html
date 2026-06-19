@@ -3,97 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="...">
-    <title>...</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <title>Despre — Albert-Beniamin Cucu</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="script.js"></script>
 </head>
 <body>
-   <header>
-    <div class="site-header">
-        <!-- STÂNGA: Bara de căutare -->
-        <div class="header-left">
-            <form action="cautare.html" method="GET" class="search-trigger-container" id="search-form">
-                <input type="search" name="q" placeholder="Caută..." class="expandable-search" id="search-input" autocomplete="off">
-                <label for="search-input" class="search-label" aria-label="Deschide căutarea">
-                    <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </label>
-            </form>
+    <header>
+        <div class="site-header">
+            <div class="header-left">
+                <form action="cautare.html" method="GET" class="search-trigger-container" id="search-form">
+                    <input type="search" name="q" placeholder="Caută..." class="expandable-search" id="search-input" autocomplete="off">
+                    <label for="search-input" class="search-label">
+                        <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </label>
+                </form>
+            </div>
+            <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
+            <nav class="header-right">
+                <a href="index.html">Acasă</a>
+                <a href="blog.html">Articole</a>
+                <a href="despre.html" style="color: var(--accent);">Despre</a>
+                <a href="autentificare.html" id="auth-link-header">Logare</a>
+            </nav>
         </div>
+    </header>
 
-        <!-- CENTRU: Logo -->
-        <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
-
-        <!-- DREAPTA: Navigație -->
-        <nav class="header-right">
-            <a href="index.html">Acasă</a>
-            <a href="blog.html">Articole</a>
-            <a href="despre.html">Despre</a>
-            <!-- Link-ul care va fi transformat automat de auth-session.js -->
-            <a href="autentificare.html" id="auth-link-header">Logare</a>
-        </nav>
-    </div>
-</header>
     <main class="container-reading">
-        <div class="essay-header">
-            <p class="eyebrow">Despre site</p>
-            <h1>Albert-Beniamin Cucu</h1>
-            <p class="standfirst">Un blog de teologie și reflecție, scris cu ton sobru, clar și atent la sensul lucrurilor care contează.</p>
-        </div>
+        <!-- Secțiunea Română -->
+        <section class="about-section">
+            <p class="eyebrow">Profil de Autor</p>
+            <h1 class="about-title">Între rigoarea academică și slujirea pastorală.</h1>
+            
+            <article class="essay-content">
+                <p class="drop-cap">Dețin o diplomă de Master în Teologie Pastorală (Pastoral Ministry), cu o specializare axată pe studii biblice, leadership ecleziastic și îngrijire pastorală. Cercetarea mea vizează provocările contemporane ale slujirii, exegeza biblică și integrarea practică a teologiei în contextul pastoral cotidian.</p>
+                
+                <p>În prezent, slujesc ca pastor în cadrul Bisericii Adventiste de Ziua a Șaptea din România, unde urmăresc să îmbin reflecția academică cu practica pastorală. Obiectivul meu este de a susține creșterea spirituală, de a întări angajamentul comunitar și de a contribui la discursul teologic actual.</p>
 
-        <img src="https://picsum.photos/id/1025/400/400" alt="Albert-Beniamin Cucu" style="width:220px; height:220px; border-radius:50%; display:block; margin:0 auto 50px; filter:grayscale(100%);">
+                <div class="manifesto-box">
+                    <p>"Căutarea mea este de a uni profunzimea studiului biblic cu nevoile reale ale comunității, transformând teologia într-o experiență vie."</p>
+                </div>
 
-        <div class="essay-content">
-            <p class="drop-cap">Sunt Albert-Beniamin Cucu și scriu despre credință, viață și lucrurile care mă ocupă de fapt zi de zi. Nu mă interesează cuvintele pompoase; mă interesează să spun adevărul așa cum îl simt și îl înțeleg.</p>
-            <p>Pe acest site îmi pun în pagină gândurile care mi-au rămas după rugăciune, după discuții serioase și după zile în care am avut nevoie de liniște. Vreau să fie clar, sincer și aproape de realitatea oamenilor.</p>
-            <p>Dacă ai ajuns aici, probabil că cauți un text care vorbește direct, fără artificii. Asta încerc să ofer: un mod simplu de a gândi despre credință, responsabilitate, durere și speranță.</p>
-        </div>
-
-        <section class="mission-grid" aria-label="Misiunea blogului">
-            <article class="highlight-card">
-                <h3>Misiune</h3>
-                <p>Construim un spațiu de lectură calm, bazat pe seriozitate, claritate și respect față de oamenii care caută sens.</p>
-            </article>
-            <article class="highlight-card">
-                <h3>Ton</h3>
-                <p>Textul este sobru, editorial și profund, fără fasoane, cu grijă pentru ritmul lecturii și pentru calitatea ideilor.</p>
-            </article>
-            <article class="highlight-card">
-                <h3>Teme</h3>
-                <p>Teologie, patristică, spiritualitate, rugăciune, durere, speranță și viața de zi cu zi văzute în lumină credinței.</p>
+                <h3>Scurtă Biografie</h3>
+                <p>Albert-Beniamin Cucu slujește în Onești, România. Este absolvent al programului de masterat la Universitatea Adventistă Friedensau din Germania. A publicat o carte și a contribuit cu articole în publicații de prestigiu precum <em>Curierul Adventist</em>, <em>Ministry</em> și <em>TheoRhēma</em>. Interesele sale de cercetare includ Studiile Biblice (Vechiul și Noul Testament), Cartea Apocalipsei, Critica Textuală și Intertextualitatea.</p>
             </article>
         </section>
 
-        <section id="newsletter" class="newsletter-card" aria-label="Newsletter">
-            <p class="eyebrow">Newsletter</p>
-            <h2 style="font-family:var(--serif); font-size:1.5rem; line-height:1.08; font-weight:600;">Primește textul săptămânal, în ritmul potrivit pentru lecție și reflecție.</h2>
-            <p>Un email scurt, rar și atent — doar când am ceva nou de spus.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Adresă de email" aria-label="Adresă de email">
-                <button type="button">Abonare</button>
-            </form>
+        <hr class="section-divider">
+
+        <!-- Secțiunea Engleză (Subtilă) -->
+        <section class="about-section english-version">
+            <p class="eyebrow">English Biography</p>
+            <article class="essay-content">
+                <p>I hold a Master’s degree in Pastoral Ministry from Friedensau Adventist University, Germany. My research engages contemporary issues in ministry, biblical exegesis, and the practical integration of theology into pastoral contexts. I currently serve as a pastor in the Adventist Church in Romania, seeking to unite academic reflection with pastoral practice.</p>
+                
+                <p>My research interests include Theology, Biblical Studies, The Book of Revelation, Textual Criticism, and Intertextuality. I have published a book and contributed articles to <em>Curierul Adventist</em>, <em>Ministry</em>, and <em>TheoRhēma</em>, and presented at several academic conferences.</p>
+            </article>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-inner">
-            <span>Albert-Beniamin Cucu</span>
-            <div class="footer-links">
-                <a href="index.html">Acasă</a>
-                <a href="blog.html">Eseuri</a>
-                <a href="toate-articolele.html">Toate articolele</a>
-                <a href="despre.html">Despre</a>
-                <a href="#newsletter">Newsletter</a>
-            </div>
-            <span>© 2026</span>
-        </div>
+    <footer style="margin-top: 80px; padding: 40px 20px; text-align: center; border-top: 1px solid var(--line); opacity: 0.7;">
+        <p>© 2026 Albert-Beniamin Cucu — Blog Aeon</p>
     </footer>
 
-    <button class="back-to-top" type="button" aria-label="Înapoi sus">↑</button>
     <script src="script.js"></script>
 </body>
 </html>
