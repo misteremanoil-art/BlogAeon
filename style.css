@@ -1120,30 +1120,32 @@ header {
    9. RESPONSIVE DESIGN (OPTIMIZAT PENTRU MOBIL - NOTA 10)
    ============================================================ */
 @media (max-width: 768px) {
-    /* 1. Header ultra-subțire și transparent */
+    /* 1. Header ultra-subțire și transparent cu spațiere laterală */
     header {
-        padding: 8px 0 !important;
+        padding: 8px 20px !important; /* Am adăugat 20px în loc de 0 */
         background: rgba(244, 239, 230, 0.6) !important;
         backdrop-filter: blur(15px) !important;
         -webkit-backdrop-filter: blur(15px) !important;
     }
 
-    /* 2. Re-aranjare layout: Căutare în stânga, Navigație în dreapta */
+    /* 2. Re-aranjare layout header */
     .site-header {
-        grid-template-columns: auto 1fr !important; /* Scoatem coloana de logo */
-        gap: 0 !important;
-        padding: 0 15px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 0 !important;
     }
 
-    /* 3. ASCUNDEM LOGO-UL (Numele) DOAR PE MOBIL */
+    /* 3. ASCUNDEM LOGO-UL DOAR PE MOBIL */
     .logo {
         display: none !important;
     }
 
-    /* 4. Stiluri Navigație (Home, Articole, Despre) */
+    /* 4. Stiluri Navigație compactă */
     .header-right {
         justify-content: flex-end !important;
-        gap: 12px !important; /* Spațiu între link-uri */
+        gap: 12px !important;
     }
 
     .header-right a {
@@ -1152,53 +1154,50 @@ header {
         font-weight: 700;
         text-transform: uppercase;
         color: var(--text-main) !important;
-        padding: 5px 2px !important;
     }
 
     /* 5. Căutarea pe mobil */
-    .header-left {
-        display: flex !important;
-        align-items: center !important;
-    }
-
     .expandable-search:focus {
-        width: 110px !important; /* Se deschide suficient cât să nu înghesuie meniul */
+        width: 110px !important;
         font-size: 0.85rem !important;
-        background: rgba(255,255,255,0.3) !important;
-        border-radius: 4px;
     }
 
-    .lupa-svg {
-        width: 18px;
-        height: 18px;
+    /* 6. FIX-UL PENTRU ARTICOLE (Să nu se mai lipească de margini) */
+    .essay-header, 
+    .article-top-section, 
+    .container-reading, 
+    .essay-content {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
     }
 
-    /* 6. Ajustări conținut pagină pentru a câștiga spațiu */
+    .essay-header h1 {
+        font-size: 2.1rem !important; /* Titlu mai adaptat ecranului mic */
+        line-height: 1.2 !important;
+        margin-top: 20px !important;
+    }
+
+    .standfirst {
+        font-size: 1.2rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Ajustări Hero Section pe Homepage */
     .editorial-hero {
         margin: 25px auto 15px !important;
-    }
-
-    .editorial-hero h1 {
-        font-size: 2.2rem !important;
-        padding: 0 10px;
-    }
-
-    /* Protejăm marginile textului în articole */
-    .container-reading, .essay-content {
-        padding: 30px 20px !important;
+        padding: 0 20px !important;
     }
 }
 
 /* Fix pentru ecrane foarte înguste (sub 360px) */
 @media (max-width: 360px) {
-    .header-right {
-        gap: 8px !important;
-    }
-    .header-right a {
-        font-size: 0.6rem !important;
-        letter-spacing: 0.5px !important;
-    }
+    .header-right { gap: 8px !important; }
+    .header-right a { font-size: 0.6rem !important; }
+    .essay-header h1 { font-size: 1.8rem !important; }
 }
+
 /* ===== STILURI PAGINA AUTENTIFICARE ===== */
 .auth-wrapper {
     min-height: 80vh;
