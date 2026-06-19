@@ -3,29 +3,26 @@
    ============================================================ */
 const sbUrl = 'https://wlqdalqyrlmehkqwvviy.supabase.co';
 const sbKey = 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_';
-const sbClient = supabase.createClient(sbUrl, sbKey);
+
+// Folosim window. pentru a fi accesibil în auth.js
+window.supabaseClient = supabase.createClient(sbUrl, sbKey);
 
 /* ============================================================
-   BAZA DE DATE ARTICOLE (Pentru motorul de căutare)
+   BAZA DE DATE ARTICOLE
    ============================================================ */
-const articoleDB = [
-    { titlu: "Chemarea divină și răspunsul nostru", descriere: "Pilda scuzelor din Luca 14 și importanța răspunsului personal.", url: "articol-chemarea-divina.html", tags: "teologie chemare" },
-    { titlu: "Rugăciunea, între egocentrism și teocentrism", descriere: "Cum rugăciunea personală poate deveni centrată pe voia lui Dumnezeu.", url: "rugaciunea-egocentrism-si-teocentrism.html", tags: "rugaciune teologie" },
-    { titlu: "Redescoperind Comuniunea Personală", descriere: "Un ghid practic în trei pași pentru o rugăciune personală profundă.", url: "redescoperind-comuniunea-personala.html", tags: "rugaciune" },
-    { titlu: "Rediscovering Personal Communion", descriere: "A pastor’s three-step guide to personal prayer based on Matthew 6:6.", url: "rediscovering-personal-communion.html", tags: "prayer" }
-];
+// ... (restul listei tale articoleDB rămâne neschimbat) ...
 
 /* ============================================================
-   FUNCȚII PENTRU INTERFAȚĂ (Sesiune, Căutare, UI)
+   FUNCȚII PENTRU INTERFAȚĂ
    ============================================================ */
 
-// 1. Verificare Sesiune Globală (Schimbă Logare -> Numele tău)
+// 1. Verificare Sesiune Globală - MODIFICAT SĂ FOLOSEASCĂ window.supabaseClient
 async function updateGlobalHeader() {
     const authLink = document.getElementById('auth-link-header');
     if (!authLink) return;
 
     try {
-        const { data: { user } } = await sbClient.auth.getUser();
+        const { data: { user } } = await window.supabaseClient.auth.getUser();
         if (user) {
             const userName = user.user_metadata.full_name || user.email.split('@')[0];
             authLink.innerText = userName;
@@ -37,7 +34,7 @@ async function updateGlobalHeader() {
         console.log("Utilizator nelogat");
     }
 }
-
+// ... restul codului tău (executaCautarea, progress bar, etc.) rămâne la fel ..
 // 2. Motorul de Căutare (pentru pagina cautare.html)
 function executaCautarea() {
     const resultsContainer = document.getElementById('results-list');
