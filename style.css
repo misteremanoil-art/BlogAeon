@@ -1500,64 +1500,66 @@ header {
     color: #444;
 }
 /* ============================================================
-   DESIGN EDITORIAL PENTRU RECENZII
+   DESIGN COMPACT PENTRU RECENZII (STIL CARD ALB)
    ============================================================ */
 
 #comments-section {
-    margin-top: 100px;
-    padding-top: 60px !important;
-    border-top: 1px solid var(--line); /* O linie simplă de separare, fără cutie */
-    background: transparent !important;
-    border-radius: 0 !important;
+    margin-top: 60px;
+    padding: 30px !important; /* Padding redus pentru a fi mai compact */
+    background: #ffffff !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 24px !important; /* Aceeași curbură ca restul cardurilor */
+    box-shadow: var(--shadow);
+    max-width: 100%;
 }
 
-/* Zona de text - Minimalistă */
+/* Zona de text - Mai mică și fină */
 #new-comment {
     width: 100%;
-    height: 100px;
-    padding: 0;
+    height: 80px; /* Înălțime redusă */
+    padding: 12px 0;
     background: transparent !important;
     border: none !important;
-    border-bottom: 1px solid var(--line) !important; /* Doar o linie jos, ca la search */
+    border-bottom: 1px solid var(--line) !important;
     font-family: var(--serif);
-    font-size: 1.2rem;
-    font-style: italic;
+    font-size: 1.05rem;
     color: var(--text-main);
     resize: none;
     outline: none;
-    margin-bottom: 20px;
-    transition: border-color 0.3s ease;
+    margin-bottom: 15px;
 }
 
 #new-comment:focus {
     border-bottom-color: var(--accent) !important;
 }
 
-/* Butonul de postare - discret */
+/* Butonul de postare - Mic și centrat sau aliniat la dreapta */
 #post-comment-btn {
-    background: transparent;
-    color: var(--text-main);
-    border: 1px solid var(--text-main);
-    padding: 8px 24px;
+    background: var(--text-main);
+    color: white;
+    padding: 6px 20px;
+    border: none;
     border-radius: 999px;
     font-family: var(--sans);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: block;
+    margin-left: auto; /* Îl împinge în dreapta, arată mai bine */
 }
 
 #post-comment-btn:hover {
-    background: var(--text-main);
-    color: white;
+    background: var(--accent);
+    transform: translateY(-1px);
 }
 
-/* Lista de comentarii - Aspect de jurnal */
+/* Lista de comentarii - Compactată */
 .review-item {
-    padding: 40px 0;
-    border-bottom: 1px solid rgba(17, 17, 17, 0.05);
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.04);
 }
 
 .review-item:last-child {
@@ -1565,41 +1567,39 @@ header {
 }
 
 .review-header {
-    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
 }
 
 .review-author {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--accent); /* Numele devine un punct de accent */
+    color: var(--text-main);
 }
 
 .review-date {
-    display: block;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: var(--text-muted);
-    margin-top: 4px;
 }
 
 .review-content {
     font-family: var(--serif);
-    font-size: 1.25rem; /* Text mare și lizibil */
-    line-height: 1.7;
-    color: var(--text-main);
-    max-width: 90%;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #444;
 }
 
-/* Mesaj de logare discret */
+/* Mesaj de logare compact */
 #login-to-comment {
-    background: #f9f8f6;
-    border: 1px solid var(--line);
-    padding: 30px;
+    background: #fdfdfb;
+    padding: 15px;
     border-radius: 12px;
-    font-family: var(--serif);
-    font-style: italic;
+    text-align: center;
+    border: 1px solid var(--line);
 }
 
 
