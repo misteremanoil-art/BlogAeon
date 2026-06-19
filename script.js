@@ -10,13 +10,18 @@ window.supabaseClient = supabase.createClient(sbUrl, sbKey);
 /* ============================================================
    BAZA DE DATE ARTICOLE
    ============================================================ */
-// ... (restul listei tale articoleDB rămâne neschimbat) ...
+const articoleDB = [
+    { titlu: "Chemarea divină și răspunsul nostru", descriere: "Pilda scuzelor din Luca 14 și importanța răspunsului personal.", url: "articol-chemarea-divina.html", tags: "teologie chemare" },
+    { titlu: "Rugăciunea, între egocentrism și teocentrism", descriere: "Cum rugăciunea personală poate deveni centrată pe voia lui Dumnezeu.", url: "rugaciunea-egocentrism-si-teocentrism.html", tags: "rugaciune teologie" },
+    { titlu: "Redescoperind Comuniunea Personală", descriere: "Un ghid practic în trei pași pentru o rugăciune personală profundă.", url: "redescoperind-comuniunea-personala.html", tags: "rugaciune" },
+    { titlu: "Rediscovering Personal Communion", descriere: "A pastor’s three-step guide to personal prayer based on Matthew 6:6.", url: "rediscovering-personal-communion.html", tags: "prayer" }
+];
 
 /* ============================================================
    FUNCȚII PENTRU INTERFAȚĂ
    ============================================================ */
 
-// 1. Verificare Sesiune Globală - MODIFICAT SĂ FOLOSEASCĂ window.supabaseClient
+// 1. Verificare Sesiune Globală & Istoric Lectură
 async function updateGlobalHeader() {
     const authLink = document.getElementById('auth-link-header');
     if (!authLink) return;
@@ -29,12 +34,27 @@ async function updateGlobalHeader() {
             authLink.href = "profil.html";
             authLink.style.color = "var(--accent)";
             authLink.style.fontWeight = "700";
+
+            // --- LOGICĂ ISTORIC LECTURĂ ---
+            const articleTitle = document.querySelector('h1')?.innerText;
+            const articleUrl = window.location.pathname.split('/').pop(); // Luăm doar numele fișierului
+
+            // Salvăm în istoric doar dacă suntem pe o pagină de articol (care începe cu 'articol-' sau 'rugaciunea-' etc.)
+            if (articleTitle && (articleUrl.includes('articol-') || articleUrl.includes('rugaciunea-') || articleUrl.includes('rediscovering-') || articleUrl.includes('redescoperind-'))) {
+                let history = JSON.parse(localStorage.getItem('reading_history') || '[]');
+                // Scoatem articolul dacă există deja (ca să îl punem primul)
+                history = history.filter(item => item.url !== articleUrl);
+                // Adăugăm la început
+                history.unshift({ title: articleTitle, url: articleUrl });
+                // Păstrăm doar ultimele 5
+                localStorage.setItem('reading_history', JSON.stringify(history.slice(0, 5)));
+            }
         }
     } catch (e) {
         console.log("Utilizator nelogat");
     }
 }
-// ... restul codului tău (executaCautarea, progress bar, etc.) rămâne la fel ..
+
 // 2. Motorul de Căutare (pentru pagina cautare.html)
 function executaCautarea() {
     const resultsContainer = document.getElementById('results-list');
@@ -68,14 +88,11 @@ function executaCautarea() {
    EVENIMENTUL PRINCIPAL DOM CONTENT LOADED
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
-    // Pornim Logica de Sesiune și Căutare
     updateGlobalHeader();
     executaCautarea();
 
-    // Adăugare clasă pentru animații
     document.body.classList.add("loaded");
 
-    // --- BARA DE PROGRES ---
     const progressBar = document.createElement("div");
     progressBar.id = "progress-bar";
     document.body.appendChild(progressBar);
@@ -88,17 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     window.addEventListener("scroll", updateProgress, { passive: true });
 
-    // --- TIMP DE LECTURĂ ---
     const articleBody = document.querySelector(".essay-content");
     if (articleBody) {
         const text = articleBody.innerText || "";
         const words = text.trim().split(/\s+/).filter(Boolean).length;
         const time = Math.max(1, Math.ceil(words / 225));
         const timeElement = document.querySelector(".reading-time");
-        if (timeElement) timeElement.textContent = `${time} min de lectură`;
+        if (timeElement) {
+            timeElement.textContent = `${time} min de lectură`;
+        }
     }
 
-    // --- FILTRARE CARDURI (Index / Blog) ---
     const cards = Array.from(document.querySelectorAll(".card"));
     const filterButtons = Array.from(document.querySelectorAll(".filter-chip"));
     const searchInputs = Array.from(document.querySelectorAll(".search-box input"));
@@ -131,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- BUTON BACK TO TOP ---
     const backToTop = document.querySelector(".back-to-top");
     if (backToTop) {
         window.addEventListener("scroll", () => {
