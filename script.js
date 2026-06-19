@@ -98,3 +98,19 @@ async function checkAuthStatus() {
 }
 
 document.addEventListener('DOMContentLoaded', checkAuthStatus);
+// Verificare Sesiune Globală (Schimbă "Logare" în Nume)
+async function updateGlobalHeader() {
+    const authLink = document.getElementById('auth-link-header');
+    if (!authLink) return;
+
+    // Inițializăm Supabase și aici (fără conflict)
+    const client = supabase.createClient('https://wlqdalqyrlmehkqwvviy.supabase.co', 'sb_publishable_ejSs6WkxzS_BzoqSjUMInw_-vqKAdE_');
+    
+    const { data: { user } } = await client.auth.getUser();
+    if (user) {
+        authLink.innerText = user.user_metadata.full_name || user.email.split('@')[0];
+        authLink.href = "profil.html";
+        authLink.style.color = "var(--accent)";
+    }
+}
+document.addEventListener('DOMContentLoaded', updateGlobalHeader);
