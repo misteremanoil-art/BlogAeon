@@ -1500,63 +1500,64 @@ header {
     color: #444;
 }
 /* ============================================================
-   STILIZARE PREMIUM PENTRU RECENZII (COMUNITATE)
+   DESIGN EDITORIAL PENTRU RECENZII
    ============================================================ */
 
 #comments-section {
-    margin-top: 80px;
-    padding: 50px 40px !important;
-    background: rgba(255, 255, 255, 0.5) !important;
-    border: 1px solid var(--line) !important;
-    border-radius: 30px !important;
+    margin-top: 100px;
+    padding-top: 60px !important;
+    border-top: 1px solid var(--line); /* O linie simplă de separare, fără cutie */
+    background: transparent !important;
+    border-radius: 0 !important;
 }
 
-/* Stilul zonei de scris (Textarea) */
+/* Zona de text - Minimalistă */
 #new-comment {
     width: 100%;
-    height: 120px;
-    padding: 20px;
-    background: #ffffff;
-    border: 1px solid var(--line);
-    border-radius: 16px;
+    height: 100px;
+    padding: 0;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--line) !important; /* Doar o linie jos, ca la search */
     font-family: var(--serif);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-style: italic;
     color: var(--text-main);
     resize: none;
     outline: none;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
 }
 
 #new-comment:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(180, 83, 9, 0.05);
+    border-bottom-color: var(--accent) !important;
 }
 
-/* Stilul butoanelor de postare */
+/* Butonul de postare - discret */
 #post-comment-btn {
-    margin-top: 15px;
-    background: var(--text-main);
-    color: white;
-    padding: 12px 30px;
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--text-main);
+    padding: 8px 24px;
     border-radius: 999px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
 #post-comment-btn:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
+    background: var(--text-main);
+    color: white;
 }
 
-/* Cardurile de comentarii afișate */
+/* Lista de comentarii - Aspect de jurnal */
 .review-item {
-    padding: 25px;
-    background: #fffdfa;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 0;
-    transition: background 0.3s ease;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.05);
 }
 
 .review-item:last-child {
@@ -1564,52 +1565,43 @@ header {
 }
 
 .review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .review-author {
     font-family: var(--sans);
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-main);
+    letter-spacing: 1.5px;
+    color: var(--accent); /* Numele devine un punct de accent */
 }
 
 .review-date {
-    font-size: 0.75rem;
+    display: block;
+    font-size: 0.7rem;
     color: var(--text-muted);
+    margin-top: 4px;
 }
 
 .review-content {
     font-family: var(--serif);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: #3d3a36;
+    font-size: 1.25rem; /* Text mare și lizibil */
+    line-height: 1.7;
+    color: var(--text-main);
+    max-width: 90%;
+}
+
+/* Mesaj de logare discret */
+#login-to-comment {
+    background: #f9f8f6;
+    border: 1px solid var(--line);
+    padding: 30px;
+    border-radius: 12px;
+    font-family: var(--serif);
     font-style: italic;
 }
 
-/* Mesajul de logare */
-#login-to-comment {
-    border: 1px dashed var(--line);
-    background: rgba(244, 239, 230, 0.4);
-    color: var(--text-muted);
-    font-family: var(--serif);
-}
-
-/* Ajustare mobil */
-@media (max-width: 768px) {
-    #comments-section {
-        padding: 30px 20px !important;
-        margin-top: 50px;
-    }
-    .review-content {
-        font-size: 1.05rem;
-    }
-}
 
 
 
