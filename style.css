@@ -1117,52 +1117,76 @@ header {
     font-style: italic;
 }
 /* ============================================================
-   9. RESPONSIVE DESIGN (OPTIMIZAT PENTRU MOBIL - NOTA 10)
+   9. RESPONSIVE DESIGN (MOBIL - LOGO CENTRAT + NAV JOS)
    ============================================================ */
 @media (max-width: 768px) {
-    /* 1. Header ultra-subțire și transparent cu spațiere laterală */
     header {
-        padding: 8px 20px !important; /* Am adăugat 20px în loc de 0 */
-        background: rgba(244, 239, 230, 0.6) !important;
+        padding: 12px 20px !important;
+        background: rgba(244, 239, 230, 0.7) !important;
         backdrop-filter: blur(15px) !important;
         -webkit-backdrop-filter: blur(15px) !important;
     }
 
-    /* 2. Re-aranjare layout header */
+    /* Transformăm header-ul într-o coloană pentru a pune Logo-ul sus */
     .site-header {
         display: flex !important;
-        justify-content: space-between !important;
+        flex-direction: column !important;
         align-items: center !important;
-        gap: 10px !important;
+        gap: 12px !important;
         padding: 0 !important;
     }
 
-    /* 3. ASCUNDEM LOGO-UL DOAR PE MOBIL */
+    /* 1. LOGO SUS PE MIJLOC */
     .logo {
-        display: none !important;
+        display: block !important;
+        order: 1 !important; /* Îl forțăm să fie primul */
+        font-size: 1.2rem !important;
+        text-align: center !important;
+        width: 100% !important;
+        letter-spacing: -0.02em !important;
+        margin-bottom: 2px !important;
     }
 
-    /* 4. Stiluri Navigație compactă */
+    /* 2. RÂNDUL DE JOS (Căutare + Navigație) */
+    /* Creăm un rând care să ocupe toată lățimea sub logo */
+    .header-left, .header-right {
+        width: auto !important;
+    }
+
+    /* Containerul care ține Lupa și Meniul pe același rând */
+    .header-actions-mobile-wrapper {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        order: 2 !important;
+    }
+
+    /* Ajustăm Navigația să fie compactă în dreapta */
     .header-right {
-        justify-content: flex-end !important;
+        display: flex !important;
         gap: 12px !important;
+        order: 3 !important;
     }
 
     .header-right a {
         font-size: 0.65rem !important;
-        letter-spacing: 1px !important;
+        letter-spacing: 0.5px !important;
         font-weight: 700;
         text-transform: uppercase;
-        color: var(--text-main) !important;
     }
 
-    /* 5. Căutarea pe mobil */
+    /* Ajustăm Căutarea să fie în stânga sub logo */
+    .header-left {
+        order: 2 !important;
+    }
+
     .expandable-search:focus {
-        width: 110px !important;
+        width: 90px !important; /* Lățime sigură să nu împingă meniul */
         font-size: 0.85rem !important;
     }
 
-    /* 6. FIX-UL PENTRU ARTICOLE (Să nu se mai lipească de margini) */
+    /* 3. FIX ARTICOLE (Să nu se mai lipească de margini) */
     .essay-header, 
     .article-top-section, 
     .container-reading, 
@@ -1173,31 +1197,18 @@ header {
     }
 
     .essay-header h1 {
-        font-size: 2.1rem !important; /* Titlu mai adaptat ecranului mic */
+        font-size: 1.9rem !important;
         line-height: 1.2 !important;
-        margin-top: 20px !important;
-    }
-
-    .standfirst {
-        font-size: 1.2rem !important;
-        line-height: 1.5 !important;
-        margin-bottom: 20px !important;
-    }
-
-    /* Ajustări Hero Section pe Homepage */
-    .editorial-hero {
-        margin: 25px auto 15px !important;
-        padding: 0 20px !important;
+        margin-top: 15px !important;
     }
 }
 
-/* Fix pentru ecrane foarte înguste (sub 360px) */
+/* Ajustare pentru ecrane foarte mici (iPhone SE) */
 @media (max-width: 360px) {
+    .logo { font-size: 1.1rem !important; }
     .header-right { gap: 8px !important; }
     .header-right a { font-size: 0.6rem !important; }
-    .essay-header h1 { font-size: 1.8rem !important; }
 }
-
 /* ===== STILURI PAGINA AUTENTIFICARE ===== */
 .auth-wrapper {
     min-height: 80vh;
