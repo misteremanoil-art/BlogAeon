@@ -3,12 +3,12 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Folosim variabila creată în script.js
+    // Luăm clientul creat deja în script.js
     const client = window.supabaseClient; 
 
-    const form = document.getElementById('auth-form-internal');
-    const tglBtn = document.getElementById('toggle-btn');
-    const mBtn = document.getElementById('main-btn');
+    const authForm = document.getElementById('auth-form-internal');
+    const toggleBtn = document.getElementById('toggle-btn');
+    const mainBtn = document.getElementById('main-btn');
     const authTitle = document.getElementById('auth-title');
     const authDesc = document.getElementById('auth-desc');
     const switchMsg = document.getElementById('switch-msg');
@@ -17,30 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isLoginMode = true;
 
-    if (tglBtn) {
-        tglBtn.addEventListener('click', () => {
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
             isLoginMode = !isLoginMode;
+            errorMsg.style.display = "none";
             if (isLoginMode) {
                 authTitle.innerText = "Conectare";
-                authDesc.innerText = "Bine ai revenit.";
-                mBtn.innerText = "Intră în cont";
+                authDesc.innerText = "Bine ai revenit la Blog Aeon.";
+                mainBtn.innerText = "Intră în cont";
                 switchMsg.innerText = "Nu ai un cont?";
-                tglBtn.innerText = "Creează unul";
+                toggleBtn.innerText = "Creează unul";
             } else {
                 authTitle.innerText = "Creare Cont";
-                authDesc.innerText = "Alătură-te comunității.";
-                mBtn.innerText = "Înregistrare";
+                authDesc.innerText = "Alătură-te comunității noastre teologice.";
+                mainBtn.innerText = "Înregistrare";
                 switchMsg.innerText = "Ai deja un cont?";
-                tglBtn.innerText = "Conectează-te";
+                toggleBtn.innerText = "Conectează-te";
             }
         });
     }
 
-    if (form) {
-        form.addEventListener('submit', async (e) => {
+    if (authForm) {
+        authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             errorMsg.style.display = "none";
-            mBtn.disabled = true;
+            mainBtn.disabled = true;
+            mainBtn.innerText = "Se procesează...";
 
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
@@ -59,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 errorMsg.innerText = err.message;
                 errorMsg.style.display = "block";
-                mBtn.disabled = false;
+                mainBtn.disabled = false;
+                mainBtn.innerText = isLoginMode ? "Intră în cont" : "Înregistrare";
             }
         });
     }
