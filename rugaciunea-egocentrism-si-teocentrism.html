@@ -123,26 +123,28 @@
     <p class="eyebrow">Comunitate</p>
     <h3 style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 20px;">Gânduri și Recenzii</h3>
     
-    <!-- Zona de scris comentarii (Apare doar dacă ești logat) -->
+   <!-- SECȚIUNE COMENTARII -->
+<section class="share-card" id="comments-section" style="text-align: left;">
+    <p class="eyebrow">Comunitate</p>
+    <h3 style="font-family: var(--serif); font-size: 1.5rem; margin-bottom: 20px;">Gânduri și Recenzii</h3>
+    
+    <!-- Formularul care apare DOAR dacă ești logat -->
     <div id="comment-form-container" style="display: none; margin-bottom: 40px;">
-        <textarea id="new-comment" placeholder="Scrie o recenzie sau un gând despre acest eseu..." style="width: 100%; height: 100px; padding: 15px; border-radius: 12px; border: 1px solid var(--line); font-family: inherit; margin-bottom: 10px; outline: none;"></textarea>
+        <textarea id="new-comment" placeholder="Scrie o recenzie sau un gând..." style="width: 100%; height: 100px; padding: 15px; border-radius: 12px; border: 1px solid var(--line); font-family: inherit; margin-bottom: 10px; outline: none;"></textarea>
         <button id="post-comment-btn" class="btn-auth" style="width: auto; padding: 10px 25px;">Postează</button>
     </div>
 
-    <!-- Mesaj pentru cei nelogați -->
+    <!-- Mesajul pentru cei nelogați -->
     <div id="login-to-comment" style="padding: 20px; background: #f4f3f0; border-radius: 12px; text-align: center; margin-bottom: 30px;">
         <p style="font-size: 0.9rem;">Trebuie să fii <a href="autentificare.html" style="color: var(--accent); font-weight: 700;">logat</a> pentru a lăsa o recenzie.</p>
     </div>
 
-    <!-- Lista de comentarii -->
+    <!-- LISTA DE COMENTARII - ACEST ID LIPSEȘTE LA TINE! -->
     <div id="comments-display-list" style="display: flex; flex-direction: column; gap: 20px;">
-        <!-- Comentariile vin din baza de date -->
+        <!-- Aici vor apărea comentariile din baza de date -->
     </div>
 </section>
 
-<script>
-    // Logica pentru comentarii va merge aici sau într-un fișier separat
-</script>
             
            <article class="author-card">
     <p class="eyebrow">Despre autor</p>
