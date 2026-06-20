@@ -1325,316 +1325,108 @@ header {
 }
 
 /* ============================================================
-   2. DESIGN UNITAR EDITORIAL PENTRU ARTICOLE (NOUA TEMĂ)
-   Include: Distribuire, Semnătură Autor și Recenzii
+   SISTEM DE DESIGN UNITAR: EDITORIAL DIVIDERS (Nota 10)
+   Folosit pentru: Share, Autor, Susținere, Recenzii
    ============================================================ */
 
+/* Stilul de bază pentru fiecare secțiune de la finalul articolului */
 .editorial-divider-section {
-    max-width: 500px; /* Lățime compactă și elegantă */
+    max-width: 500px; /* Lățime compactă de jurnal */
     margin: 0 auto;
     padding: 60px 0;
     text-align: center;
-    border-top: 1px solid var(--line); /* Liniile fine care îți plac */
+    border-top: 1px solid var(--line) !important; /* Linia artistică pe care o doreai */
 }
 
-/* Scoatem bordura de la ultima secțiune ca să nu se dubleze cu footer-ul */
-.editorial-divider-section.no-border {
-    border-top: none;
-}
-
-/* --- Stil Distribuire (Minimal) --- */
+/* --- 1. Stil Distribuire --- */
 .share-row-minimal {
     display: flex;
     justify-content: center;
     gap: 30px;
     margin-top: 20px;
 }
+.share-icon-btn { color: var(--text-muted); transition: var(--transition); }
+.share-icon-btn:hover { color: var(--accent); transform: translateY(-3px); }
 
-.share-icon-btn {
-    color: var(--text-muted);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-}
-
-.share-icon-btn:hover {
-    transform: translateY(-3px);
-}
-
-/* Culori la hover pentru iconițe */
-.share-icon-btn.fb:hover { color: #1877F2; }
-.share-icon-btn.x:hover { color: #000000; }
-.share-icon-btn.wa:hover { color: #25D366; }
-
-/* --- Stil Semnătură Autor (În Articole) --- */
-.author-signature {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
+/* --- 2. Stil Semnătură Autor --- */
+.author-signature { display: flex; flex-direction: column; align-items: center; }
 .author-img-mini {
-    width: 80px;
-    height: 80px;
+    width: 80px; height: 80px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
     border: 1px solid var(--line);
 }
-
 .author-bio-mini {
     font-family: var(--serif);
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-style: italic;
     color: var(--text-muted);
     max-width: 420px;
     line-height: 1.5;
-    margin-top: 8px;
 }
 
-/* --- Stil Recenzii (Minimalist & Expandabil) --- */
-.reviews-top-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.reviews-label {
-    font-family: var(--sans);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-muted);
-}
-
-.review-icon-label {
-    cursor: pointer;
-    color: var(--text-main);
-    transition: all 0.3s ease;
-    padding: 10px;
-}
-
-.review-icon-label:hover {
-    color: var(--accent);
-    transform: scale(1.1);
-}
-
-.expandable-review-box {
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#toggle-review-input:checked ~ .expandable-review-box {
-    max-height: 250px;
-    opacity: 1;
-    margin-top: 20px;
-}
-
-#new-comment {
-    width: 100%;
-    height: 100px;
-    background: #fdfdfb;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 15px;
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-style: italic;
-    resize: none;
-    outline: none;
-}
-
-.view-all-btn {
-    background: transparent;
-    border: none;
-    font-family: var(--serif);
-    font-size: 0.95rem;
-    color: var(--text-main);
-    cursor: pointer;
-    margin-top: 25px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    transition: all 0.3s;
-}
-
-.view-all-btn:hover {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-}
-
-/* --- Stil Modal (Fereastra de citit) --- */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(18, 18, 18, 0.4);
-    backdrop-filter: blur(10px);
-    display: none;
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-card {
-    background: #fffdfa;
-    width: 90%;
-    max-width: 500px;
-    max-height: 80vh;
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.close-btn {
-    background: none; border: none; font-size: 2.5rem; cursor: pointer; color: var(--text-muted);
-}
-
-.modal-body {
-    overflow-y: auto;
-}
-
-/* Stil pentru fiecare comentariu în modal */
-.review-item {
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-/* ============================================================
-   STILIZARE SECȚIUNE SUSȚINERE (INTEGRATĂ ÎN PAGINĂ)
-   ============================================================ */
-
-.support-mission-block {
-    margin: 100px auto 60px;          /* Spațiu mare după articol */
-    max-width: 760px;                 /* Aceeași lățime ca textul articolului */
-    padding: 60px 40px;
-    background: #f9f8f6;              /* O nuanță foarte discretă de bej-gri */
-    border-radius: 30px;
-    border: 1px solid var(--line);
-    text-align: center;
-}
-
-.support-title {
-    font-family: var(--serif);
-    font-size: 2.2rem;
-    color: var(--text-main);
-    margin: 15px 0 20px;
-}
-
-.support-text {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: var(--text-main);
-    margin-bottom: 40px;
-    font-style: italic;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Elemente de Formular (Sume/Frecvență) */
-.support-group {
-    margin-bottom: 20px;
-}
-
-.support-mini-label {
-    display: block;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--text-muted);
-}
-
-.support-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
+/* --- 3. Stil Susținere (FIX CULORI BUTOANE) --- */
+.support-title { font-family: var(--serif); font-size: 1.8rem; color: var(--text-main); margin-bottom: 15px; }
+.support-text { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; line-height: 1.6; }
 
 .s-choice {
-    background: white;
-    border: 1px solid var(--line);
-    padding: 8px 18px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-main);
+    background: white !important;
+    border: 1px solid var(--line) !important;
+    padding: 10px 15px !important;
+    border-radius: 10px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: var(--text-main) !important; /* TEXT ÎNCHIS LA CULOARE PE FUNDAL ALB */
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-/* Starea de selectat */
+/* FIX: Starea activă (Text alb pe fundal închis) */
 .s-choice.active {
-    background: var(--text-main);
-    color: white;
-    border-color: var(--text-main);
+    background: var(--text-main) !important;
+    color: #ffffff !important; /* ACUM TEXTUL ESTE ALB ȘI VIZIBIL */
+    border-color: var(--text-main) !important;
 }
 
 .s-choice:hover:not(.active) {
-    border-color: var(--accent);
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
 }
 
-/* Câmpul "Alta Sumă" */
-.s-custom-input-wrapper {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 0.4s ease; /* Animație fluidă de deschidere */
-}
-
-.s-custom-input-wrapper.visible {
-    max-height: 60px;
-    opacity: 1;
-    margin-bottom: 20px;
-}
-
-#s-custom-field {
-    width: 200px;
-    padding: 10px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    text-align: center;
-    font-family: var(--serif);
-    outline: none;
-}
-
-#s-custom-field:focus { border-color: var(--accent); }
-
-/* Butonul Final */
 .support-submit-btn {
     background: var(--accent) !important;
-    padding: 14px 40px !important;
-    font-size: 1rem !important;
-    margin-top: 10px;
+    color: white !important;
+    padding: 12px 30px !important;
+    font-size: 0.9rem !important;
+    margin-top: 20px;
+    border-radius: 999px !important;
+    border: none !important;
 }
 
-.support-english-note {
-    font-size: 0.75rem;
-    opacity: 0.4;
-    margin-top: 30px;
-    font-style: italic;
+/* --- 4. Stil Recenzii (Păstrăm interactivitatea) --- */
+.reviews-top-bar { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.reviews-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
+.review-icon-label { cursor: pointer; color: var(--text-main); padding: 10px; transition: var(--transition); }
+.review-icon-label:hover { color: var(--accent); transform: scale(1.1); }
+
+.expandable-review-box {
+    width: 100%; max-height: 0; overflow: hidden; opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#toggle-review-input:checked ~ .expandable-review-box { max-height: 250px; opacity: 1; margin-top: 20px; }
+
+#new-comment {
+    width: 100%; height: 90px;
+    background: #fdfdfb; border: 1px solid var(--line);
+    border-radius: 12px; padding: 15px; font-family: var(--serif); font-size: 1rem;
 }
 
-/* Ajustare Mobil */
+/* --- Ajustare Mobil --- */
 @media (max-width: 768px) {
-    .support-mission-block {
-        margin: 60px 20px;
-        padding: 40px 20px;
-    }
-    .support-title { font-size: 1.7rem; }
-    .support-row { flex-wrap: wrap; }
+    .editorial-divider-section { padding: 40px 20px; border-top: 1px solid var(--line) !important; }
+    .support-row { flex-wrap: wrap; gap: 8px; }
     .s-choice { flex: 1 1 30%; }
 }
 
