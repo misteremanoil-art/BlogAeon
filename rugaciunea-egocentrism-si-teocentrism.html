@@ -173,39 +173,43 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
     <script src="comments.js"></script>
-    <!-- POPUP DONAȚIE EDITORIAL -->
-<div id="donation-popup" class="donation-card">
-    <button id="close-donation" class="close-popup">&times;</button>
+    <!-- SIDEBAR DONAȚIE EDITORIAL -->
+<div id="donation-overlay" class="donation-overlay"></div>
+<div id="donation-sidebar" class="donation-sidebar">
+    <button id="close-donation" class="close-sidebar">&times;</button>
     
-    <p class="eyebrow">Susține misiunea</p>
-    <h3>Donează acum</h3>
-    
-    <p class="donation-text">
-        Publicăm perspective bazate pe studiu și experiență profundă. 
-        Donația ta susține misiunea noastră de a pune marile întrebări și de a oferi perspective originale.
-    </p>
+    <div class="donation-content">
+        <p class="eyebrow">Susține misiunea</p>
+        <h2 class="editorial-title">Donează acum</h2>
+        
+        <p class="donation-description">
+            Publicăm cunoștințe dobândite cu greu de la oameni reali care s-au confruntat profund cu subiectele lor. 
+            <br><br>
+            Donația ta, indiferent de mărime, susține misiunea noastră de a pune marile întrebări și de a oferi perspective proaspete și originale. Dacă prețuiești ceea ce facem, ne vei susține?
+        </p>
 
-    <div class="donation-options">
-        <!-- Frecvență -->
-        <div class="freq-selector">
-            <button class="freq-btn active" data-freq="lunar">Lunar</button>
-            <button class="freq-btn" data-freq="anual">Anual</button>
-            <button class="freq-btn" data-freq="once">O dată</button>
+        <div class="donation-form-box">
+            <p class="selector-label">Alege frecvența:</p>
+            <div class="selector-group">
+                <button class="choice-btn active" data-type="freq">Lunar</button>
+                <button class="choice-btn" data-type="freq">Anual</button>
+                <button class="choice-btn" data-type="freq">O dată</button>
+            </div>
+
+            <p class="selector-label">Suma (USD):</p>
+            <div class="selector-group">
+                <button class="choice-btn active" data-type="amt">$5</button>
+                <button class="choice-btn" data-type="amt">$10</button>
+                <button class="choice-btn" data-type="amt">Alta</button>
+            </div>
+
+            <a href="#" class="btn-auth donate-submit-btn">Susține Blog Aeon</a>
         </div>
 
-        <!-- Sume -->
-        <div class="amount-selector">
-            <button class="amount-btn active" data-amt="5">$5</button>
-            <button class="amount-btn" data-amt="10">$10</button>
-            <button class="amount-btn" data-amt="custom">Alta</button>
-        </div>
+        <p class="english-quote">
+            "Your support helps us deliver fresh, original insights from leading thinkers."
+        </p>
     </div>
-
-    <a href="#" id="donate-submit" class="btn-auth donate-btn">Susține Blog Aeon</a>
-    
-    <p class="english-tiny">
-        "Your support helps us deliver fresh insights from leading thinkers."
-    </p>
 </div>
 
 </body>
