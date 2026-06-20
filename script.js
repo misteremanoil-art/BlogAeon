@@ -144,39 +144,50 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 /* ============================================================
    LOGICA SECȚIUNE SUSȚINERE (FINAL ARTICOL)
+   Gestionează selecția sumelor și afișarea câmpului "Alta"
    ============================================================ */
 
 function initSupportSection() {
+    // Referințe către elementele din HTML
     const choices = document.querySelectorAll('.s-choice');
     const customTrigger = document.getElementById('s-custom-trigger');
     const customBox = document.getElementById('s-custom-box');
     const customField = document.getElementById('s-custom-field');
 
-    // Gestionare selecție butoane
+    // Verificăm dacă suntem pe o pagină care are această secțiune
+    if (!choices.length) return;
+
+    // 1. GESTIONARE CLICK PE BUTOANE (FRECVENȚĂ ȘI SUME FIXE)
     choices.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Găsim grupul din care face parte butonul (Frecvență sau Sumă)
+            // Găsim rândul (părintele) butonului pentru a reseta doar acel grup
             const parentRow = btn.parentElement;
             parentRow.querySelectorAll('.s-choice').forEach(b => b.classList.remove('active'));
+            
+            // Activăm butonul curent
             btn.classList.add('active');
 
-            // Dacă alegem o sumă fixă, ascundem câmpul "Alta"
-            if (btn.classList.contains('s-amt-preset')) {
-                customBox.classList.remove('visible');
+            // 2. LOGICĂ ASCUNDERE AUTOMATĂ CÂMP "ALTA"
+            // Dacă butonul apăsat are clasa 's-amt-preset' ($5, $10), ascundem câmpul custom
+            if (btn.classList.contains('s-amt-preset') && customBox) {
+                customBox.classList.remove('active');
             }
         });
     });
 
-    // Gestionare câmp "Alta Sumă"
-    if (customTrigger) {
+    // 3. LOGICĂ AFIȘARE CÂMP "ALTA SUMĂ"
+    if (customTrigger && customBox) {
         customTrigger.addEventListener('click', () => {
-            customBox.classList.add('visible');
-            customField.focus();
+            // Adăugăm clasa .active care declanșează animația din CSS
+            customBox.classList.add('active');
+            
+            // Punem automat cursorul în câmpul de text
+            if (customField) customField.focus();
         });
     }
 }
 
-// Pornim logica la încărcare
+// Lansăm funcția la încărcarea paginii
 document.addEventListener('DOMContentLoaded', initSupportSection);
 
 
