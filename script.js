@@ -142,3 +142,42 @@ document.addEventListener("DOMContentLoaded", () => {
         btt.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
     }
 });
+/* ============================================================
+   LOGICA POPUP DONAȚIE
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('donation-popup');
+    const closeBtn = document.getElementById('close-donation');
+    const freqBtns = document.querySelectorAll('.freq-btn');
+    const amountBtns = document.querySelectorAll('.amount-btn');
+
+    // 1. Afișăm popup-ul după 5 secunde
+    setTimeout(() => {
+        if (!localStorage.getItem('donation_closed')) {
+            popup.classList.add('visible');
+        }
+    }, 5000);
+
+    // 2. Închidere popup
+    closeBtn.onclick = () => {
+        popup.classList.remove('visible');
+        // Opțional: nu-l mai arătăm în această sesiune
+        localStorage.setItem('donation_closed', 'true');
+    };
+
+    // 3. Selecție Frecvență
+    freqBtns.forEach(btn => {
+        btn.onclick = () => {
+            freqBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+    });
+
+    // 4. Selecție Sumă
+    amountBtns.forEach(btn => {
+        btn.onclick = () => {
+            amountBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        };
+    });
+});
