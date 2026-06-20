@@ -143,47 +143,90 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 /* ============================================================
-   LOGICA SIDEBAR DONAȚIE
+   LOGICA SIDEBAR SUSȚINERE - CERCETARE
    ============================================================ */
+
 function initDonationSidebar() {
     const sidebar = document.getElementById('donation-sidebar');
     const overlay = document.getElementById('donation-overlay');
     const closeBtn = document.getElementById('close-donation');
     const choiceBtns = document.querySelectorAll('.choice-btn');
+    const customAmtTrigger = document.getElementById('custom-amt-trigger');
+    const customAmtBox = document.getElementById('custom-amount-box');
+    
+    // Verificăm dacă elementele există în pagină
+    if (!sidebar) return;
 
-    if (!sidebar || !overlay) return;
+    let hasOpened = false;
 
-    // Afișăm sidebar-ul după 7 secunde de lectură
-    setTimeout(() => {
-        if (!localStorage.getItem('donation_closed_forever')) {
-            sidebar.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Oprim scroll-ul paginii
+    // Funcție pentru deschiderea sertarului
+    const openSidebar = () => {
+        // Nu deschidem dacă a fost deja deschis sau dacă utilizatorul l-a închis în această sesiune
+        if (hasOpened || localStorage.getItem('donation_shown_session')) return;
+        
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        hasOpened = true;
+        localStorage.setItem('donation_shown_session', 'true');
+    };
+
+    // --- REGULA 1: DESCHIDERE DUPĂ 2 MINUTE (120.000 ms) ---
+    setTimeout(openSidebar, 120000);
+
+    // --- REGULA 2: DESCHIDERE LA FINALUL ARTICOLULUI ---
+    window.addEventListener('scroll', () => {
+        const articleContent = document.querySelector('.essay-content');
+        if (articleContent) {
+            const rect = articleContent.getBoundingClientRect();
+            // Dacă fundul articolului a intrat în câmpul vizual
+            if (rect.bottom < window.innerHeight) {
+                openSidebar();
+            }
         }
-    }, 7000);
+    }, { passive: true });
 
-    // Funcție Închidere
+    // --- LOGICA BUTOANELOR DE SELECȚIE ---
+    choiceBtns.forEach(btn => {
+        btn.onclick = () => {
+            // Identificăm grupul din care face parte butonul (frecvență sau sumă)
+            const parent = btn.parentElement;
+            // Dezactivăm celelalte butoane din grup
+            parent.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('active'));
+            // Activăm butonul apăsat
+            btn.classList.add('active');
+            
+            // Dacă se apasă pe o sumă fixă ($5, $10), ascundem câmpul "Alta"
+            if (btn.classList.contains('amt-preset')) {
+                customAmtBox.style.display = 'none';
+            }
+        };
+    });
+
+    // --- LOGICA PENTRU SUMĂ PERSONALIZATĂ ("Alta") ---
+    if (customAmtTrigger) {
+        customAmtTrigger.onclick = () => {
+            // Dezactivăm butoanele de sumă fixă
+            document.querySelectorAll('.amt-preset').forEach(b => b.classList.remove('active'));
+            customAmtTrigger.classList.add('active');
+            // Afișăm câmpul de input
+            customAmtBox.style.display = 'block';
+            document.getElementById('custom-amt-input').focus();
+        };
+    }
+
+    // --- LOGICA DE ÎNCHIDERE ---
     const closeAll = () => {
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
+        // Deblocăm scroll-ul paginii dacă a fost blocat (opțional)
         document.body.style.overflow = '';
-        localStorage.setItem('donation_closed_forever', 'true'); // Opțional: nu-l mai batem la cap
     };
 
     closeBtn.onclick = closeAll;
-    overlay.onclick = closeAll;
-
-    // Selecție butoane (Frecvență și Sumă)
-    choiceBtns.forEach(btn => {
-        btn.onclick = () => {
-            // Luăm doar butoanele din același grup (freq sau amt)
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        };
-    });
+    overlay.onclick = closeAll; // Închide și dacă dai click pe fundalul blurat
 }
 
-// Lansăm funcția
+// Pornim logica după încărcarea documentului
 document.addEventListener('DOMContentLoaded', initDonationSidebar);
+
 
