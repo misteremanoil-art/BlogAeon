@@ -108,6 +108,57 @@
         </a>
     </div>
 </section>
+            <!-- ============================================================
+    1. SECȚIUNE EDITORIALĂ DE SUSȚINERE (FINAL ARTICOL) 
+     ============================================================ -->
+<section class="support-mission-block">
+    <div class="support-container">
+        <!-- Antet Invitatie -->
+        <p class="eyebrow">Parteneriat în cercetare</p>
+        <h2 class="support-title">Susține acest laborator de idei</h2>
+        
+        <p class="support-text">
+            Publicăm perspective bazate pe studiu aprofundat și experiență reală. 
+            Dacă rândurile de mai sus ți-au adus lumină sau claritate, te invit să sprijini misiunea Blog Aeon. 
+            Contribuția ta, indiferent de mărime, susține timpul dedicat cercetării și livrarea unor perspective teologice originale.
+        </p>
+
+        <!-- Formular Interactiv Discret -->
+        <div class="support-options">
+            <!-- Selector Frecvență -->
+            <div class="support-group">
+                <span class="support-mini-label">Frecvență:</span>
+                <div class="support-row">
+                    <button class="s-choice active" data-type="freq">Lunar</button>
+                    <button class="s-choice" data-type="freq">Anual</button>
+                    <button class="s-choice" data-type="freq">O dată</button>
+                </div>
+            </div>
+
+            <!-- Selector Sumă -->
+            <div class="support-group">
+                <span class="support-mini-label">Sumă (USD):</span>
+                <div class="support-row">
+                    <button class="s-choice active s-amt-preset" data-amt="5">$5</button>
+                    <button class="s-choice s-amt-preset" data-amt="10">$10</button>
+                    <button class="s-choice" id="s-custom-trigger">Alta</button>
+                </div>
+            </div>
+
+            <!-- Câmp Sumă Personalizată (Animat din JS) -->
+            <div id="s-custom-box" class="s-custom-input-wrapper">
+                <input type="number" id="s-custom-field" placeholder="Introdu suma dorită...">
+            </div>
+
+            <!-- Buton Acțiune -->
+            <button class="btn-auth support-submit-btn">Susține Studiul</button>
+        </div>
+
+        <p class="support-english-note">
+            "Your support sustains the rigorous study and original insights shared here."
+        </p>
+    </div>
+</section>
 
 <!-- 2. DESPRE AUTOR (STIL SEMNĂTURĂ) -->
 <section class="editorial-divider-section">
@@ -173,51 +224,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
     <script src="comments.js"></script>
-    <!-- SIDEBAR SUSȚINERE CERCETARE -->
-<div id="donation-overlay" class="donation-overlay"></div>
-<div id="donation-sidebar" class="donation-sidebar">
-    <button id="close-donation" class="close-sidebar">&times;</button>
-    
-    <div class="donation-content">
-        <p class="eyebrow">Susține Studiul</p>
-        <h2 class="editorial-title">Investește în Cunoaștere</h2>
-        
-        <p class="donation-description">
-            Fiecare articol și cercetare publicată aici reprezintă ore de studiu profund. 
-            <br><br>
-            Dacă rândurile mele ți-au adus claritate sau un nou punct de reflexie în călătoria ta spirituală, te invit să devii partener în această misiune de explorare teologică. Sprijinul tău face posibilă continuitatea acestui laborator de idei.
-        </p>
-
-        <div class="donation-form-box">
-            <p class="selector-label">Contribuție:</p>
-            <div class="selector-group">
-                <button class="choice-btn active" data-val="lunar">Lunar</button>
-                <button class="choice-btn" data-val="anual">Anual</button>
-                <button class="choice-btn" data-val="once">O dată</button>
-            </div>
-
-            <p class="selector-label">Sumă (USD):</p>
-            <div class="selector-group">
-                <button class="choice-btn active amt-preset" data-amt="5">$5</button>
-                <button class="choice-btn amt-preset" data-amt="10">$10</button>
-                <button class="choice-btn" id="custom-amt-trigger">Alta</button>
-            </div>
-            
-            <!-- Câmp pentru sumă personalizată (ascuns inițial) -->
-            <div id="custom-amount-box" style="display:none; margin-bottom: 20px;">
-                <input type="number" id="custom-amt-input" placeholder="Introdu suma..." 
-                    style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--line); font-family: var(--serif);">
-            </div>
-
-            <a href="#" class="btn-auth donate-submit-btn">Susține Cercetarea</a>
-        </div>
-
-        <p class="english-quote">
-            "Your contribution sustains the rigorous study and original insights shared within Blog Aeon."
-        </p>
-    </div>
-</div>
-
 
 </body>
 </html>
