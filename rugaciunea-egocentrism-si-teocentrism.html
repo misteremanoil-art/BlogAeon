@@ -113,11 +113,11 @@
     </div>
 </section>
 
-<!-- 3. SUSȚINERE (MODIFICATĂ) -->
-<section class="editorial-divider-section support-mission-bg">
+<!-- 3. SUSȚINERE -->
+<section class="editorial-divider-section">
     <p class="eyebrow">Susține Studiul</p>
     <h2 class="support-title">Investește în Cunoaștere</h2>
-    <p class="support-text">Sprijinul tău face posibilă continuitatea acestui laborator de idei și a cercetării teologice.</p>
+    <p class="support-text">Contribuția ta face posibilă continuitatea cercetării teologice.</p>
     
     <div class="support-form-box">
         <div class="support-group">
@@ -136,9 +136,12 @@
                 <button class="s-choice" id="s-custom-trigger">Alta</button>
             </div>
         </div>
+        
+        <!-- CÂMP SUMĂ PERSONALIZATĂ (Se deschide doar la "Alta") -->
         <div id="s-custom-box" class="s-custom-input-wrapper">
-            <input type="number" id="s-custom-field" placeholder="Suma dorită...">
+            <input type="number" id="s-custom-field" placeholder="Introdu suma dorită...">
         </div>
+        
         <button class="btn-auth support-submit-btn">Susține Studiul</button>
     </div>
 </section>
@@ -158,19 +161,23 @@
             </div>
         </div>
     </div>
+    <!-- Butonul de citit care deschide fereastra -->
     <button id="open-reviews-modal" class="view-all-btn">Citește recenziile comunității</button>
 </section>
 
-<!-- MODAL (Ascuns) -->
+<!-- FEREASTRA POPUP (MODAL) - Trebuia să fie aici -->
 <div id="reviews-overlay" class="modal-overlay">
     <div class="modal-card">
         <div class="modal-header">
             <h3>Gânduri și Recenzii</h3>
-            <button id="close-modal" class="close-btn">&times;</button>
+            <button id="close-modal" class="close-btn" title="Închide">&times;</button>
         </div>
-        <div id="comments-display-list" class="modal-body"></div>
+        <div id="comments-display-list" class="modal-body">
+            <!-- Recenziile apar aici prin JS -->
+        </div>
     </div>
 </div>
+
 
     <!-- FOOTER ȘI SCRIPTURI -->
     <footer>
