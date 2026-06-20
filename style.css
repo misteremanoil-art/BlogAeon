@@ -1429,6 +1429,101 @@ header {
     .support-row { flex-wrap: wrap; gap: 8px; }
     .s-choice { flex: 1 1 30%; }
 }
+/* ===== REPARARE SUMĂ PERSONALIZATĂ ===== */
+.s-custom-input-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s ease; /* Animație fluidă */
+}
+
+/* Clasa adăugată de JavaScript când apeși pe "Alta" */
+.s-custom-input-wrapper.active {
+    max-height: 80px;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+#s-custom-field {
+    width: 100%;
+    max-width: 220px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--accent);
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    padding: 10px 0;
+    outline: none;
+}
+
+/* ===== REPARARE MODAL (POPUP) RECENZII ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100vw; height: 100vh;
+    background: rgba(18, 18, 18, 0.4); /* Fundal întunecat transparent */
+    backdrop-filter: blur(10px);       /* Efect de blur pe fundal */
+    display: none;                     /* Ascuns implicit */
+    z-index: 9999 !important;          /* Deasupra oricărui alt element */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Când modalul are clasa active, devine vizibil */
+.modal-overlay.active {
+    display: flex !important;
+}
+
+.modal-card {
+    background: #fffdfa;
+    width: 100%;
+    max-width: 500px;
+    max-height: 80vh;
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 15px;
+}
+
+.close-btn {
+    background: none; border: none; font-size: 2.5rem; cursor: pointer; color: var(--text-muted);
+}
+
+.modal-body {
+    overflow-y: auto; /* Scroll în interiorul ferestrei */
+    flex-grow: 1;
+}
+
+.view-all-btn {
+    background: transparent;
+    border: none;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    cursor: pointer;
+    margin-top: 25px;
+    text-decoration: underline;
+    opacity: 0.7;
+}
 
 
 
