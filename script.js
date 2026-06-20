@@ -143,41 +143,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 /* ============================================================
-   LOGICA POPUP DONAȚIE
+   LOGICA SIDEBAR DONAȚIE
    ============================================================ */
-document.addEventListener('DOMContentLoaded', () => {
-    const popup = document.getElementById('donation-popup');
+function initDonationSidebar() {
+    const sidebar = document.getElementById('donation-sidebar');
+    const overlay = document.getElementById('donation-overlay');
     const closeBtn = document.getElementById('close-donation');
-    const freqBtns = document.querySelectorAll('.freq-btn');
-    const amountBtns = document.querySelectorAll('.amount-btn');
+    const choiceBtns = document.querySelectorAll('.choice-btn');
 
-    // 1. Afișăm popup-ul după 5 secunde
+    if (!sidebar || !overlay) return;
+
+    // Afișăm sidebar-ul după 7 secunde de lectură
     setTimeout(() => {
-        if (!localStorage.getItem('donation_closed')) {
-            popup.classList.add('visible');
+        if (!localStorage.getItem('donation_closed_forever')) {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Oprim scroll-ul paginii
         }
-    }, 5000);
+    }, 7000);
 
-    // 2. Închidere popup
-    closeBtn.onclick = () => {
-        popup.classList.remove('visible');
-        // Opțional: nu-l mai arătăm în această sesiune
-        localStorage.setItem('donation_closed', 'true');
+    // Funcție Închidere
+    const closeAll = () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        localStorage.setItem('donation_closed_forever', 'true'); // Opțional: nu-l mai batem la cap
     };
 
-    // 3. Selecție Frecvență
-    freqBtns.forEach(btn => {
-        btn.onclick = () => {
-            freqBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        };
-    });
+    closeBtn.onclick = closeAll;
+    overlay.onclick = closeAll;
 
-    // 4. Selecție Sumă
-    amountBtns.forEach(btn => {
+    // Selecție butoane (Frecvență și Sumă)
+    choiceBtns.forEach(btn => {
         btn.onclick = () => {
-            amountBtns.forEach(b => b.classList.remove('active'));
+            // Luăm doar butoanele din același grup (freq sau amt)
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
         };
     });
-});
+}
+
+// Lansăm funcția
+document.addEventListener('DOMContentLoaded', initDonationSidebar);
+
