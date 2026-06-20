@@ -1509,6 +1509,105 @@ header {
     padding: 20px 0;
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
+/* ===== POPUP DONAȚIE STILIZAT ===== */
+.donation-card {
+    position: fixed;
+    bottom: -500px; /* Ascuns inițial */
+    left: 25px;
+    width: 360px;
+    background: rgba(255, 253, 250, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    z-index: 3000;
+    transition: bottom 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.donation-card.visible {
+    bottom: 25px; /* Apare pe ecran */
+}
+
+.close-popup {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.4;
+}
+
+.donation-card h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.donation-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Selectori Frecvență & Sumă */
+.donation-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.freq-selector, .amount-selector {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.freq-btn, .amount-btn {
+    background: white;
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.freq-btn.active, .amount-btn.active {
+    background: var(--text-main);
+    color: white;
+    border-color: var(--text-main);
+}
+
+.donate-btn {
+    text-align: center;
+    display: block;
+    background: var(--accent) !important;
+}
+
+.english-tiny {
+    font-size: 0.7rem;
+    font-style: italic;
+    opacity: 0.5;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Ajustare Mobil */
+@media (max-width: 480px) {
+    .donation-card {
+        left: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
+        bottom: -600px;
+    }
+}
+
 
 
 
