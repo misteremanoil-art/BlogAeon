@@ -173,5 +173,40 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
     <script src="comments.js"></script>
+    <!-- POPUP DONAȚIE EDITORIAL -->
+<div id="donation-popup" class="donation-card">
+    <button id="close-donation" class="close-popup">&times;</button>
+    
+    <p class="eyebrow">Susține misiunea</p>
+    <h3>Donează acum</h3>
+    
+    <p class="donation-text">
+        Publicăm perspective bazate pe studiu și experiență profundă. 
+        Donația ta susține misiunea noastră de a pune marile întrebări și de a oferi perspective originale.
+    </p>
+
+    <div class="donation-options">
+        <!-- Frecvență -->
+        <div class="freq-selector">
+            <button class="freq-btn active" data-freq="lunar">Lunar</button>
+            <button class="freq-btn" data-freq="anual">Anual</button>
+            <button class="freq-btn" data-freq="once">O dată</button>
+        </div>
+
+        <!-- Sume -->
+        <div class="amount-selector">
+            <button class="amount-btn active" data-amt="5">$5</button>
+            <button class="amount-btn" data-amt="10">$10</button>
+            <button class="amount-btn" data-amt="custom">Alta</button>
+        </div>
+    </div>
+
+    <a href="#" id="donate-submit" class="btn-auth donate-btn">Susține Blog Aeon</a>
+    
+    <p class="english-tiny">
+        "Your support helps us deliver fresh insights from leading thinkers."
+    </p>
+</div>
+
 </body>
 </html>
