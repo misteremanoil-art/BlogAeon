@@ -1722,13 +1722,10 @@ header {
     font-weight: 600;
 }
 /* ============================================================
-   REPARAȚII FINALE: BUTON TEMĂ ȘI CONTRAST DARK MODE
+   REPARAȚII BUTOANE (Lună/Soare) - Fără pătrate
    ============================================================ */
-
-/* SCOATEM PĂTRATUL DIN JURUL LUNII/SOARELUI */
 .theme-btn {
     background: transparent !important;
-    background-color: transparent !important;
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
@@ -1737,41 +1734,48 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-appearance: none;
-    appearance: none;
 }
 
-/* SOARELE SĂ FIE GALBEN PE DARK MODE */
+/* Soarele galben pe fundalul închis */
 html.dark #sun-icon {
-    color: #f1c40f !important; /* Galben solar */
-    stroke: #f1c40f !important;
+    color: #ffcc00 !important; /* Galben intens */
+    stroke: #ffcc00 !important;
 }
 
 /* ============================================================
-   START — SECȚIUNE DARK MODE (V2 ÎMBUNĂTĂȚIT)
+   START — SECȚIUNE DARK MODE (Contrast Maxim)
    ============================================================ */
 
 html.dark {
-    /* Fundalul principal - un negru foarte adânc */
-    --bg: #050505 !important; 
+    /* FUNDAL NEGRU ABSOLUT */
+    --bg: #000000 !important; 
     
-    /* Articolele și Cardurile - un gri închis care să "iasă în evidență" */
-    --surface: #121214 !important; 
-    --surface-strong: #18181b !important;
+    /* CONTAINERE GRI-ANTRACIT (Să se vadă clar pe negru) */
+    --surface: #1a1a1c !important; 
+    --surface-strong: #222225 !important;
     
     --text: #e4e3e1 !important;
     --text-body: #a0a0a0 !important;
     --accent: #d4a054 !important;
-    --line: rgba(255, 255, 255, 0.08) !important;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    --line: rgba(255, 255, 255, 0.1) !important;
+    
+    /* Umbră mai puternică pentru a ridica containerele de pe fundalul negru */
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* APLICARE FORȚATĂ PENTRU CONTRAST */
+/* APLICARE FUNDAL NEGRU */
 html.dark body {
-    background-color: var(--bg) !important;
+    background: #000000 !important;
+    background-color: #000000 !important;
 }
 
-/* Facem cardurile să se vadă clar diferit față de fundal */
+/* HEADER NEGRU SEMI-TRANSPARENT */
+html.dark header {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-bottom: 1px solid var(--line) !important;
+}
+
+/* CONTAINERELE (ARTICOLELE) SĂ FIE GRI-ANTRACIT */
 html.dark .card, 
 html.dark .featured-article, 
 html.dark .intro-card, 
@@ -1779,29 +1783,33 @@ html.dark .author-card,
 html.dark .share-card,
 html.dark .editorial-divider-section,
 html.dark .support-mission-bg,
-html.dark .highlight-card {
+html.dark .highlight-card,
+html.dark .modal-card {
     background-color: var(--surface) !important;
+    background: var(--surface) !important; /* Forțare fundal */
     border: 1px solid var(--line) !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+    box-shadow: var(--shadow) !important;
+    color: var(--text) !important;
 }
 
-/* Header-ul închis */
-html.dark header {
-    background: rgba(5, 5, 5, 0.8) !important;
-    backdrop-filter: blur(15px);
-}
-
-/* Hover pe carduri în Dark Mode */
+/* Efect de luminare la trecerea mouse-ului peste carduri */
 html.dark .card:hover, 
 html.dark .featured-article:hover {
     background-color: var(--surface-strong) !important;
     border-color: var(--accent) !important;
 }
 
+/* Textele din interiorul cardurilor */
+html.dark .card h2, 
+html.dark .featured-article h1, 
+html.dark .card-copy h2, 
+html.dark h3 {
+    color: var(--text) !important;
+}
+
 /* ============================================================
    SFÂRȘIT — SECȚIUNE DARK MODE
    ============================================================ */
-
 
 
 
