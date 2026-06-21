@@ -1812,55 +1812,58 @@ html.dark h3 {
    ============================================================ */
 
 /* ============================================================
-   FORȚARE HEADER GALBEN PE DARK MODE
+   REGLARE COLORISTICĂ HEADER - MOD DARK (EDITORIAL GOLD)
    ============================================================ */
 
-/* Când clasa .dark este activă, schimbăm tot ce e în header în galben */
+/* 1. LOGO, NAVIGAȚIE ȘI LUPĂ - Culoare de autoritate (Auriu stins) */
 html.dark .logo, 
 html.dark .logo-name,
 html.dark .header-right a, 
-html.dark .theme-btn, 
 html.dark .lupa-svg,
 html.dark .expandable-search,
-html.dark .header-left i {
-    color: #ffcc00 !important;        /* Galben intens pentru text */
-    stroke: #ffcc00 !important;       /* Galben intens pentru liniile SVG (lupa/luna) */
-    border-color: #ffcc00 !important; /* Linia de sub search devine galbenă */
-    opacity: 1 !important;            /* Vizibilitate maximă */
+html.dark .theme-btn {
+    /* Culoarea Aeon Gold (#d4a054) - rafinată și serioasă */
+    color: #d4a054 !important; 
+    stroke: #d4a054 !important;
+    border-bottom-color: rgba(212, 160, 84, 0.3) !important;
+    opacity: 1 !important;
+    font-weight: 700;
 }
 
-/* Ne asigurăm că și la hover rămâne galben sau devine un galben mai deschis */
-html.dark .header-right a:hover,
-html.dark .logo:hover {
-    color: #ffe066 !important; /* Un galben mai deschis la atingere */
-    opacity: 0.8 !important;
-}
-
-/* Placeholder-ul din search pe modul Dark să fie un galben mai pal */
-html.dark .expandable-search::placeholder {
-    color: rgba(255, 204, 0, 0.5) !important;
-}
-
-/* Lupa are nevoie de fill: none ca să nu se umple cu galben */
-html.dark .lupa-svg {
-    fill: none !important;
-    stroke-width: 2.5px !important;
-}
-
-/* SOARELE SĂ RĂMÂNĂ GALBEN (deja setat, dar forțăm) */
+/* 2. SOARELE - Rămâne galben intens (așa cum ai cerut) */
 html.dark #sun-icon {
     color: #ffcc00 !important;
     stroke: #ffcc00 !important;
 }
 
+/* 3. EFECTE LA HOVER - O lumină mai caldă */
+html.dark .header-right a:hover,
+html.dark .logo:hover,
+html.dark .theme-btn:hover {
+    color: #e0b56a !important;
+    opacity: 0.8 !important;
+}
+
+/* 4. LUPA - Claritate pe negru */
+html.dark .lupa-svg {
+    fill: none !important;
+    stroke-width: 2.5px !important;
+}
+
+/* 5. PLACEHOLDER SEARCH - Discret */
+html.dark .expandable-search::placeholder {
+    color: rgba(212, 160, 84, 0.4) !important;
+}
+
 /* ============================================================
-   FIX SPAȚIERE ȘI CONTRAST (Păstrăm restul site-ului)
+   START — SECȚIUNE DARK MODE (Contrastul cu articolele)
    ============================================================ */
+
 html.dark body {
     background-color: #000000 !important;
 }
 
-/* Articolele rămân antracit pentru a "pluti" pe negru */
+/* Articolele rămân antracit, dar primest o bordură fină aurie la hover */
 html.dark .card, 
 html.dark .featured-article, 
 html.dark .intro-card, 
@@ -1869,8 +1872,12 @@ html.dark .share-card,
 html.dark .highlight-card,
 html.dark .editorial-divider-section,
 html.dark .modal-card {
-    background-color: #1a1a1c !important;
-    border-color: rgba(255, 204, 0, 0.1) !important; /* Margine galbenă foarte fină */
+    background-color: #16161a !important; /* Un gri-negru curat */
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+html.dark .card:hover {
+    border-color: rgba(212, 160, 84, 0.3) !important;
 }
 
 
