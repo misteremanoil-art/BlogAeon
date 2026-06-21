@@ -1721,6 +1721,106 @@ header {
     opacity: 0.6;
     font-weight: 600;
 }
+/* ============================================================
+   START — SECȚIUNE DARK MODE ( BlogAeon V2 )
+   Acest cod suprascrie variabilele globale pentru tot site-ul
+   ============================================================ */
+
+html.dark {
+    /* 1. SUPRASCRIERE VARIABILE DE BAZĂ (Culorile tale) */
+    --bg: #0e0e11 !important;
+    --bg-alt: #16161a !important;
+    --bg-card: #1c1c21 !important;
+    --bg-input: #141418 !important;
+
+    /* Text */
+    --text: #e4e3e1 !important;
+    --text-body: #a0a0a0 !important;
+    --text-muted: #48484f !important;
+    
+    /* Elemente de design */
+    --surface: #16161a !important;   /* Mapat pe bg-alt */
+    --surface-strong: #1c1c21 !important; /* Mapat pe bg-card */
+    --line: rgba(255, 255, 255, 0.08) !important;
+    --accent: #d4a054 !important;    /* Auriul tău cald */
+    --shadow: 0 20px 42px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 2. APLICARE FORȚATĂ PE TOATE ELEMENTELE SITE-ULUI */
+
+/* Fundalul general și textul */
+html.dark body {
+    background: var(--bg) !important;
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+}
+
+/* Header-ul (Să devină negru transparent) */
+html.dark header {
+    background: rgba(14, 14, 17, 0.8) !important;
+    border-bottom: 1px solid var(--line) !important;
+}
+
+/* Cardurile de pe Index, Blog și Articolul Principal */
+html.dark .card, 
+html.dark .featured-article, 
+html.dark .intro-card, 
+html.dark .highlight-card, 
+html.dark .author-card, 
+html.dark .share-card, 
+html.dark .editorial-divider-section,
+html.dark .support-mission-bg,
+html.dark .modal-card {
+    background: var(--surface) !important;
+    border-color: var(--line) !important;
+    color: var(--text) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+/* Textele din articole (Titluri și Paragrafe) */
+html.dark h1, 
+html.dark h2, 
+html.dark h3, 
+html.dark .logo, 
+html.dark .logo-name,
+html.dark .essay-header h1 {
+    color: var(--text) !important;
+}
+
+html.dark p, 
+html.dark .essay-content p, 
+html.dark .standfirst, 
+html.dark .lede {
+    color: var(--text-body) !important;
+}
+
+/* Elemente utilitare */
+html.dark .eyebrow {
+    color: var(--accent) !important;
+}
+
+html.dark nav a, 
+html.dark .header-right a, 
+html.dark .theme-btn, 
+html.dark .lupa-svg {
+    color: var(--text) !important;
+    stroke: var(--text) !important;
+}
+
+/* Butoane Donație și Recenzii */
+html.dark .s-choice {
+    background: var(--bg-card) !important;
+    color: var(--text-body) !important;
+}
+
+html.dark .s-choice.active {
+    background: var(--accent) !important;
+    color: var(--bg) !important;
+}
+
+/* ============================================================
+   SFÂRȘIT — SECȚIUNE DARK MODE
+   ============================================================ */
 
 
 
