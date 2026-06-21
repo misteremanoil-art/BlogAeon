@@ -1620,54 +1620,55 @@ header {
     opacity: 0.7;
 }
 /* ============================================================
-   UNIFORMIZARE CULORI HEADER - VIZIBILITATE MAXIMĂ
+   UNIFORMIZARE CULORI HEADER - CULOARE REPARATĂ
    ============================================================ */
 
-/* 1. Starea Normală (Resting) - Acum mult mai vizibilă */
+/* Aplicăm culoarea solidă pe toate elementele din header */
 .theme-btn, 
 .lupa-svg, 
 .header-right a, 
 .expandable-search {
-    color: var(--text) !important;
-    /* Am crescut de la 0.6 la 0.9 pentru un gri mai "plin" și lizibil */
-    opacity: 1.2 !important; 
-    transition: var(--transition);
-    font-family: var(--sans);
+    color: var(--header-ui) !important; /* Folosim griul întărit */
+    stroke: var(--header-ui) !important; /* Forțăm conturul lupei */
+    opacity: 1 !important; /* Fără nicio transparență */
     font-weight: 700;
+    font-family: var(--sans);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
 }
 
-/* 2. Starea de Hover */
-.theme-btn:hover, 
-.search-label:hover .lupa-svg, 
-.header-right a:hover {
-    opacity: 1 !important;
-    color: var(--accent) !important;
-    transform: translateY(-1px);
-}
-
-/* 3. Lupa SVG are nevoie de control pe stroke pentru vizibilitate */
+/* Stil pentru lupa SVG - să fie solidă */
 .lupa-svg {
-    stroke: var(--text); /* Forțăm culoarea pe conturul lupei */
-    stroke-width: 2.5px;   /* O idee mai groasă pentru a fi văzută clar */
+    stroke-width: 2.5px;
+    fill: none;
 }
 
-/* 4. Placeholder-ul de căutare (textul "Caută...") */
-.expandable-search::placeholder {
-    color: var(--text);
-    opacity: 0.7; /* Mai închis și acesta */
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    font-weight: 600;
+/* Stil pentru link-urile din dreapta */
+.header-right a {
+    font-size: 0.72rem;
 }
 
-/* 5. Linia de sub search */
+/* Stil pentru câmpul de căutare */
 .expandable-search {
-    border-bottom: 1px solid var(--text) !important; /* Folosește culoarea textului, nu o linie palidă */
+    border-bottom: 1.5px solid var(--header-ui) !important; /* Linie mai groasă și solidă */
     font-size: 0.8rem !important;
 }
 
+/* Efectul de HOVER - se schimbă doar în culoarea de ACCENT */
+.theme-btn:hover, 
+.search-label:hover .lupa-svg, 
+.header-right a:hover {
+    color: var(--accent) !important;
+    stroke: var(--accent) !important;
+    transform: translateY(-1px);
+}
+
+/* Placeholderul să fie și el vizibil, dar o idee mai palid decât textul principal */
+.expandable-search::placeholder {
+    color: var(--header-ui);
+    opacity: 0.6;
+    font-weight: 600;
+}
 
 
 
