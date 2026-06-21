@@ -190,50 +190,46 @@ function initSupportSection() {
 // Lansăm funcția la încărcarea paginii
 document.addEventListener('DOMContentLoaded', initSupportSection);
 /* ============================================================
-   LOGICA DARK MODE (BlogAeon V2)
-   Gestionează clasa .dark pe <html> și salvează în localStorage
+  /* ============================================================
+   LOGICA DARK MODE (REPARATĂ)
    ============================================================ */
-function initDarkMode() {
-    const themeBtn = document.getElementById('theme-toggle');
-    const moonIcon = document.getElementById('moon-icon');
-    const sunIcon = document.getElementById('sun-icon');
-    const htmlElement = document.documentElement;
+function applyTheme(theme) {
+    const html = document.documentElement;
+    const moon = document.getElementById('moon-icon');
+    const sun = document.getElementById('sun-icon');
 
-    // 1. Încărcăm tema salvată sau detectăm setarea sistemului
-    const savedTheme = localStorage.getItem('aeon-theme');
-    
-    // Dacă utilizatorul a ales deja Dark sau sistemul e pe Dark și nu a ales nimic, punem Dark
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        htmlElement.classList.add('dark');
-        if(moonIcon && sunIcon) {
-            moonIcon.style.display = 'none';
-            sunIcon.style.display = 'block';
-        }
-    }
-
-    // 2. Eveniment Click
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            // Toggle clasa .dark pe <html>
-            const isDark = htmlElement.classList.toggle('dark');
-            
-            // Salvăm preferința
-            localStorage.setItem('aeon-theme', isDark ? 'dark' : 'light');
-            
-            // Schimbăm iconițele
-            if (isDark) {
-                moonIcon.style.display = 'none';
-                sunIcon.style.display = 'block';
-            } else {
-                moonIcon.style.display = 'block';
-                sunIcon.style.display = 'none';
-            }
-        });
+    if (theme === 'dark') {
+        html.classList.add('dark');
+        if (moon) moon.style.display = 'none';
+        if (sun) sun.style.display = 'block';
+    } else {
+        html.classList.remove('dark');
+        if (moon) moon.style.display = 'block';
+        if (sun) sun.style.display = 'none';
     }
 }
 
-// Apelăm funcția la încărcarea paginii
-document.addEventListener('DOMContentLoaded', initDarkMode);
+// 1. Verificăm tema imediat (pentru a evita flash-ul alb)
+const savedTheme = localStorage.getItem('aeon-theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+applyTheme(savedTheme);
+
+// 2. Activăm butonul după ce se încarcă pagina
+document.addEventListener('DOMContentLoaded', () => {
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+        themeBtn.onclick = (e) => {
+            e.preventDefault(); // Prevenim orice comportament ciudat
+            const isDark = document.documentElement.classList.contains('dark');
+            const newTheme = isDark ? 'light' : 'dark';
+            
+            localStorage.setItem('aeon-theme', newTheme);
+            applyTheme(newTheme);
+            console.log("Tema s-a schimbat în:", newTheme);
+        };
+    }
+});
+
 
 
 
