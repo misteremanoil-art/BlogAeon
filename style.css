@@ -1630,7 +1630,7 @@ header {
 .expandable-search {
     color: var(--text) !important;
     /* Am crescut de la 0.6 la 0.9 pentru un gri mai "plin" și lizibil */
-    opacity: 0.9 !important; 
+    opacity: 1.2 !important; 
     transition: var(--transition);
     font-family: var(--sans);
     font-weight: 700;
