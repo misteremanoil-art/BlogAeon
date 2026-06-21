@@ -21,27 +21,79 @@
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- TEMA DARK (Midnight Editorial - Codul tău) --- */
+//* ============================================================
+   START - SECȚIUNE DARK MODE
+   Tot ce este aici se activează când clasa .dark este pe <html>
+   ============================================================ */
+
 .dark {
-    --bg: #0e0e11;
-    --bg-alt: #16161a;
-    --bg-card: #1c1c21;
-    --bg-input: #141418;
-    --bg-overlay: rgba(0, 0, 0, 0.5);
-
+    /* 1. SUPRASCRIERE VARIABILE (Culorile tale de Midnight) */
+    --bg: #0e0e11; 
+    --surface: #16161a;
+    --surface-strong: #1c1c21;
     --text: #e4e3e1;
-    --text-body: #a0a0a0;
-    --text-sec: #6e6e78;
-    --text-muted: #48484f;
-    --text-faint: #2a2a32;
+    --muted: #a0a0a0;
+    --accent: #d4a054; /* Auriu cald */
+    --line: rgba(255, 255, 255, 0.08);
+    --shadow: 0 20px 42px rgba(0, 0, 0, 0.5);
+    --shadow-soft: 0 14px 28px rgba(0, 0, 0, 0.4);
+} /* <--- Aici se termină doar lista de variabile */
 
-    --border: rgba(255, 255, 255, 0.06);
-    --accent: #d4a054;
-    --accent-hover: #e0b56a;
-    --accent-bg: rgba(212, 160, 84, 0.07);
-
-    --shadow: 0 20px 42px rgba(0, 0, 0, 0.4);
+/* 2. FORȚARE ELEMENTE (Reguli care se aplică doar în Dark Mode) */
+.dark body {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
 }
+
+.dark header {
+    background: rgba(18, 18, 18, 0.8) !important;
+    border-bottom: 1px solid var(--line) !important;
+}
+
+/* Forțăm cardurile și secțiunile editoriale să devină închise */
+.dark .card, 
+.dark .featured-article, 
+.dark .author-card, 
+.dark .share-card, 
+.dark .highlight-card,
+.dark .editorial-divider-section,
+.dark .support-mission-bg {
+    background: var(--surface) !important;
+    border-color: var(--line) !important;
+    color: var(--text) !important;
+}
+
+/* Forțăm titlurile și textele din articole */
+.dark h1, .dark h2, .dark h3, .dark p, .dark .essay-content p {
+    color: var(--text) !important;
+}
+
+/* Ajustăm input-ul de căutare să fie vizibil */
+.dark .expandable-search {
+    color: var(--text) !important;
+    border-bottom-color: var(--line) !important;
+}
+
+.dark .expandable-search::placeholder {
+    color: var(--muted) !important;
+}
+
+/* Ajustăm butoanele de selecție (Sume/Frecvență) */
+.dark .s-choice {
+    background: #1c1c21 !important;
+    color: var(--text) !important;
+    border-color: var(--line) !important;
+}
+
+.dark .s-choice.active {
+    background: var(--accent) !important;
+    color: #0e0e11 !important; /* Text negru pe buton auriu */
+}
+
+/* ============================================================
+   SFÂRȘIT - SECȚIUNE DARK MODE
+   ============================================================ */
+
 
 /* --- SETĂRI GENERALE --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
