@@ -1875,6 +1875,46 @@ html.dark .modal-card {
     background-color: #16161a !important; 
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
+/* --- NEWSLETTER ÎN DARK MODE --- */
+html.dark .newsletter-card {
+    background: #16161a !important; /* Antracit, ca restul cardurilor */
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Titlul și textul din newsletter */
+html.dark .newsletter-card h2, 
+html.dark .newsletter-card h3 {
+    color: #e4e3e1 !important;
+}
+
+html.dark .newsletter-card p {
+    color: #a0a0a0 !important;
+}
+
+/* Câmpul de email (Input) */
+html.dark .newsletter-form input {
+    background: #050505 !important; /* Mai închis decât cardul pentru adâncime */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+html.dark .newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Butonul de abonare pe Dark Mode */
+html.dark .newsletter-form button {
+    background: #d4a054 !important; /* Auriul tău pe dark mode */
+    color: #000000 !important;      /* Text negru pe buton auriu pentru contrast */
+    font-weight: 700 !important;
+    transition: all 0.3s ease;
+}
+
+html.dark .newsletter-form button:hover {
+    background: #ffcc00 !important; /* Devine galben strălucitor la hover */
+    transform: translateY(-2px);
+}
 
 
 
