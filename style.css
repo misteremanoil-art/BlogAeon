@@ -1811,7 +1811,67 @@ html.dark h3 {
    SFÂRȘIT — SECȚIUNE DARK MODE
    ============================================================ */
 
+/* ============================================================
+   FORȚARE HEADER GALBEN PE DARK MODE
+   ============================================================ */
 
+/* Când clasa .dark este activă, schimbăm tot ce e în header în galben */
+html.dark .logo, 
+html.dark .logo-name,
+html.dark .header-right a, 
+html.dark .theme-btn, 
+html.dark .lupa-svg,
+html.dark .expandable-search,
+html.dark .header-left i {
+    color: #ffcc00 !important;        /* Galben intens pentru text */
+    stroke: #ffcc00 !important;       /* Galben intens pentru liniile SVG (lupa/luna) */
+    border-color: #ffcc00 !important; /* Linia de sub search devine galbenă */
+    opacity: 1 !important;            /* Vizibilitate maximă */
+}
+
+/* Ne asigurăm că și la hover rămâne galben sau devine un galben mai deschis */
+html.dark .header-right a:hover,
+html.dark .logo:hover {
+    color: #ffe066 !important; /* Un galben mai deschis la atingere */
+    opacity: 0.8 !important;
+}
+
+/* Placeholder-ul din search pe modul Dark să fie un galben mai pal */
+html.dark .expandable-search::placeholder {
+    color: rgba(255, 204, 0, 0.5) !important;
+}
+
+/* Lupa are nevoie de fill: none ca să nu se umple cu galben */
+html.dark .lupa-svg {
+    fill: none !important;
+    stroke-width: 2.5px !important;
+}
+
+/* SOARELE SĂ RĂMÂNĂ GALBEN (deja setat, dar forțăm) */
+html.dark #sun-icon {
+    color: #ffcc00 !important;
+    stroke: #ffcc00 !important;
+}
+
+/* ============================================================
+   FIX SPAȚIERE ȘI CONTRAST (Păstrăm restul site-ului)
+   ============================================================ */
+html.dark body {
+    background-color: #000000 !important;
+}
+
+/* Articolele rămân antracit pentru a "pluti" pe negru */
+html.dark .card, 
+html.dark .featured-article, 
+html.dark .intro-card, 
+html.dark .author-card, 
+html.dark .share-card,
+html.dark .highlight-card,
+html.dark .editorial-divider-section,
+html.dark .modal-card {
+    background-color: #1a1a1c !important;
+    border-color: rgba(255, 204, 0, 0.1) !important; /* Margine galbenă foarte fină */
+}
 
 
 
