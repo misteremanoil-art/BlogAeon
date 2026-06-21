@@ -1620,49 +1620,52 @@ header {
     opacity: 0.7;
 }
 /* ============================================================
-   UNIFORMIZARE CULORI HEADER (STÂNGA = DREAPTA)
+   UNIFORMIZARE CULORI HEADER - VIZIBILITATE MAXIMĂ
    ============================================================ */
 
-/* 1. Starea Normală (Resting) */
+/* 1. Starea Normală (Resting) - Acum mult mai vizibilă */
 .theme-btn, 
 .lupa-svg, 
 .header-right a, 
 .expandable-search {
     color: var(--text) !important;
-    opacity: 0.6; /* Aceeași transparență discretă peste tot */
+    /* Am crescut de la 0.6 la 0.9 pentru un gri mai "plin" și lizibil */
+    opacity: 0.9 !important; 
     transition: var(--transition);
-    font-family: var(--sans); /* Uniformizăm fontul pentru utilități */
+    font-family: var(--sans);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* 2. Starea de Hover (Când treci cu mouse-ul) */
+/* 2. Starea de Hover */
 .theme-btn:hover, 
 .search-label:hover .lupa-svg, 
 .header-right a:hover {
-    opacity: 1;
-    color: var(--accent) !important; /* Toate devin portocalii/aurii la hover */
+    opacity: 1 !important;
+    color: var(--accent) !important;
     transform: translateY(-1px);
 }
 
-/* 3. Ajustare specifică pentru linia de căutare */
-.expandable-search {
-    border-bottom: 1px solid var(--line) !important;
-    font-size: 0.75rem !important; /* Potrivim mărimea cu link-urile din nav */
+/* 3. Lupa SVG are nevoie de control pe stroke pentru vizibilitate */
+.lupa-svg {
+    stroke: var(--text); /* Forțăm culoarea pe conturul lupei */
+    stroke-width: 2.5px;   /* O idee mai groasă pentru a fi văzută clar */
 }
 
-.expandable-search:focus {
-    opacity: 1;
-    border-bottom-color: var(--accent) !important;
-}
-
-/* 4. Placeholder-ul să fie la fel de discret */
+/* 4. Placeholder-ul de căutare (textul "Caută...") */
 .expandable-search::placeholder {
     color: var(--text);
-    opacity: 0.5;
+    opacity: 0.7; /* Mai închis și acesta */
     text-transform: uppercase;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* 5. Linia de sub search */
+.expandable-search {
+    border-bottom: 1px solid var(--text) !important; /* Folosește culoarea textului, nu o linie palidă */
+    font-size: 0.8rem !important;
 }
 
 
