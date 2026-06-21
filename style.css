@@ -1812,74 +1812,69 @@ html.dark h3 {
    ============================================================ */
 
 /* ============================================================
-   REGLARE COLORISTICĂ HEADER - MOD DARK (EDITORIAL GOLD)
+   REGLARE FINALĂ HEADER - DARK MODE (GRI -> GALBEN LA HOVER)
    ============================================================ */
 
-/* 1. LOGO, NAVIGAȚIE ȘI LUPĂ - Culoare de autoritate (Auriu stins) */
+/* 1. STARE NORMALĂ - Gri deschis (Echilibrat și curat) */
 html.dark .logo, 
 html.dark .logo-name,
 html.dark .header-right a, 
 html.dark .lupa-svg,
 html.dark .expandable-search,
 html.dark .theme-btn {
-    /* Culoarea Aeon Gold (#d4a054) - rafinată și serioasă */
-    color: #d4a054 !important; 
-    stroke: #d4a054 !important;
-    border-bottom-color: rgba(212, 160, 84, 0.3) !important;
+    color: #b0b0b0 !important;        /* Gri argintiu deschis */
+    stroke: #b0b0b0 !important;       /* Conturul iconițelor */
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
     opacity: 1 !important;
     font-weight: 700;
 }
 
-/* 2. SOARELE - Rămâne galben intens (așa cum ai cerut) */
+/* 2. SOARELE - Rămâne galben mereu (Semnătura ta) */
 html.dark #sun-icon {
     color: #ffcc00 !important;
     stroke: #ffcc00 !important;
 }
 
-/* 3. EFECTE LA HOVER - O lumină mai caldă */
+/* 3. STARE HOVER - Totul devine GALBEN la atingere */
 html.dark .header-right a:hover,
 html.dark .logo:hover,
-html.dark .theme-btn:hover {
-    color: #e0b56a !important;
-    opacity: 0.8 !important;
+html.dark .theme-btn:hover,
+html.dark .search-label:hover .lupa-svg {
+    color: #ffcc00 !important;        /* Galben intens la hover */
+    stroke: #ffcc00 !important;       /* Iconița devine și ea galbenă */
+    opacity: 1 !important;
+    transform: translateY(-1px);      /* Efect discret de ridicare */
 }
 
-/* 4. LUPA - Claritate pe negru */
+/* 4. LUPA - Fill none pentru a păstra doar conturul */
 html.dark .lupa-svg {
     fill: none !important;
     stroke-width: 2.5px !important;
 }
 
-/* 5. PLACEHOLDER SEARCH - Discret */
+/* 5. PLACEHOLDER SEARCH */
 html.dark .expandable-search::placeholder {
-    color: rgba(212, 160, 84, 0.4) !important;
+    color: rgba(176, 176, 176, 0.4) !important;
 }
 
 /* ============================================================
-   START — SECȚIUNE DARK MODE (Contrastul cu articolele)
+   FIX FUNDAL ȘI ARTICOLE (Pentru contrastul de nota 10)
    ============================================================ */
-
 html.dark body {
-    background-color: #000000 !important;
+    background-color: #000000 !important; /* Negru absolut */
 }
 
-/* Articolele rămân antracit, dar primest o bordură fină aurie la hover */
+/* Articolele (cardurile) sunt antracit pentru a pluti pe negru */
 html.dark .card, 
 html.dark .featured-article, 
-html.dark .intro-card, 
 html.dark .author-card, 
 html.dark .share-card,
-html.dark .highlight-card,
 html.dark .editorial-divider-section,
+html.dark .support-mission-bg,
 html.dark .modal-card {
-    background-color: #16161a !important; /* Un gri-negru curat */
+    background-color: #16161a !important; 
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
-
-html.dark .card:hover {
-    border-color: rgba(212, 160, 84, 0.3) !important;
-}
-
 
 
 
