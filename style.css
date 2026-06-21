@@ -4,26 +4,18 @@
    SISTEM DE CULORI UNIFICAT (V2)
    ============================================================ */
 :root {
-  /* --- TEMA LIGHT (Hârtie Originală) --- */
+  /* --- TEMA LIGHT (Culorile tale originale) --- */
   --bg: #f4f3f0;
-  --bg-alt: rgba(244, 239, 230, 0.86);
-  --bg-card: #ffffff;
-  --bg-input: #ffffff;
-  --bg-overlay: rgba(0, 0, 0, 0.1);
-
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-strong: #fffdfa;
   --text: #1a1a1a;
-  --text-body: #57534e;
-  --text-sec: rgba(18, 18, 18, 0.6);
-  --text-muted: rgba(17, 17, 17, 0.4);
-  --text-faint: rgba(17, 17, 17, 0.05);
-
+  --muted: #57534e;
   --accent: #b45309;
-  --accent-hover: #92400e;
-  --accent-bg: rgba(180, 83, 9, 0.05);
-  
-  --border: rgba(17, 17, 17, 0.10);
+  --line: rgba(17, 17, 17, 0.10);
   --shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 14px 28px rgba(15, 23, 42, 0.06);
   
+  /* Fonturi & Tranziție */
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Inter', sans-serif;
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
