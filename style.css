@@ -1,17 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
 
+/* ============================================================
+   SISTEM DE CULORI UNIFICAT (V2)
+   ============================================================ */
 :root {
+  /* --- TEMA LIGHT (Hârtie Originală) --- */
   --bg: #f4f3f0;
-  --surface: rgba(255, 255, 255, 0.92);
-  --surface-strong: #fffdfa;
+  --bg-alt: rgba(244, 239, 230, 0.86);
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-overlay: rgba(0, 0, 0, 0.1);
+
   --text: #1a1a1a;
-  --muted: #57534e;
+  --text-body: #57534e;
+  --text-sec: rgba(18, 18, 18, 0.6);
+  --text-muted: rgba(17, 17, 17, 0.4);
+  --text-faint: rgba(17, 17, 17, 0.05);
+
   --accent: #b45309;
-  --line: rgba(17, 17, 17, 0.10);
+  --accent-hover: #92400e;
+  --accent-bg: rgba(180, 83, 9, 0.05);
+  
+  --border: rgba(17, 17, 17, 0.10);
   --shadow: 0 20px 42px rgba(15, 23, 42, 0.08);
-  --shadow-soft: 0 14px 28px rgba(15, 23, 42, 0.06);
+  
   --serif: 'Cormorant Garamond', serif;
   --sans: 'Inter', sans-serif;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- TEMA DARK (Midnight Editorial - Codul tău) --- */
+.dark {
+    --bg: #0e0e11;
+    --bg-alt: #16161a;
+    --bg-card: #1c1c21;
+    --bg-input: #141418;
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+
+    --text: #e4e3e1;
+    --text-body: #a0a0a0;
+    --text-sec: #6e6e78;
+    --text-muted: #48484f;
+    --text-faint: #2a2a32;
+
+    --border: rgba(255, 255, 255, 0.06);
+    --accent: #d4a054;
+    --accent-hover: #e0b56a;
+    --accent-bg: rgba(212, 160, 84, 0.07);
+
+    --shadow: 0 20px 42px rgba(0, 0, 0, 0.4);
+}
+
+/* --- SETĂRI GENERALE --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+/* Adăugăm tranziția pe body ca să se schimbe culorile lin */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    font-family: var(--sans);
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
