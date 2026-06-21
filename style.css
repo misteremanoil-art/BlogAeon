@@ -1620,49 +1620,51 @@ header {
     opacity: 0.7;
 }
 /* ============================================================
-   REGLARE CULORI CĂUTARE PENTRU DARK MODE
+   UNIFORMIZARE CULORI HEADER (STÂNGA = DREAPTA)
    ============================================================ */
 
-/* 1. Lupa SVG (Iconița) */
-.lupa-svg {
-    /* Folosim 'currentColor' pentru a prelua automat culoarea textului din temă */
-    color: var(--text); 
-    opacity: 0.6;
-    transition: var(--transition);
-}
-
-.search-label:hover .lupa-svg {
-    color: var(--accent); /* Devine portocaliu/auriu la hover */
-    opacity: 1;
-}
-
-/* 2. Câmpul de text (Input-ul expandabil) */
+/* 1. Starea Normală (Resting) */
+.theme-btn, 
+.lupa-svg, 
+.header-right a, 
 .expandable-search {
-    color: var(--text) !important; /* Textul pe care îl scrii */
-    border-bottom: 1px solid var(--line) !important; /* Linia de sub search */
+    color: var(--text) !important;
+    opacity: 0.6; /* Aceeași transparență discretă peste tot */
+    transition: var(--transition);
+    font-family: var(--sans); /* Uniformizăm fontul pentru utilități */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 2. Starea de Hover (Când treci cu mouse-ul) */
+.theme-btn:hover, 
+.search-label:hover .lupa-svg, 
+.header-right a:hover {
+    opacity: 1;
+    color: var(--accent) !important; /* Toate devin portocalii/aurii la hover */
+    transform: translateY(-1px);
+}
+
+/* 3. Ajustare specifică pentru linia de căutare */
+.expandable-search {
+    border-bottom: 1px solid var(--line) !important;
+    font-size: 0.75rem !important; /* Potrivim mărimea cu link-urile din nav */
 }
 
 .expandable-search:focus {
-    border-bottom-color: var(--accent) !important; /* Linia devine accent la click */
+    opacity: 1;
+    border-bottom-color: var(--accent) !important;
 }
 
-/* 3. Textul ajutător (Placeholder) */
+/* 4. Placeholder-ul să fie la fel de discret */
 .expandable-search::placeholder {
     color: var(--text);
-    opacity: 0.4; /* Îl facem mai șters să nu deranjeze */
-    font-style: italic;
+    opacity: 0.5;
+    text-transform: uppercase;
+    font-size: 0.65rem;
 }
 
-/* 4. Butonul de schimbare a temei (Lună/Soare) */
-.theme-btn {
-    color: var(--text);
-    opacity: 0.6;
-}
-
-.theme-btn:hover {
-    opacity: 1;
-    color: var(--accent);
-}
 
 
 
