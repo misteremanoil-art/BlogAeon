@@ -3,20 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Studiu teologic despre rugăciunea personală.">
+    <meta name="description" content="Studiu teologic despre rugăciunea personală — cum poate deveni fie centrată pe sine (egocentric), fie centrată pe voia lui Dumnezeu (teocentric).">
     <title>Rugăciunea, între egocentrism și teocentrism — Albert-Beniamin Cucu</title>
-    <link rel="stylesheet" href="style.css?v=1.2">
-    <!-- Favicon fix -->
+
+    <!-- Canonical & SEO -->
+    <link rel="canonical" href="https://misteremanoil-art.github.io/BlogAeon/rugaciunea-egocentrism-si-teocentrism.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type"              content="article">
+    <meta property="og:url"               content="https://misteremanoil-art.github.io/BlogAeon/rugaciunea-egocentrism-si-teocentrism.html">
+    <meta property="og:title"             content="Rugăciunea, între egocentrism și teocentrism — Albert-Beniamin Cucu">
+    <meta property="og:description"       content="Cum rugăciunea personală poate deveni fie centrată pe sine, fie centrată pe voia lui Dumnezeu. Studiu bazat pe Matei 6.">
+    <meta property="og:image"             content="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80">
+    <meta property="article:author"       content="Albert-Beniamin Cucu">
+    <meta property="article:published_time" content="2024-12-01">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Rugăciunea, între egocentrism și teocentrism">
+    <meta name="twitter:description" content="Cum rugăciunea personală poate deveni fie centrată pe sine, fie centrată pe voia lui Dumnezeu.">
+    <meta name="twitter:image"       content="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="aeon-theme.css">
+
+    <!-- Previne flash-ul de culori (FOUC) -->
+    <script>
+    (function(){
+        var t = localStorage.getItem('aeon-theme') ||
+            ((window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) ? 'dark' : 'light');
+        if (t === 'dark') document.documentElement.classList.add('dark');
+    }());
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Rugăciunea, între egocentrism și teocentrism",
+        "description": "Cum rugăciunea personală poate deveni fie centrată pe sine, fie centrată pe voia lui Dumnezeu.",
+        "image": "https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80",
+        "datePublished": "2024-12-01",
+        "author": {
+            "@type": "Person",
+            "name": "Albert-Beniamin Cucu",
+            "url": "https://misteremanoil-art.github.io/BlogAeon/despre.html"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Albert-Beniamin Cucu"
+        },
+        "url": "https://misteremanoil-art.github.io/BlogAeon/rugaciunea-egocentrism-si-teocentrism.html",
+        "inLanguage": "ro"
+    }
+    </script>
 </head>
 <body>
     <header>
         <div class="site-header">
-            <!-- STÂNGA: Căutare -->
             <div class="header-left">
+                <button id="theme-toggle" class="theme-btn" aria-label="Schimbă tema" title="Lumină / Întuneric">
+                    <svg id="moon-icon" class="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun-icon" class="theme-icon" style="display:none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
                 <form action="cautare.html" method="GET" class="search-trigger-container" id="search-form">
                     <input type="search" name="q" placeholder="Caută..." class="expandable-search" id="search-input" autocomplete="off">
-                    <label for="search-input" class="search-label">
+                    <label for="search-input" class="search-label" aria-label="Deschide căutarea">
                         <svg class="lupa-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -24,12 +92,8 @@
                     </label>
                 </form>
             </div>
-
-            <!-- CENTRU: Logo -->
             <a href="index.html" class="logo">Albert-Beniamin Cucu</a>
-
-            <!-- DREAPTA: Navigație -->
-            <nav class="header-right">
+            <nav class="header-right" aria-label="Navigație principală">
                 <a href="index.html">Acasă</a>
                 <a href="blog.html">Articole</a>
                 <a href="despre.html">Despre</a>
@@ -39,147 +103,127 @@
     </header>
 
     <main>
-        <div class="essay-header article-top-section">
-            <span style="color:var(--accent); font-weight:700; text-transform:uppercase; font-size:0.75rem; letter-spacing: 1.6px;">Teologie</span>
-            <h1>Rugăciunea, între egocentrism și teocentrism</h1>
-            <p class="standfirst">Rugăciunea, în esență, nu este despre a obține ceea ce vrem noi, ci despre a ne încredința complet planului lui Dumnezeu.</p>
-            <p class="article-meta"><span>Albert-Beniamin Cucu</span><span>Decembrie 2024</span><span class="reading-time">12 min de lectură</span></p>
-        </div>
-
+        <!-- IMAGINEA PRIMA — full-bleed (stil aeon.co) -->
         <figure class="full-width-img">
-            <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80" alt="Rugăciune">
+            <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1600&q=80"
+                 alt="Rugăciune și comuniune cu Dumnezeu" loading="lazy">
         </figure>
 
         <div class="container-reading">
+            <!-- TITLUL DEDESUBT de imagine -->
+            <div class="essay-header article-top-section">
+                <span style="color:var(--accent); font-weight:700; text-transform:uppercase; font-size:0.72rem; letter-spacing: 2px;">Teologie</span>
+                <h1>Rugăciunea, între egocentrism și teocentrism</h1>
+                <p class="standfirst">Rugăciunea, în esență, nu este despre a obține ceea ce vrem noi, ci despre a ne încredința complet planului lui Dumnezeu.</p>
+                <p class="article-meta"><span>Albert-Beniamin Cucu</span><span>Decembrie 2024</span><span class="reading-time">12 min de lectură</span></p>
+            </div>
+
             <article class="essay-content">
-
                 <p class="drop-cap">Rugăciunea este una dintre cele mai importante practici pentru viața spirituală a unui creștin. Evangheliile Îl prezintă pe Isus Hristos atât prin exemplul personal, cât și prin învățăturile Sale, arătând că această practică ocupa un loc central în viața Sa. La fel, rugăciunea continuă să aibă un rol esențial și în prezent, atât pentru biserică, precum și pentru credincioși.</p>
-
                 <p>În Predica de pe Munte (Matei 6:1-18), Isus abordează trei dintre cele mai importante practici spirituale pentru un creștin: facerea de bine, rugăciunea și postul. Comparativ cu celelalte două, Isus dedică mai mult timp rugăciunii, sugerând importanța deosebită a acesteia pentru viața spirituală.</p>
-
-                <p>Pornind de la această premisă, rugăciunea poate fi împărțită în trei mari categorii: rugăciunea publică, rugăciunea în familie și rugăciunea personală. Ellen G. White a afirmat: „Rugăciunea este o necesitate pentru că ea este viața sufletului. Rugăciunea în familie și rugăciunea în public își au locul lor, dar comuniunea în taină cu Dumnezeu este aceea care susține viața sufletului.”</p>
-
-                <p>Cuvintele lui Isus din Matei 6:6, „ci tu, când te rogi, intră în odăiţa ta, încuie-ţi ușa și roagă-te Tatălui tău, care este în ascuns”, se referă la rugăciunea personală. În continuare, vom analiza trei îndemnuri oferite de Isus cu privire la această practică.</p>
-
-                <p>Primul îndemn: „intră în odăița ta”. Isus condamnă atitudinea egocentrică în rugăciune. Porunca Lui din Matei 6:5, „când vă rugați, să nu fiți ca fățarnicii”, este fundamentată pe faptul că acestora „le place să se roage stând în picioare în sinagogi și la colțurile ulițelor, ca să fie văzuți de oameni”. În contrast, cuvintele lui Isus din versetul 6 subliniază o atitudine teocentrică, îndreptată spre Dumnezeu și avându-L pe El în centru.</p>
-
-                <p>Primul îndemn al lui Isus pentru oricine dorește să dezvolte o relație personală cu Dumnezeu prin rugăciune este „de a intra în odăiță”. Termenul din limba greacă pentru „odăiță” este tameion, care poate însemna cameră secretă, privată, ascunsă. Această imagine de a intra în tameion apare și în Vechiul Testament, și anume în Isaia 26:20 și 2 Împărați 4:33.</p>
-
-                <p>Textul din 2 Împărați 4:33 se referă la momentul în care Elisei readuce la viață un copil. Pentru ca minunea să aibă loc, Elisei a făcut trei lucruri: (a) „Elisei a intrat [în odăița pregătită de sunamita, în versetul 10]”, (b) „a închis ușa după ei amândoi”, și în final, Elisei (c) „s-a rugat Domnului”. Minunea readucerii la viață, pe care Dumnezeu a realizat-o prin Elisei, s-a datorat relației personale dintre profet și Dumnezeu, întărită prin rugăciune. Atitudinea de smerenie a lui Elisei a creat contextul acestei minuni, iar rugăciunea sa reflectă o abordare teocentrică, și nu egocentrică.</p>
-
+                <p>Pornind de la această premisă, rugăciunea poate fi împărțită în trei mari categorii: rugăciunea publică, rugăciunea în familie și rugăciunea personală. Ellen G. White a afirmat: „Rugăciunea este o necesitate pentru că ea este viața sufletului. Rugăciunea în familie și rugăciunea în public își au locul lor, dar comuniunea în taină cu Dumnezeu este aceea care susține viața sufletului."</p>
+                <p>Cuvintele lui Isus din Matei 6:6, „ci tu, când te rogi, intră în odăiţa ta, încuie-ţi ușa și roagă-te Tatălui tău, care este în ascuns", se referă la rugăciunea personală. În continuare, vom analiza trei îndemnuri oferite de Isus cu privire la această practică.</p>
+                <p>Primul îndemn: „intră în odăița ta". Isus condamnă atitudinea egocentrică în rugăciune. Porunca Lui din Matei 6:5, „când vă rugați, să nu fiți ca fățarnicii", este fundamentată pe faptul că acestora „le place să se roage stând în picioare în sinagogi și la colțurile ulițelor, ca să fie văzuți de oameni". În contrast, cuvintele lui Isus din versetul 6 subliniază o atitudine teocentrică, îndreptată spre Dumnezeu și avându-L pe El în centru.</p>
+                <p>Primul îndemn al lui Isus pentru oricine dorește să dezvolte o relație personală cu Dumnezeu prin rugăciune este „de a intra în odăiță". Termenul din limba greacă pentru „odăiță" este tameion, care poate însemna cameră secretă, privată, ascunsă. Această imagine de a intra în tameion apare și în Vechiul Testament, și anume în Isaia 26:20 și 2 Împărați 4:33.</p>
+                <p>Textul din 2 Împărați 4:33 se referă la momentul în care Elisei readuce la viață un copil. Pentru ca minunea să aibă loc, Elisei a făcut trei lucruri: (a) „Elisei a intrat [în odăița pregătită de sunamita, în versetul 10]", (b) „a închis ușa după ei amândoi", și în final, Elisei (c) „s-a rugat Domnului". Minunea readucerii la viață, pe care Dumnezeu a realizat-o prin Elisei, s-a datorat relației personale dintre profet și Dumnezeu, întărită prin rugăciune. Atitudinea de smerenie a lui Elisei a creat contextul acestei minuni, iar rugăciunea sa reflectă o abordare teocentrică, și nu egocentrică.</p>
                 <p>În Matei 6:6, odăița reprezintă un loc retras, ascuns și privat pentru cel care dorește să se roage lui Dumnezeu. Cu toții avem locuri preferate în casele noastre, unde ne simțim relaxați și liniștiți. Îndemnul lui Isus de a intra în odăiță poate sugera necesitatea de a avea un loc special, retras, unde să ne întâlnim cu Dumnezeu. Această întâlnire prin rugăciune are scopul de a întări relația personală dintre om și Dumnezeu. De asemenea, odăița nu se limitează la clădiri sau spații închise. Pentru Isus, odăița era natura (Luca 5:16; 6:12; Marcu 1:35). La fel, putem ieși în natură pentru a ne ruga și a avea un dialog cu Dumnezeu.</p>
-
                 <p>Prin urmare, primul îndemn al lui Isus de a intra în odăiță se referă la crearea unui loc special, confortabil și privat, unde să ne simțim relaxați și liniștiți, astfel încât relația noastră cu Dumnezeu să se maturizeze.</p>
-
-                <p>Al doilea îndemn: „încuie-ți uşa”. După ce credinciosul intră în odăița rugăciunii, al doilea îndemn al lui Isus este acela de a „încuia ușa”. Odăițele din vremea lui Isus erau locuri unde oamenii își depozitau uneltele pentru muncă, mâncarea pentru animale și alte bunuri. Erau considerate cele mai nesfinte locuri din casă, însă, paradoxal, acestea ofereau cel mai potrivit spațiu pentru rugăciune. Aceasta, deoarece odăița avea o trăsătură unică: era singura cameră care putea fi încuiată.</p>
-
-                <p>În timpul rugăciunii, întreruperile precum sunetul telefonului sau intervențiile pot perturba atmosfera spirituală și pot afecta comuniunea cu Dumnezeu. De aceea, Isus ne îndeamnă să „încuem ușa”, atât literal, cât și simbolic, pentru a ne proteja timpul de rugăciune de distrageri. Nu este vorba de izolare prelungită, ci de crearea unui cadru temporar în care momentele de rugăciune să fie neîntrerupte și de calitate, favorizând o comuniune autentică cu Dumnezeu.</p>
-
-                <p>Îndemnul de a încuia ușa sugerează, de fapt, o deconectare activă de la orice ar putea perturba legătura noastră cu Dumnezeu în timpul rugăciunii. Așa cum Elisei a închis ușa după el și s-a rugat, noi trebuie să ne „încuiem ușa” mental și spiritual pentru a rămâne pe deplin concentrați la dialogul cu Dumnezeu. Isus Însuși avea obiceiul de a se trezi dis-de-dimineață, înainte ca mulțimile să vină la El cu tot felul de probleme, pentru a petrece timp de calitate în rugăciune, conectat cu Tatăl. Obiceiul Său de a se izola în liniște și de a petrece momente de rugăciune într-o conexiune profundă cu Dumnezeu reflectă perfect ideea de a „încuia ușa”.</p>
-
-                <p>Astfel, al doilea îndemn al lui Isus – „încuie ușa” – ne îndeamnă să ne oferim timp de calitate în rugăciune, să ne conectăm profund cu Dumnezeu și să ne deconectăm de la tot ceea ce poate perturba acest moment sacru. Exemplul lui Isus, care se trezea devreme pentru a fi în comuniune cu Tatăl, rămâne o lecție valoroasă pentru creștinii de astăzi.</p>
-
-                <p>Al treilea îndemn: „roagă-te Tatălui tău, care este în ascuns”. După ce primii pași au fost îndepliniți, și anume intrarea în odăiță și încuierea ușii, Isus oferă al treilea îndemn – „roagă-te Tatălui tău.” Observația că Isus folosește expresia „Tatăl tău” evidențiază relația personală dintre credincios și Dumnezeu. Acest detaliu subliniază că Dumnezeu este Tatăl tuturor celor care doresc să aibă o relație autentică cu El prin rugăciune. Astfel, rugăciunea creștinului ar trebui să fie întotdeauna centrată pe Dumnezeu, având în vedere că El este un Tată iubitor și accesibil tuturor.</p>
-
-                <p>În rugăciunea din Ghetsimani, Isus Se adresează lui Dumnezeu cu apelativul „Tată” (Matei 26:39), exprimând o intimitate profundă și o supunere față de voia divină. În mod similar, rugăciunea este o cale prin care credinciosul îi aduce mulțumiri lui Dumnezeu și, de asemenea, Îi prezintă cereri și probleme. Este legitim să Îi cerem lui Dumnezeu ajutor în diverse aspecte ale vieții noastre, însă, la fel ca Isus, trebuie să fim dispuși să acceptăm voia Lui, spunând: „Totuși, nu cum voiesc Eu, ci cum voiești Tu” (Matei 26:39). Astfel, rugăciunea rămâne una teocentrică, concentrată pe Dumnezeu și pe planul Său, nu pe dorințele omului.</p>
-
-                <p>La sfârșitul acestor trei îndemnuri, Isus face o promisiune: „Tatăl tău, care vede în ascuns, îți va răsplăti” (Matei 6:6). Fiecare persoană care se roagă își dorește ca Dumnezeu să îi răspundă, iar Isus garantează că Tatăl va răspunde în felul Său. Cu toate acestea, răspunsul lui Dumnezeu poate veni în moduri diferite față de așteptările noastre, iar cuvintele lui Isus ne învață să fim dispuși să acceptăm voia divină, chiar dacă aceasta nu coincide întotdeauna cu cererile noastre. Rugăciunea, în esență, nu este despre a obține ceea ce vrem noi, ci despre a ne încredința complet planului lui Dumnezeu, având încredere că răsplata va veni în felul și timpul hotărâte de El.</p>
-
-                <p>În concluzie, rugăciunea personală este o practică esențială pentru viața spirituală a credinciosului, iar îndemnul lui Isus de a intra în odăiță, de a încuia ușa și de a ne ruga ne oferă un model pentru a ne apropia de Dumnezeu. Intrarea în odăiță simbolizează crearea unui spațiu sacru și intim, liber de distrageri, unde putem avea o relație autentică cu Tatăl. Încuierea ușii subliniază importanța deconectării de lumea exterioară, permițându-ne să ne concentrăm asupra comunicării sincere cu Dumnezeu. În cele din urmă, apelul de a ne ruga „Tatălui nostru” ne amintește că rugăciunea este o interacțiune personală, centrată pe Dumnezeu, în care aducem atât mulțumiri, cât și cereri, dar suntem deschiși să acceptăm voia Lui.</p>
-
+                <p>Al doilea îndemn: „încuie-ți uşa". După ce credinciosul intră în odăița rugăciunii, al doilea îndemn al lui Isus este acela de a „încuia ușa". Odăițele din vremea lui Isus erau locuri unde oamenii își depozitau uneltele pentru muncă, mâncarea pentru animale și alte bunuri. Erau considerate cele mai nesfinte locuri din casă, însă, paradoxal, acestea ofereau cel mai potrivit spațiu pentru rugăciune. Aceasta, deoarece odăița avea o trăsătură unică: era singura cameră care putea fi încuiată.</p>
+                <p>În timpul rugăciunii, întreruperile precum sunetul telefonului sau intervențiile pot perturba atmosfera spirituală și pot afecta comuniunea cu Dumnezeu. De aceea, Isus ne îndeamnă să „încuem ușa", atât literal, cât și simbolic, pentru a ne proteja timpul de rugăciune de distrageri. Nu este vorba de izolare prelungită, ci de crearea unui cadru temporar în care momentele de rugăciune să fie neîntrerupte și de calitate, favorizând o comuniune autentică cu Dumnezeu.</p>
+                <p>Îndemnul de a încuia ușa sugerează, de fapt, o deconectare activă de la orice ar putea perturba legătura noastră cu Dumnezeu în timpul rugăciunii. Așa cum Elisei a închis ușa după el și s-a rugat, noi trebuie să ne „încuiem ușa" mental și spiritual pentru a rămâne pe deplin concentrați la dialogul cu Dumnezeu. Isus Însuși avea obiceiul de a se trezi dis-de-dimineață, înainte ca mulțimile să vină la El cu tot felul de probleme, pentru a petrece timp de calitate în rugăciune, conectat cu Tatăl. Obiceiul Său de a se izola în liniște și de a petrece momente de rugăciune într-o conexiune profundă cu Dumnezeu reflectă perfect ideea de a „încuia ușa".</p>
+                <p>Astfel, al doilea îndemn al lui Isus – „încuie ușa" – ne îndeamnă să ne oferim timp de calitate în rugăciune, să ne conectăm profund cu Dumnezeu și să ne deconectăm de la tot ceea ce poate perturba acest moment sacru. Exemplul lui Isus, care se trezea devreme pentru a fi în comuniune cu Tatăl, rămâne o lecție valoroasă pentru creștinii de astăzi.</p>
+                <p>Al treilea îndemn: „roagă-te Tatălui tău, care este în ascuns". După ce primii pași au fost îndepliniți, și anume intrarea în odăiță și încuierea ușii, Isus oferă al treilea îndemn – „roagă-te Tatălui tău." Observația că Isus folosește expresia „Tatăl tău" evidențiază relația personală dintre credincios și Dumnezeu. Acest detaliu subliniază că Dumnezeu este Tatăl tuturor celor care doresc să aibă o relație autentică cu El prin rugăciune. Astfel, rugăciunea creștinului ar trebui să fie întotdeauna centrată pe Dumnezeu, având în vedere că El este un Tată iubitor și accesibil tuturor.</p>
+                <p>În rugăciunea din Ghetsimani, Isus Se adresează lui Dumnezeu cu apelativul „Tată" (Matei 26:39), exprimând o intimitate profundă și o supunere față de voia divină. În mod similar, rugăciunea este o cale prin care credinciosul îi aduce mulțumiri lui Dumnezeu și, de asemenea, Îi prezintă cereri și probleme. Este legitim să Îi cerem lui Dumnezeu ajutor în diverse aspecte ale vieții noastre, însă, la fel ca Isus, trebuie să fim dispuși să acceptăm voia Lui, spunând: „Totuși, nu cum voiesc Eu, ci cum voiești Tu" (Matei 26:39). Astfel, rugăciunea rămâne una teocentrică, concentrată pe Dumnezeu și pe planul Său, nu pe dorințele omului.</p>
+                <p>La sfârșitul acestor trei îndemnuri, Isus face o promisiune: „Tatăl tău, care vede în ascuns, îți va răsplăti" (Matei 6:6). Fiecare persoană care se roagă își dorește ca Dumnezeu să îi răspundă, iar Isus garantează că Tatăl va răspunde în felul Său. Cu toate acestea, răspunsul lui Dumnezeu poate veni în moduri diferite față de așteptările noastre, iar cuvintele lui Isus ne învață să fim dispuși să acceptăm voia divină, chiar dacă aceasta nu coincide întotdeauna cu cererile noastre. Rugăciunea, în esență, nu este despre a obține ceea ce vrem noi, ci despre a ne încredința complet planului lui Dumnezeu, având încredere că răsplata va veni în felul și timpul hotărâte de El.</p>
+                <p>În concluzie, rugăciunea personală este o practică esențială pentru viața spirituală a credinciosului, iar îndemnul lui Isus de a intra în odăiță, de a încuia ușa și de a ne ruga ne oferă un model pentru a ne apropia de Dumnezeu. Intrarea în odăiță simbolizează crearea unui spațiu sacru și intim, liber de distrageri, unde putem avea o relație autentică cu Tatăl. Încuierea ușii subliniază importanța deconectării de lumea exterioară, permițându-ne să ne concentrăm asupra comunicării sincere cu Dumnezeu. În cele din urmă, apelul de a ne ruga „Tatălui nostru" ne amintește că rugăciunea este o interacțiune personală, centrată pe Dumnezeu, în care aducem atât mulțumiri, cât și cereri, dar suntem deschiși să acceptăm voia Lui.</p>
             </article>
 
-           <!-- ========================================== -->
-<!-- FINAL EDITORIAL: SHARE + AUTOR + SUSȚINERE + RECENZII -->
-<!-- ========================================== -->
+            <!-- 1. DISTRIBUIRE -->
+            <section class="editorial-divider-section">
+                <p class="eyebrow">Distribuie</p>
+                <div class="share-row-minimal">
+                    <a class="share-icon-btn fb" href="#" target="_blank" rel="noopener" aria-label="Distribuie pe Facebook">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a class="share-icon-btn x" href="#" target="_blank" rel="noopener" aria-label="Distribuie pe X (Twitter)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg>
+                    </a>
+                    <a class="share-icon-btn wa" href="#" target="_blank" rel="noopener" aria-label="Distribuie pe WhatsApp">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.353-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.875 1.215 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 4.754a9.847 9.847 0 01-4.947-1.341l-.356-.211-3.672.963.98-3.577-.231-.369a9.829 9.829 0 01-1.506-5.234c0-5.445 4.433-9.875 9.878-9.875 2.64 0 5.122 1.028 6.987 2.895a9.825 9.825 0 012.89 6.988c-.005 5.447-4.439 9.877-9.885 9.877m8.415-18.293A11.85 11.85 0 0012.65 0C5.655 0 0 5.656 0 12.651c0 2.23.583 4.408 1.693 6.332L0 24l4.435-1.163a11.811 11.85 0 005.815 1.547l.005.001c6.997 0 12.654-5.653 12.659-12.646a11.821 11.821 0 00-3.456-8.422"/></svg>
+                    </a>
+                </div>
+            </section>
 
-<!-- 1. DISTRIBUIRE -->
-<section class="editorial-divider-section">
-    <p class="eyebrow">Distribuie</p>
-    <div class="share-row-minimal">
-        <a class="share-icon-btn fb" href="#" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-        <a class="share-icon-btn x" href="#" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.292 19.494h2.039L6.486 3.24H4.298l13.311 17.407z"/></svg></a>
-        <a class="share-icon-btn wa" href="#" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.353-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.875 1.215 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-4.821 4.754a9.847 9.847 0 01-4.947-1.341l-.356-.211-3.672.963 0.98-3.577-.231-.369a9.829 9.829 0 01-1.506-5.234c0-5.445 4.433-9.875 9.878-9.875 2.64 0 5.122 1.028 6.987 2.895a9.825 9.825 0 012.89 6.988c-.005 5.447-4.439 9.877-9.885 9.877m8.415-18.293A11.85 11.85 0 0012.65 0C5.655 0 0 5.656 0 12.651c0 2.23.583 4.408 1.693 6.332L0 24l4.435-1.163a11.811 11.85 0 005.815 1.547l0.005.001c6.997 0 12.654-5.653 12.659-12.646a11.821 11.821 0 00-3.456-8.422"/></svg></a>
-    </div>
-</section>
+            <!-- 2. DESPRE AUTOR -->
+            <section class="editorial-divider-section">
+                <div class="author-signature">
+                    <img src="images/auth.jpg" alt="Albert-Beniamin Cucu" class="author-img-mini" loading="lazy">
+                    <p class="eyebrow">Autor</p>
+                    <h3>Albert-Beniamin Cucu</h3>
+                    <p class="author-bio-mini">Master în Teologie Pastorală. Pasionat de explorarea sensului prin rigoare academică și credință vie.</p>
+                </div>
+            </section>
 
-<!-- 2. DESPRE AUTOR -->
-<section class="editorial-divider-section">
-    <div class="author-signature">
-        <img src="images/auth.jpg" alt="Albert-Beniamin Cucu" class="author-img-mini">
-        <p class="eyebrow">Autor</p>
-        <h3>Albert-Beniamin Cucu</h3>
-        <p class="author-bio-mini">Master în Teologie Pastorală. Pasionat de explorarea sensului prin rigoare academică și credință vie.</p>
-    </div>
-</section>
+            <!-- 3. SUSȚINERE -->
+            <section class="editorial-divider-section">
+                <p class="eyebrow">Susține Studiul</p>
+                <h2 class="support-title">Investește în Cunoaștere</h2>
+                <p class="support-text">Contribuția ta face posibilă continuitatea cercetării teologice.</p>
+                <div class="support-form-box">
+                    <div class="support-group">
+                        <span class="support-mini-label">Contribuție:</span>
+                        <div class="support-row">
+                            <button class="s-choice active" data-type="freq">Lunar</button>
+                            <button class="s-choice" data-type="freq">Anual</button>
+                            <button class="s-choice" data-type="freq">O dată</button>
+                        </div>
+                    </div>
+                    <div class="support-group">
+                        <span class="support-mini-label">Sumă (USD):</span>
+                        <div class="support-row">
+                            <button class="s-choice active s-amt-preset" data-amt="5">$5</button>
+                            <button class="s-choice s-amt-preset" data-amt="10">$10</button>
+                            <button class="s-choice" id="s-custom-trigger">Alta</button>
+                        </div>
+                    </div>
+                    <div id="s-custom-box" class="s-custom-input-wrapper">
+                        <input type="number" id="s-custom-field" placeholder="Introdu suma dorită...">
+                    </div>
+                    <button class="btn-auth support-submit-btn">Susține Studiul</button>
+                </div>
+            </section>
 
-<!-- 3. SUSȚINERE -->
-<section class="editorial-divider-section">
-    <p class="eyebrow">Susține Studiul</p>
-    <h2 class="support-title">Investește în Cunoaștere</h2>
-    <p class="support-text">Contribuția ta face posibilă continuitatea cercetării teologice.</p>
-    
-    <div class="support-form-box">
-        <div class="support-group">
-            <span class="support-mini-label">Contribuție:</span>
-            <div class="support-row">
-                <button class="s-choice active" data-type="freq">Lunar</button>
-                <button class="s-choice" data-type="freq">Anual</button>
-                <button class="s-choice" data-type="freq">O dată</button>
+            <!-- 4. RECENZII -->
+            <section class="editorial-divider-section">
+                <div class="reviews-top-bar">
+                    <span class="reviews-label">Recenzii</span>
+                    <div class="review-write-trigger">
+                        <input type="checkbox" id="toggle-review-input" style="display:none;">
+                        <label for="toggle-review-input" class="review-icon-label" title="Lasă un gând">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                        </label>
+                        <div class="expandable-review-box">
+                            <textarea id="new-comment" placeholder="Așterne un gând..."></textarea>
+                            <button id="post-comment-btn" class="btn-auth">Postează</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="open-reviews-modal" class="view-all-btn">Citește recenziile comunității</button>
+            </section>
+
+            <!-- MODAL RECENZII -->
+            <div id="reviews-overlay" class="modal-overlay">
+                <div class="modal-card">
+                    <div class="modal-header">
+                        <h3>Gânduri și Recenzii</h3>
+                        <button id="close-modal" class="close-btn" title="Închide">&times;</button>
+                    </div>
+                    <div id="comments-display-list" class="modal-body"></div>
+                </div>
             </div>
         </div>
-        <div class="support-group">
-            <span class="support-mini-label">Sumă (USD):</span>
-            <div class="support-row">
-                <button class="s-choice active s-amt-preset" data-amt="5">$5</button>
-                <button class="s-choice s-amt-preset" data-amt="10">$10</button>
-                <button class="s-choice" id="s-custom-trigger">Alta</button>
-            </div>
-        </div>
-        
-        <!-- CÂMP SUMĂ PERSONALIZATĂ (Se deschide doar la "Alta") -->
-        <div id="s-custom-box" class="s-custom-input-wrapper">
-            <input type="number" id="s-custom-field" placeholder="Introdu suma dorită...">
-        </div>
-        
-        <button class="btn-auth support-submit-btn">Susține Studiul</button>
-    </div>
-</section>
+    </main>
 
-<!-- 4. RECENZII -->
-<section class="editorial-divider-section">
-    <div class="reviews-top-bar">
-        <span class="reviews-label">Recenzii</span>
-        <div class="review-write-trigger">
-            <input type="checkbox" id="toggle-review-input" style="display:none;">
-            <label for="toggle-review-input" class="review-icon-label" title="Lasă un gând">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-            </label>
-            <div class="expandable-review-box">
-                <textarea id="new-comment" placeholder="Așterne un gând..."></textarea>
-                <button id="post-comment-btn" class="btn-auth">Postează</button>
-            </div>
-        </div>
-    </div>
-    <!-- Butonul de citit care deschide fereastra -->
-    <button id="open-reviews-modal" class="view-all-btn">Citește recenziile comunității</button>
-</section>
-
-<!-- FEREASTRA POPUP (MODAL) - Trebuia să fie aici -->
-<div id="reviews-overlay" class="modal-overlay">
-    <div class="modal-card">
-        <div class="modal-header">
-            <h3>Gânduri și Recenzii</h3>
-            <button id="close-modal" class="close-btn" title="Închide">&times;</button>
-        </div>
-        <div id="comments-display-list" class="modal-body">
-            <!-- Recenziile apar aici prin JS -->
-        </div>
-    </div>
-</div>
-
-
-    <!-- FOOTER ȘI SCRIPTURI -->
     <footer>
         <div class="footer-inner">
             <span>Albert-Beniamin Cucu</span>
@@ -191,10 +235,11 @@
             <span>© 2026</span>
         </div>
     </footer>
+
     <button class="back-to-top" type="button" aria-label="Înapoi sus">↑</button>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
     <script src="comments.js"></script>
-
 </body>
 </html>
